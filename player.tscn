@@ -1,0 +1,116 @@
+[gd_scene load_steps=23 format=3 uid="uid://b5hvkcssusrs3"]
+
+[ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
+[ext_resource type="Script" path="res://player.gd" id="1_du36b"]
+[ext_resource type="Texture2D" uid="uid://rcqxkgxrb73r" path="res://generic-female/generic-female-left/frame1.png" id="2_6rwr6"]
+[ext_resource type="PackedScene" uid="uid://cto53ir8x4a0p" path="res://Weapons/Board/board.tscn" id="2_ehnx2"]
+[ext_resource type="PackedScene" uid="uid://cueeahgqvvp1" path="res://Weapons/stone.tscn" id="2_n35fd"]
+[ext_resource type="Texture2D" uid="uid://x20i4wpp1np6" path="res://generic-female/generic-female-left/frame2.png" id="3_ihrla"]
+[ext_resource type="Texture2D" uid="uid://b3wmxkruqot5p" path="res://generic-female/generic-female-left/frame3.png" id="4_tton6"]
+[ext_resource type="Texture2D" uid="uid://bxr4bdji1i8ip" path="res://generic-female/generic-female-left/frame4.png" id="5_vf0gr"]
+[ext_resource type="Texture2D" uid="uid://ca57cg6eona7j" path="res://generic-female/generic-female-left/frame5.png" id="6_lb1oe"]
+[ext_resource type="Texture2D" uid="uid://du1pvru44rgkg" path="res://generic-female/generic-female-left/frame6.png" id="7_abn7c"]
+[ext_resource type="Texture2D" uid="uid://ddrdxid8f53bo" path="res://generic-female/generic-female-left/frame7.png" id="8_hsodc"]
+[ext_resource type="Texture2D" uid="uid://chi75m6hsfsx8" path="res://generic-female/generic-female-right/frame0.png" id="9_aemr0"]
+[ext_resource type="Texture2D" uid="uid://dsxcpvuq1l5y3" path="res://generic-female/generic-female-right/frame1.png" id="10_pfbau"]
+[ext_resource type="Texture2D" uid="uid://ci6bxgmjsj401" path="res://generic-female/generic-female-right/frame2.png" id="11_c1u1p"]
+[ext_resource type="Texture2D" uid="uid://bi8ism8qba60b" path="res://generic-female/generic-female-right/frame3.png" id="12_v51q4"]
+[ext_resource type="Texture2D" uid="uid://bic4thb26oy81" path="res://generic-female/generic-female-right/frame4.png" id="13_e5hnr"]
+[ext_resource type="Texture2D" uid="uid://h2s4e0iyrkmq" path="res://generic-female/generic-female-right/frame5.png" id="14_xl8m8"]
+[ext_resource type="Texture2D" uid="uid://2pbntpht0n6v" path="res://generic-female/generic-female-right/frame6.png" id="15_a571a"]
+[ext_resource type="Texture2D" uid="uid://brkhnsaq7y870" path="res://generic-female/generic-female-right/frame7.png" id="16_yfjdv"]
+[ext_resource type="Texture2D" uid="uid://ch2gvmfsl5u6d" path="res://basicterrain/chest_01.png" id="19_g3g1r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efsi2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_02q1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6rwr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ihrla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tton6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vf0gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lb1oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_abn7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hsodc")
+}],
+"loop": true,
+"name": &"left",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_aemr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pfbau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_c1u1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_v51q4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_e5hnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xl8m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_a571a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_yfjdv")
+}],
+"loop": true,
+"name": &"right",
+"speed": 14.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3y3a"]
+radius = 4.0
+height = 20.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -6)
+script = ExtResource("1_du36b")
+main_weapon_scene = ExtResource("2_n35fd")
+offhand_weapon_scene = ExtResource("2_ehnx2")
+
+[node name="PlayerAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_efsi2")
+animation = &"right"
+frame_progress = 0.588546
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_t3y3a")
+
+[node name="MainWeaponTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="OffhandWeaponTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="LootableSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -13)
+texture = ExtResource("19_g3g1r")
+region_enabled = true
+region_rect = Rect2(33.0794, -0.00401306, 14.029, 15.8276)

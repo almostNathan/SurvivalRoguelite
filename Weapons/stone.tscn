@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cueeahgqvvp1"]
+
+[ext_resource type="Script" path="res://Weapons/stone.gd" id="1_ptvrp"]
+[ext_resource type="Texture2D" uid="uid://cepj1lwgcuq21" path="res://basicterrain/objects.png" id="2_p6uv5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p7mxg"]
+radius = 6.50822
+
+[node name="Stone" type="Area2D" groups=["weapons"]]
+script = ExtResource("1_ptvrp")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.246021, -0.515196)
+shape = SubResource("CircleShape2D_p7mxg")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_p6uv5")
+region_enabled = true
+region_rect = Rect2(0.604588, 17.2939, 14.8792, 14.3887)
+
+[node name="OnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0.0787437, 2.38419e-07)
+scale = Vector2(0.722086, 0.698463)
+
+[node name="WeaponTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="OnScreenEnabler" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
+[connection signal="timeout" from="WeaponTimer" to="." method="_on_bullet_timer_timeout"]

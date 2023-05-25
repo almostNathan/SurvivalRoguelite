@@ -1,0 +1,225 @@
+[gd_scene load_steps=31 format=3 uid="uid://bywidb6qsen3v"]
+
+[ext_resource type="Script" path="res://Enemies/base_monster.gd" id="1_l4wsy"]
+[ext_resource type="Texture2D" uid="uid://budj1b8im3mf3" path="res://Enemies/BlueSlime/slime.png" id="2_fjgj2"]
+[ext_resource type="Script" path="res://HealthComponent.gd" id="3_ydm15"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ll0o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1vvk"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk2r0"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id1j6"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxqnh"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wp86"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3x2d"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06jcp"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yxqy"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg4u5"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifson"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p28l8"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_433ka"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1naxe"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3owx"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaf1b"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olvk2"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5eg4v"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqrqu"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvv6c"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vovrj"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cbqd"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quiv6"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hntb"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_turfi"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfuya"]
+atlas = ExtResource("2_fjgj2")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cllm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1vvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk2r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id1j6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxqnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wp86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3x2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06jcp")
+}],
+"loop": true,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yxqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bg4u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifson")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p28l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_433ka")
+}],
+"loop": true,
+"name": &"dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1naxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3owx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaf1b")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olvk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5eg4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqrqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvv6c")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vovrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cbqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quiv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hntb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_turfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfuya")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[node name="BaseMonster" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_l4wsy")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ll0o")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3cllm")
+animation = &"moving"
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_ydm15")
+
+[connection signal="zero_hp" from="HealthComponent" to="." method="_on_health_component_zero_hp"]
