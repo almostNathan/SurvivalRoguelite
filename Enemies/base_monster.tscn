@@ -222,4 +222,7 @@ animation = &"moving"
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_ydm15")
 
+[node name="MoveTimer" type="Timer" parent="."]
+
 [connection signal="zero_hp" from="HealthComponent" to="." method="_on_health_component_zero_hp"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

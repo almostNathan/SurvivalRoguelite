@@ -29,30 +29,24 @@ func angle_to_mouse():
 
 #TODO: cooldown not working for weapons.
 func shoot_weapon(weapon_slot):
-	var weapon
 	var new_bullet
 
 	if weapon_slot == "main_weapon":
-		if main_weapon.off_cooldown():
-			main_weapon.put_on_cooldown()
-			weapon = main_weapon
+		if main_weapon_timer.is_stopped():
+			main_weapon_timer.start()
 			new_bullet = main_weapon_scene.instantiate()
 		else:
 			return
 	if weapon_slot == "offhand_weapon":
-		if offhand_weapon.off_cooldown():
-			offhand_weapon.put_on_cooldown()
-			weapon = offhand_weapon
+		if offhand_weapon_timer.is_stopped():
+			offhand_weapon_timer.start()
 			new_bullet = offhand_weapon_scene.instantiate()
 		else: 
 			return
 
-
-	if weapon.off_cooldown():
-		get_parent().add_child(new_bullet)
-		new_bullet.global_position = position
-		new_bullet.rotation = angle_to_mouse()
-		weapon.put_on_cooldown()
+	get_parent().add_child(new_bullet)
+	new_bullet.global_position = position
+	new_bullet.rotation = angle_to_mouse()
 		
 		
 #TODO add ducktyping to determine if weapon or usable
@@ -61,15 +55,13 @@ func interact_with_object():
 		var new_loot = lootable_list[0].get_loot()
 		equip_main(new_loot)
 		
-func equip_main(weapon):
-	main_weapon_scene = weapon
-	var new_weapon = main_weapon_scene.instantiate()
+func equip_main(weapon : PackedScene):
+	var new_weapon = weapon.instantiate()
 	main_weapon_timer.wait_time = new_weapon.get_cooldown()
 	main_weapon = new_weapon
 	
-func equip_offhand(weapon):
-	offhand_weapon_scene = weapon
-	var new_weapon = offhand_weapon_scene.instantiate()
+func equip_offhand(weapon : PackedScene):
+	var new_weapon = weapon.instantiate()
 	main_weapon_timer.wait_time = new_weapon.get_cooldown()
 	main_weapon = new_weapon
 	
