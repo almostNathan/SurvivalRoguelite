@@ -1,6 +1,7 @@
 extends Node
 
 @onready var path = $Path2D/PathFollow2D
+@onready var player = $Player
 
 var enemy = preload("res://Enemies/base_monster.tscn")
 
@@ -8,7 +9,9 @@ func _ready():
 	pass
 
 func _process(delta):
-	pass
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		enemy.movement_direction = enemy.position.angle_to_point(player.position) + PI/2
 
 
 func _on_timer_timeout():

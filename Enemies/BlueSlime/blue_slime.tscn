@@ -209,7 +209,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="BlueSlime" type="CharacterBody2D"]
+[node name="BlueSlime" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_aod53")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]

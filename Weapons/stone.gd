@@ -12,6 +12,8 @@ class_name Stone
 
 
 
+
+
 func _physics_process(delta):
 	var direction = Vector2.UP.rotated(rotation)
 	position += direction * speed * delta
