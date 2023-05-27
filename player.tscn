@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b5hvkcssusrs3"]
+[gd_scene load_steps=24 format=3 uid="uid://b5hvkcssusrs3"]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://player.gd" id="1_du36b"]
@@ -20,6 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://2pbntpht0n6v" path="res://generic-female/generic-female-right/frame6.png" id="15_a571a"]
 [ext_resource type="Texture2D" uid="uid://brkhnsaq7y870" path="res://generic-female/generic-female-right/frame7.png" id="16_yfjdv"]
 [ext_resource type="Texture2D" uid="uid://ch2gvmfsl5u6d" path="res://basicterrain/chest_01.png" id="19_g3g1r"]
+[ext_resource type="Script" path="res://Health.gd" id="21_ehw61"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3y3a"]
+radius = 4.0
+height = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efsi2"]
 animations = [{
@@ -82,24 +87,19 @@ animations = [{
 "speed": 14.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3y3a"]
-radius = 4.0
-height = 20.0
-
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(0, -6)
 script = ExtResource("1_du36b")
 main_weapon_scene = ExtResource("2_n35fd")
 offhand_weapon_scene = ExtResource("2_ehnx2")
 
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_t3y3a")
+
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_efsi2")
 animation = &"right"
 frame_progress = 0.588546
-
-[node name="PlayerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
-shape = SubResource("CapsuleShape2D_t3y3a")
 
 [node name="MainWeaponTimer" type="Timer" parent="."]
 one_shot = true
@@ -114,3 +114,16 @@ position = Vector2(1, -13)
 texture = ExtResource("19_g3g1r")
 region_enabled = true
 region_rect = Rect2(33.0794, -0.00401306, 14.029, 15.8276)
+
+[node name="Health" type="Node2D" parent="."]
+rotation = 1.57079
+script = ExtResource("21_ehw61")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_t3y3a")
+
+[node name="IFrameTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 signal fire_main_weapon
-
+signal health_changed
 
 @export var main_weapon_scene : PackedScene
 @export var offhand_weapon_scene : PackedScene
@@ -14,6 +14,7 @@ signal fire_main_weapon
 @onready var player_animation = $PlayerAnimation
 @onready var player_collision = $PlayerCollision
 @onready var loot_sprite = $LootableSprite
+@onready var health = $Health
 
 
 var lootable_list : Array
@@ -21,9 +22,21 @@ var acceleration = 1500.0
 var max_speed = 250.0
 var friction = 1200.0
 
-	
+func _physics_process(delta):
+	#Shooting weapons
+	if Input.is_action_just_pressed("left_click"):
+		shoot_weapon("main_weapon")
+	if Input.is_action_just_pressed("right_click"):
+		shoot_weapon("offhand_weapon")
+	if Input.is_action_just_pressed("interact"):
+		interact_with_object()
+
+	move(delta)
+
+
+
 func angle_to_mouse():
-	return position.angle_to_point(get_global_mouse_position())+ PI/2
+	return position.angle_to_point(get_global_mouse_position()) + PI/2
 	
 
 
@@ -76,7 +89,13 @@ func untoggle_lootable(loot_object):
 	lootable_list.pop_at(lootable_list.find(loot_object))
 
 
-func _physics_process(delta):
+
+
+
+	
+
+
+func move(delta):
 	var movement_direction = Vector2.ZERO
 	
 	#Define the movement vector
@@ -88,33 +107,26 @@ func _physics_process(delta):
 		player_animation.animation = "right"
 	else:
 		player_animation.animation = "left"
-	
-	#Shooting weapons
-	if Input.is_action_just_pressed("left_click"):
-		shoot_weapon("main_weapon")
-	if Input.is_action_just_pressed("right_click"):
-		shoot_weapon("offhand_weapon")
-	
-	
-	if Input.is_action_just_pressed("interact"):
-		interact_with_object()
-	
-	
+		
 	if movement_direction != Vector2.ZERO:
 		movement_direction = movement_direction.normalized()
 		$PlayerAnimation.play()
 	else:
 		apply_friction(friction*delta)
-
 	
 	velocity += movement_direction * acceleration * delta
 	velocity = velocity.limit_length(max_speed)
 	move_and_slide()
-
-
+	
 func apply_friction(current_friction):
 	if velocity.length() > current_friction:
 		velocity -= velocity.normalized() * current_friction
 	else:
 		velocity = Vector2.ZERO
 		$PlayerAnimation.stop()
+
+
+func _on_hitbox_body_entered(body):
+	if body.has_method("damage"):
+		health.damage(body.damage())
+		emit_signal("health_changed", health.cur_health)

@@ -1,6 +1,8 @@
 extends Node
 
 @onready var path = $Path2D/PathFollow2D
+@onready var player = $Player
+@onready var health_bar = $Player/PlayerCamera/HealthBar
 
 var enemy = preload("res://Enemies/base_monster.tscn")
 
@@ -8,7 +10,9 @@ func _ready():
 	pass
 
 func _process(delta):
-	pass
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		enemy.movement_direction = enemy.position.angle_to_point(player.position) + PI/2
 
 
 func _on_timer_timeout():
@@ -17,3 +21,7 @@ func _on_timer_timeout():
 	add_child(new_enemy)
 	new_enemy.position = path.position
 	
+
+
+func _on_player_health_changed(cur_health):
+	health_bar.value = cur_health
