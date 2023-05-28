@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b5hvkcssusrs3"]
+[gd_scene load_steps=25 format=3 uid="uid://b5hvkcssusrs3"]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://player.gd" id="1_du36b"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://brkhnsaq7y870" path="res://generic-female/generic-female-right/frame7.png" id="16_yfjdv"]
 [ext_resource type="Texture2D" uid="uid://ch2gvmfsl5u6d" path="res://basicterrain/chest_01.png" id="19_g3g1r"]
 [ext_resource type="Script" path="res://Health.gd" id="21_ehw61"]
+[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="22_0lwo7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3y3a"]
 radius = 4.0
@@ -125,5 +126,12 @@ script = ExtResource("21_ehw61")
 shape = SubResource("CapsuleShape2D_t3y3a")
 
 [node name="IFrameTimer" type="Timer" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("22_0lwo7")]
+offset_left = -16.0
+offset_top = 12.0
+offset_right = 141.0
+offset_bottom = 39.0
+scale = Vector2(0.2, 0.2)
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

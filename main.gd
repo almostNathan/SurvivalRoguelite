@@ -2,7 +2,7 @@ extends Node
 
 @onready var path = $Path2D/PathFollow2D
 @onready var player = $Player
-@onready var health_bar = $Player/PlayerCamera/HealthBar
+@onready var health_bar = $Player/HealthBar
 
 var enemy = preload("res://Enemies/base_monster.tscn")
 
@@ -25,3 +25,6 @@ func _on_timer_timeout():
 
 func _on_player_health_changed(cur_health):
 	health_bar.value = cur_health
+
+func get_level_size():
+	return $Background.size

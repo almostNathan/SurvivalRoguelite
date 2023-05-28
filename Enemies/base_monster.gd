@@ -31,6 +31,7 @@ func _on_health_component_zero_hp():
 func move(delta):
 	movement_direction = Vector2.UP.rotated(movement_direction)
 	position += movement_direction * max_speed * delta
+	position.clamp(Vector2.ZERO, get_parent().get_level_size())
 
 func damage():
 	return damage_output

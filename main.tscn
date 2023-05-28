@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_nif6k"]
 [ext_resource type="PackedScene" uid="uid://b5hvkcssusrs3" path="res://player.tscn" id="1_u1u1k"]
+[ext_resource type="PackedScene" uid="uid://b3d1127qors4o" path="res://UI/PlayerCamera.tscn" id="3_unglr"]
 [ext_resource type="Script" path="res://BulletManager.gd" id="4_mxdnq"]
 [ext_resource type="PackedScene" uid="uid://dw63wqapwnyme" path="res://item_pickup.tscn" id="5_iukc5"]
-[ext_resource type="PackedScene" uid="uid://bywidb6qsen3v" path="res://Enemies/base_monster.tscn" id="6_eqs6h"]
-[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="6_s8isi"]
+[ext_resource type="PackedScene" uid="uid://dn1rm5ynuf0mb" path="res://Enemies/BlueSlime/blue_slime.tscn" id="6_nw1la"]
 
 [sub_resource type="Curve2D" id="Curve2D_bihlg"]
 _data = {
@@ -27,20 +27,13 @@ color = Color(0.27451, 0.662745, 0.419608, 1)
 [node name="Player" parent="." instance=ExtResource("1_u1u1k")]
 position = Vector2(126, 147)
 
-[node name="PlayerCamera" type="Camera2D" parent="Player"]
-position = Vector2(-333, -127)
-zoom = Vector2(1.25, 1.25)
-
-[node name="HealthBar" parent="Player/PlayerCamera" instance=ExtResource("6_s8isi")]
+[node name="PlayerCamera" parent="Player" instance=ExtResource("3_unglr")]
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("4_mxdnq")
 
 [node name="ItemPickup" parent="." instance=ExtResource("5_iukc5")]
 position = Vector2(212, 298)
-
-[node name="BaseMonster" parent="." instance=ExtResource("6_eqs6h")]
-position = Vector2(390, 243)
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_bihlg")
@@ -52,6 +45,8 @@ rotation = -0.00278292
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
+
+[node name="BlueSlime" parent="." instance=ExtResource("6_nw1la")]
 
 [connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

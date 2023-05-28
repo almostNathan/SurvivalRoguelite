@@ -117,6 +117,7 @@ func move(delta):
 	velocity += movement_direction * acceleration * delta
 	velocity = velocity.limit_length(max_speed)
 	move_and_slide()
+	position.clamp(Vector2.ZERO, get_parent().get_level_size())
 	
 func apply_friction(current_friction):
 	if velocity.length() > current_friction:
