@@ -226,6 +226,12 @@ script = ExtResource("3_ydm15")
 [node name="MoveTimer" type="Timer" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("4_uy8m0")]
+offset_left = -15.0
+offset_top = 12.0
+offset_right = 133.0
+offset_bottom = 39.0
+scale = Vector2(0.2, 0.2)
 
+[connection signal="health_change" from="HealthComponent" to="HealthBar" method="_on_health_component_health_change"]
 [connection signal="zero_hp" from="HealthComponent" to="." method="_on_health_component_zero_hp"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

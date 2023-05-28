@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddr6eaamqukaf"]
+[gd_scene load_steps=7 format=3 uid="uid://ddr6eaamqukaf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nif6k"]
 [ext_resource type="PackedScene" uid="uid://b5hvkcssusrs3" path="res://player.tscn" id="1_u1u1k"]
 [ext_resource type="PackedScene" uid="uid://b3d1127qors4o" path="res://UI/PlayerCamera.tscn" id="3_unglr"]
 [ext_resource type="Script" path="res://BulletManager.gd" id="4_mxdnq"]
 [ext_resource type="PackedScene" uid="uid://dw63wqapwnyme" path="res://item_pickup.tscn" id="5_iukc5"]
-[ext_resource type="PackedScene" uid="uid://dn1rm5ynuf0mb" path="res://Enemies/BlueSlime/blue_slime.tscn" id="6_nw1la"]
 
 [sub_resource type="Curve2D" id="Curve2D_bihlg"]
 _data = {
@@ -45,8 +44,6 @@ rotation = -0.00278292
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
-
-[node name="BlueSlime" parent="." instance=ExtResource("6_nw1la")]
 
 [connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

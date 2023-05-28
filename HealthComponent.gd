@@ -16,4 +16,4 @@ func damage(damage_dealt):
 	if health <= 0:
 		emit_signal("zero_hp")
 	else:
-		emit_signal("health_change",)
+		emit_signal("health_change", health)

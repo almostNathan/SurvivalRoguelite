@@ -31,6 +31,11 @@ func get_cooldown():
 func off_cooldown():
 	return $WeaponTimer.is_stopped()
 
+func after_hit_effects():
+	pass
+
+func get_effect():
+	pass
 
 func _on_body_entered(body):
 	if body.has_method("hit") && body.is_in_group("enemy"):
@@ -38,4 +43,6 @@ func _on_body_entered(body):
 		attack.attack_damage = damage
 		attack.knockback_force = knockback
 		body.hit(attack)
+		after_hit_effects()
 		queue_free()
+	

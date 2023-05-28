@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 
 @onready var health_comp = $HealthComponent
+@onready var health_bar = $HealthBar
+
 
 var acceleration = 1500.0
 var max_speed = 150.0
@@ -13,6 +15,8 @@ var damage_output = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite.play("idle")
+	health_bar.max_value = health_comp.health
+	health_bar.value = health_comp.health
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
