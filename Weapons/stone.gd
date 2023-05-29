@@ -5,12 +5,17 @@ class_name Stone
 @export var damage = 5.0
 @export var knockback = 100.0
 
+
 @onready var hitbox = $Hitbox
 @onready var sprite = $Sprite
 @onready var weapon_timer = $WeaponTimer
 @onready var on_screen_enabler = $OnScreenEnabler
 
+var size_modifier = 1
+var damage_modifier = 1
 
+func _onready():
+	scale = size_modifier
 
 func _physics_process(delta):
 	var direction = Vector2.UP.rotated(rotation)

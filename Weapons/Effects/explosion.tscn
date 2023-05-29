@@ -1,50 +1,50 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfebdm6js6u8q"]
+[gd_scene load_steps=16 format=3 uid="uid://bx66nfnbnmlb3"]
 
 [ext_resource type="Script" path="res://Weapons/Effects/explosion.gd" id="1_es3ff"]
-[ext_resource type="Texture2D" uid="uid://bdjw02ty5osff" path="res://Weapons/explosion1.png" id="1_o5rgp"]
+[ext_resource type="Texture2D" uid="uid://bdjw02ty5osff" path="res://Weapons/Effects/explosion1.png" id="2_ugd8v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bt5ob"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(864, 0, 216, 209)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5w0q"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(0, 209, 216, 209)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlwge"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(216, 209, 216, 209)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t40q4"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(432, 209, 216, 209)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ncei"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(648, 209, 216, 209)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vt4y6"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(864, 209, 216, 209)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0kkt"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(0, 418, 216, 209)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_am4qw"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(216, 418, 216, 209)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdlcw"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(432, 418, 216, 209)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6lk7p"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(648, 418, 216, 209)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qkq2v"]
-atlas = ExtResource("1_o5rgp")
+atlas = ExtResource("2_ugd8v")
 region = Rect2(864, 418, 216, 209)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_plw67"]
@@ -104,4 +104,5 @@ frame = 4
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6shc6")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

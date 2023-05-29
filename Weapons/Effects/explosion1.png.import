@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg20ledgrcouh"
-path="res://.godot/imported/pngkit_explosion-animation-png_3804603.png-97d01e7121525396100837bdc529ffd5.ctex"
+uid="uid://bdjw02ty5osff"
+path="res://.godot/imported/explosion1.png-9817ca800e5bfa69d9c103139f4b169e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/pngkit_explosion-animation-png_3804603.png"
-dest_files=["res://.godot/imported/pngkit_explosion-animation-png_3804603.png-97d01e7121525396100837bdc529ffd5.ctex"]
+source_file="res://Weapons/Effects/explosion1.png"
+dest_files=["res://.godot/imported/explosion1.png-9817ca800e5bfa69d9c103139f4b169e.ctex"]
 
 [params]
 
