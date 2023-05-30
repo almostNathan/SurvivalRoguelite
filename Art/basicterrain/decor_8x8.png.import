@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmbux1nc5swod"
-path="res://.godot/imported/decor_8x8.png-ca89a92392815c12245dd9807f4c3da9.ctex"
+path="res://.godot/imported/decor_8x8.png-0a6ae2707ddd4b3e95a399d11305833e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://basicterrain/decor_8x8.png"
-dest_files=["res://.godot/imported/decor_8x8.png-ca89a92392815c12245dd9807f4c3da9.ctex"]
+source_file="res://Art/basicterrain/decor_8x8.png"
+dest_files=["res://.godot/imported/decor_8x8.png-0a6ae2707ddd4b3e95a399d11305833e.ctex"]
 
 [params]
 

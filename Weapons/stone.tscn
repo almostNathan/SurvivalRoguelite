@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cueeahgqvvp1"]
+[gd_scene load_steps=4 format=3 uid="uid://bb76auym623tk"]
 
 [ext_resource type="Script" path="res://Weapons/stone.gd" id="1_ptvrp"]
-[ext_resource type="Texture2D" uid="uid://cepj1lwgcuq21" path="res://basicterrain/objects.png" id="2_p6uv5"]
+[ext_resource type="Texture2D" uid="uid://cepj1lwgcuq21" path="res://Art/basicterrain/objects.png" id="2_shb1t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7mxg"]
 radius = 6.50822
@@ -14,7 +14,7 @@ position = Vector2(-0.246021, -0.515196)
 shape = SubResource("CircleShape2D_p7mxg")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_p6uv5")
+texture = ExtResource("2_shb1t")
 region_enabled = true
 region_rect = Rect2(0.604588, 17.2939, 14.8792, 14.3887)
 

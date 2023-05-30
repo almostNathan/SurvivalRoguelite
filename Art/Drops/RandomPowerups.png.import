@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doesems34bnyr"
-path="res://.godot/imported/fences.png-8e86a411e93e022871dfe80461dc52b2.ctex"
+uid="uid://n58sny63721"
+path="res://.godot/imported/RandomPowerups.png-edab321a457d857bb8d6eab4f40044a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://basicterrain/fences.png"
-dest_files=["res://.godot/imported/fences.png-8e86a411e93e022871dfe80461dc52b2.ctex"]
+source_file="res://Art/Drops/RandomPowerups.png"
+dest_files=["res://.godot/imported/RandomPowerups.png-edab321a457d857bb8d6eab4f40044a5.ctex"]
 
 [params]
 

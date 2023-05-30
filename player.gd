@@ -16,6 +16,8 @@ signal health_changed
 @onready var loot_sprite = $LootableSprite
 @onready var health = $Health
 
+#Modifier variables
+var weapon_mods : WeaponMods
 
 var lootable_list : Array
 var acceleration = 1500.0
@@ -58,6 +60,7 @@ func shoot_weapon(weapon_slot):
 			return
 
 	get_parent().add_child(new_bullet)
+	new_bullet.apply_modifiers(WeaponMods)
 	new_bullet.global_position = position
 	new_bullet.rotation = angle_to_mouse()
 		

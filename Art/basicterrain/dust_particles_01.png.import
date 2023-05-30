@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cepj1lwgcuq21"
-path="res://.godot/imported/objects.png-ffc4f124b641c183273d47f442e32f26.ctex"
+uid="uid://w44u4wk7aqxp"
+path="res://.godot/imported/dust_particles_01.png-7c3ddd419763dc04af573d3ea729ddbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://basicterrain/objects.png"
-dest_files=["res://.godot/imported/objects.png-ffc4f124b641c183273d47f442e32f26.ctex"]
+source_file="res://Art/basicterrain/dust_particles_01.png"
+dest_files=["res://.godot/imported/dust_particles_01.png-7c3ddd419763dc04af573d3ea729ddbc.ctex"]
 
 [params]
 

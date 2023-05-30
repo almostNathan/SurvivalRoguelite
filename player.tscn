@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b5hvkcssusrs3"]
+[gd_scene load_steps=25 format=3]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://player.gd" id="1_du36b"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://h2s4e0iyrkmq" path="res://generic-female/generic-female-right/frame5.png" id="14_xl8m8"]
 [ext_resource type="Texture2D" uid="uid://2pbntpht0n6v" path="res://generic-female/generic-female-right/frame6.png" id="15_a571a"]
 [ext_resource type="Texture2D" uid="uid://brkhnsaq7y870" path="res://generic-female/generic-female-right/frame7.png" id="16_yfjdv"]
-[ext_resource type="Texture2D" uid="uid://ch2gvmfsl5u6d" path="res://basicterrain/chest_01.png" id="19_g3g1r"]
+[ext_resource type="Texture2D" uid="uid://ch2gvmfsl5u6d" path="res://Art/basicterrain/chest_01.png" id="19_g3g1r"]
 [ext_resource type="Script" path="res://Health.gd" id="21_ehw61"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="22_0lwo7"]
 

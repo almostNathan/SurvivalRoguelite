@@ -11,11 +11,15 @@ class_name Stone
 @onready var weapon_timer = $WeaponTimer
 @onready var on_screen_enabler = $OnScreenEnabler
 
+var attack : Attack
 var size_modifier = 1
 var damage_modifier = 1
+var bounce_amount = 0
 
 func _onready():
-	scale = size_modifier
+	attack = Attack.new()
+	attack.attack_damage = damage
+	attack.knockback_force = knockback
 
 func _physics_process(delta):
 	var direction = Vector2.UP.rotated(rotation)
@@ -39,6 +43,11 @@ func off_cooldown():
 func after_hit_effects():
 	pass
 
+func apply_modifiers(weapon_mods : WeaponMods):
+	damage_modifier *= weapon_mods.damage
+	size_modifier *= weapon_mods.size
+	bounce_amount += weapon_mods.bounce
+	
 func get_effect():
 	pass
 

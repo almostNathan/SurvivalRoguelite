@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddr6eaamqukaf"]
+[gd_scene load_steps=7 format=3 uid="uid://csjrjud3nwavj"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nif6k"]
-[ext_resource type="PackedScene" uid="uid://b5hvkcssusrs3" path="res://player.tscn" id="1_u1u1k"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="1_u1u1k"]
 [ext_resource type="PackedScene" uid="uid://b3d1127qors4o" path="res://UI/PlayerCamera.tscn" id="3_unglr"]
 [ext_resource type="Script" path="res://BulletManager.gd" id="4_mxdnq"]
-[ext_resource type="PackedScene" uid="uid://dw63wqapwnyme" path="res://item_pickup.tscn" id="5_iukc5"]
+[ext_resource type="PackedScene" uid="uid://p84i1ttrqa57" path="res://Pickups/item_pickup.tscn" id="5_iukc5"]
 
 [sub_resource type="Curve2D" id="Curve2D_bihlg"]
 _data = {

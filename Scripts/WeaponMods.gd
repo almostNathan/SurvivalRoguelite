@@ -1,4 +1,4 @@
-extends Node
+class_name WeaponMods
 
 var damage = 1
 var size = 1
