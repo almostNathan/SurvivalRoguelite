@@ -48,6 +48,8 @@ func apply_modifiers(weapon_mods : WeaponMods):
 	size_modifier *= weapon_mods.size
 	bounce_amount += weapon_mods.bounce
 	
+	scale *= weapon_mods.size
+	
 func get_effect():
 	pass
 

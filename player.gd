@@ -68,8 +68,12 @@ func shoot_weapon(weapon_slot):
 #TODO add ducktyping to determine if weapon or usable
 func interact_with_object():
 	if !lootable_list.is_empty():
-		var new_loot = lootable_list[0].get_loot()
-		equip_main(new_loot)
+		var new_loot = lootable_list[0]
+		if new_loot.has_method("take_upgrade"):
+			var new_upgrade = new_loot.take_upgrade()
+			weapon_mods.size *= new_upgrade.size
+		if new_loot.has_method("equip_weapon"):
+			equip_main(new_loot)
 		
 func equip_main(weapon : PackedScene):
 	var new_weapon = weapon.instantiate()

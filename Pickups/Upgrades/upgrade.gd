@@ -4,7 +4,9 @@ var upgrade_loot : Upgrade
 
 func _ready():
 	upgrade_loot = Upgrade.new()
-	upgrade_loot.projectile += 1
+	upgrade_loot.size = 3
 	
 func take_upgrade():
-	return self
+	if is_lootable == true:
+		is_lootable = false
+		return upgrade_loot
