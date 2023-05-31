@@ -19,10 +19,16 @@ signal health_changed
 #Modifier variables
 var weapon_mods = WeaponMods.new()
 
+#Array for nearby lootable 
+#TODO add way to cycle thru lootables
 var lootable_list : Array
+
+#Character movement variables
 var acceleration = 1500.0
 var max_speed = 250.0
 var friction = 1200.0
+
+
 
 func _physics_process(delta):
 	#Shooting weapons
@@ -42,7 +48,6 @@ func angle_to_mouse():
 	
 
 
-#TODO: cooldown not working for weapons.
 func shoot_weapon(weapon_slot):
 	var new_bullet
 
@@ -63,23 +68,24 @@ func shoot_weapon(weapon_slot):
 	new_bullet.apply_modifiers(weapon_mods)
 	new_bullet.global_position = position
 	new_bullet.rotation = angle_to_mouse()
-		
-		
-#TODO add ducktyping to determine if weapon or usable
+
+
+
 func interact_with_object():
 	if !lootable_list.is_empty():
 		var new_loot = lootable_list[0]
 		if new_loot.has_method("take_upgrade"):
 			var new_upgrade = new_loot.take_upgrade()
 			weapon_mods.size *= new_upgrade.size
+			new_loot.queue_free()
 		if new_loot.has_method("equip_weapon"):
 			equip_main(new_loot)
-		
+
 func equip_main(weapon : PackedScene):
 	var new_weapon = weapon.instantiate()
 	main_weapon_timer.wait_time = new_weapon.get_cooldown()
 	main_weapon = new_weapon
-	
+
 func equip_offhand(weapon : PackedScene):
 	var new_weapon = weapon.instantiate()
 	main_weapon_timer.wait_time = new_weapon.get_cooldown()

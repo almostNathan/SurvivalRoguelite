@@ -10,3 +10,4 @@ func take_upgrade():
 	if is_lootable == true:
 		is_lootable = false
 		return upgrade_loot
+		

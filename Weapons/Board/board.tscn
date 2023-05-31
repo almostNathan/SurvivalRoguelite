@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cto53ir8x4a0p"]
 
-[ext_resource type="PackedScene" uid="uid://cueeahgqvvp1" path="res://Weapons/stone.tscn" id="1_5vx7i"]
+[ext_resource type="PackedScene" uid="uid://bb76auym623tk" path="res://Weapons/stone.tscn" id="1_5vx7i"]
 [ext_resource type="Script" path="res://Weapons/Board/board.gd" id="1_n215m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usqc8"]
