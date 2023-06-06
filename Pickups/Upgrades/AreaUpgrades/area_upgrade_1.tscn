@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://deqegocubde12"]
+
+[ext_resource type="PackedScene" uid="uid://8vbl7fayf31w" path="res://Pickups/Upgrades/upgrade_pickup.tscn" id="1_ky1sd"]
+[ext_resource type="Script" path="res://Pickups/Upgrades/AreaUpgrades/area_upgrade_1.gd" id="2_ms6uf"]
+
+[node name="AreaUpgrade1" instance=ExtResource("1_ky1sd")]
+script = ExtResource("2_ms6uf")

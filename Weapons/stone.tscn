@@ -7,6 +7,7 @@
 radius = 6.50822
 
 [node name="Stone" type="Area2D" groups=["weapons"]]
+rotation = 1.5708
 script = ExtResource("1_ptvrp")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]

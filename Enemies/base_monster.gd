@@ -11,16 +11,21 @@ var friction = 1200.0
 var move_distance = 1000.0
 var movement_direction
 var damage_output = 10
+var max_health : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_base_stats()
 	$AnimatedSprite.play("idle")
+	health_comp.health = max_health
 	health_bar.max_value = health_comp.health
 	health_bar.value = health_comp.health
 	
+func set_base_stats():
+	max_health = 10
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if !$AnimatedSprite.is_playing():
 		$AnimatedSprite.play("idle")
 	move(delta)

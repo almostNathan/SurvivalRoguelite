@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx3tw42kxmld4"]
+
+[ext_resource type="PackedScene" uid="uid://bywidb6qsen3v" path="res://Enemies/base_monster.tscn" id="1_0in56"]
+[ext_resource type="Script" path="res://Enemies/Mushroom/mushroom.gd" id="2_3mgon"]
+[ext_resource type="Texture2D" uid="uid://b5j55ajhxun7e" path="res://Art/Monster_Creatures_Fantasy_itchio/Mushroom/Attack3.png" id="2_nuth3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fts1g"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_267kr"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wmdl"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v15ka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fts1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_267kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wmdl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Mushroom" instance=ExtResource("1_0in56")]
+script = ExtResource("2_3mgon")
+
+[node name="AnimatedSprite" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_v15ka")
+animation = &"default"
+frame_progress = 0.220807

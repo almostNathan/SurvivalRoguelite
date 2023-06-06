@@ -4,7 +4,10 @@ extends Node
 @onready var player = $Player
 @onready var health_bar = $Player/HealthBar
 
-var enemy = preload("res://Enemies/base_monster.tscn")
+var slime = preload("res://Enemies/base_monster.tscn")
+var mushroom = preload("res://Enemies/Mushroom/mushroom.tscn")
+
+var enemy_list = [slime, mushroom]
 
 func _ready():
 	pass
@@ -17,7 +20,7 @@ func _process(delta):
 
 func _on_timer_timeout():
 	path.progress_ratio = randf()
-	var new_enemy = enemy.instantiate()
+	var new_enemy = enemy_list.pick_random().instantiate()
 	add_child(new_enemy)
 	new_enemy.position = path.position
 	

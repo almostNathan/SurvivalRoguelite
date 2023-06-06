@@ -17,7 +17,8 @@ signal health_changed
 @onready var health = $Health
 
 #Modifier variables
-var weapon_mods = WeaponMods.new()
+var weapon_upgrades = Upgrade.new()
+var weapon_spread = PI/4
 
 #Array for nearby lootable 
 #TODO add way to cycle thru lootables
@@ -27,6 +28,10 @@ var lootable_list : Array
 var acceleration = 1500.0
 var max_speed = 250.0
 var friction = 1200.0
+
+func _ready():
+	weapon_upgrades.set_base_stats()
+	weapon_upgrades.projectile_cnt = 1
 
 
 
@@ -47,28 +52,47 @@ func angle_to_mouse():
 	return position.angle_to_point(get_global_mouse_position()) + PI/2
 	
 
-
+#
+# Shooting the weapon
+#
 func shoot_weapon(weapon_slot):
 	var new_bullet
+	var bullet_array = Array()
+	print(weapon_upgrades.size_mult)
+		
+	var mouse_direction = angle_to_mouse()
+	var shoot_angle_start = mouse_direction + PI/2
+	
+	
 
 	if weapon_slot == "main_weapon":
 		if main_weapon_timer.is_stopped():
 			main_weapon_timer.start()
-			new_bullet = main_weapon_scene.instantiate()
+			for i in range(weapon_upgrades.projectile_cnt):
+				bullet_array.append(main_weapon_scene.instantiate())
 		else:
 			return
 	if weapon_slot == "offhand_weapon":
 		if offhand_weapon_timer.is_stopped():
 			offhand_weapon_timer.start()
-			new_bullet = offhand_weapon_scene.instantiate()
+			for i in range(weapon_upgrades.projectile_cnt):
+				bullet_array.append(offhand_weapon_scene.instantiate())
 		else: 
 			return
 
-	get_parent().add_child(new_bullet)
-	new_bullet.apply_modifiers(weapon_mods)
-	new_bullet.global_position = position
-	new_bullet.rotation = angle_to_mouse()
-
+	for bullet in bullet_array:
+		get_parent().add_child(bullet)
+		bullet.global_position = position
+		bullet.apply_modifiers(weapon_upgrades)
+	set_bullet_spread(bullet_array)
+	
+#Evenly divide projectiles across attack spread
+func set_bullet_spread(bullet_array : Array):
+	var mouse_pos = angle_to_mouse()
+	var left_side = mouse_pos - weapon_spread/2
+	var num_bullets = bullet_array.size()
+	for i in range(num_bullets):
+		bullet_array[i].rotation = left_side + (i+1)*(weapon_spread/(num_bullets+1))
 
 
 func interact_with_object():
@@ -76,7 +100,7 @@ func interact_with_object():
 		var new_loot = lootable_list[0]
 		if new_loot.has_method("take_upgrade"):
 			var new_upgrade = new_loot.take_upgrade()
-			weapon_mods.size *= new_upgrade.size
+			apply_upgrade(new_upgrade)
 			new_loot.queue_free()
 		if new_loot.has_method("equip_weapon"):
 			equip_main(new_loot)
@@ -102,11 +126,14 @@ func untoggle_lootable(loot_object):
 	lootable_list.pop_at(lootable_list.find(loot_object))
 
 
-
-
+func apply_upgrade(new_upgrade : Upgrade):
+	weapon_upgrades.damage_mult *= new_upgrade.damage_mult
+	weapon_upgrades.speed_mult *= new_upgrade.speed_mult
+	weapon_upgrades.size_mult *= new_upgrade.size_mult
+	weapon_upgrades.projectile_cnt += new_upgrade.projectile_cnt
+	weapon_upgrades.bounce_cnt += new_upgrade.bounce_cnt
 
 	
-
 
 func move(delta):
 	var movement_direction = Vector2.ZERO

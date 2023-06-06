@@ -16,7 +16,7 @@ var size_modifier = 1
 var damage_modifier = 1
 var bounce_amount = 0
 
-func _onready():
+func _ready():
 	attack = Attack.new()
 	attack.attack_damage = damage
 	attack.knockback_force = knockback
@@ -43,21 +43,19 @@ func off_cooldown():
 func after_hit_effects():
 	pass
 
-func apply_modifiers(weapon_mods : WeaponMods):
-	damage_modifier *= weapon_mods.damage
-	size_modifier *= weapon_mods.size
-	bounce_amount += weapon_mods.bounce
+func apply_modifiers(weapon_upgrades : Upgrade):
+	damage_modifier *= weapon_upgrades.damage_mult
+	size_modifier *= weapon_upgrades.size_mult
+	bounce_amount += weapon_upgrades.bounce_cnt
 	
-	scale *= weapon_mods.size
+	attack.attack_damage *= damage_modifier
+	scale *= weapon_upgrades.size_mult
 	
 func get_effect():
 	pass
 
 func _on_body_entered(body):
 	if body.has_method("hit") && body.is_in_group("enemy"):
-		var attack = Attack.new()
-		attack.attack_damage = damage
-		attack.knockback_force = knockback
 		body.hit(attack)
 		after_hit_effects()
 		queue_free()
