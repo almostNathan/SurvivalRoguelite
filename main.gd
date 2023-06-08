@@ -4,23 +4,24 @@ extends Node
 @onready var player = $Player
 @onready var health_bar = $Player/HealthBar
 
-var slime = preload("res://Enemies/base_monster.tscn")
+var slime = preload("res://Enemies/Slime/slime.tscn")
 var mushroom = preload("res://Enemies/Mushroom/mushroom.tscn")
 
-var enemy_list = [slime, mushroom]
+@onready var monster_pool : MonsterPool
 
 func _ready():
-	pass
+	monster_pool = MonsterPool.new()
 
 func _process(delta):
 	var enemies = get_tree().get_nodes_in_group("enemy")
+	#point all enemies at the player
 	for enemy in enemies:
-		enemy.movement_direction = enemy.position.angle_to_point(player.position) + PI/2
+		enemy.set_movement_direction(enemy.position.angle_to_point(player.position) + PI/2)
 
 
 func _on_timer_timeout():
 	path.progress_ratio = randf()
-	var new_enemy = enemy_list.pick_random().instantiate()
+	var new_enemy = monster_pool.get_monster_array().pick_random().instantiate()
 	add_child(new_enemy)
 	new_enemy.position = path.position
 	

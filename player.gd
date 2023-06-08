@@ -29,11 +29,10 @@ var acceleration = 1500.0
 var max_speed = 250.0
 var friction = 1200.0
 
+
 func _ready():
 	weapon_upgrades.set_base_stats()
 	weapon_upgrades.projectile_cnt = 1
-
-
 
 func _physics_process(delta):
 	#Shooting weapons
@@ -58,7 +57,7 @@ func angle_to_mouse():
 func shoot_weapon(weapon_slot):
 	var new_bullet
 	var bullet_array = Array()
-	print(weapon_upgrades.size_mult)
+
 		
 	var mouse_direction = angle_to_mouse()
 	var shoot_angle_start = mouse_direction + PI/2

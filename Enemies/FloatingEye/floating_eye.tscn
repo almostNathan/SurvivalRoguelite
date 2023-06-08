@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://cpslyidhnu2h4"]
+
+[ext_resource type="PackedScene" uid="uid://bywidb6qsen3v" path="res://Enemies/base_monster.tscn" id="1_5ole2"]
+[ext_resource type="Script" path="res://Enemies/FloatingEye/floating_eye.gd" id="2_uyo8c"]
+[ext_resource type="Texture2D" uid="uid://q53flkv048w6" path="res://Art/Monster_Creatures_Fantasy_itchio/Flying eye/Attack3.png" id="3_g1vv6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrk53"]
+atlas = ExtResource("3_g1vv6")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wch2k"]
+atlas = ExtResource("3_g1vv6")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4apa"]
+atlas = ExtResource("3_g1vv6")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qisji"]
+atlas = ExtResource("3_g1vv6")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivw53"]
+atlas = ExtResource("3_g1vv6")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcylm"]
+atlas = ExtResource("3_g1vv6")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rg1wj"]
+atlas = ExtResource("3_g1vv6")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbu5g"]
+atlas = ExtResource("3_g1vv6")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1wge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrk53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wch2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4apa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qisji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivw53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcylm")
+}],
+"loop": true,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rg1wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbu5g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[node name="FloatingEye" instance=ExtResource("1_5ole2")]
+script = ExtResource("2_uyo8c")
+max_speed = 400.0
+
+[node name="AnimatedSprite" parent="." index="1"]
+position = Vector2(-6, -2)
+sprite_frames = SubResource("SpriteFrames_o1wge")
+animation = &"attacking"
+frame = 1
+frame_progress = 0.706291

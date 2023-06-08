@@ -1,0 +1,24 @@
+extends "res://Enemies/base_monster.gd"
+
+#Attacks in a straigt line, quickly
+
+func _ready():
+	wait_timer.start()
+
+	
+
+func move(delta):
+	if move_timer.is_stopped():
+		sprite.animation = "idle"
+	else:
+		sprite.animation = "attacking"
+		var direction = Vector2.UP.rotated(movement_direction)
+		position += direction * max_speed * delta
+		position.clamp(Vector2.ZERO, get_parent().get_level_size())
+
+
+
+func set_movement_direction(direction):
+	#only change aiming direction while still
+	if move_timer.is_stopped():
+		movement_direction = direction

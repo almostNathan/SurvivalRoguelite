@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxse6gotymek6"]
+
+[ext_resource type="PackedScene" uid="uid://bywidb6qsen3v" path="res://Enemies/base_monster.tscn" id="1_gpuh2"]
+[ext_resource type="Script" path="res://Enemies/Slime/slime.gd" id="2_fb5sk"]
+
+[node name="Slime" instance=ExtResource("1_gpuh2")]
+script = ExtResource("2_fb5sk")
+
+[node name="MoveTimer" parent="." index="3"]
+wait_time = 0.75
+
+[node name="WaitTimer" parent="." index="5"]
+wait_time = 0.5
