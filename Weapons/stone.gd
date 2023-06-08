@@ -14,7 +14,9 @@ class_name Stone
 var attack : Attack
 var size_modifier = 1
 var damage_modifier = 1
-var bounce_amount = 0
+var bounce_amount = 1
+var pierce_amount = 0
+
 
 func _ready():
 	attack = Attack.new()
@@ -58,5 +60,9 @@ func _on_body_entered(body):
 	if body.has_method("hit") && body.is_in_group("enemy"):
 		body.hit(attack)
 		after_hit_effects()
-		queue_free()
+		if bounce_amount > 0:
+			bounce_amount -= 1
+			rotation = position.angle_to_point(body.global_position)-PI/2
+		else:
+			queue_free()
 	
