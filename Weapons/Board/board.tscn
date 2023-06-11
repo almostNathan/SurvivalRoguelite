@@ -20,3 +20,6 @@ region_rect = Rect2(159.902, 0.074235, 31.884, 12.5901)
 [node name="OnScreenEnabler" parent="." index="2"]
 position = Vector2(-0.157494, 0.15749)
 scale = Vector2(1.51741, 0.556721)
+
+[node name="WeaponTimer" parent="." index="3"]
+wait_time = 2.0

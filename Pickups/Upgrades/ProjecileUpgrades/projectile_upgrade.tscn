@@ -7,4 +7,4 @@
 script = ExtResource("2_dhd2y")
 
 [node name="Sprite2D" parent="." index="1"]
-region_rect = Rect2(-0.251114, 154.589, 135.287, 136.22)
+region_rect = Rect2(0.999756, 783, 134, 133)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b6dj0r2rv3pmb"]
+[gd_scene load_steps=26 format=3 uid="uid://ckannwtpfgiag"]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://player.gd" id="1_du36b"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://ch2gvmfsl5u6d" path="res://Art/basicterrain/chest_01.png" id="19_g3g1r"]
 [ext_resource type="Script" path="res://Health.gd" id="21_ehw61"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="22_0lwo7"]
+[ext_resource type="PackedScene" uid="uid://cuf1v8aemm21q" path="res://UI/PlayerHud.tscn" id="23_b8812"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3y3a"]
 radius = 4.0
@@ -89,9 +90,11 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -2)
 script = ExtResource("1_du36b")
 main_weapon_scene = ExtResource("2_n35fd")
 offhand_weapon_scene = ExtResource("2_ehnx2")
+max_speed = 200.0
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_t3y3a")
@@ -126,6 +129,7 @@ script = ExtResource("21_ehw61")
 shape = SubResource("CapsuleShape2D_t3y3a")
 
 [node name="IFrameTimer" type="Timer" parent="."]
+wait_time = 0.25
 
 [node name="HealthBar" parent="." instance=ExtResource("22_0lwo7")]
 offset_left = -16.0
@@ -133,5 +137,13 @@ offset_top = 12.0
 offset_right = 141.0
 offset_bottom = 39.0
 scale = Vector2(0.2, 0.2)
+metadata/_edit_use_anchors_ = true
+
+[node name="DodgeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PlayerHud" parent="." instance=ExtResource("23_b8812")]
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]

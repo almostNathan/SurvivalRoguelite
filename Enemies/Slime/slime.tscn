@@ -5,6 +5,7 @@
 
 [node name="Slime" instance=ExtResource("1_gpuh2")]
 script = ExtResource("2_fb5sk")
+max_speed = 175.0
 
 [node name="MoveTimer" parent="." index="3"]
 wait_time = 0.75

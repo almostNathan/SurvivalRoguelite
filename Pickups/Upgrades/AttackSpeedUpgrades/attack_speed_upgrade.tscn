@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://4d83coc3bjal"]
+
+[ext_resource type="PackedScene" uid="uid://8vbl7fayf31w" path="res://Pickups/Upgrades/upgrade_pickup.tscn" id="1_7kxqm"]
+[ext_resource type="Script" path="res://Pickups/Upgrades/AttackSpeedUpgrades/attack_speed_upgrade.gd" id="2_qyk43"]
+
+[node name="AttackSpeedUpgrade" instance=ExtResource("1_7kxqm")]
+script = ExtResource("2_qyk43")
+
+[node name="Sprite2D" parent="." index="1"]
+region_rect = Rect2(0.735626, 156.587, 133.884, 137.19)

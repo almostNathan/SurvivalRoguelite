@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://ores5e35s23t"]
+
+[ext_resource type="Script" path="res://UI/WeaponCooldown.gd" id="1_8y2ph"]
+[ext_resource type="Texture2D" uid="uid://cepj1lwgcuq21" path="res://Art/basicterrain/objects.png" id="2_6fyvn"]
+
+[node name="WeaponCooldown" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 30.0
+offset_bottom = 30.0
+script = ExtResource("1_8y2ph")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+position = Vector2(15, 15)
+scale = Vector2(1.875, 1.875)
+texture = ExtResource("2_6fyvn")
+region_enabled = true
+region_rect = Rect2(-0.24501, 16.1343, 16.8913, 16.2157)
+
+[node name="CooldownProgress" type="ProgressBar" parent="WeaponSprite"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+max_value = 1.0
+value = 1.0
+fill_mode = 3
+show_percentage = false

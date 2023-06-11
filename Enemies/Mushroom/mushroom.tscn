@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cx3tw42kxmld4"]
+[gd_scene load_steps=16 format=3 uid="uid://cx3tw42kxmld4"]
 
 [ext_resource type="PackedScene" uid="uid://bywidb6qsen3v" path="res://Enemies/base_monster.tscn" id="1_0in56"]
 [ext_resource type="Script" path="res://Enemies/Mushroom/mushroom.gd" id="2_3mgon"]
@@ -16,6 +16,38 @@ region = Rect2(150, 0, 150, 150)
 atlas = ExtResource("2_nuth3")
 region = Rect2(300, 0, 150, 150)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pyco"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu4qo"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au6so"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4s0u"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddjld"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5fs1"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(1200, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orib6"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(1350, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b03ku"]
+atlas = ExtResource("2_nuth3")
+region = Rect2(1500, 0, 150, 150)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_v15ka"]
 animations = [{
 "frames": [{
@@ -29,8 +61,37 @@ animations = [{
 "texture": SubResource("AtlasTexture_3wmdl")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pyco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu4qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au6so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4s0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddjld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5fs1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orib6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b03ku")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 8.0
 }]
 
 [node name="Mushroom" instance=ExtResource("1_0in56")]
@@ -38,5 +99,4 @@ script = ExtResource("2_3mgon")
 
 [node name="AnimatedSprite" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_v15ka")
-animation = &"default"
-frame_progress = 0.220807
+animation = &"idle"

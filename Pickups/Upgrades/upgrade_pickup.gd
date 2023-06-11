@@ -11,7 +11,6 @@ func _ready():
 	
 func set_upgrade_stats():
 	pass
-	
 
 func take_upgrade():
 	return upgrade

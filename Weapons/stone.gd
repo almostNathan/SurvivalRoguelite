@@ -8,7 +8,7 @@ class_name Stone
 
 @onready var hitbox = $Hitbox
 @onready var sprite = $Sprite
-@onready var weapon_timer = $WeaponTimer
+@onready var cooldown_timer = $WeaponTimer
 @onready var on_screen_enabler = $OnScreenEnabler
 
 var attack : Attack
@@ -37,6 +37,7 @@ func put_on_cooldown():
 
 
 func get_cooldown():
+	print($WeaponTimer.wait_time)
 	return $WeaponTimer.wait_time
 
 func off_cooldown():
@@ -55,6 +56,9 @@ func apply_modifiers(weapon_upgrades : Upgrade):
 	
 func get_effect():
 	pass
+
+func get_sprite_texture():
+	return $Sprite.texture
 
 func _on_body_entered(body):
 	if body.has_method("hit") && body.is_in_group("enemy"):

@@ -12,7 +12,7 @@ var mushroom = preload("res://Enemies/Mushroom/mushroom.tscn")
 func _ready():
 	monster_pool = MonsterPool.new()
 
-func _process(delta):
+func _process(_delta):
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	#point all enemies at the player
 	for enemy in enemies:

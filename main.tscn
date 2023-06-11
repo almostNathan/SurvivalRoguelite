@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://c0lk0cpq1ot7j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nif6k"]
-[ext_resource type="PackedScene" uid="uid://b6dj0r2rv3pmb" path="res://player.tscn" id="1_u1u1k"]
-[ext_resource type="PackedScene" uid="uid://b3d1127qors4o" path="res://UI/PlayerCamera.tscn" id="3_unglr"]
+[ext_resource type="PackedScene" uid="uid://ckannwtpfgiag" path="res://player.tscn" id="1_u1u1k"]
 [ext_resource type="Script" path="res://BulletManager.gd" id="4_mxdnq"]
 [ext_resource type="PackedScene" uid="uid://deqegocubde12" path="res://Pickups/Upgrades/AreaUpgrades/area_upgrade_1.tscn" id="5_f6yne"]
 [ext_resource type="PackedScene" uid="uid://b5ghy30niy633" path="res://Pickups/Upgrades/ProjecileUpgrades/projectile_upgrade.tscn" id="6_4px5r"]
 [ext_resource type="PackedScene" uid="uid://cf1qb6fi75fj5" path="res://Pickups/Upgrades/DamageUpgrades/damage_upgrade.tscn" id="7_6pfox"]
+[ext_resource type="PackedScene" uid="uid://4d83coc3bjal" path="res://Pickups/Upgrades/AttackSpeedUpgrades/attack_speed_upgrade.tscn" id="7_7fgxy"]
 
 [sub_resource type="Curve2D" id="Curve2D_bihlg"]
 _data = {
@@ -26,9 +26,7 @@ grow_vertical = 2
 color = Color(0.27451, 0.662745, 0.419608, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_u1u1k")]
-position = Vector2(126, 147)
-
-[node name="PlayerCamera" parent="Player" instance=ExtResource("3_unglr")]
+position = Vector2(271, 127)
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("4_mxdnq")
@@ -61,6 +59,12 @@ position = Vector2(642, 322)
 
 [node name="ProjectileUpgrade2" parent="." instance=ExtResource("6_4px5r")]
 position = Vector2(522, 309)
+
+[node name="AttackSpeedUpgrade" parent="." instance=ExtResource("7_7fgxy")]
+position = Vector2(282, 237)
+
+[node name="AttackSpeedUpgrade2" parent="." instance=ExtResource("7_7fgxy")]
+position = Vector2(283, 312)
 
 [connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
