@@ -1,5 +1,5 @@
-extends "res://Weapons/stone.gd"
-class_name Board
+extends "res://Weapons/base_weapon.gd"
+class_name Stick
 
 func after_hit_effects():
 	var effect = get_effect()

@@ -1,14 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxse6gotymek6"]
+[gd_scene load_steps=6 format=3 uid="uid://bxse6gotymek6"]
 
-[ext_resource type="PackedScene" uid="uid://bywidb6qsen3v" path="res://Enemies/base_monster.tscn" id="1_gpuh2"]
+[ext_resource type="Script" path="res://HealthComponent.gd" id="2_22e5m"]
 [ext_resource type="Script" path="res://Enemies/Slime/slime.gd" id="2_fb5sk"]
+[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="3_s8kbq"]
 
-[node name="Slime" instance=ExtResource("1_gpuh2")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ll0o"]
+radius = 13.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cllm"]
+animations = []
+
+[node name="Slime" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_fb5sk")
 max_speed = 175.0
 
-[node name="MoveTimer" parent="." index="3"]
-wait_time = 0.75
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ll0o")
 
-[node name="WaitTimer" parent="." index="5"]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3cllm")
+animation = &""
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("2_22e5m")
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="HealthBar" parent="." instance=ExtResource("3_s8kbq")]
+offset_left = -15.0
+offset_top = 12.0
+offset_right = 133.0
+offset_bottom = 39.0
+scale = Vector2(0.2, 0.2)
+
+[node name="WaitTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+
+[connection signal="health_change" from="HealthComponent" to="HealthBar" method="_on_health_component_health_change" flags=18]
+[connection signal="zero_hp" from="HealthComponent" to="." method="_on_health_component_zero_hp" flags=18]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout" flags=18]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout" flags=18]
