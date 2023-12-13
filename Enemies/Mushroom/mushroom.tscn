@@ -1,8 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://cx3tw42kxmld4"]
+[gd_scene load_steps=18 format=3 uid="uid://cx3tw42kxmld4"]
 
-[ext_resource type="PackedScene" uid="uid://bywidb6qsen3v" path="res://Enemies/base_monster.tscn" id="1_0in56"]
 [ext_resource type="Script" path="res://Enemies/Mushroom/mushroom.gd" id="2_3mgon"]
 [ext_resource type="Texture2D" uid="uid://b5j55ajhxun7e" path="res://Art/Monster_Creatures_Fantasy_itchio/Mushroom/Attack3.png" id="2_nuth3"]
+[ext_resource type="Script" path="res://HealthComponent.gd" id="3_jb0jd"]
+[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="4_yrnhd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ll0o"]
+radius = 13.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pyco"]
 atlas = ExtResource("2_nuth3")
@@ -76,7 +80,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_b03ku")
 }],
 "loop": true,
-"name": &"attack",
+"name": &"attacking",
 "speed": 8.0
 }, {
 "frames": [{
@@ -92,17 +96,35 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation_1",
-"speed": 5.0
 }]
 
-[node name="Mushroom" instance=ExtResource("1_0in56")]
+[node name="Mushroom" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_3mgon")
 
-[node name="AnimatedSprite" parent="." index="1"]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ll0o")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v15ka")
-animation = &"attack"
-script = ExtResource("2_3mgon")
+animation = &"attacking"
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_jb0jd")
+
+[node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HealthBar" parent="." instance=ExtResource("4_yrnhd")]
+offset_left = -15.0
+offset_top = 12.0
+offset_right = 133.0
+offset_bottom = 39.0
+scale = Vector2(0.2, 0.2)
+
+[node name="WaitTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="health_change" from="HealthComponent" to="HealthBar" method="_on_health_component_health_change"]
+[connection signal="zero_hp" from="HealthComponent" to="." method="_on_health_component_zero_hp"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

@@ -4,8 +4,8 @@ extends Node
 @onready var player = $Player
 @onready var health_bar = $Player/HealthBar
 
-var slime = preload("res://Enemies/Slime/slime.tscn")
-var mushroom = preload("res://Enemies/Mushroom/mushroom.tscn")
+#var slime = preload("res://Enemies/Slime/slime.tscn")
+#var mushroom = preload("res://Enemies/Mushroom/mushroom.tscn")
 
 @onready var monster_pool : MonsterPool
 

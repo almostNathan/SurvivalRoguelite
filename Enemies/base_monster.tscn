@@ -8,9 +8,19 @@
 radius = 13.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3cllm"]
-animations = []
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
-[node name="BaseMonster" type="CharacterBody2D" groups=["enemy"]]
+[node name="BaseMonster" type="CharacterBody2D"]
 script = ExtResource("1_l4wsy")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
@@ -18,7 +28,7 @@ shape = SubResource("CircleShape2D_0ll0o")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3cllm")
-animation = &""
+animation = &"attacking"
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_ydm15")
