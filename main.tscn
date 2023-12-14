@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_nif6k"]
 [ext_resource type="PackedScene" uid="uid://ckannwtpfgiag" path="res://player.tscn" id="1_u1u1k"]
-[ext_resource type="Script" path="res://BulletManager.gd" id="4_mxdnq"]
+[ext_resource type="Script" path="res://Scripts/BulletManager.gd" id="4_mxdnq"]
 [ext_resource type="PackedScene" uid="uid://deqegocubde12" path="res://Pickups/Upgrades/AreaUpgrades/area_upgrade_1.tscn" id="5_f6yne"]
 [ext_resource type="PackedScene" uid="uid://b5ghy30niy633" path="res://Pickups/Upgrades/ProjecileUpgrades/projectile_upgrade.tscn" id="6_4px5r"]
 [ext_resource type="PackedScene" uid="uid://cf1qb6fi75fj5" path="res://Pickups/Upgrades/DamageUpgrades/damage_upgrade.tscn" id="7_6pfox"]

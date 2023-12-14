@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bywidb6qsen3v"]
 
 [ext_resource type="Script" path="res://Enemies/base_monster.gd" id="1_l4wsy"]
-[ext_resource type="Script" path="res://HealthComponent.gd" id="3_ydm15"]
+[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_ydm15"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="4_uy8m0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ll0o"]

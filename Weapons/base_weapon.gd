@@ -10,8 +10,8 @@ class_name Stone
 @onready var sprite = $Sprite
 @onready var cooldown_timer = $WeaponTimer
 @onready var on_screen_enabler = $OnScreenEnabler
+@onready var attack : Attack
 
-var attack : Attack
 var size_modifier = 1
 var damage_modifier = 1
 var bounce_amount = 1
@@ -20,6 +20,7 @@ var pierce_amount = 0
 
 func _ready():
 	attack = Attack.new()
+	print(attack)
 	attack.attack_damage = damage
 	attack.knockback_force = knockback
 
@@ -50,7 +51,6 @@ func apply_modifiers(weapon_upgrades : Upgrade):
 	damage_modifier *= weapon_upgrades.damage_mult
 	size_modifier *= weapon_upgrades.size_mult
 	bounce_amount += weapon_upgrades.bounce_cnt
-	
 	attack.attack_damage *= damage_modifier
 	scale *= weapon_upgrades.size_mult
 	

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bywidb6qsen3v" path="res://Enemies/base_monster.tscn" id="1_5ole2"]
 [ext_resource type="Script" path="res://Enemies/FloatingEye/floating_eye.gd" id="2_uyo8c"]
-[ext_resource type="Texture2D" uid="uid://q53flkv048w6" path="res://Art/Monster_Creatures_Fantasy_itchio/Flying eye/Attack3.png" id="3_g1vv6"]
+[ext_resource type="Texture2D" uid="uid://q53flkv048w6" path="res://Art/Monster_Creatures_Fantasy_itchio/Flying eye/floating_eye.png" id="3_g1vv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rg1wj"]
 atlas = ExtResource("3_g1vv6")
@@ -73,7 +73,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="FloatingEye" instance=ExtResource("1_5ole2")]
+[node name="FloatingEye" groups=["enemy"] instance=ExtResource("1_5ole2")]
 script = ExtResource("2_uyo8c")
 max_speed = 400.0
 

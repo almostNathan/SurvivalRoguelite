@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://jkssd8irtl6y"]
+
+[ext_resource type="Texture2D" uid="uid://ce8q78re1y4cn" path="res://Art/basicterrain/board.png" id="1_fnfcr"]
+
+[node name="WeaponSlot" type="Panel"]
+custom_minimum_size = Vector2(30, 30)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 35.0
+offset_bottom = 35.0
+rotation = 0.785398
+pivot_offset = Vector2(15, 15)
+
+[node name="WeaponImage" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_fnfcr")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0
+"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://q53flkv048w6"
-path="res://.godot/imported/Attack3.png-3f4fce365a61ed3ae24dd935df274276.ctex"
+path="res://.godot/imported/floating_eye.png-bc761a3af2c88f6a9b83eaf2149b54e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Monster_Creatures_Fantasy_itchio/Flying eye/Attack3.png"
-dest_files=["res://.godot/imported/Attack3.png-3f4fce365a61ed3ae24dd935df274276.ctex"]
+source_file="res://Art/Monster_Creatures_Fantasy_itchio/Flying eye/floating_eye.png"
+dest_files=["res://.godot/imported/floating_eye.png-bc761a3af2c88f6a9b83eaf2149b54e0.ctex"]
 
 [params]
 

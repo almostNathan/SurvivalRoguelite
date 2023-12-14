@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://bxse6gotymek6"]
 
-[ext_resource type="Script" path="res://HealthComponent.gd" id="2_22e5m"]
+[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="2_22e5m"]
 [ext_resource type="Script" path="res://Enemies/Slime/slime.gd" id="2_fb5sk"]
 [ext_resource type="Texture2D" uid="uid://bx7bsch6o66hn" path="res://Art/Monster_Creatures_Fantasy_itchio/Slime/slime_spritesheet.png" id="2_s7n4e"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="3_s8kbq"]
