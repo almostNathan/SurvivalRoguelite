@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ckannwtpfgiag"]
+[gd_scene load_steps=27 format=3 uid="uid://ckannwtpfgiag"]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://player.gd" id="1_du36b"]
@@ -89,6 +89,9 @@ animations = [{
 "speed": 14.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oewk6"]
+radius = 113.0
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -2)
 script = ExtResource("1_du36b")
@@ -113,7 +116,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="LootableSprite" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(1, -13)
 texture = ExtResource("19_g3g1r")
 region_enabled = true
@@ -144,6 +146,11 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PlayerHud" parent="." instance=ExtResource("23_b8812")]
+
+[node name="MagnetArea" type="Area2D" parent="."]
+
+[node name="MagnetHitbox" type="CollisionShape2D" parent="MagnetArea"]
+shape = SubResource("CircleShape2D_oewk6")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]

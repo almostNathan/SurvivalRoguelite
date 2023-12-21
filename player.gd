@@ -47,11 +47,16 @@ func _physics_process(delta):
 		shoot_weapon("main_weapon")
 	if Input.is_action_just_pressed("right_click"):
 		shoot_weapon("offhand_weapon")
-	if Input.is_action_just_pressed("interact"):
-		interact_with_object()
+	interact_with_object()
 	if Input.is_action_just_pressed("dodge"):
 		if dodge_timer.is_stopped():
 			dodge()
+	
+	var nearby_areas = $MagnetArea.get_overlapping_areas()
+	for area in nearby_areas:
+		if area.has_method("magnet_to_player"):
+			area.magnet_to_player(self)
+
 
 	move(delta)
 
@@ -131,7 +136,7 @@ func equip_offhand(weapon : PackedScene):
 func toggle_lootable(loot_object):
 	loot_sprite.visible = true
 	lootable_list.append(loot_object)
-	
+
 func untoggle_lootable(loot_object):
 	loot_sprite.visible = false
 	lootable_list.pop_at(lootable_list.find(loot_object))
@@ -151,7 +156,6 @@ func apply_upgrade(new_upgrade : Upgrade):
 	offhand_weapon_timer.wait_time /= new_upgrade.attack_speed_mult
 	
 
-	
 
 func move(delta):
 	var movement_direction = Vector2.ZERO
