@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_jb0jd"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="4_yrnhd"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0ll0o"]
-radius = 13.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lchly"]
+height = 34.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pyco"]
 atlas = ExtResource("2_nuth3")
@@ -102,9 +102,10 @@ animations = [{
 script = ExtResource("2_3mgon")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0ll0o")
+shape = SubResource("CapsuleShape2D_lchly")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_v15ka")
 animation = &"attacking"
 
@@ -115,10 +116,10 @@ script = ExtResource("3_jb0jd")
 one_shot = true
 
 [node name="HealthBar" parent="." instance=ExtResource("4_yrnhd")]
-offset_left = -15.0
-offset_top = 12.0
-offset_right = 133.0
-offset_bottom = 39.0
+offset_left = -14.0
+offset_top = -21.0
+offset_right = 134.0
+offset_bottom = 6.0
 scale = Vector2(0.2, 0.2)
 
 [node name="WaitTimer" type="Timer" parent="."]

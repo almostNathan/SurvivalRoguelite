@@ -127,6 +127,7 @@ max_speed = 175.0
 shape = SubResource("CircleShape2D_0ll0o")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_3cllm")
 animation = &"moving"
 frame_progress = 0.802041
@@ -140,9 +141,9 @@ one_shot = true
 
 [node name="HealthBar" parent="." instance=ExtResource("3_s8kbq")]
 offset_left = -15.0
-offset_top = 12.0
+offset_top = -18.0
 offset_right = 133.0
-offset_bottom = 39.0
+offset_bottom = 9.0
 scale = Vector2(0.2, 0.2)
 
 [node name="WaitTimer" type="Timer" parent="."]

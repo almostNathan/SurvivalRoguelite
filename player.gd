@@ -14,7 +14,6 @@ signal health_changed
 @onready var offhand_weapon_timer = $OffhandWeaponTimer 
 @onready var player_animation = $PlayerAnimation
 @onready var player_collision = $PlayerCollision
-@onready var loot_sprite = $LootableSprite
 @onready var health = $Health
 @onready var i_frame_timer = $IFrameTimer
 @onready var dodge_timer = $DodgeTimer
@@ -23,10 +22,9 @@ signal health_changed
 #Modifier variables
 var weapon_upgrades = Upgrade.new()
 var weapon_spread = PI/4
+var aiming_direction = 0
 
-#Array for nearby lootable 
-#TODO add way to cycle thru lootables
-var lootable_list : Array
+
 
 #Character movement variables
 var speed = max_speed
@@ -43,11 +41,31 @@ func _ready():
 
 func _physics_process(delta):
 	#Shooting weapons
-	if Input.is_action_just_pressed("left_click"):
-		shoot_weapon("main_weapon")
-	if Input.is_action_just_pressed("right_click"):
-		shoot_weapon("offhand_weapon")
-	interact_with_object()
+	var main_weapon_bullet_array = Array()
+	var offhand_weapon_bullet_array = Array()
+	if main_weapon_timer.is_stopped():
+		main_weapon_timer.start()
+		player_hud.main_weapon_cooldown()
+		for i in range(weapon_upgrades.projectile_cnt):
+			main_weapon_bullet_array.append(main_weapon_scene.instantiate())
+
+	if offhand_weapon_timer.is_stopped():
+		offhand_weapon_timer.start()
+		player_hud.offhand_weapon_cooldown()
+		for i in range(weapon_upgrades.projectile_cnt):
+			offhand_weapon_bullet_array.append(offhand_weapon_scene.instantiate())
+			
+	for bullet in main_weapon_bullet_array:
+		get_parent().add_child(bullet)
+		bullet.global_position = position
+		bullet.apply_modifiers(weapon_upgrades)
+	
+	for bullet in offhand_weapon_bullet_array:
+		get_parent().add_child(bullet)
+		bullet.global_position = position
+		bullet.apply_modifiers(weapon_upgrades)
+
+
 	if Input.is_action_just_pressed("dodge"):
 		if dodge_timer.is_stopped():
 			dodge()
@@ -66,57 +84,11 @@ func dodge():
 	dodge_timer.start()
 	
 
-
 func angle_to_mouse():
 	return position.angle_to_point(get_global_mouse_position()) + PI/2
 
-#
-# Shooting the weapon
-#
-func shoot_weapon(weapon_slot):
-	var bullet_array = Array()
-
-	if weapon_slot == "main_weapon":
-		if main_weapon_timer.is_stopped():
-			main_weapon_timer.start()
-			player_hud.main_weapon_cooldown()
-			for i in range(weapon_upgrades.projectile_cnt):
-				bullet_array.append(main_weapon_scene.instantiate())
-		else:
-			return
-	if weapon_slot == "offhand_weapon":
-		if offhand_weapon_timer.is_stopped():
-			offhand_weapon_timer.start()
-			player_hud.offhand_weapon_cooldown()
-			for i in range(weapon_upgrades.projectile_cnt):
-				bullet_array.append(offhand_weapon_scene.instantiate())
-		else: 
-			return
-
-	for bullet in bullet_array:
-		get_parent().add_child(bullet)
-		bullet.global_position = position
-		bullet.apply_modifiers(weapon_upgrades)
-	set_bullet_spread(bullet_array)
-	
 #Evenly divide projectiles across attack spread
-func set_bullet_spread(bullet_array : Array):
-	var mouse_pos = angle_to_mouse()
-	var left_side = mouse_pos - weapon_spread/2
-	var num_bullets = bullet_array.size()
-	for i in range(num_bullets):
-		bullet_array[i].rotation = left_side + (i+1)*(weapon_spread/(num_bullets+1))
 
-
-func interact_with_object():
-	if !lootable_list.is_empty():
-		var new_loot = lootable_list[0]
-		if new_loot.has_method("take_upgrade"):
-			var new_upgrade = new_loot.take_upgrade()
-			apply_upgrade(new_upgrade)
-			new_loot.queue_free()
-		if new_loot.has_method("equip_weapon"):
-			equip_main(new_loot)
 
 ##TODO: add changing weaponcooldown icons
 func equip_main(weapon : PackedScene):
@@ -132,15 +104,8 @@ func equip_offhand(weapon : PackedScene):
 	player_hud.change_offhand_weapon(new_weapon)
 	
 	
-#notify player when object nearby can be interacted with
-func toggle_lootable(loot_object):
-	loot_sprite.visible = true
-	lootable_list.append(loot_object)
-
-func untoggle_lootable(loot_object):
-	loot_sprite.visible = false
-	lootable_list.pop_at(lootable_list.find(loot_object))
-
+func take_upgrade(pickup : Area2D):
+	apply_upgrade(pickup.get_upgrade())
 
 func apply_upgrade(new_upgrade : Upgrade):
 	weapon_upgrades.damage_mult *= new_upgrade.damage_mult
@@ -197,3 +162,7 @@ func _on_hitbox_body_entered(body):
 
 func _on_i_frame_timer_timeout():
 	speed = max_speed
+
+func set_aiming_direction(closest_enemy_position):
+	aiming_direction = position.direction_to(closest_enemy_position)
+	

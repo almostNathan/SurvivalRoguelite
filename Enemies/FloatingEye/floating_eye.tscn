@@ -81,3 +81,7 @@ max_speed = 400.0
 position = Vector2(-6, -2)
 sprite_frames = SubResource("SpriteFrames_o1wge")
 animation = &"moving"
+
+[node name="HealthBar" parent="." index="4"]
+offset_top = -19.0
+offset_bottom = 8.0

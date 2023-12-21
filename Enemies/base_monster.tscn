@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="4_uy8m0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ll0o"]
-radius = 13.0
+radius = 11.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3cllm"]
 animations = [{
@@ -37,10 +37,10 @@ script = ExtResource("3_ydm15")
 one_shot = true
 
 [node name="HealthBar" parent="." instance=ExtResource("4_uy8m0")]
-offset_left = -15.0
-offset_top = 12.0
-offset_right = 133.0
-offset_bottom = 39.0
+offset_left = -14.0
+offset_top = -25.0
+offset_right = 134.0
+offset_bottom = 2.0
 scale = Vector2(0.2, 0.2)
 
 [node name="WaitTimer" type="Timer" parent="."]

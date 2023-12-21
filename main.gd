@@ -15,8 +15,11 @@ func _ready():
 func _process(_delta):
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	#point all enemies at the player
+	var closest_enemy = Vector2(0,0)
 	for enemy in enemies:
 		enemy.set_movement_direction(enemy.position.angle_to_point(player.position) + PI/2)
+		if (player.position.distance_to(enemy.position) < player.position.distance_to(closest_enemy)):
+			closest_enemy = enemy.position
 
 
 func _on_timer_timeout():

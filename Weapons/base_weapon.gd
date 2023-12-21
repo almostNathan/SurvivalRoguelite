@@ -20,7 +20,6 @@ var pierce_amount = 0
 
 func _ready():
 	attack = Attack.new()
-	print(attack)
 	attack.attack_damage = damage
 	attack.knockback_force = knockback
 
