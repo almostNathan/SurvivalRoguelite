@@ -5,3 +5,6 @@
 
 [node name="Stone" instance=ExtResource("1_e0pkt")]
 script = ExtResource("2_8py1n")
+speed = null
+damage = null
+knockback = null

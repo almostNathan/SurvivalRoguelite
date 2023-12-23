@@ -1,12 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0lk0cpq1ot7j"]
+[gd_scene load_steps=5 format=3 uid="uid://c0lk0cpq1ot7j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nif6k"]
 [ext_resource type="PackedScene" uid="uid://ckannwtpfgiag" path="res://player.tscn" id="1_u1u1k"]
 [ext_resource type="Script" path="res://Scripts/BulletManager.gd" id="4_mxdnq"]
-[ext_resource type="PackedScene" uid="uid://deqegocubde12" path="res://Pickups/Upgrades/AreaUpgrades/area_upgrade_1.tscn" id="5_f6yne"]
-[ext_resource type="PackedScene" uid="uid://b5ghy30niy633" path="res://Pickups/Upgrades/ProjecileUpgrades/projectile_upgrade.tscn" id="6_4px5r"]
-[ext_resource type="PackedScene" uid="uid://cf1qb6fi75fj5" path="res://Pickups/Upgrades/DamageUpgrades/damage_upgrade.tscn" id="7_6pfox"]
-[ext_resource type="PackedScene" uid="uid://4d83coc3bjal" path="res://Pickups/Upgrades/AttackSpeedUpgrades/attack_speed_upgrade.tscn" id="7_7fgxy"]
 
 [sub_resource type="Curve2D" id="Curve2D_bihlg"]
 _data = {
@@ -41,30 +37,6 @@ rotation = -0.00278292
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
-
-[node name="AreaUpgrade1" parent="." instance=ExtResource("5_f6yne")]
-position = Vector2(386, 238)
-
-[node name="ProjectileUpgrade" parent="." instance=ExtResource("6_4px5r")]
-position = Vector2(527, 244)
-
-[node name="AreaUpgrade2" parent="." instance=ExtResource("5_f6yne")]
-position = Vector2(378, 317)
-
-[node name="DamageUpgrade" parent="." instance=ExtResource("7_6pfox")]
-position = Vector2(642, 255)
-
-[node name="DamageUpgrade2" parent="." instance=ExtResource("7_6pfox")]
-position = Vector2(642, 322)
-
-[node name="ProjectileUpgrade2" parent="." instance=ExtResource("6_4px5r")]
-position = Vector2(522, 309)
-
-[node name="AttackSpeedUpgrade" parent="." instance=ExtResource("7_7fgxy")]
-position = Vector2(282, 237)
-
-[node name="AttackSpeedUpgrade2" parent="." instance=ExtResource("7_7fgxy")]
-position = Vector2(283, 312)
 
 [connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

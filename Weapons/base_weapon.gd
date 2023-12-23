@@ -1,5 +1,6 @@
 extends Area2D
-class_name Stone
+
+signal on_hit(body)
 
 @export var speed = 700.0
 @export var damage = 5.0
@@ -14,7 +15,7 @@ class_name Stone
 
 var size_modifier = 1
 var damage_modifier = 1
-var bounce_amount = 1
+var bounce_amount = 0
 var pierce_amount = 0
 
 
@@ -22,6 +23,7 @@ func _ready():
 	attack = Attack.new()
 	attack.attack_damage = damage
 	attack.knockback_force = knockback
+	
 
 func _physics_process(delta):
 	var direction = Vector2.UP.rotated(rotation)
@@ -61,6 +63,7 @@ func get_sprite_texture():
 
 func _on_body_entered(body):
 	if body.has_method("hit") && body.is_in_group("enemy"):
+		on_hit.emit(body)
 		body.hit(attack)
 		after_hit_effects()
 		if bounce_amount > 0:
