@@ -58,11 +58,13 @@ func _physics_process(delta):
 	for bullet in main_weapon_bullet_array:
 		get_parent().add_child(bullet)
 		bullet.global_position = position
+		bullet.rotation = aiming_direction
 		bullet.apply_modifiers(weapon_upgrades)
 	
 	for bullet in offhand_weapon_bullet_array:
 		get_parent().add_child(bullet)
 		bullet.global_position = position
+		bullet.rotation = aiming_direction
 		bullet.apply_modifiers(weapon_upgrades)
 
 
@@ -164,5 +166,5 @@ func _on_i_frame_timer_timeout():
 	speed = max_speed
 
 func set_aiming_direction(closest_enemy_position):
-	aiming_direction = position.direction_to(closest_enemy_position)
+	aiming_direction = position.angle_to_point(closest_enemy_position)
 	

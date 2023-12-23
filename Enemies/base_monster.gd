@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name BaseMonster
 
 @export var max_health : float
 @export var max_speed = 150.0
@@ -13,7 +14,7 @@ var acceleration = 1500.0
 
 var friction = 1200.0
 var move_distance = 1000.0
-@onready var movement_direction = 0
+@onready var movement_direction : float = 0.0
 var damage_output = 10
 
 
@@ -35,8 +36,8 @@ func _physics_process(delta):
 		$AnimatedSprite.play("idle")
 	move(delta)
 	
-func hit(attack : Attack):
-	health_comp.damage(attack.attack_damage)
+func hit(damage : DamageMod):
+	health_comp.damage(damage.damage_value)
 
 
 func _on_health_component_zero_hp():
@@ -47,7 +48,7 @@ func move(delta):
 	position += direction * max_speed * delta
 	position.clamp(Vector2.ZERO, get_parent().get_level_size())
 
-func set_movement_direction(direction):
+func set_movement_direction(direction : float):
 	movement_direction = direction
 
 func damage():

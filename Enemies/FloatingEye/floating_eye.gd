@@ -1,4 +1,5 @@
-extends "res://Enemies/base_monster.gd"
+extends BaseMonster
+class_name FloatingEye
 
 #Attacks in a straigt line, quickly
 

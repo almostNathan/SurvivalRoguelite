@@ -110,7 +110,7 @@ frame_progress = 0.588546
 one_shot = true
 
 [node name="OffhandWeaponTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.744
 one_shot = true
 
 [node name="Health" type="Node2D" parent="."]

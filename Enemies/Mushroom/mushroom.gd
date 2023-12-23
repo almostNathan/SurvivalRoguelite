@@ -1,2 +1,3 @@
-extends "res://Enemies/base_monster.gd"
+extends BaseMonster
+class_name Mushroom
 
