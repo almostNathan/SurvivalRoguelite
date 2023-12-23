@@ -11,7 +11,6 @@ signal on_hit(body)
 @onready var sprite = $Sprite
 @onready var cooldown_timer = $WeaponTimer
 @onready var on_screen_enabler = $OnScreenEnabler
-@onready var attack : Attack
 
 var size_modifier = 1
 var damage_modifier = 1
@@ -20,12 +19,11 @@ var pierce_amount = 0
 
 
 func _ready():
-	attack = Attack.new()
-	attack.attack_damage = damage
-	attack.knockback_force = knockback
+	pass
 	
 
 func _physics_process(delta):
+	speed = 700
 	var direction = Vector2.UP.rotated(rotation)
 	position += direction * speed * delta
 	sprite.rotate(PI/16)
@@ -49,11 +47,7 @@ func after_hit_effects():
 	pass
 
 func apply_modifiers(weapon_upgrades : Upgrade):
-	damage_modifier *= weapon_upgrades.damage_mult
-	size_modifier *= weapon_upgrades.size_mult
-	bounce_amount += weapon_upgrades.bounce_cnt
-	attack.attack_damage *= damage_modifier
-	scale *= weapon_upgrades.size_mult
+	pass
 	
 func get_effect():
 	pass
@@ -64,11 +58,11 @@ func get_sprite_texture():
 func _on_body_entered(body):
 	if body.has_method("hit") && body.is_in_group("enemy"):
 		on_hit.emit(body)
-		body.hit(attack)
 		after_hit_effects()
-		if bounce_amount > 0:
-			bounce_amount -= 1
-			rotation = position.angle_to_point(body.global_position)-PI/2
-		else:
-			queue_free()
+		
+		queue_free()
 	
+func remove_mod(mod_to_remove):
+	for mod in get_children():
+		if mod.get_class() == mod_to_remove.get_class():
+			mod.queue_free()
