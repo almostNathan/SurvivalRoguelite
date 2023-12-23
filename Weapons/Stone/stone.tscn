@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bb76auym623tk" path="res://Weapons/base_weapon.tscn" id="1_e0pkt"]
 [ext_resource type="Script" path="res://Weapons/Stone/stone.gd" id="2_8py1n"]
-[ext_resource type="PackedScene" uid="uid://qovyqvv8b5rn" path="res://Mods/bounce_mod.tscn" id="3_5kemc"]
+[ext_resource type="PackedScene" uid="uid://qovyqvv8b5rn" path="res://Weapons/Mods/Bounce/bounce_mod.tscn" id="3_5kemc"]
 
 [node name="Stone" instance=ExtResource("1_e0pkt")]
 script = ExtResource("2_8py1n")

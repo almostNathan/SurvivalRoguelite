@@ -66,3 +66,6 @@ func remove_mod(mod_to_remove):
 	for mod in get_children():
 		if mod.get_class() == mod_to_remove.get_class():
 			mod.queue_free()
+			
+func add_mod(mod_to_add):
+	add_child(mod_to_add)

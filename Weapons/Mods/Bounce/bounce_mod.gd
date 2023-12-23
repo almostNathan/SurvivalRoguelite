@@ -15,10 +15,11 @@ func get_copy():
 	
 
 func _on_hit(body):
-	print("bouncing")
-	var return_projectile = get_parent().duplicate()
-	return_projectile.remove_mod(self)
-	return_projectile.rotation = weapon.position.angle_to_point(body.global_position)-PI/2
+	weapon.remove_child(self)
+	var new_weapon = weapon.duplicate()
+	print(weapon.get_children(), '\n')
+	print(new_weapon.get_children())
+	new_weapon.rotation = weapon.position.angle_to_point(body.global_position)-PI/2
 	
 
 
