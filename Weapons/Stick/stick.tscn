@@ -21,3 +21,6 @@ region_rect = Rect2(159.89, 0.0266171, 32.2921, 12.6864)
 [node name="OnScreenEnabler" parent="." index="2"]
 position = Vector2(0.00441908, 0.0371637)
 scale = Vector2(1.59913, 0.605557)
+
+[node name="WeaponTimer" parent="." index="3"]
+autostart = true

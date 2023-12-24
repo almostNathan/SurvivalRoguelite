@@ -107,11 +107,10 @@ animation = &"right"
 frame_progress = 0.588546
 
 [node name="MainWeaponTimer" type="Timer" parent="."]
-one_shot = true
+autostart = true
 
 [node name="OffhandWeaponTimer" type="Timer" parent="."]
-wait_time = 1.744
-one_shot = true
+autostart = true
 
 [node name="Health" type="Node2D" parent="."]
 rotation = 1.57079
@@ -145,5 +144,7 @@ one_shot = true
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_oewk6")
 
+[connection signal="timeout" from="MainWeaponTimer" to="." method="_on_main_weapon_timer_timeout"]
+[connection signal="timeout" from="OffhandWeaponTimer" to="." method="_on_offhand_weapon_timer_timeout"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]

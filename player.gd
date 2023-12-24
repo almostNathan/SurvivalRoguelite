@@ -35,36 +35,10 @@ var friction = 1200.0
 func _ready():
 	equip_main(main_weapon_scene)
 	equip_offhand(offhand_weapon_scene)
+	#main_weapon_timer.start()
+	#offhand_weapon_timer.start()
 
 func _physics_process(delta):
-	#Shooting weapons
-	var main_weapon_bullet_array = Array()
-	var offhand_weapon_bullet_array = Array()
-	if main_weapon_timer.is_stopped():
-		main_weapon_timer.start()
-		player_hud.main_weapon_cooldown()
-		for i in range(weapon_upgrades.projectile_cnt):
-			main_weapon_bullet_array.append(main_weapon_scene.instantiate())
-
-	if offhand_weapon_timer.is_stopped():
-		offhand_weapon_timer.start()
-		player_hud.offhand_weapon_cooldown()
-		for i in range(weapon_upgrades.projectile_cnt):
-			offhand_weapon_bullet_array.append(offhand_weapon_scene.instantiate())
-			
-	for bullet in main_weapon_bullet_array:
-		get_parent().add_child(bullet)
-		bullet.global_position = position
-		bullet.rotation = aiming_direction
-		bullet.apply_modifiers(weapon_upgrades)
-	
-	for bullet in offhand_weapon_bullet_array:
-		get_parent().add_child(bullet)
-		bullet.global_position = position
-		bullet.rotation = aiming_direction
-		bullet.apply_modifiers(weapon_upgrades)
-
-
 	if Input.is_action_just_pressed("dodge"):
 		if dodge_timer.is_stopped():
 			dodge()
@@ -91,18 +65,17 @@ func angle_to_mouse():
 
 ##TODO: add changing weaponcooldown icons
 func equip_main(weapon : PackedScene):
-	var new_weapon = weapon.instantiate()
-	player_hud.add_child(new_weapon)
-	new_weapon.weapon_timer_timeout.connect(fire_main_weapon)
-	main_weapon_timer.wait_time = new_weapon.get_cooldown()
-	main_weapon = new_weapon
-	player_hud.change_main_weapon(new_weapon)
+	var new_main_weapon = weapon.instantiate()
+	main_weapon_timer.wait_time = new_main_weapon.get_cooldown()
+	main_weapon = new_main_weapon
+	player_hud.change_main_weapon(new_main_weapon)
 
 func equip_offhand(weapon : PackedScene):
-	var new_weapon = weapon.instantiate()
-	offhand_weapon_timer.wait_time = new_weapon.get_cooldown()
-	main_weapon = new_weapon
-	player_hud.change_offhand_weapon(new_weapon)
+	var new_offhand_weapon = weapon.instantiate()
+	offhand_weapon_timer.wait_time = new_offhand_weapon.get_cooldown()
+	offhand_weapon_timer.wait_time *= 1.25
+	offhand_weapon = new_offhand_weapon
+	player_hud.change_offhand_weapon(new_offhand_weapon)
 	
 	
 func take_upgrade(pickup : Area2D):
@@ -170,3 +143,19 @@ func set_aiming_direction(closest_enemy_position):
 	
 func fire_main_weapon():
 	print("firing main weapon")
+
+
+func _on_offhand_weapon_timer_timeout():
+	var bullet = offhand_weapon_scene.instantiate()
+	add_sibling(bullet)
+	bullet.shoot_weapon(position,aiming_direction)
+
+	print("offhand weapon fired")
+
+
+func _on_main_weapon_timer_timeout():
+	var bullet = main_weapon_scene.instantiate()
+	add_sibling(bullet)
+	bullet.shoot_weapon(position,aiming_direction)
+
+	print("main weapon fired")

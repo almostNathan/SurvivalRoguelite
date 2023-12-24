@@ -1,3 +1,3 @@
-extends "res://Weapons/base_weapon.gd"
+extends BaseWeapon
 class_name Stone
 
