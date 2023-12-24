@@ -54,7 +54,7 @@ func get_sprite_texture():
 
 func _on_body_entered(body):
 	if body.has_method("hit") && body.is_in_group("enemy"):
-		on_hit.emit(body)
+		on_hit.emit(body)	
 		
 		queue_free()
 
@@ -63,3 +63,8 @@ func add_mod(mod_to_add):
 	add_child(mod_to_add)
 
 
+
+
+func _on_weapon_timer_timeout():
+	print("signal emitted")
+	emit_signal("weapon_timer_timeout", self)

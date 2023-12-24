@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-signal fire_main_weapon
 signal health_changed
 
 @export var main_weapon_scene : PackedScene
@@ -34,8 +33,6 @@ var friction = 1200.0
 
 
 func _ready():
-	weapon_upgrades.set_base_stats()
-	weapon_upgrades.projectile_cnt = 1
 	equip_main(main_weapon_scene)
 	equip_offhand(offhand_weapon_scene)
 
@@ -95,6 +92,8 @@ func angle_to_mouse():
 ##TODO: add changing weaponcooldown icons
 func equip_main(weapon : PackedScene):
 	var new_weapon = weapon.instantiate()
+	player_hud.add_child(new_weapon)
+	new_weapon.weapon_timer_timeout.connect(fire_main_weapon)
 	main_weapon_timer.wait_time = new_weapon.get_cooldown()
 	main_weapon = new_weapon
 	player_hud.change_main_weapon(new_weapon)
@@ -168,3 +167,6 @@ func _on_i_frame_timer_timeout():
 func set_aiming_direction(closest_enemy_position):
 	aiming_direction = position.angle_to_point(closest_enemy_position)
 	
+	
+func fire_main_weapon():
+	print("firing main weapon")
