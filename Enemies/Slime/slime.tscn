@@ -121,7 +121,7 @@ animations = [{
 
 [node name="Slime" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_fb5sk")
-max_speed = 175.0
+max_health = 10.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0ll0o")
@@ -134,16 +134,17 @@ frame_progress = 0.802041
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("2_22e5m")
+max_health = 20
 
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 0.75
 one_shot = true
 
 [node name="HealthBar" parent="." instance=ExtResource("3_s8kbq")]
-offset_left = -15.0
+offset_left = -14.0
 offset_top = -18.0
-offset_right = 133.0
-offset_bottom = 9.0
+offset_right = 126.0
+offset_bottom = 12.0
 scale = Vector2(0.2, 0.2)
 
 [node name="WaitTimer" type="Timer" parent="."]

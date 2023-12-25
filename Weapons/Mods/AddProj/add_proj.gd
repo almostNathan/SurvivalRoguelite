@@ -7,5 +7,6 @@ func _ready():
 	
 func _shooting_weapon():
 	var projectile_mods = weapon.find_children("AddProj")
+	
 
 	

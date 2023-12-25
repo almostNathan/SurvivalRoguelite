@@ -100,6 +100,7 @@ animations = [{
 
 [node name="Mushroom" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_3mgon")
+max_speed = 50.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_lchly")

@@ -1,8 +1,10 @@
 extends CharacterBody2D
 class_name BaseMonster
 
+signal set_max_health(max_health)
+
 @export var max_health : float
-@export var max_speed = 150.0
+@export var max_speed = 75.0
 
 @onready var health_comp = $HealthComponent
 @onready var health_bar = $HealthBar
@@ -22,9 +24,10 @@ var damage_output = 10
 func _ready():
 	set_base_stats()
 	$AnimatedSprite.play("idle")
+	set_max_health.emit(max_health)
 	health_comp.health = max_health
-	health_bar.max_value = health_comp.health
-	health_bar.value = health_comp.health
+	health_bar.max_value = max_health
+	health_bar.value = max_health
 
 	
 func set_base_stats():

@@ -141,16 +141,12 @@ func set_aiming_direction(closest_enemy_position):
 	aiming_direction = position.angle_to_point(closest_enemy_position)
 	
 	
-func fire_main_weapon():
-	print("firing main weapon")
-
 
 func _on_offhand_weapon_timer_timeout():
 	var bullet = offhand_weapon_scene.instantiate()
 	add_sibling(bullet)
 	bullet.shoot_weapon(position,aiming_direction)
 
-	print("offhand weapon fired")
 
 
 func _on_main_weapon_timer_timeout():
@@ -158,4 +154,3 @@ func _on_main_weapon_timer_timeout():
 	add_sibling(bullet)
 	bullet.shoot_weapon(position,aiming_direction)
 
-	print("main weapon fired")

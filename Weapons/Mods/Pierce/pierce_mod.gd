@@ -1,5 +1,5 @@
 extends BaseMod
-class_name Bounce
+class_name PierceMod
 
 func _ready():
 	super()
@@ -7,9 +7,7 @@ func _ready():
 
 func _on_hit(body):
 	if weapon.delete_bullet == true:
-		weapon.rotation = weapon.position.angle_to_point(body.global_position)-PI
 		weapon.delete_bullet = false
 		weapon.remove_child(self)
 		queue_free()
-
 

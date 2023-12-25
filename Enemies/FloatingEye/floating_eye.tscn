@@ -75,7 +75,7 @@ animations = [{
 
 [node name="FloatingEye" groups=["enemy"] instance=ExtResource("1_5ole2")]
 script = ExtResource("2_uyo8c")
-max_speed = 400.0
+max_speed = 200.0
 
 [node name="AnimatedSprite" parent="." index="1"]
 position = Vector2(-6, -2)

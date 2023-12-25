@@ -2,6 +2,7 @@ extends BaseMonster
 class_name Slime
 
 func _ready():
+	super()
 	wait_timer.start()
 	
 func move(delta):

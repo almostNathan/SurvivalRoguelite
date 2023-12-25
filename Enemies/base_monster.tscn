@@ -22,8 +22,6 @@ animations = [{
 
 [node name="BaseMonster" type="CharacterBody2D"]
 script = ExtResource("1_l4wsy")
-max_health = null
-max_speed = null
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0ll0o")
@@ -49,6 +47,7 @@ scale = Vector2(0.2, 0.2)
 one_shot = true
 
 [connection signal="health_change" from="HealthComponent" to="HealthBar" method="_on_health_component_health_change"]
+[connection signal="set_max_hp" from="HealthComponent" to="HealthBar" method="_on_health_component_set_max_hp"]
 [connection signal="zero_hp" from="HealthComponent" to="." method="_on_health_component_zero_hp"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

@@ -4,13 +4,16 @@
 [ext_resource type="Script" path="res://Weapons/Stone/stone.gd" id="2_8py1n"]
 [ext_resource type="PackedScene" uid="uid://qovyqvv8b5rn" path="res://Weapons/Mods/Bounce/bounce_mod.tscn" id="3_5kemc"]
 [ext_resource type="PackedScene" uid="uid://bjs6u2wi3fb6y" path="res://Weapons/Mods/Damage/damage_mod.tscn" id="4_23afc"]
-[ext_resource type="PackedScene" uid="uid://c7ltrtrrkjc72" path="res://Weapons/Mods/AddProj/add_proj.tscn" id="5_poxgk"]
+[ext_resource type="PackedScene" uid="uid://b0maguuxnvivx" path="res://Weapons/Mods/Pierce/pierce_mod.tscn" id="5_xg4hg"]
 
 [node name="Stone" instance=ExtResource("1_e0pkt")]
 script = ExtResource("2_8py1n")
 
-[node name="BounceMod" parent="." index="4" instance=ExtResource("3_5kemc")]
+[node name="DamageMod" parent="." index="4" instance=ExtResource("4_23afc")]
+damage_value = 5.0
 
-[node name="DamageMod" parent="." index="5" instance=ExtResource("4_23afc")]
+[node name="PierceMod" parent="." index="5" instance=ExtResource("5_xg4hg")]
 
-[node name="AddProj" parent="." index="6" instance=ExtResource("5_poxgk")]
+[node name="PierceMod2" parent="." index="6" instance=ExtResource("5_xg4hg")]
+
+[node name="BounceMod" parent="." index="7" instance=ExtResource("3_5kemc")]

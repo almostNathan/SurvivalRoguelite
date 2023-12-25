@@ -4,6 +4,7 @@ class_name FloatingEye
 #Attacks in a straigt line, quickly
 
 func _ready():
+	super()
 	wait_timer.start()
 
 	

@@ -35,7 +35,7 @@ position = Vector2(1, 3)
 rotation = -0.00278292
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.5
 autostart = true
 
 [connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]

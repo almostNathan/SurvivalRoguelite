@@ -3,13 +3,16 @@ class_name HealthComponent
 
 signal zero_hp
 signal health_change
+signal set_max_hp
 
-@export var MAX_HEALTH = 10
+@export var max_health = 10
 var health : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = MAX_HEALTH
+	health = max_health
+	set_max_hp.emit(max_health)
+	
 
 func damage(damage_dealt):
 	health -= damage_dealt

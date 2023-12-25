@@ -28,7 +28,7 @@ func _on_timer_timeout():
 	var new_enemy = monster_pool.get_monster_array().pick_random().instantiate()
 	add_child(new_enemy)
 	new_enemy.position = path.position
-	
+
 
 
 func _on_player_health_changed(cur_health):

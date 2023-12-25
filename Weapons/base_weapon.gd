@@ -7,6 +7,7 @@ signal shooting_weapon()
 @export var speed = 700.0
 @export var damage = 5.0
 @export var knockback = 100.0
+@export var shooting_angle = PI
 
 
 @onready var hitbox = $Hitbox
@@ -38,12 +39,6 @@ func put_on_cooldown():
 func get_cooldown():
 	return $WeaponTimer.wait_time
 
-
-func after_hit_effects():
-	pass
-
-func apply_modifiers(weapon_upgrades : Upgrade):
-	pass
 	
 func get_effect():
 	pass
@@ -54,8 +49,7 @@ func get_sprite_texture():
 func _on_body_entered(body):
 	delete_bullet = true
 	if body.has_method("hit") && body.is_in_group("enemy"):
-		on_hit.emit(body)	
-		
+		on_hit.emit(body)
 		if (delete_bullet):
 			queue_free()
 
