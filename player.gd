@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
+signal equip_main_weapon_slot(weapon)
 signal health_changed
+signal gain_experience(exp_amount)
+signal shooting_weapon(bullet)
 
 @export var main_weapon_scene : PackedScene
 @export var offhand_weapon_scene : PackedScene
@@ -19,10 +22,9 @@ signal health_changed
 @onready var player_hud = $PlayerHud
 
 #Modifier variables
-var weapon_upgrades = Upgrade.new()
 var weapon_spread = PI/4
 var aiming_direction = 0
-
+var current_experience = 0
 
 
 #Character movement variables
@@ -66,6 +68,7 @@ func angle_to_mouse():
 ##TODO: add changing weaponcooldown icons
 func equip_main(weapon : PackedScene):
 	var new_main_weapon = weapon.instantiate()
+	equip_main_weapon_slot.emit(new_main_weapon)
 	main_weapon_timer.wait_time = new_main_weapon.get_cooldown()
 	main_weapon = new_main_weapon
 	player_hud.change_main_weapon(new_main_weapon)
@@ -76,24 +79,7 @@ func equip_offhand(weapon : PackedScene):
 	offhand_weapon_timer.wait_time *= 1.25
 	offhand_weapon = new_offhand_weapon
 	player_hud.change_offhand_weapon(new_offhand_weapon)
-	
-	
-func take_upgrade(pickup : Area2D):
-	apply_upgrade(pickup.get_upgrade())
 
-func apply_upgrade(new_upgrade : Upgrade):
-	weapon_upgrades.damage_mult *= new_upgrade.damage_mult
-	weapon_upgrades.speed_mult *= new_upgrade.speed_mult
-	weapon_upgrades.attack_speed_mult *= new_upgrade.attack_speed_mult
-	weapon_upgrades.size_mult *= new_upgrade.size_mult
-	weapon_upgrades.projectile_cnt += new_upgrade.projectile_cnt
-	weapon_upgrades.bounce_cnt += new_upgrade.bounce_cnt
-	
-	#change current weapon cooldwon based on upgrade alone
-	#Future weapons will be modified by the weapon_upgrades.attack_speed_mult when equipped
-	main_weapon_timer.wait_time /= new_upgrade.attack_speed_mult
-	offhand_weapon_timer.wait_time /= new_upgrade.attack_speed_mult
-	
 
 
 func move(delta):
@@ -128,6 +114,10 @@ func apply_friction(current_friction):
 		$PlayerAnimation.stop()
 
 
+
+func take_experience(new_exp : float):
+	gain_experience.emit(new_exp)
+
 func _on_hitbox_body_entered(body):
 	if body.has_method("damage"):
 		health.damage(body.damage())
@@ -144,6 +134,7 @@ func set_aiming_direction(closest_enemy_position):
 
 func _on_offhand_weapon_timer_timeout():
 	var bullet = offhand_weapon_scene.instantiate()
+	shooting_weapon.emit(bullet)
 	add_sibling(bullet)
 	bullet.shoot_weapon(position,aiming_direction)
 
@@ -151,6 +142,7 @@ func _on_offhand_weapon_timer_timeout():
 
 func _on_main_weapon_timer_timeout():
 	var bullet = main_weapon_scene.instantiate()
+	shooting_weapon.emit(bullet)
 	add_sibling(bullet)
 	bullet.shoot_weapon(position,aiming_direction)
 

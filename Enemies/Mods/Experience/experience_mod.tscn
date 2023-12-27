@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b53ftbliw7slx"]
+
+[ext_resource type="Script" path="res://Enemies/Mods/Experience/experience_mod.gd" id="1_2enni"]
+
+[node name="ExperienceMod" type="Node2D"]
+script = ExtResource("1_2enni")

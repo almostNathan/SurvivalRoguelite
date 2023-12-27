@@ -1,4 +1,4 @@
-extends BaseMonster
+extends BaseEnemy
 class_name FloatingEye
 
 #Attacks in a straigt line, quickly

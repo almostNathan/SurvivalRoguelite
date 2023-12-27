@@ -1,8 +1,11 @@
 extends Node
 
+signal menu_button_pressed
+
 @onready var path = $Path2D/PathFollow2D
 @onready var player = $Player
 @onready var health_bar = $Player/HealthBar
+
 
 #var slime = preload("res://Enemies/Slime/slime.tscn")
 #var mushroom = preload("res://Enemies/Mushroom/mushroom.tscn")
@@ -21,6 +24,9 @@ func _process(_delta):
 		if (player.position.distance_to(enemy.position) < player.position.distance_to(closest_enemy_position)):
 			closest_enemy_position = enemy.position
 	player.set_aiming_direction(closest_enemy_position)
+	
+	if Input.is_action_just_pressed("menu_button"):
+		menu_button_pressed.emit()
 
 
 func _on_timer_timeout():

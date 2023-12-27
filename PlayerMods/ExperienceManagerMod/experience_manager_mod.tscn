@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnfvukeeb7vf5"]
+
+[ext_resource type="Script" path="res://PlayerMods/ExperienceManagerMod/experience_manager_mod.gd" id="1_matq6"]
+
+[node name="ExperienceManagerMod" type="Node2D"]
+script = ExtResource("1_matq6")

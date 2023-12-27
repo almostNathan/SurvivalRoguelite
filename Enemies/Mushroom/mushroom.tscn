@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Enemies/Mushroom/mushroom.gd" id="2_3mgon"]
 [ext_resource type="Texture2D" uid="uid://b5j55ajhxun7e" path="res://Art/Monster_Creatures_Fantasy_itchio/Mushroom/Attack3.png" id="2_nuth3"]
 [ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_jb0jd"]
-[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="4_yrnhd"]
+[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="4_yrnhd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lchly"]
 height = 34.0
@@ -100,6 +100,7 @@ animations = [{
 
 [node name="Mushroom" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_3mgon")
+max_health = null
 max_speed = 50.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]

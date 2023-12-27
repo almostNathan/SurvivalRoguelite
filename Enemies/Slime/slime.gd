@@ -1,4 +1,4 @@
-extends BaseMonster
+extends BaseEnemy
 class_name Slime
 
 func _ready():

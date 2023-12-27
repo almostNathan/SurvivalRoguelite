@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxse6gotymek6"]
+[gd_scene load_steps=22 format=3 uid="uid://bxse6gotymek6"]
 
 [ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="2_22e5m"]
 [ext_resource type="Script" path="res://Enemies/Slime/slime.gd" id="2_fb5sk"]
 [ext_resource type="Texture2D" uid="uid://bx7bsch6o66hn" path="res://Art/Monster_Creatures_Fantasy_itchio/Slime/slime_spritesheet.png" id="2_s7n4e"]
-[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="3_s8kbq"]
+[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="3_s8kbq"]
+[ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="5_qsehc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ll0o"]
 radius = 13.0
@@ -150,6 +151,8 @@ scale = Vector2(0.2, 0.2)
 [node name="WaitTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="ExperienceMod" parent="." instance=ExtResource("5_qsehc")]
 
 [connection signal="health_change" from="HealthComponent" to="HealthBar" method="_on_health_component_health_change"]
 [connection signal="zero_hp" from="HealthComponent" to="." method="_on_health_component_zero_hp"]

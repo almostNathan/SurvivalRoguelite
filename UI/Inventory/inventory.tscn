@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bei0ewiiu0oln"]
+
+[ext_resource type="Script" path="res://UI/Inventory/inventory.gd" id="1_ly3dm"]
+[ext_resource type="PackedScene" uid="uid://jkssd8irtl6y" path="res://UI/WeaponSlot/weapon_slot.tscn" id="2_ph38w"]
+
+[node name="InventoryScreen" type="PanelContainer"]
+process_mode = 2
+offset_right = 125.0
+offset_bottom = 86.0
+scale = Vector2(5, 5)
+script = ExtResource("1_ly3dm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="WeaponGridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+columns = 6
+
+[node name="WeaponSlot" parent="VBoxContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+layout_mode = 2
+script = null
+
+[node name="MenuButton" type="MenuButton" parent="VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

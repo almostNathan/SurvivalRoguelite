@@ -16,9 +16,14 @@ signal shooting_weapon()
 @onready var on_screen_enabler = $OnScreenEnabler
 var delete_bullet = false
 
+var available_mod_slots = 0
+var current_mod_count = 0
 
 
 func _ready():
+	pass
+	
+func _init():
 	pass
 	
 
@@ -32,8 +37,6 @@ func _physics_process(delta):
 func _on_visible_on_screen_enabler_2d_screen_exited():
 	queue_free()
 
-func put_on_cooldown():
-	$WeaponTimer.start()
 
 
 func get_cooldown():

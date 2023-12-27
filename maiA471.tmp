@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0lk0cpq1ot7j"]
+[gd_scene load_steps=5 format=3 uid="uid://c0lk0cpq1ot7j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nif6k"]
 [ext_resource type="PackedScene" uid="uid://ckannwtpfgiag" path="res://player.tscn" id="1_u1u1k"]
+[ext_resource type="Script" path="res://Scripts/BulletManager.gd" id="4_mxdnq"]
 
 [sub_resource type="Curve2D" id="Curve2D_bihlg"]
 _data = {
@@ -22,6 +23,9 @@ color = Color(0.27451, 0.662745, 0.419608, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_u1u1k")]
 position = Vector2(271, 127)
+
+[node name="BulletManager" type="Node2D" parent="."]
+script = ExtResource("4_mxdnq")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_bihlg")

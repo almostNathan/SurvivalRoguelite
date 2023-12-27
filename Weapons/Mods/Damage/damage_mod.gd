@@ -10,3 +10,6 @@ func _ready():
 
 func _on_hit(body):
 	body.hit(self)
+
+func damage_multiplier(mult_value):
+	damage_value *= mult_value

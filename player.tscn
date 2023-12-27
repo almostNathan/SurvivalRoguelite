@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckannwtpfgiag"]
+[gd_scene load_steps=26 format=3 uid="uid://ckannwtpfgiag"]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://player.gd" id="1_du36b"]
@@ -18,9 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://h2s4e0iyrkmq" path="res://generic-female/generic-female-right/frame5.png" id="14_xl8m8"]
 [ext_resource type="Texture2D" uid="uid://2pbntpht0n6v" path="res://generic-female/generic-female-right/frame6.png" id="15_a571a"]
 [ext_resource type="Texture2D" uid="uid://brkhnsaq7y870" path="res://generic-female/generic-female-right/frame7.png" id="16_yfjdv"]
+[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="20_lvh0q"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="21_ehw61"]
-[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="22_0lwo7"]
-[ext_resource type="PackedScene" uid="uid://cuf1v8aemm21q" path="res://UI/PlayerHud.tscn" id="23_b8812"]
+[ext_resource type="PackedScene" uid="uid://cuf1v8aemm21q" path="res://UI/PlayerHud/PlayerHud.tscn" id="21_k0v1x"]
+[ext_resource type="PackedScene" uid="uid://bnfvukeeb7vf5" path="res://PlayerMods/ExperienceManagerMod/experience_manager_mod.tscn" id="22_ak4tj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3y3a"]
 radius = 4.0
@@ -124,7 +125,7 @@ shape = SubResource("CapsuleShape2D_t3y3a")
 [node name="IFrameTimer" type="Timer" parent="."]
 wait_time = 0.25
 
-[node name="HealthBar" parent="." instance=ExtResource("22_0lwo7")]
+[node name="HealthBar" parent="." instance=ExtResource("20_lvh0q")]
 offset_left = -16.0
 offset_top = 12.0
 offset_right = 141.0
@@ -136,13 +137,15 @@ metadata/_edit_use_anchors_ = true
 wait_time = 2.0
 one_shot = true
 
-[node name="PlayerHud" parent="." instance=ExtResource("23_b8812")]
+[node name="PlayerHud" parent="." instance=ExtResource("21_k0v1x")]
 
 [node name="MagnetArea" type="Area2D" parent="."]
 
 [node name="MagnetHitbox" type="CollisionShape2D" parent="MagnetArea"]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_oewk6")
+
+[node name="ExperienceManagerMod" parent="." instance=ExtResource("22_ak4tj")]
 
 [connection signal="timeout" from="MainWeaponTimer" to="." method="_on_main_weapon_timer_timeout"]
 [connection signal="timeout" from="OffhandWeaponTimer" to="." method="_on_offhand_weapon_timer_timeout"]

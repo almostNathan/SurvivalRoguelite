@@ -1,19 +1,10 @@
-extends "res://Pickups/pickup.gd"
+extends Pickup
+class_name MagnetPickup
 
-
-#Modifier variables
-var upgrade : Upgrade
+var magnet_speed = 3500
 
 func _ready():
-	upgrade = Upgrade.new()
-	upgrade.set_base_stats()
-	set_upgrade_stats()
-	
-func set_upgrade_stats():
 	pass
-
-func get_upgrade():
-	return upgrade
 
 func magnet_to_player(body : CharacterBody2D):
 	var direction_to_player = (body.position - position).normalized()

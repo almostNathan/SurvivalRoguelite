@@ -1,7 +1,8 @@
 extends CharacterBody2D
-class_name BaseMonster
+class_name BaseEnemy
 
 signal set_max_health(max_health)
+signal on_death()
 
 @export var max_health : float
 @export var max_speed = 75.0
@@ -44,6 +45,7 @@ func hit(damage : DamageMod):
 
 
 func _on_health_component_zero_hp():
+	on_death.emit()
 	queue_free()
 
 func move(delta):

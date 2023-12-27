@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bywidb6qsen3v"]
 
-[ext_resource type="Script" path="res://Enemies/base_monster.gd" id="1_l4wsy"]
-[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_ydm15"]
-[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/health_bar.tscn" id="4_uy8m0"]
+[ext_resource type="Script" path="res://Enemies/base_enemy.gd" id="1_vvtex"]
+[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="2_imn8t"]
+[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="3_3bqpo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ll0o"]
 radius = 11.0
@@ -21,7 +21,7 @@ animations = [{
 }]
 
 [node name="BaseMonster" type="CharacterBody2D"]
-script = ExtResource("1_l4wsy")
+script = ExtResource("1_vvtex")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0ll0o")
@@ -31,12 +31,12 @@ sprite_frames = SubResource("SpriteFrames_3cllm")
 animation = &"attacking"
 
 [node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("3_ydm15")
+script = ExtResource("2_imn8t")
 
 [node name="MoveTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="HealthBar" parent="." instance=ExtResource("4_uy8m0")]
+[node name="HealthBar" parent="." instance=ExtResource("3_3bqpo")]
 offset_left = -14.0
 offset_top = -25.0
 offset_right = 134.0
