@@ -1,31 +1,37 @@
 [gd_scene load_steps=3 format=3 uid="uid://ores5e35s23t"]
 
 [ext_resource type="Script" path="res://UI/WeaponCooldown/WeaponCooldown.gd" id="1_8y2ph"]
-[ext_resource type="Texture2D" uid="uid://cepj1lwgcuq21" path="res://Art/basicterrain/objects.png" id="2_6fyvn"]
+[ext_resource type="Texture2D" uid="uid://ce8q78re1y4cn" path="res://Art/basicterrain/board.png" id="2_0pmn5"]
 
-[node name="WeaponCooldown" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 30.0
-offset_bottom = 30.0
+[node name="WeaponCooldown" type="Panel"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_8y2ph")
 
-[node name="CooldownTimer" type="Timer" parent="."]
-one_shot = true
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 37.0
+offset_bottom = 35.0
+rotation = 0.785398
+pivot_offset = Vector2(15, 15)
 
-[node name="WeaponSprite" type="Sprite2D" parent="."]
-position = Vector2(15, 15)
-scale = Vector2(1.875, 1.875)
-texture = ExtResource("2_6fyvn")
-region_enabled = true
-region_rect = Rect2(-0.24501, 16.1343, 16.8913, 16.2157)
+[node name="WeaponTexture" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_0pmn5")
+stretch_mode = 3
 
-[node name="CooldownProgress" type="ProgressBar" parent="WeaponSprite"]
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="CooldownProgress" type="ProgressBar" parent="."]
+layout_mode = 2
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_vertical = 1
 max_value = 1.0
 value = 1.0
 fill_mode = 3
 show_percentage = false
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true

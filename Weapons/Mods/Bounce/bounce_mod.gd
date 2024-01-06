@@ -1,15 +1,17 @@
-extends BaseMod
+extends BulletMod
 class_name Bounce
 
-func _ready():
-	super()
-	weapon.on_hit.connect(_on_hit)
+func _on_shooting_weapon(bullet):
+	super(bullet)
+	bullet.on_hit.connect(_on_hit)
+	
 
 func _on_hit(body):
-	if weapon.delete_bullet == true:
-		weapon.rotation = weapon.position.angle_to_point(body.global_position)-PI
-		weapon.delete_bullet = false
-		weapon.remove_child(self)
-		queue_free()
+	if parent is BaseBullet:
+		if parent.delete_bullet == true:
+			parent.rotation = parent.position.angle_to_point(body.global_position)-PI
+			parent.delete_bullet = false
+			parent.remove_child(self)
+			queue_free()
 
 

@@ -56,7 +56,7 @@ func move(delta):
 func set_movement_direction(direction : float):
 	movement_direction = direction
 
-func damage():
+func deal_damage():
 	return damage_output
 
 func _on_move_timer_timeout():

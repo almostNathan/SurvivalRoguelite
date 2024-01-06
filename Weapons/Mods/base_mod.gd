@@ -1,7 +1,8 @@
 extends Node2D
 class_name BaseMod
 
-var weapon : BaseWeapon
+var parent
 
 func _ready():
-	weapon = get_parent()
+	parent = get_parent()
+

@@ -1,31 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://bb76auym623tk"]
 
 [ext_resource type="Script" path="res://Weapons/base_weapon.gd" id="1_ptvrp"]
-[ext_resource type="Texture2D" uid="uid://cepj1lwgcuq21" path="res://Art/basicterrain/objects.png" id="2_shb1t"]
+[ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="2_03aqi"]
+[ext_resource type="PackedScene" uid="uid://immewsood0nw" path="res://Weapons/base_bullet.tscn" id="2_m1hb7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p7mxg"]
-radius = 6.50822
-
-[node name="BaseWeapon" type="Area2D" groups=["weapons"]]
+[node name="BaseWeapon" type="Node2D" groups=["weapons"]]
 rotation = 1.5708
 script = ExtResource("1_ptvrp")
+bullet_scene = ExtResource("2_m1hb7")
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(-0.246021, -0.515196)
-shape = SubResource("CircleShape2D_p7mxg")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_shb1t")
-region_enabled = true
+[node name="Image" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_03aqi")
 region_rect = Rect2(0.604588, 17.2939, 14.8792, 14.3887)
-
-[node name="OnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(0.0787437, 2.38419e-07)
-scale = Vector2(0.722086, 0.698463)
 
 [node name="WeaponTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="screen_exited" from="OnScreenEnabler" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
 [connection signal="timeout" from="WeaponTimer" to="." method="_on_weapon_timer_timeout"]

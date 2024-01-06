@@ -1,7 +1,7 @@
 extends BaseEnemyMod
 
 @export var exp_value = 10
-var exp = preload("res://Pickups/Experience/experience.tscn")
+var experience = preload("res://Pickups/Experience/experience.tscn")
 
 func _ready():
 	super()
@@ -9,7 +9,7 @@ func _ready():
 
 	
 func on_death():
-	var new_exp = exp.instantiate()
+	var new_exp = experience.instantiate()
 	new_exp.position = enemy.position
 	enemy.add_sibling(new_exp)
 	

@@ -1,10 +1,10 @@
-extends Node2D
+extends BulletMod
 
-var weapon
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	weapon = get_parent()
-	weapon.on_hit.connect(_on_hit)
+
+
+func _on_shooting_weapon(bullet):
+	super(bullet)
+	bullet.on_hit.connect(_on_hit)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

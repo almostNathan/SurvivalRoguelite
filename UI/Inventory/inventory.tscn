@@ -5,26 +5,28 @@
 
 [node name="InventoryScreen" type="PanelContainer"]
 process_mode = 2
-offset_right = 125.0
-offset_bottom = 86.0
+offset_left = -312.0
+offset_top = -215.0
+offset_right = -187.0
+offset_bottom = -129.0
 scale = Vector2(5, 5)
 script = ExtResource("1_ly3dm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="WeaponDisplayContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="WeaponGridContainer" type="GridContainer" parent="VBoxContainer"]
+[node name="WeaponGridContainer" type="GridContainer" parent="WeaponDisplayContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 5
 columns = 6
 
-[node name="WeaponSlot" parent="VBoxContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+[node name="WeaponSlot" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
 layout_mode = 2
 script = null
 
-[node name="MenuButton" type="MenuButton" parent="VBoxContainer"]
+[node name="MenuButton" type="MenuButton" parent="WeaponDisplayContainer"]
 layout_mode = 2
 text = "Resume"
 
-[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="WeaponDisplayContainer/MenuButton" to="." method="_on_menu_button_pressed"]

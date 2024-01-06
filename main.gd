@@ -14,6 +14,7 @@ signal menu_button_pressed
 
 func _ready():
 	monster_pool = MonsterPool.new()
+	
 
 func _process(_delta):
 	var enemies = get_tree().get_nodes_in_group("enemy")

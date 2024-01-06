@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://player.gd" id="1_du36b"]
 [ext_resource type="Texture2D" uid="uid://rcqxkgxrb73r" path="res://generic-female/generic-female-left/frame1.png" id="2_6rwr6"]
-[ext_resource type="PackedScene" uid="uid://7np4x3lcuqou" path="res://Weapons/Stone/stone_weapon.tscn" id="2_ih5ow"]
+[ext_resource type="PackedScene" uid="uid://7np4x3lcuqou" path="res://Weapons/Stone/stone_weapon.tscn" id="2_i4usd"]
 [ext_resource type="Texture2D" uid="uid://x20i4wpp1np6" path="res://generic-female/generic-female-left/frame2.png" id="3_ihrla"]
 [ext_resource type="Texture2D" uid="uid://b3wmxkruqot5p" path="res://generic-female/generic-female-left/frame3.png" id="4_tton6"]
 [ext_resource type="Texture2D" uid="uid://bxr4bdji1i8ip" path="res://generic-female/generic-female-left/frame4.png" id="5_vf0gr"]
@@ -94,8 +94,8 @@ radius = 70.0643
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -2)
 script = ExtResource("1_du36b")
-main_weapon_scene = ExtResource("2_ih5ow")
-offhand_weapon_scene = ExtResource("2_ih5ow")
+main_weapon_scene = ExtResource("2_i4usd")
+offhand_weapon_scene = ExtResource("2_i4usd")
 max_speed = 200.0
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]

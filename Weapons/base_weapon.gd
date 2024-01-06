@@ -1,67 +1,32 @@
-extends Area2D
+extends Node2D
 class_name BaseWeapon
 
-signal on_hit(body)
 signal shooting_weapon()
+signal off_cooldown(body)
 
+@export var bullet_scene : PackedScene
 @export var speed = 700.0
-@export var damage = 5.0
-@export var knockback = 100.0
 @export var shooting_angle = PI
 
-
-@onready var hitbox = $Hitbox
-@onready var sprite = $Sprite
-@onready var weapon_timer = $WeaponTimer
-@onready var on_screen_enabler = $OnScreenEnabler
-var delete_bullet = false
+@onready var weapon_image = $Image
+@onready var weapon_cooldown : Timer = $WeaponTimer
 
 var available_mod_slots = 0
 var current_mod_count = 0
+var player : CharacterBody2D
 
-
-func _ready():
-	pass
-	
-func _init():
-	pass
-	
-
-func _physics_process(delta):
-	speed = 700
-	var direction = Vector2.RIGHT.rotated(rotation)
-	position += direction * speed * delta
-	sprite.rotate(PI/16)
-
-
-func _on_visible_on_screen_enabler_2d_screen_exited():
-	queue_free()
-
-
-
-func get_cooldown():
-	return $WeaponTimer.wait_time
-
-	
-func get_effect():
-	pass
-
-func get_sprite_texture():
-	return $Sprite.texture
-
-func _on_body_entered(body):
-	delete_bullet = true
-	if body.has_method("hit") && body.is_in_group("enemy"):
-		on_hit.emit(body)
-		if (delete_bullet):
-			queue_free()
+func get_image_texture():
+	return weapon_image.texture
 
 func add_mod(mod_to_add):
 	add_child(mod_to_add)
 
-func shoot_weapon(player_position, player_aiming_direction):
-	shooting_weapon.emit()
-	global_position = player_position
-	rotation = player_aiming_direction
+func get_cooldown():
+	return weapon_cooldown.time_left
 
-
+func _on_weapon_timer_timeout():
+	var new_bullet = bullet_scene.instantiate()
+	get_parent().add_sibling(new_bullet)
+	shooting_weapon.emit(new_bullet)
+	new_bullet.global_position = get_parent().position
+	new_bullet.rotation = get_parent().aiming_direction

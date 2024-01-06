@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://immewsood0nw"]
+
+[ext_resource type="Script" path="res://Weapons/base_bullet.gd" id="1_1c8gw"]
+[ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="2_5buai"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gi6ge"]
+
+[node name="BaseBullet" type="Area2D"]
+script = ExtResource("1_1c8gw")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gi6ge")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_5buai")
+
+[node name="OnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
