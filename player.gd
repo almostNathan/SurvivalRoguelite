@@ -21,7 +21,8 @@ signal shooting_weapon(bullet)
 
 #Modifier variables
 var weapon_spread = PI/4
-var aiming_direction = 0
+#In Radians
+var aiming_direction : Vector2
 var current_experience = 0
 
 #Character movement variables
@@ -31,8 +32,9 @@ var acceleration = 1500.0
 var friction = 1200.0
 
 func _ready():
-	equip_main(main_weapon_scene)
-	equip_offhand(offhand_weapon_scene)
+	call_deferred("equip_main", main_weapon_scene)
+	call_deferred("equip_offhand", offhand_weapon_scene)
+
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("dodge"):
@@ -52,16 +54,14 @@ func dodge():
 func angle_to_mouse():
 	return position.angle_to_point(get_global_mouse_position()) + PI/2
 
-##TODO: add changing weaponcooldown icons
 func equip_main(weapon : PackedScene):
-	var new_main_weapon = weapon.instantiate()
-	call_deferred("add_child", new_main_weapon)
-	main_weapon = new_main_weapon
+	var main_weapon = weapon.instantiate()
+	self.add_child(main_weapon)
+	main_weapon.modify_attack_speed_mult(.15)
 
 func equip_offhand(weapon : PackedScene):
-	var new_offhand_weapon = weapon.instantiate()
-	call_deferred("add_child", new_offhand_weapon)
-	offhand_weapon = new_offhand_weapon
+	var offhand_weapon = weapon.instantiate()
+	self.add_child(offhand_weapon)
 
 func move(delta):
 	var movement_direction = Vector2.ZERO
@@ -105,4 +105,5 @@ func _on_i_frame_timer_timeout():
 	speed = max_speed
 
 func set_aiming_direction(closest_enemy_position):
-	aiming_direction = position.angle_to_point(closest_enemy_position)
+	var angle_to_closest_enemy = position.angle_to_point(closest_enemy_position)
+	aiming_direction = Vector2.RIGHT.rotated(angle_to_closest_enemy)

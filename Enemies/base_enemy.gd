@@ -13,29 +13,34 @@ signal on_death()
 @onready var wait_timer = $WaitTimer
 @onready var sprite = $AnimatedSprite
 
-var acceleration = 1500.0
+var effect_queue = []
 
+var acceleration = 1500.0
 var friction = 1200.0
 var move_distance = 1000.0
 @onready var movement_direction : float = 0.0
+
 var damage_output = 10
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_base_stats()
 	$AnimatedSprite.play("idle")
 	set_max_health.emit(max_health)
 	health_comp.health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = max_health
 
-	
-func set_base_stats():
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	#apply effect of all mods recently applied to enemy
+	if len(effect_queue) > 0:
+		print("base enemy physics process: ", len(effect_queue))
+	for mod in effect_queue:
+		mod.call_deferred("apply_effect", self)
+	effect_queue = []
+	
 	if !$AnimatedSprite.is_playing():
 		$AnimatedSprite.play("idle")
 	move(delta)
@@ -43,11 +48,14 @@ func _physics_process(delta):
 func hit(damage : DamageMod):
 	health_comp.damage(damage.damage_value)
 
+func take_damage(damage_amount):
+	health_comp.damage(damage_amount)
 
 func _on_health_component_zero_hp():
+	print("Base_enemy onhealthcomponentzerohp")
 	on_death.emit()
 	queue_free()
-
+	
 func move(delta):
 	var direction = Vector2.UP.rotated(movement_direction)
 	position += direction * max_speed * delta
@@ -55,6 +63,9 @@ func move(delta):
 
 func set_movement_direction(direction : float):
 	movement_direction = direction
+
+func add_to_mod_queue(mod_to_add):
+	effect_queue.append(mod_to_add)
 
 func deal_damage():
 	return damage_output

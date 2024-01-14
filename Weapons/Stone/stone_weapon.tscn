@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://7np4x3lcuqou"]
+[gd_scene load_steps=4 format=3 uid="uid://7np4x3lcuqou"]
 
 [ext_resource type="Script" path="res://Weapons/Stone/stone_weapon.gd" id="1_vwi60"]
 [ext_resource type="Texture2D" uid="uid://bk4asg02u45tp" path="res://Art/basicterrain/stone.png" id="2_2npi4"]
 [ext_resource type="PackedScene" uid="uid://b8tnk3dip2q3x" path="res://Weapons/Stone/stone_bullet.tscn" id="2_gtx81"]
-[ext_resource type="PackedScene" uid="uid://bjs6u2wi3fb6y" path="res://Weapons/Mods/Damage/damage_mod.tscn" id="3_2bia3"]
-[ext_resource type="PackedScene" uid="uid://qovyqvv8b5rn" path="res://Weapons/Mods/Bounce/bounce_mod.tscn" id="4_yg873"]
 
 [node name="StoneWeapon" type="Node2D" groups=["weapons"]]
 rotation = 1.5708
@@ -18,12 +16,5 @@ region_rect = Rect2(0.604588, 17.2939, 14.8792, 14.3887)
 
 [node name="WeaponTimer" type="Timer" parent="."]
 autostart = true
-
-[node name="DamageMod" parent="." instance=ExtResource("3_2bia3")]
-damage_value = 5.0
-
-[node name="BounceMod" parent="." instance=ExtResource("4_yg873")]
-
-[node name="BounceMod2" parent="." instance=ExtResource("4_yg873")]
 
 [connection signal="timeout" from="WeaponTimer" to="." method="_on_weapon_timer_timeout"]

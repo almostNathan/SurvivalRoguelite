@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8tnk3dip2q3x"]
+[gd_scene load_steps=6 format=3 uid="uid://b8tnk3dip2q3x"]
 
 [ext_resource type="Script" path="res://Weapons/Stone/stone_bullet.gd" id="1_wou8q"]
 [ext_resource type="Texture2D" uid="uid://bk4asg02u45tp" path="res://Art/basicterrain/stone.png" id="2_ici5d"]
+[ext_resource type="PackedScene" uid="uid://bjs6u2wi3fb6y" path="res://Weapons/Mods/Damage/damage_mod.tscn" id="3_265vf"]
+[ext_resource type="PackedScene" uid="uid://qovyqvv8b5rn" path="res://Weapons/Mods/Bounce/bounce_mod.tscn" id="4_wx5m3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gi6ge"]
 
@@ -15,5 +17,9 @@ shape = SubResource("CircleShape2D_gi6ge")
 texture = ExtResource("2_ici5d")
 
 [node name="OnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="DamageMod" parent="." instance=ExtResource("3_265vf")]
+
+[node name="BounceMod" parent="." instance=ExtResource("4_wx5m3")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

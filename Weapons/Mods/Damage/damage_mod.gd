@@ -5,18 +5,14 @@ class_name DamageMod
 
 func _ready():
 	super()
-	if parent is BaseBullet:
-		parent.on_hit.connect(_on_hit)
+	parent.on_hit.connect(_on_hit)
 
+func _on_hit(body : BaseEnemy):
+	body.add_to_mod_queue(self)
 
-func _on_shooting_weapon(bullet):
-	super(bullet)
-	bullet.on_hit.connect(_on_hit)
+func apply_effect(enemy):
+	enemy.take_damage(damage_value)
 
-
-func _on_hit(body):
-	print("damage mod on hit")
-	body.hit(self)
 
 func damage_multiplier(mult_value):
 	damage_value *= mult_value
