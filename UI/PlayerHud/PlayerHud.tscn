@@ -1,11 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuf1v8aemm21q"]
+[gd_scene load_steps=2 format=3 uid="uid://cuf1v8aemm21q"]
 
 [ext_resource type="Script" path="res://UI/PlayerHud/PlayerHud.gd" id="1_jt5eq"]
-[ext_resource type="PackedScene" uid="uid://bei0ewiiu0oln" path="res://UI/Inventory/inventory.tscn" id="3_6aaew"]
 
 [node name="PlayerHud" type="Camera2D"]
 zoom = Vector2(1.25, 1.25)
 script = ExtResource("1_jt5eq")
-
-[node name="InventoryScreen" parent="." instance=ExtResource("3_6aaew")]
-visible = false

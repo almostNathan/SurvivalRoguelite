@@ -1,13 +1,15 @@
 extends BulletMod
 class_name PierceMod
 
-func _on_shooting_weapon(bullet):
-	super(bullet)
-	bullet.on_hit.connect(_on_hit)
+func _ready():
+	super()
+	parent.on_hit.connect(_on_hit)
+	
 
-func _on_hit(body):
-	if weapon.delete_bullet == true:
-		weapon.delete_bullet = false
-		weapon.remove_child(self)
-		queue_free()
+func _on_hit(_body):
+	if parent is BaseBullet:
+		if parent.delete_bullet == true:
+			parent.delete_bullet = false
+			queue_free()
+
 

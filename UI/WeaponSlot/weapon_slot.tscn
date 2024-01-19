@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://jkssd8irtl6y"]
 
 [ext_resource type="Script" path="res://UI/WeaponSlot/weapon_slot.gd" id="1_i0g8x"]
-[ext_resource type="Texture2D" uid="uid://ce8q78re1y4cn" path="res://Art/basicterrain/board.png" id="2_hm7la"]
+[ext_resource type="Texture2D" uid="uid://cfyh84ukpdrnj" path="res://Art/hud_assets/lock_icon.png" id="2_ey5x7"]
 
 [node name="WeaponSlot" type="Panel"]
 custom_minimum_size = Vector2(40, 40)
@@ -20,25 +20,5 @@ pivot_offset = Vector2(15, 15)
 
 [node name="WeaponImage" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-texture = ExtResource("2_hm7la")
-expand_mode = 1
-stretch_mode = 3
-
-[node name="AppliedMods" type="Label" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 20.0
-offset_right = 18.0
-offset_bottom = 43.0
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-text = "1"
-vertical_alignment = 2
-
-[node name="AvailableModSlots" type="Label" parent="."]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 20.0
-offset_right = 35.0
-offset_bottom = 43.0
-theme_override_colors/font_color = Color(1, 1, 0.054902, 1)
-text = "1"
+texture = ExtResource("2_ey5x7")
+expand_mode = 5

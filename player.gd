@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 signal equip_main_weapon_slot(weapon)
 signal health_changed
@@ -18,6 +19,7 @@ signal shooting_weapon(bullet)
 @onready var i_frame_timer = $IFrameTimer
 @onready var dodge_timer = $DodgeTimer
 @onready var player_hud = $PlayerHud
+@onready var inventory = $PlayerHud/Inventory
 
 #Modifier variables
 var weapon_spread = PI/4
@@ -34,7 +36,6 @@ var friction = 1200.0
 func _ready():
 	call_deferred("equip_main", main_weapon_scene)
 	call_deferred("equip_offhand", offhand_weapon_scene)
-
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("dodge"):
@@ -55,13 +56,15 @@ func angle_to_mouse():
 	return position.angle_to_point(get_global_mouse_position()) + PI/2
 
 func equip_main(weapon : PackedScene):
-	var main_weapon = weapon.instantiate()
+	main_weapon = weapon.instantiate()
 	self.add_child(main_weapon)
 	main_weapon.modify_attack_speed_mult(.15)
+	inventory.add_weapon(main_weapon)
 
 func equip_offhand(weapon : PackedScene):
-	var offhand_weapon = weapon.instantiate()
+	offhand_weapon = weapon.instantiate()
 	self.add_child(offhand_weapon)
+	inventory.add_weapon(offhand_weapon)
 
 func move(delta):
 	var movement_direction = Vector2.ZERO

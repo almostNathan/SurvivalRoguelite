@@ -3,13 +3,11 @@
 [ext_resource type="Script" path="res://UI/Inventory/inventory.gd" id="1_ly3dm"]
 [ext_resource type="PackedScene" uid="uid://jkssd8irtl6y" path="res://UI/WeaponSlot/weapon_slot.tscn" id="2_ph38w"]
 
-[node name="InventoryScreen" type="PanelContainer"]
-process_mode = 2
-offset_left = -312.0
-offset_top = -215.0
-offset_right = -187.0
-offset_bottom = -129.0
-scale = Vector2(5, 5)
+[node name="Inventory" type="PanelContainer"]
+z_index = 99
+z_as_relative = false
+offset_right = 265.0
+offset_bottom = 51.0
 script = ExtResource("1_ly3dm")
 
 [node name="WeaponDisplayContainer" type="VBoxContainer" parent="."]
@@ -23,10 +21,18 @@ columns = 6
 
 [node name="WeaponSlot" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
 layout_mode = 2
-script = null
 
-[node name="MenuButton" type="MenuButton" parent="WeaponDisplayContainer"]
+[node name="WeaponSlot2" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
 layout_mode = 2
-text = "Resume"
 
-[connection signal="pressed" from="WeaponDisplayContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[node name="WeaponSlot3" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+layout_mode = 2
+
+[node name="WeaponSlot4" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+layout_mode = 2
+
+[node name="WeaponSlot5" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+layout_mode = 2
+
+[node name="WeaponSlot6" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+layout_mode = 2

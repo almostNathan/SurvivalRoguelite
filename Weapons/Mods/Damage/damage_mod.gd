@@ -7,11 +7,11 @@ func _ready():
 	super()
 	parent.on_hit.connect(_on_hit)
 
-func _on_hit(body : BaseEnemy):
+func _on_hit(body):
 	body.add_to_mod_queue(self)
 
-func apply_effect(enemy):
-	enemy.take_damage(damage_value)
+func apply_effect(body):
+	body.take_damage(damage_value)
 
 
 func damage_multiplier(mult_value):

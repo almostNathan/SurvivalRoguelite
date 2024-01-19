@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ckannwtpfgiag"]
+[gd_scene load_steps=27 format=3 uid="uid://ckannwtpfgiag"]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://player.gd" id="1_du36b"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="20_lvh0q"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="21_ehw61"]
 [ext_resource type="PackedScene" uid="uid://cuf1v8aemm21q" path="res://UI/PlayerHud/PlayerHud.tscn" id="21_k0v1x"]
+[ext_resource type="PackedScene" uid="uid://bei0ewiiu0oln" path="res://UI/Inventory/inventory.tscn" id="22_8duu7"]
 [ext_resource type="PackedScene" uid="uid://bnfvukeeb7vf5" path="res://PlayerMods/ExperienceManagerMod/experience_manager_mod.tscn" id="22_ak4tj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3y3a"]
@@ -132,6 +133,12 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PlayerHud" parent="." instance=ExtResource("21_k0v1x")]
+
+[node name="Inventory" parent="PlayerHud" instance=ExtResource("22_8duu7")]
+offset_left = -420.0
+offset_top = -276.0
+offset_right = -155.0
+offset_bottom = -225.0
 
 [node name="MagnetArea" type="Area2D" parent="."]
 

@@ -3,6 +3,7 @@ class_name BaseEnemy
 
 signal set_max_health(max_health)
 signal on_death()
+signal on_physics_process(delta)
 
 @export var max_health : float
 @export var max_speed = 75.0
@@ -35,11 +36,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	#apply effect of all mods recently applied to enemy
-	if len(effect_queue) > 0:
-		print("base enemy physics process: ", len(effect_queue))
 	for mod in effect_queue:
 		mod.call_deferred("apply_effect", self)
 	effect_queue = []
+	
+	on_physics_process.emit(delta)
 	
 	if !$AnimatedSprite.is_playing():
 		$AnimatedSprite.play("idle")
@@ -76,4 +77,6 @@ func _on_move_timer_timeout():
 func _on_wait_timer_timeout():
 	move_timer.start()
 
+func add_mod(mod_to_add):
+	self.add_child(mod_to_add)
 

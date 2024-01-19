@@ -1,24 +1,23 @@
 extends PanelContainer
+class_name Inventory
 
-var main_weapon_slot 
 @onready var weapon_display_container = $WeaponDisplayContainer
 @onready var weapon_grid_container = $WeaponDisplayContainer/WeaponGridContainer
 @onready var weapon_slot_1 = $WeaponDisplayContainer/WeaponGridContainer/WeaponSlot
+@onready var weapon_slot_2 = $WeaponDisplayContainer/WeaponGridContainer/WeaponSlot2
+@onready var weapon_slot_3 = $WeaponDisplayContainer/WeaponGridContainer/WeaponSlot3
+@onready var weapon_slot_4 = $WeaponDisplayContainer/WeaponGridContainer/WeaponSlot4
+@onready var weapon_slot_5 = $WeaponDisplayContainer/WeaponGridContainer/WeaponSlot5
+@onready var weapon_slot_6 = $WeaponDisplayContainer/WeaponGridContainer/WeaponSlot6
 
-func _ready():
-	main_weapon_slot = get_parent().find_child("WeaponSlot")
-	weapon_slot_1 = main_weapon_slot
-	get_node("/root/Main").menu_button_pressed.connect(open_inventory)
-	
+@onready var weapon_slot_array = [weapon_slot_1, weapon_slot_2, weapon_slot_3, weapon_slot_4, weapon_slot_5, weapon_slot_6]
+var weapon_reference_array = []
 
-func open_inventory():
-	get_tree().paused = true
-	weapon_slot_1 = get_parent().find_child("WeaponSlot").duplicate()
-	show()
+func add_weapon(weapon_to_add):
+	weapon_reference_array.append(weapon_to_add)
+	update_inventory()
 
-
-
-
-func _on_menu_button_pressed():
-	hide()
-	get_tree().paused = false
+func update_inventory():
+	print(weapon_reference_array)
+	for i in range(len(weapon_reference_array)):
+		weapon_slot_array[i].put_weapon(weapon_reference_array[i])
