@@ -14,9 +14,10 @@ func _ready():
 	set_max_hp.emit(max_health)
 	
 
-func damage(damage_dealt):
-	health -= damage_dealt
-	if health <= 0:
-		emit_signal("zero_hp")
-	else:
-		emit_signal("health_change", health)
+func damage(weapon, damage_dealt):
+	if health > 0:
+		health -= damage_dealt
+		if health <= 0:
+			zero_hp.emit(weapon)
+		else:
+			emit_signal("health_change", health)

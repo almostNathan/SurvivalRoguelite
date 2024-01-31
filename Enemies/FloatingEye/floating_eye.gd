@@ -7,18 +7,14 @@ func _ready():
 	super()
 	wait_timer.start()
 
-	
-
 func move(delta):
 	if move_timer.is_stopped():
 		sprite.animation = "idle"
+		velocity = Vector2.ZERO
 	else:
 		sprite.animation = "moving"
 		var direction = Vector2.UP.rotated(movement_direction)
-		position += direction * max_speed * delta
-		position.clamp(Vector2.ZERO, get_parent().get_level_size())
-
-
+		velocity += direction * acceleration * delta
 
 func set_movement_direction(direction):
 	#only change aiming direction while still

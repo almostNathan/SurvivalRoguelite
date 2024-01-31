@@ -1,0 +1,40 @@
+TODO:
+	Make exp travel more consistant.
+		either lock in at a certain radius or just travel faster
+
+Level Scaling
+	Increase Max HP, HP regen, and Damage
+	
+
+Types of Damage Mods
+	Flat Damage
+	Poison (Damage Over Time)
+	
+Weapons have a base damage variable
+	if a damage mod is added it uses that base damage to determine actual damage
+	i.e. stone base damage = 10
+		damageMod = 10
+		poisonMod = 5 / sec
+	i.e. board base damage = 20
+		damageMod = 20
+		poisonMod = 10
+
+
+Weapon Mod List
+	-DAMAGE
+		-direct damage
+	-TIMEBOMB
+		-direct damage
+	-POISON - standard damage over time
+		-DOT
+		-debuff
+	-BURN - 50% damage upfront 50% DOT
+		-direct damage
+		-dot
+		-debuff
+	-STUN
+		-debuff
+		-CC
+	-BOUNCE
+		-
+	

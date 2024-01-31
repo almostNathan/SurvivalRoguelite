@@ -14,6 +14,8 @@ signal menu_button_pressed
 
 func _ready():
 	monster_pool = MonsterPool.new()
+	get_tree().paused = true
+	
 	
 
 func _process(_delta):

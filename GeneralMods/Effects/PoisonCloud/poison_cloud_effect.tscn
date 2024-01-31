@@ -1,0 +1,108 @@
+[gd_scene load_steps=16 format=3 uid="uid://deahqbvdao51k"]
+
+[ext_resource type="Script" path="res://GeneralMods/Effects/PoisonCloud/poison_cloud_effect.gd" id="1_cuu3l"]
+[ext_resource type="Texture2D" uid="uid://bdjw02ty5osff" path="res://Art/effect_assets/explosion1.png" id="2_5a2d7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt5ob"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(864, 0, 216, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5w0q"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(0, 209, 216, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlwge"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(216, 209, 216, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t40q4"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(432, 209, 216, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ncei"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(648, 209, 216, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt4y6"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(864, 209, 216, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0kkt"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(0, 418, 216, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am4qw"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(216, 418, 216, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdlcw"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(432, 418, 216, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lk7p"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(648, 418, 216, 209)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkq2v"]
+atlas = ExtResource("2_5a2d7")
+region = Rect2(864, 418, 216, 209)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_plw67"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt5ob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5w0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlwge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t40q4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ncei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt4y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0kkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am4qw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdlcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lk7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkq2v")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6shc6"]
+radius = 35.2278
+
+[node name="PoisonCloudEffect" type="Area2D"]
+script = ExtResource("1_cuu3l")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6, 2)
+scale = Vector2(0.471292, 0.471292)
+sprite_frames = SubResource("SpriteFrames_plw67")
+animation = &"explosion"
+frame = 4
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6shc6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

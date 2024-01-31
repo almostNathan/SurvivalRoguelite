@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnpj8pohv3fhf"]
+
+[ext_resource type="Script" path="res://ConfigMenu/configure_mod_slot.gd" id="1_h0j1s"]
+[ext_resource type="Texture2D" uid="uid://bulvqveqie1ox" path="res://Art/Drops/add_proj_mod.png" id="2_uutve"]
+
+[node name="ConfigureModSlot" type="MarginContainer"]
+custom_minimum_size = Vector2(33, 33)
+offset_right = 50.0
+offset_bottom = 50.0
+script = ExtResource("1_h0j1s")
+
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_uutve")
+expand_mode = 1

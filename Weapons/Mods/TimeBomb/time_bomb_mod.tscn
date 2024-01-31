@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cracr7rfk4ki6"]
+
+[ext_resource type="Script" path="res://Weapons/Mods/TimeBomb/time_bomb_mod.gd" id="1_oyrwu"]
+
+[node name="TimeBombMod" type="Node2D"]
+script = ExtResource("1_oyrwu")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://oag5qy40rq6k"]
+
+[ext_resource type="Script" path="res://Weapons/Mods/PoisonCloud/poison_cloud_mod.gd" id="1_5fk8p"]
+
+[node name="PoisonCloudMod" type="Node2D"]
+script = ExtResource("1_5fk8p")

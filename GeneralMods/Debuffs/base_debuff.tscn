@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://n616fobm51r6"]
+
+[ext_resource type="Script" path="res://GeneralMods/Debuffs/base_debuff.gd" id="1_k1tvk"]
+
+[node name="BaseDebuff" type="Node2D"]
+script = ExtResource("1_k1tvk")

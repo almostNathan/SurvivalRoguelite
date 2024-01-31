@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Enemies/Mushroom/mushroom.gd" id="2_3mgon"]
 [ext_resource type="Texture2D" uid="uid://b5j55ajhxun7e" path="res://Art/Monster_Creatures_Fantasy_itchio/Mushroom/Attack3.png" id="2_nuth3"]
-[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_jb0jd"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="4_yrnhd"]
+[ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="5_rwxwh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lchly"]
 height = 34.0
@@ -100,7 +100,7 @@ animations = [{
 
 [node name="Mushroom" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_3mgon")
-max_health = null
+max_health = 50.0
 max_speed = 50.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
@@ -110,9 +110,6 @@ shape = SubResource("CapsuleShape2D_lchly")
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_v15ka")
 animation = &"attacking"
-
-[node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("3_jb0jd")
 
 [node name="MoveTimer" type="Timer" parent="."]
 one_shot = true
@@ -127,7 +124,8 @@ scale = Vector2(0.2, 0.2)
 [node name="WaitTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="health_change" from="HealthComponent" to="HealthBar" method="_on_health_component_health_change"]
-[connection signal="zero_hp" from="HealthComponent" to="." method="_on_health_component_zero_hp"]
+[node name="ExperienceMod" parent="." instance=ExtResource("5_rwxwh")]
+exp_value = 100
+
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

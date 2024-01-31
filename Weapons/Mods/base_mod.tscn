@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://drxb3ka63ucaw"]
+
+[ext_resource type="Script" path="res://Weapons/Mods/base_mod.gd" id="1_fyivm"]
+
+[node name="BaseMod" type="Node2D"]
+script = ExtResource("1_fyivm")
+
+[node name="ModTexture" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

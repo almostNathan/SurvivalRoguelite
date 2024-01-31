@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvd3vvp17r7qx"]
+
+[ext_resource type="Script" path="res://ConfigMenu/configure_weapons.gd" id="1_gbopp"]
+[ext_resource type="PackedScene" uid="uid://o70m5bhp5fbu" path="res://ConfigMenu/configure_weapon_slot.tscn" id="2_auv8g"]
+[ext_resource type="Script" path="res://ConfigMenu/WeaponGridContainer.gd" id="2_bs2sq"]
+[ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="3_642af"]
+
+[node name="ConfigureWeapons" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gbopp")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+layout_mode = 2
+split_offset = 200
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="WeaponGridContainer" type="GridContainer" parent="VSplitContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 100
+columns = 3
+script = ExtResource("2_bs2sq")
+
+[node name="MainWeaponSlot" parent="VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
+layout_mode = 2
+texture = ExtResource("3_642af")
+
+[node name="OffhandWeaponSlot" parent="VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
+layout_mode = 2
+texture = ExtResource("3_642af")
+
+[node name="Button" type="Button" parent="VSplitContainer/MarginContainer/WeaponGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Start"
+
+[node name="ModGridContainer" type="GridContainer" parent="VSplitContainer"]
+layout_mode = 2
+columns = 10

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cicjinjo4rc88"]
+
+[ext_resource type="Script" path="res://Weapons/Weapons/Stick/stick_weapon.gd" id="1_vg0om"]
+[ext_resource type="Texture2D" uid="uid://ce8q78re1y4cn" path="res://Art/basicterrain/board.png" id="2_hrsw6"]
+[ext_resource type="PackedScene" uid="uid://b8vr8qtrotrc" path="res://Weapons/Weapons/Stick/stick_bullet.tscn" id="2_rbw3u"]
+
+[node name="StickWeapon" type="Node2D" groups=["weapons"]]
+rotation = 1.5708
+script = ExtResource("1_vg0om")
+bullet_scene = ExtResource("2_rbw3u")
+base_damage = 50
+base_attack_speed = 2
+
+[node name="Image" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_hrsw6")
+region_rect = Rect2(0.604588, 17.2939, 14.8792, 14.3887)
+
+[node name="WeaponTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="WeaponTimer" to="." method="_on_weapon_timer_timeout"]

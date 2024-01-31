@@ -18,6 +18,5 @@ func add_weapon(weapon_to_add):
 	update_inventory()
 
 func update_inventory():
-	print(weapon_reference_array)
 	for i in range(len(weapon_reference_array)):
 		weapon_slot_array[i].put_weapon(weapon_reference_array[i])

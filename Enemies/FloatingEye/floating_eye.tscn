@@ -75,6 +75,7 @@ animations = [{
 
 [node name="FloatingEye" groups=["enemy"] instance=ExtResource("1_5ole2")]
 script = ExtResource("2_uyo8c")
+max_health = 10.0
 max_speed = 200.0
 
 [node name="AnimatedSprite" parent="." index="1"]
@@ -82,6 +83,6 @@ position = Vector2(-6, -2)
 sprite_frames = SubResource("SpriteFrames_o1wge")
 animation = &"moving"
 
-[node name="HealthBar" parent="." index="4"]
+[node name="HealthBar" parent="." index="3"]
 offset_top = -19.0
 offset_bottom = 8.0

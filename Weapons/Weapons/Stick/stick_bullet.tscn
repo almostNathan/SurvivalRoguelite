@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8vr8qtrotrc"]
+
+[ext_resource type="PackedScene" uid="uid://immewsood0nw" path="res://Weapons/Weapons/base_bullet.tscn" id="1_k5dqv"]
+[ext_resource type="Script" path="res://Weapons/Weapons/Stick/stick_bullet.gd" id="2_ffgda"]
+[ext_resource type="Texture2D" uid="uid://ce8q78re1y4cn" path="res://Art/basicterrain/board.png" id="3_lk7k0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxnok"]
+size = Vector2(45.6667, 12)
+
+[node name="StickBullet" instance=ExtResource("1_k5dqv")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_ffgda")
+
+[node name="Hitbox" parent="." index="0"]
+position = Vector2(29.1667, 0)
+shape = SubResource("RectangleShape2D_gxnok")
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2(29, -1.05879e-22)
+scale = Vector2(1.4375, 0.961538)
+texture = ExtResource("3_lk7k0")
+
+[node name="OnScreenEnabler" parent="." index="2"]
+position = Vector2(29, 0)
+scale = Vector2(2.3, 0.6)
+
+[node name="Timer" type="Timer" parent="." index="3"]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

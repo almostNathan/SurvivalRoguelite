@@ -4,19 +4,22 @@ class_name BaseEnemy
 signal set_max_health(max_health)
 signal on_death()
 signal on_physics_process(delta)
+signal health_change(cur_health)
+signal moving(velocity, delta)
 
 @export var max_health : float
-@export var max_speed = 75.0
+@export var max_speed : float
+var cur_health : float
+var exp_value = 100
 
-@onready var health_comp = $HealthComponent
 @onready var health_bar = $HealthBar
 @onready var move_timer = $MoveTimer
 @onready var wait_timer = $WaitTimer
 @onready var sprite = $AnimatedSprite
 
 var effect_queue = []
-
-var acceleration = 1500.0
+var acceleration = 1500
+var speed = max_speed
 var friction = 1200.0
 var move_distance = 1000.0
 @onready var movement_direction : float = 0.0
@@ -27,10 +30,8 @@ var damage_output = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite.play("idle")
-	set_max_health.emit(max_health)
-	health_comp.health = max_health
-	health_bar.max_value = max_health
-	health_bar.value = max_health
+	cur_health = max_health
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,22 +46,36 @@ func _physics_process(delta):
 	if !$AnimatedSprite.is_playing():
 		$AnimatedSprite.play("idle")
 	move(delta)
+	velocity = velocity.limit_length(max_speed)
+	moving.emit(velocity, delta)
+	move_and_slide()
 	
-func hit(damage : DamageMod):
-	health_comp.damage(damage.damage_value)
+func hit(weapon, damage_amount):
+	#damage(weapon, damage_amount)
+	if cur_health > 0:
+		cur_health -= damage_amount
+		if cur_health <= 0:
+			weapon.on_kill.emit(self)
+			on_death.emit()
+			queue_free()
+		else:
+			health_change.emit(cur_health)
 
-func take_damage(damage_amount):
-	health_comp.damage(damage_amount)
+func lose_life(damage_amount):
+	#damage(weapon, damage_amount)
+	if cur_health > 0:
+		cur_health -= damage_amount
+		if cur_health <= 0:
+			on_death.emit()
+			queue_free()
+		else:
+			health_change.emit(cur_health)
 
-func _on_health_component_zero_hp():
-	print("Base_enemy onhealthcomponentzerohp")
-	on_death.emit()
-	queue_free()
 	
 func move(delta):
 	var direction = Vector2.UP.rotated(movement_direction)
-	position += direction * max_speed * delta
-	position.clamp(Vector2.ZERO, get_parent().get_level_size())
+	velocity += direction * acceleration * delta
+	
 
 func set_movement_direction(direction : float):
 	movement_direction = direction
@@ -79,4 +94,7 @@ func _on_wait_timer_timeout():
 
 func add_mod(mod_to_add):
 	self.add_child(mod_to_add)
+
+func add_debuff(debuff):
+	add_mod(debuff)
 

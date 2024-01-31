@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://o70m5bhp5fbu"]
+
+[ext_resource type="Script" path="res://ConfigMenu/configure_weapon_slot.gd" id="1_07ral"]
+[ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="1_vfsev"]
+[ext_resource type="Texture2D" uid="uid://ce8q78re1y4cn" path="res://Art/basicterrain/board.png" id="3_wuwy7"]
+
+[node name="ConfigureWeaponSlot" type="TextureRect"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("1_vfsev")
+expand_mode = 1
+script = ExtResource("1_07ral")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+rotation = 0.785398
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("3_wuwy7")
+stretch_mode = 5
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+columns = 3

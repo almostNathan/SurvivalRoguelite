@@ -22,3 +22,4 @@ pivot_offset = Vector2(15, 15)
 layout_mode = 2
 texture = ExtResource("2_ey5x7")
 expand_mode = 5
+stretch_mode = 5
