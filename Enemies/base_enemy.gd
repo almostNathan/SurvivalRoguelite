@@ -61,11 +61,12 @@ func hit(weapon, damage_amount):
 		else:
 			health_change.emit(cur_health)
 
-func lose_life(damage_amount):
+func lose_life(weapon, damage_amount):
 	#damage(weapon, damage_amount)
 	if cur_health > 0:
 		cur_health -= damage_amount
 		if cur_health <= 0:
+			weapon.on_kill.emit(self)
 			on_death.emit()
 			queue_free()
 		else:

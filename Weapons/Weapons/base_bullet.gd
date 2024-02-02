@@ -13,7 +13,7 @@ signal setting_movement_direction(body)
 @onready var on_screen_enabler = $OnScreenEnabler
 
 var delete_bullet = false
-var movement_direction : Vector2
+var movement_direction_vector : Vector2
 var weapon
 var player
 var enemies_hit = 0
@@ -22,7 +22,7 @@ var enemies_bounced = 0
 
 func _physics_process(delta):
 	setting_movement_direction.emit(self)
-	position += movement_direction * speed * delta
+	position += movement_direction_vector * speed * delta
 	
 	#apply spin to bullet image
 	weapon_image.rotate(PI/16)
@@ -39,10 +39,10 @@ func add_mod(mod_to_add):
 	add_child(mod_to_add)
 	
 func set_movement_direction(aiming_direction: Vector2):
-	movement_direction = aiming_direction
+	movement_direction_vector = aiming_direction
 
 func modify_movement_direction(change_in_radians):
-	movement_direction = movement_direction.rotated(change_in_radians)
+	movement_direction_vector = movement_direction_vector.rotated(change_in_radians)
 	
 func set_weapon(new_weapon):
 	self.weapon = new_weapon

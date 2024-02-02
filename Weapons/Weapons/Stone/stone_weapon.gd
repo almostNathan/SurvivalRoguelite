@@ -1,13 +1,13 @@
 extends BaseWeapon
 class_name StoneWeapon
 
-
-
-func _ready():
-	super()
+func _init():
 	base_damage = 7
 	current_damage = base_damage
 	shooting_angle = PI/2
+
+func _ready():
+	super()
 	add_mod(preload("res://Weapons/Mods/AddProj/add_proj_mod.tscn").instantiate())
 	add_mod(preload("res://Weapons/Mods/AddProj/add_proj_mod.tscn").instantiate())
 

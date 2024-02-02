@@ -53,7 +53,7 @@ func _on_weapon_timer_timeout():
 
 	
 	for i in range(projectile_count):
-		var new_bullet = bullet_proto.duplicate()
+		var new_bullet = bullet_scene.instantiate()
 		new_bullet.set_weapon(self)
 		get_parent().add_sibling(new_bullet)
 		new_bullet.set_player(player)

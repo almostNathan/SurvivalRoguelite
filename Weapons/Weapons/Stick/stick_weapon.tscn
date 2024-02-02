@@ -18,7 +18,6 @@ texture = ExtResource("2_hrsw6")
 region_rect = Rect2(0.604588, 17.2939, 14.8792, 14.3887)
 
 [node name="WeaponTimer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
 
 [node name="PierceMod" parent="." instance=ExtResource("4_ug7v4")]

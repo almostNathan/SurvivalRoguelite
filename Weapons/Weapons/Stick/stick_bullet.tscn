@@ -8,7 +8,7 @@
 size = Vector2(45.6667, 12)
 
 [node name="StickBullet" instance=ExtResource("1_k5dqv")]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 script = ExtResource("2_ffgda")
 
 [node name="Hitbox" parent="." index="0"]
@@ -25,6 +25,7 @@ position = Vector2(29, 0)
 scale = Vector2(2.3, 0.6)
 
 [node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 0.25
 one_shot = true
 autostart = true
 

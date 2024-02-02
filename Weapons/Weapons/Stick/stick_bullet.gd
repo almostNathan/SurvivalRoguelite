@@ -2,7 +2,7 @@ extends BaseBullet
 class_name StickBullet
 
 @onready var timer = $Timer
-var rotation_speed = 5
+var rotation_speed = 6
 
 func _physics_process(delta):
 	rotate(rotation_speed * delta)

@@ -1,0 +1,147 @@
+[gd_scene load_steps=34 format=3 uid="uid://bvx6jjmpnbhcn"]
+
+[ext_resource type="Script" path="res://Weapons/Weapons/MagicBook/magic_book_bullet.gd" id="1_jr3aq"]
+[ext_resource type="Texture2D" uid="uid://b1faqa1olf6bb" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_0.png" id="2_2s452"]
+[ext_resource type="Texture2D" uid="uid://oct3rwr46e8q" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_1.png" id="3_7skru"]
+[ext_resource type="Texture2D" uid="uid://b4tlv2wv671a2" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_2.png" id="4_udt0h"]
+[ext_resource type="Texture2D" uid="uid://c3wd8y66pjmqb" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_3.png" id="5_6kpm2"]
+[ext_resource type="Texture2D" uid="uid://dd8rdyb8r7xuf" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_4.png" id="6_vt1uv"]
+[ext_resource type="Texture2D" uid="uid://bq1xqk0uaukwl" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_5.png" id="7_1r6i7"]
+[ext_resource type="Texture2D" uid="uid://bdrmmkfvbxspc" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_6.png" id="8_jrqdb"]
+[ext_resource type="Texture2D" uid="uid://cihgsx0yg6k0i" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_7.png" id="9_f5fmk"]
+[ext_resource type="Texture2D" uid="uid://0b5biptwmhfa" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_8.png" id="10_404sp"]
+[ext_resource type="Texture2D" uid="uid://bjq8hbjk57lyg" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_9.png" id="11_5nn2m"]
+[ext_resource type="Texture2D" uid="uid://chj4uphbkr6r8" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_10.png" id="12_c8v4f"]
+[ext_resource type="Texture2D" uid="uid://ddf3vc5kig440" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_11.png" id="13_56hkd"]
+[ext_resource type="Texture2D" uid="uid://dk7yons1f5rlv" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_12.png" id="14_qy6tn"]
+[ext_resource type="Texture2D" uid="uid://dx0lbc4n7eht4" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_13.png" id="15_ry62e"]
+[ext_resource type="Texture2D" uid="uid://cul6ufgo6uoj2" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_14.png" id="16_5rmja"]
+[ext_resource type="Texture2D" uid="uid://u7u43cjtqvjp" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_15.png" id="17_8git8"]
+[ext_resource type="Texture2D" uid="uid://huyq7adajhqp" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_16.png" id="18_sbjpp"]
+[ext_resource type="Texture2D" uid="uid://dpqvy7u3r6hxp" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_17.png" id="19_uqeao"]
+[ext_resource type="Texture2D" uid="uid://da5u32sfwj7y5" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_18.png" id="20_1pma4"]
+[ext_resource type="Texture2D" uid="uid://7gxsiotqdb1k" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_19.png" id="21_mdjmc"]
+[ext_resource type="Texture2D" uid="uid://br7h6uhn0q5x6" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_20.png" id="22_r8du7"]
+[ext_resource type="Texture2D" uid="uid://wd4mh5ngfm30" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_21.png" id="23_aedrt"]
+[ext_resource type="Texture2D" uid="uid://bjic310ln75am" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_22.png" id="24_hwa1i"]
+[ext_resource type="Texture2D" uid="uid://jnbn2xom37be" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_23.png" id="25_h330d"]
+[ext_resource type="Texture2D" uid="uid://b26rrlrufylmu" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_24.png" id="26_00k5o"]
+[ext_resource type="Texture2D" uid="uid://dfcybw77y7h0r" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_25.png" id="27_1ufp4"]
+[ext_resource type="Texture2D" uid="uid://b5x8xg5t1pv00" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_26.png" id="28_0wf4e"]
+[ext_resource type="Texture2D" uid="uid://d1p55cv4mptqp" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_27.png" id="29_f0xbv"]
+[ext_resource type="Texture2D" uid="uid://bp2wnxm4h2886" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_28.png" id="30_oyopl"]
+[ext_resource type="Texture2D" uid="uid://4aaf3rodhlb1" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_29.png" id="31_d832m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gi6ge"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ye3sl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2s452")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7skru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_udt0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6kpm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vt1uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1r6i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jrqdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f5fmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_404sp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5nn2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_c8v4f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_56hkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qy6tn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ry62e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5rmja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8git8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_sbjpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_uqeao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_1pma4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_mdjmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_r8du7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_aedrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_hwa1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_h330d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_00k5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_1ufp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_0wf4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_f0xbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_oyopl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_d832m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 35.0
+}]
+
+[node name="MagicBookBullet" type="Area2D"]
+script = ExtResource("1_jr3aq")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gi6ge")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-19, -5)
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_ye3sl")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+visible = false

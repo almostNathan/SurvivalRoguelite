@@ -11,7 +11,7 @@ func _ready():
 	parent.on_physics_process.connect(_deal_damage_over_time)
 	
 func _deal_damage_over_time(delta):
-	parent.lose_life(burn_dps * delta)
+	parent.lose_life(weapon, burn_dps * delta)
 
 func _on_duration_timer_timeout():
 	queue_free()
