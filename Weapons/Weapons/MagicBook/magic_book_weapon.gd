@@ -2,9 +2,10 @@ extends BaseWeapon
 class_name MagicBookWeapon
 
 func _init():
+	icon = preload("res://Art/Weapons/fireballs/meteor_side_medium/imgs/img_1.png")
 	base_damage = 20
 	current_damage = base_damage
-	icon = preload("res://Art/Weapons/fireballs/meteor_side_medium/imgs/img_1.png")
+	base_attack_speed = 1.5
 
 
 func set_bullet_aiming(new_bullet, bullet_number, aiming_direction):

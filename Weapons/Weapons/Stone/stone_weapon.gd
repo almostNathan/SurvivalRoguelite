@@ -4,6 +4,7 @@ class_name StoneWeapon
 func _init():
 	icon = preload("res://Art/basicterrain/stone.png")
 	base_damage = 7
+	base_attack_speed = 1
 	current_damage = base_damage
 	shooting_angle = PI/2
 
