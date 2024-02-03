@@ -10,7 +10,7 @@ signal moving(velocity, delta)
 @export var max_health : float
 @export var max_speed : float
 var cur_health : float
-var exp_value = 100
+var exp_value = 10
 
 @onready var health_bar = $HealthBar
 @onready var move_timer = $MoveTimer

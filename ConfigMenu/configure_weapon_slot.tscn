@@ -19,6 +19,7 @@ offset_bottom = 100.0
 rotation = 0.785398
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("3_wuwy7")
+expand_mode = 5
 stretch_mode = 5
 
 [node name="WeaponModGridContainer" type="GridContainer" parent="."]

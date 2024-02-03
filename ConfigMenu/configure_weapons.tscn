@@ -12,45 +12,54 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gbopp")
 
-[node name="VSplitContainer" type="HSplitContainer" parent="."]
+[node name="HSplitContainer" type="VSplitContainer" parent="."]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer"]
+[node name="VSplitContainer" type="HSplitContainer" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/VSplitContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
 
-[node name="WeaponGridContainer" type="GridContainer" parent="VSplitContainer/MarginContainer"]
+[node name="WeaponGridContainer" type="GridContainer" parent="HSplitContainer/VSplitContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 100
 columns = 3
 script = ExtResource("2_bs2sq")
 
-[node name="MainWeaponSlot" parent="VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
+[node name="MainWeaponSlot" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
 layout_mode = 2
 
-[node name="OffhandWeaponSlot" parent="VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
+[node name="OffhandWeaponSlot" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VSplitContainer/MarginContainer/WeaponGridContainer"]
+[node name="Button" type="Button" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Start"
 icon_alignment = 2
 expand_icon = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="VSplitContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="HSplitContainer/VSplitContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ModGridContainer" type="GridContainer" parent="VSplitContainer/MarginContainer2"]
+[node name="ModGridContainer" type="GridContainer" parent="HSplitContainer/VSplitContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_constants/h_separation = 10
 columns = 5
 
-[connection signal="pressed" from="VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="VSplitContainer/MarginContainer/WeaponGridContainer/MainWeaponSlot" method="_on_button_pressed"]
-[connection signal="pressed" from="VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="VSplitContainer/MarginContainer/WeaponGridContainer/OffhandWeaponSlot" method="_on_button_pressed"]
+[node name="AvailableWeaponsGridContainer" type="GridContainer" parent="HSplitContainer"]
+layout_mode = 2
+columns = 10
+
+[connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/MainWeaponSlot" method="_on_button_pressed"]
+[connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/OffhandWeaponSlot" method="_on_button_pressed"]

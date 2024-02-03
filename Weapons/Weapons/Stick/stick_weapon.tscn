@@ -9,6 +9,7 @@
 rotation = 1.5708
 script = ExtResource("1_vg0om")
 bullet_scene = ExtResource("2_rbw3u")
+speed = null
 base_damage = 50
 base_attack_speed = 2
 

@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-AllModList="*res://Scripts/mod_list.gd"
+AllModList="*res://Scripts/all_mod_list.gd"
+AllWeaponList="*res://Scripts/all_weapon_list.gd"
 
 [display]
 

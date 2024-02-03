@@ -1,11 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://ckannwtpfgiag"]
+[gd_scene load_steps=27 format=3 uid="uid://ckannwtpfgiag"]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_du36b"]
 [ext_resource type="Texture2D" uid="uid://rcqxkgxrb73r" path="res://generic-female/generic-female-left/frame1.png" id="2_6rwr6"]
-[ext_resource type="PackedScene" uid="uid://dwf70a6cowghq" path="res://Weapons/Weapons/MagicBook/magic_book_weapon.tscn" id="2_knrcq"]
 [ext_resource type="Texture2D" uid="uid://x20i4wpp1np6" path="res://generic-female/generic-female-left/frame2.png" id="3_ihrla"]
-[ext_resource type="PackedScene" uid="uid://bacqu825gqgw3" path="res://Weapons/Weapons/Scythe/scythe_weapon.tscn" id="3_xdikq"]
 [ext_resource type="Texture2D" uid="uid://b3wmxkruqot5p" path="res://generic-female/generic-female-left/frame3.png" id="4_tton6"]
 [ext_resource type="Texture2D" uid="uid://bxr4bdji1i8ip" path="res://generic-female/generic-female-left/frame4.png" id="5_vf0gr"]
 [ext_resource type="Texture2D" uid="uid://ca57cg6eona7j" path="res://generic-female/generic-female-left/frame5.png" id="6_lb1oe"]
@@ -100,8 +98,6 @@ radius = 200.0
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -2)
 script = ExtResource("1_du36b")
-main_weapon_scene = ExtResource("2_knrcq")
-offhand_weapon_scene = ExtResource("3_xdikq")
 max_speed = 200.0
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="."]

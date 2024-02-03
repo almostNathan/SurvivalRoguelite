@@ -7,8 +7,8 @@ signal gain_experience(exp_amount)
 signal shooting_weapon(bullet)
 signal health_change(cur_health)
 
-@export var main_weapon_scene : PackedScene
-@export var offhand_weapon_scene : PackedScene
+var main_weapon_scene : PackedScene
+var offhand_weapon_scene : PackedScene
 @export var max_speed = 250.0
 
 @onready var main_weapon : BaseWeapon
@@ -38,10 +38,9 @@ var acceleration = 1500.0
 var friction = 1200.0
 
 func _ready():
-	equip_main(main_weapon_scene)
-	equip_offhand(offhand_weapon_scene)
 	#call_deferred("equip_main", main_weapon_scene)
 	#call_deferred("equip_offhand", offhand_weapon_scene)
+	pass
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("dodge"):
@@ -62,15 +61,15 @@ func dodge():
 func angle_to_mouse():
 	return position.angle_to_point(get_global_mouse_position()) + PI/2
 
-func equip_main(weapon : PackedScene):
-	main_weapon = weapon.instantiate()
+func equip_main(weapon : BaseWeapon):
+	main_weapon = weapon
 	self.add_child(main_weapon)
 	equipping_weapon.emit(main_weapon)
-	main_weapon.modify_attack_speed_mult(.15)
 	inventory.add_weapon(main_weapon)
+	main_weapon.modify_attack_speed_mult(.15)
 
-func equip_offhand(weapon : PackedScene):
-	offhand_weapon = weapon.instantiate()
+func equip_offhand(weapon : BaseWeapon):
+	offhand_weapon = weapon
 	equipping_weapon.emit(offhand_weapon)
 	self.add_child(offhand_weapon)
 	inventory.add_weapon(offhand_weapon)

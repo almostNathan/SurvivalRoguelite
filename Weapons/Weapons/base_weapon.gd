@@ -13,14 +13,15 @@ signal adding_mod(mod)
 var current_damage = base_damage
 
 @onready var weapon_image = $Image
+var icon
 @onready var weapon_cooldown : Timer = $WeaponTimer
 
 var available_mod_slots = 0
 var current_mod_count = 0
 var player : CharacterBody2D
-var bullet_proto : BaseBullet
 
-@export var base_attack_speed = 1
+
+var base_attack_speed = 1
 var attack_speed_modifier_add = 0
 var attack_speed_modifier_mult = 1
 var projectile_count = 1
@@ -30,12 +31,12 @@ var angle_between_bullets
 var bounce_value = 0
 var pierce_value = 0
 
-func _ready():
+func _init():
 	weapon_cooldown.wait_time = base_attack_speed
-	bullet_proto = bullet_scene.instantiate()
 
+func _ready():
 	player = get_parent()
-	
+
 func modify_bullet(bullet_proto):
 	pass
 
@@ -76,6 +77,7 @@ func modify_attack_speed_mult(attack_speed_change):
 
 func calc_attack_speed():
 	weapon_cooldown.wait_time = (base_attack_speed + attack_speed_modifier_add) / attack_speed_modifier_mult
+	print("base weapon", weapon_cooldown.wait_time)
 
 func modify_damage_add(damage_change):
 	current_damage += damage_change
@@ -96,8 +98,8 @@ func show_weapon_image():
 func hide_weapon_image():
 	weapon_image.hide()
 
-func get_texture():
-	return weapon_image.texture
+func get_icon():
+	return icon
 	
 func get_base_damage():
 	return base_damage

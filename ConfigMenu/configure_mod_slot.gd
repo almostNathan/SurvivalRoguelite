@@ -6,10 +6,7 @@ var mod_in_slot : BaseMod
 
 
 func _get_drag_data(at_position):
-	var drag_preview = self.duplicate()
-	drag_preview.size = Vector2(50, 50)
 	set_drag_preview(self.duplicate())
-	
 	if get_parent().name == "WeaponModGridContainer":
 		queue_free()
 	return mod_in_slot.duplicate()

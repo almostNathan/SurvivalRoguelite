@@ -1,9 +1,10 @@
 extends BaseWeapon
 class_name StickWeapon
 
-var lead_in_angle = PI / 4
+var lead_in_angle = PI/4
 
 func _init():
+	icon = preload("res://Art/basicterrain/board.png")
 	base_damage = 50
 	current_damage = base_damage
 	shooting_angle = PI*2

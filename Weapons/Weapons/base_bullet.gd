@@ -10,7 +10,7 @@ signal setting_movement_direction(body)
 
 @onready var hitbox = $Hitbox
 @onready var weapon_image = $Sprite
-@onready var on_screen_enabler = $OnScreenEnabler
+
 
 var delete_bullet = false
 var movement_direction_vector : Vector2
