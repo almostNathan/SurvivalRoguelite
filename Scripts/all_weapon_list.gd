@@ -1,5 +1,5 @@
 extends Node
-class_name WeaponList
+class_name WeaponsList
 
 var weapon_scene_list = [
 	preload("res://Weapons/Weapons/Stick/stick_weapon.tscn"),

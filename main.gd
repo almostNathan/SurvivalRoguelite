@@ -15,10 +15,9 @@ signal menu_button_pressed
 func _ready():
 	monster_pool = MonsterPool.new()
 	get_tree().paused = true
-	
-	
 
 func _process(_delta):
+	$Path2D.position = player.position
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	#point all enemies at the player
 	var closest_enemy_position = Vector2(0,0)
@@ -45,3 +44,11 @@ func _on_player_health_changed(cur_health):
 
 func get_level_size():
 	return $Background.size
+
+
+func _on_elite_spawn_timer_timeout():
+	path.progress_ratio = randf()
+	var new_enemy = monster_pool.get_monster_array().pick_random().instantiate()
+	add_child(new_enemy)
+	new_enemy.position = path.position
+	new_enemy.make_elite()

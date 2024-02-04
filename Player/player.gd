@@ -5,6 +5,7 @@ signal equipping_weapon(weapon)
 signal health_changed
 signal gain_experience(exp_amount)
 signal shooting_weapon(bullet)
+signal set_max_health(new_max_hp)
 signal health_change(cur_health)
 
 var main_weapon_scene : PackedScene

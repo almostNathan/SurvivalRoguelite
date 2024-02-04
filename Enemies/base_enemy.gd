@@ -99,3 +99,7 @@ func add_mod(mod_to_add):
 func add_debuff(debuff):
 	add_mod(debuff)
 
+func make_elite():
+	scale = Vector2(2,2)
+	set_max_health.emit(max_health*3)
+	health_change.emit(max_health*3)

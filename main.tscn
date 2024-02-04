@@ -42,6 +42,11 @@ rotation = -0.00278292
 wait_time = 0.5
 autostart = true
 
+[node name="EliteSpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]
 [connection signal="ready" from="Player" to="Player/ConfigureWeapons" method="_on_player_ready"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EliteSpawnTimer" to="." method="_on_elite_spawn_timer_timeout"]
