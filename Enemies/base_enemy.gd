@@ -24,7 +24,7 @@ var friction = 1200.0
 var move_distance = 1000.0
 @onready var movement_direction : float = 0.0
 
-var damage_output = 10
+var base_damage = 10
 
 
 # Called when the node enters the scene tree for the first time.
@@ -85,7 +85,7 @@ func add_to_mod_queue(mod_to_add):
 	effect_queue.append(mod_to_add)
 
 func deal_damage():
-	return damage_output
+	return base_damage
 
 func _on_move_timer_timeout():
 	wait_timer.start()
@@ -100,6 +100,17 @@ func add_debuff(debuff):
 	add_mod(debuff)
 
 func make_elite():
+	var loot_mod = preload("res://Enemies/Mods/DropLoot/drop_loot_mod.tscn").instantiate()
+	add_child(loot_mod)
+	var elite_scaling_hp_modifier = 3.0
+	var elite_scaling_damage_modifier = 3.0
+	print("make elite ", max_health)
 	scale = Vector2(2,2)
-	set_max_health.emit(max_health*3)
-	health_change.emit(max_health*3)
+	max_health = max_health * elite_scaling_hp_modifier
+	base_damage = base_damage * elite_scaling_damage_modifier
+	cur_health = max_health
+	set_max_health.emit(max_health)
+	health_change.emit(cur_health)
+	
+	
+	

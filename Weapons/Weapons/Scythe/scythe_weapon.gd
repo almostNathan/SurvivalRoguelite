@@ -5,7 +5,7 @@ var lead_in_angle = PI/2
 
 func _init():
 	icon = preload("res://Art/Weapons/scythe.png")
-	base_damage = 4
+	base_damage = 2
 	base_attack_speed = 1
 	current_damage = base_damage
 	shooting_angle = PI*2

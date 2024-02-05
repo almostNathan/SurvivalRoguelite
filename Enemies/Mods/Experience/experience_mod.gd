@@ -1,4 +1,5 @@
 extends BaseEnemyMod
+class_name ExperienceMod
 
 @export var exp_value = 10
 var experience = preload("res://Pickups/Experience/experience.tscn")

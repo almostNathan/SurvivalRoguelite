@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ckannwtpfgiag"]
+[gd_scene load_steps=28 format=3 uid="uid://ckannwtpfgiag"]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_du36b"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cuf1v8aemm21q" path="res://UI/PlayerHud/PlayerHud.tscn" id="21_k0v1x"]
 [ext_resource type="PackedScene" uid="uid://bei0ewiiu0oln" path="res://UI/Inventory/inventory.tscn" id="22_8duu7"]
 [ext_resource type="PackedScene" uid="uid://bnfvukeeb7vf5" path="res://Player/Mods/ExperienceManagerMod/experience_manager_mod.tscn" id="22_ak4tj"]
+[ext_resource type="PackedScene" uid="uid://cbbvt8rf4y1n4" path="res://UI/LootMenu/loot_menu.tscn" id="22_tbljl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efsi2"]
 animations = [{
@@ -141,6 +142,13 @@ offset_left = -420.0
 offset_top = -276.0
 offset_right = -155.0
 offset_bottom = -225.0
+
+[node name="LootMenu" parent="PlayerHud" instance=ExtResource("22_tbljl")]
+visible = false
+offset_left = -273.0
+offset_top = -175.0
+offset_right = 267.0
+offset_bottom = 185.0
 
 [node name="MagnetArea" type="Area2D" parent="."]
 

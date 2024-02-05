@@ -3,7 +3,7 @@ class_name MagicBookWeapon
 
 func _init():
 	icon = preload("res://Art/Weapons/fireballs/meteor_side_medium/imgs/img_1.png")
-	base_damage = 20
+	base_damage = 10
 	current_damage = base_damage
 	base_attack_speed = 1.5
 

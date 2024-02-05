@@ -133,4 +133,5 @@ func gain_life(amount):
 	health.gain_life(amount)
 	emit_signal("health_changed", health.cur_health)
 
-
+func trigger_loot(loot_scene_list):
+	$PlayerHud/LootMenu.load_loot_screen(loot_scene_list)
