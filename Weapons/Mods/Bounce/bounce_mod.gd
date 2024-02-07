@@ -14,6 +14,10 @@ func _ready():
 	
 
 func _on_hit(_body, bullet):
+	if parent.is_melee == true:
+		bullet.delete_bullet = false
+		bullet.enemies_bounced += 1
+		bullet.rotation_speed *= -1
 	if bullet.enemies_bounced < parent.bounce_value && bullet.delete_bullet == true:
 		bullet.delete_bullet = false
 		bullet.enemies_bounced += 1

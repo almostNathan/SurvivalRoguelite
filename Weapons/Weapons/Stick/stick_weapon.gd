@@ -9,6 +9,7 @@ func _init():
 	base_attack_speed = 2
 	current_damage = base_damage
 	shooting_angle = PI*2
+	is_melee = true
 
 func set_bullet_aiming(new_bullet, bullet_number, aiming_direction):
 	angle_between_bullets = shooting_angle / projectile_count

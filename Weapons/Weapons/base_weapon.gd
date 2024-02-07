@@ -12,9 +12,10 @@ signal adding_mod(mod)
 @export var base_damage = 20
 var current_damage = base_damage
 
+
 @onready var weapon_image = $Image
 var icon
-@onready var weapon_cooldown : Timer = $WeaponTimer
+@onready var weapon_timer : Timer = $WeaponTimer
 
 var available_mod_slots = 0
 var current_mod_count = 0
@@ -30,9 +31,10 @@ var left_shooting_angle
 var angle_between_bullets
 var bounce_value = 0
 var pierce_value = 0
+var is_melee = false
 
 func _init():
-	weapon_cooldown.wait_time = base_attack_speed
+	weapon_timer.wait_time = base_attack_speed
 
 func _ready():
 	player = get_parent()
@@ -44,7 +46,7 @@ func get_image_texture():
 	return weapon_image.texture
 
 func get_cooldown():
-	return weapon_cooldown.time_left
+	return weapon_timer.time_left
 
 func _on_weapon_timer_timeout():
 	var aiming_direction :float= Vector2.RIGHT.angle_to(get_parent().aiming_direction)
@@ -76,8 +78,8 @@ func modify_attack_speed_mult(attack_speed_change):
 	calc_attack_speed()
 
 func calc_attack_speed():
-	weapon_cooldown.wait_time = (base_attack_speed + attack_speed_modifier_add) / attack_speed_modifier_mult
-	print("base weapon", weapon_cooldown.wait_time)
+	weapon_timer.wait_time = (base_attack_speed + attack_speed_modifier_add) / attack_speed_modifier_mult
+
 
 func modify_damage_add(damage_change):
 	current_damage += damage_change

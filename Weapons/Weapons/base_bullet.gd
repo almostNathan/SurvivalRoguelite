@@ -20,6 +20,7 @@ var enemies_hit = 0
 var enemies_pierced = 0
 var enemies_bounced = 0
 
+
 func _physics_process(delta):
 	setting_movement_direction.emit(self)
 	position += movement_direction_vector * speed * delta

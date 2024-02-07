@@ -138,10 +138,10 @@ one_shot = true
 zoom = Vector2(1, 1)
 
 [node name="Inventory" parent="PlayerHud" instance=ExtResource("22_8duu7")]
-offset_left = -420.0
-offset_top = -276.0
-offset_right = -155.0
-offset_bottom = -225.0
+offset_left = -514.0
+offset_top = -330.0
+offset_right = -249.0
+offset_bottom = -279.0
 
 [node name="LootMenu" parent="PlayerHud" instance=ExtResource("22_tbljl")]
 visible = false
