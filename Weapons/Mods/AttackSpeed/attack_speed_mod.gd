@@ -9,11 +9,13 @@ func _init():
 
 func _ready():
 	super()
-	parent.modify_attack_speed_mult(attack_speed_mult)
+	parent.ready.connect(_on_parent_ready)
 
 func rank_up():
 	attack_speed_mult += .15
 	if parent != null:
 		parent.modify_attack_speed_mult(attack_speed_mult)
 
-
+func _on_parent_ready():
+	parent.modify_attack_speed_mult(attack_speed_mult)
+	

@@ -104,7 +104,6 @@ func make_elite():
 	add_child(loot_mod)
 	var elite_scaling_hp_modifier = 3.0
 	var elite_scaling_damage_modifier = 3.0
-	print("make elite ", max_health)
 	scale = Vector2(2,2)
 	max_health = max_health * elite_scaling_hp_modifier
 	base_damage = base_damage * elite_scaling_damage_modifier

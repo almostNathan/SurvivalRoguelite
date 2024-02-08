@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3saykm2sxdrb"]
+
+[ext_resource type="Script" path="res://Weapons/Weapons/Boomerang/boomerang_bullet.gd" id="2_a4qpc"]
+[ext_resource type="Texture2D" uid="uid://bv3feovq33ol4" path="res://Art/Weapons/boomerang_bullet.png" id="2_d1pe4"]
+
+[node name="BoomerangBullet" type="Area2D"]
+script = ExtResource("2_a4qpc")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+rotation = 0.806342
+polygon = PackedVector2Array(-17.6886, -0.336739, -0.791945, 29.7216, 6.91048, 26.0239, -6.34776, 0.840229, 11.4999, -24.9951, 3.64937, -28.3669)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(2, 3)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_d1pe4")
+
+[node name="OnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="OnScreenEnabler" to="." method="_on_on_screen_enabler_screen_exited"]
