@@ -16,7 +16,7 @@ func _ready():
 	
 
 func _on_hit(_body, bullet):
-	if bullet.enemies_pierced < parent.pierce_value && bullet.delete_bullet == true:
+	if bullet is BaseBullet && bullet.enemies_pierced < parent.pierce_value && bullet.delete_bullet == true:
 		bullet.delete_bullet = false
 		bullet.enemies_pierced += 1
 		

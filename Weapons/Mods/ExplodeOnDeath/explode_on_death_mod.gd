@@ -7,7 +7,7 @@ var splash_effect_scene = preload("res://GeneralMods/Effects/Splash/splash_effec
 
 func _init():
 	tooltip_text = "Explode On Death"
-	icon = preload("res://Art/Drops/damage_mod.png")
+	icon = preload("res://Art/Drops/explode_on_death_mod.png")
 
 func _ready():
 	super()

@@ -107,6 +107,9 @@ func get_current_damage():
 	return current_damage
 
 func add_mod(mod_to_add : BaseMod):
-	adding_mod.emit(mod_to_add)
 	mod_list.append(mod_to_add)
 	add_child(mod_to_add)
+	adding_mod.emit(mod_to_add)
+
+func get_mod_list():
+	return mod_list

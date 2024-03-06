@@ -19,5 +19,5 @@ func _modify_hit(mod_hitting):
 		if mod_hitting is DamageMod:
 			_apply_damage_crit(mod_hitting)
 	
-func _apply_damage_crit(mod_hitting):
-	mod_hitting.damage_value *= 2
+func _apply_damage_crit(mod):
+	mod.damage_value *= 2

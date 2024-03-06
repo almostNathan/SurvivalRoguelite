@@ -11,5 +11,5 @@ func _ready():
 	super()
 	parent.on_hit.connect(_on_hit)
 
-func _on_hit(body, bullet):
+func _on_hit(_body, _bullet):
 	parent.player.gain_life(leech_per_hit)

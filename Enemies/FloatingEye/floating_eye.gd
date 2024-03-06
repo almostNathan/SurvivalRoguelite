@@ -20,3 +20,15 @@ func set_movement_direction(direction):
 	#only change aiming direction while still
 	if move_timer.is_stopped():
 		movement_direction = direction
+
+func hit(weapon, damage_amount):
+	super(weapon, damage_amount)
+	$AnimatedSprite.play('hit')
+	$AnimatedSprite.self_modulate = Color(1,0,0,1)
+	await get_tree().create_timer(.5).timeout
+	$AnimatedSprite.self_modulate = Color(1,1,1,1)
+
+
+func _on_animated_sprite_animation_finished():
+	$AnimatedSprite.play('idle')
+	$AnimatedSprite.self_modulate = Color(1,1,1,1)

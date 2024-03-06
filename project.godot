@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 AllModList="*res://Scripts/all_mod_list.gd"
 AllWeaponList="*res://Scripts/all_weapon_list.gd"
+Globals="*res://Scripts/globals.gd"
+Hud="*res://UI/HUD/HUD.tscn"
 
 [display]
 

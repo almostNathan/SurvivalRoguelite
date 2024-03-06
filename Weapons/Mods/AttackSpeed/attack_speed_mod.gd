@@ -5,7 +5,7 @@ var attack_speed_mult = .15
 
 func _init():
 	tooltip_text = "Attack Speed"
-	icon = preload("res://Art/Drops/knockback_mod.png")
+	icon = preload("res://Art/Drops/attack_speed_mod.png")
 
 func _ready():
 	super()

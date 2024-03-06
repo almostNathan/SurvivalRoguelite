@@ -16,5 +16,8 @@ func _physics_process(delta):
 		weapon.player.add_sibling(new_damage_zone)
 		queue_free()
 
+func _on_body_entered(body):
+	pass
+
 func set_aiming_angle(aiming_angle):
 	self.rotate(aiming_angle)

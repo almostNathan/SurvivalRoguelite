@@ -17,6 +17,7 @@ var weapon_list = AllWeaponList.weapon_scene_list
 
 
 func _ready():
+
 	for mod_scene in mod_list:
 		var new_mod_slot = mod_slot_scene.instantiate()
 		var mod_instance = mod_scene.instantiate()
@@ -32,12 +33,10 @@ func _ready():
 		new_weapon_slot.custom_minimum_size = Vector2(100,100)
 		new_weapon_slot.moddable = false
 
-func _on_player_ready():
-	player = get_parent()
-
 
 
 func _on_button_pressed():
+	player = Globals.player
 	var weapon_slots = weapon_grid_container.get_children()
 	player.equip_main(weapon_slots[0].weapon_in_slot)
 	player.equip_offhand(weapon_slots[1].weapon_in_slot)

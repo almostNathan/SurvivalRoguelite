@@ -1,7 +1,8 @@
 extends Camera2D
 
 
-@onready var player = get_parent()
+@onready var player = Globals.player
+
 
 
 

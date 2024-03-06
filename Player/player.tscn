@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ckannwtpfgiag"]
+[gd_scene load_steps=25 format=3 uid="uid://ckannwtpfgiag"]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_du36b"]
@@ -17,12 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://h2s4e0iyrkmq" path="res://generic-female/generic-female-right/frame5.png" id="14_xl8m8"]
 [ext_resource type="Texture2D" uid="uid://2pbntpht0n6v" path="res://generic-female/generic-female-right/frame6.png" id="15_a571a"]
 [ext_resource type="Texture2D" uid="uid://brkhnsaq7y870" path="res://generic-female/generic-female-right/frame7.png" id="16_yfjdv"]
-[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="20_lvh0q"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="21_ehw61"]
 [ext_resource type="PackedScene" uid="uid://cuf1v8aemm21q" path="res://UI/PlayerHud/PlayerHud.tscn" id="21_k0v1x"]
-[ext_resource type="PackedScene" uid="uid://bei0ewiiu0oln" path="res://UI/Inventory/inventory.tscn" id="22_8duu7"]
 [ext_resource type="PackedScene" uid="uid://bnfvukeeb7vf5" path="res://Player/Mods/ExperienceManagerMod/experience_manager_mod.tscn" id="22_ak4tj"]
-[ext_resource type="PackedScene" uid="uid://cbbvt8rf4y1n4" path="res://UI/LootMenu/loot_menu.tscn" id="22_tbljl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efsi2"]
 animations = [{
@@ -122,33 +119,12 @@ shape = SubResource("CapsuleShape2D_t3y3a")
 wait_time = 0.25
 one_shot = true
 
-[node name="HealthBar" parent="." instance=ExtResource("20_lvh0q")]
-offset_left = -16.0
-offset_top = 12.0
-offset_right = 141.0
-offset_bottom = 39.0
-scale = Vector2(0.2, 0.2)
-metadata/_edit_use_anchors_ = true
-
 [node name="DodgeTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="PlayerHud" parent="." instance=ExtResource("21_k0v1x")]
-zoom = Vector2(1, 1)
-
-[node name="Inventory" parent="PlayerHud" instance=ExtResource("22_8duu7")]
-offset_left = -514.0
-offset_top = -330.0
-offset_right = -249.0
-offset_bottom = -279.0
-
-[node name="LootMenu" parent="PlayerHud" instance=ExtResource("22_tbljl")]
-visible = false
-offset_left = -273.0
-offset_top = -175.0
-offset_right = 267.0
-offset_bottom = 185.0
+zoom = Vector2(1.25, 1.25)
 
 [node name="MagnetArea" type="Area2D" parent="."]
 

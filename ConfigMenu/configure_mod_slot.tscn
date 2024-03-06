@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bulvqveqie1ox" path="res://Art/Drops/add_proj_mod.png" id="2_uutve"]
 
 [node name="ConfigureModSlot" type="MarginContainer"]
-custom_minimum_size = Vector2(33, 33)
-offset_right = 50.0
-offset_bottom = 50.0
 script = ExtResource("1_h0j1s")
 
 [node name="Texture" type="TextureRect" parent="."]

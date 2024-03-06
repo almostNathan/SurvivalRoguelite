@@ -4,9 +4,11 @@ class_name TurretWeapon
 @onready var lifespan_timer = $LifespanTimer
 @onready var deploy_timer = $DeployTimer
 var primary_turret_weapon : TurretWeapon
+var base_deploy_time = 5
 
 
 func _ready():
+	deploy_timer.wait_time = base_deploy_time
 	if get_parent() is Player:
 		player = get_parent()
 
@@ -28,8 +30,7 @@ func _on_deploy_timer_timeout():
 	new_turret.weapon_timer.start()
 	new_turret.deploy_timer.stop()
 	new_turret.set_primary_turret_weapon(self)
-	print("turretweapon ", new_turret, " projcount ", new_turret.projectile_count)
-	print(new_turret.mod_list)
+
 
 func set_bullet_aiming(new_bullet, bullet_number, aiming_direction):
 	new_bullet.set_weapon(primary_turret_weapon)
@@ -59,6 +60,9 @@ func _on_lifespan_timer_timeout():
 func set_primary_turret_weapon(turret_weapon:TurretWeapon):
 	self.primary_turret_weapon = turret_weapon
 
+func calc_attack_speed():
+	super()
+	deploy_timer.wait_time = (base_deploy_time + attack_speed_modifier_add) / attack_speed_modifier_mult
 
 
 

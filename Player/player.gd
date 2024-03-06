@@ -39,8 +39,7 @@ var acceleration = 1500.0
 var friction = 1200.0
 
 func _ready():
-	#call_deferred("equip_main", main_weapon_scene)
-	#call_deferred("equip_offhand", offhand_weapon_scene)
+	Globals.player = self
 	pass
 
 func _physics_process(delta):
@@ -66,14 +65,14 @@ func equip_main(weapon : BaseWeapon):
 	main_weapon = weapon
 	self.add_child(main_weapon)
 	equipping_weapon.emit(main_weapon)
-	inventory.add_weapon(main_weapon)
+	Hud.inventory.add_weapon(main_weapon)
 	main_weapon.modify_attack_speed_mult(.15)
 
 func equip_offhand(weapon : BaseWeapon):
 	offhand_weapon = weapon
 	equipping_weapon.emit(offhand_weapon)
 	self.add_child(offhand_weapon)
-	inventory.add_weapon(offhand_weapon)
+	Hud.inventory.add_weapon(offhand_weapon)
 
 func move(delta):
 	var movement_direction = Vector2.ZERO
@@ -134,4 +133,4 @@ func gain_life(amount):
 	emit_signal("health_changed", health.cur_health)
 
 func trigger_loot(loot_scene_list):
-	$PlayerHud/LootMenu.load_loot_screen(loot_scene_list)
+	Hud.loot_menu.load_loot_screen(loot_scene_list)

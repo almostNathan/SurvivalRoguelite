@@ -3,8 +3,6 @@ class_name ConfigureModSlot
 
 var mod_in_slot : BaseMod
 
-
-
 func _get_drag_data(at_position):
 	set_drag_preview(self.duplicate())
 	if get_parent().name == "WeaponModGridContainer":

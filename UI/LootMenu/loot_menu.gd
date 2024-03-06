@@ -3,7 +3,7 @@ class_name LootMenu
 
 @onready var weapon_grid_container = $HSplitContainer/MarginContainer/WeaponGridContainer
 @onready var mod_grid_container = $HSplitContainer/MarginContainer2/ModGridContainer
-@onready var player = get_parent().get_parent()
+@onready var player
 
 var weapon_slot_scene = preload("res://ConfigMenu/configure_weapon_slot.tscn")
 var mod_slot_scene = preload("res://ConfigMenu/configure_mod_slot.tscn")
@@ -12,10 +12,11 @@ var offhand_weapon_slot
 
 
 func load_loot_screen(loot_scene_list):
-	
+	player = Globals.player
 	for loot_scene in loot_scene_list:
 		var new_loot = loot_scene.instantiate()
 		var mod_slot = mod_slot_scene.instantiate()
+		mod_slot.custom_minimum_size = Vector2(50, 50)
 		mod_grid_container.add_child(mod_slot)
 		mod_slot.set_mod_in_slot(new_loot)
 	

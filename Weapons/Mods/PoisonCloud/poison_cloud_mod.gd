@@ -9,7 +9,7 @@ var poison_cloud_effect_scene = preload("res://GeneralMods/Effects/PoisonCloud/p
 
 func _init():
 	tooltip_text = "Poison Cloud on Death"
-	icon = preload("res://Art/Drops/poison_cloud.png")
+	icon = preload("res://Art/Drops/poison_cloud_mod.png")
 
 func _ready():
 	super()

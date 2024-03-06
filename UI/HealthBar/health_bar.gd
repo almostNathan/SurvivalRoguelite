@@ -11,5 +11,4 @@ func _on_base_enemy_health_change(cur_health):
 	value = cur_health
 
 func _on_base_enemy_set_max_health(new_max_hp):
-	print("healthbar ", new_max_hp)
 	max_value = new_max_hp

@@ -18,7 +18,7 @@ func _on_hit(_body, bullet):
 		bullet.delete_bullet = false
 		bullet.enemies_bounced += 1
 		bullet.rotation_speed *= -1
-	if bullet.enemies_bounced < parent.bounce_value && bullet.delete_bullet == true:
+	if  bullet is BaseBullet && bullet.enemies_bounced < parent.bounce_value && bullet.delete_bullet == true:
 		bullet.delete_bullet = false
 		bullet.enemies_bounced += 1
 		bullet.modify_movement_direction(PI)

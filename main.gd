@@ -2,7 +2,7 @@ extends Node
 
 signal menu_button_pressed
 
-@onready var path = $Path2D/PathFollow2D
+@onready var path = $Player/Path2D/PathFollow2D
 @onready var player = $Player
 @onready var health_bar = $Player/HealthBar
 
@@ -14,10 +14,10 @@ signal menu_button_pressed
 
 func _ready():
 	monster_pool = MonsterPool.new()
-	get_tree().paused = true
+
 
 func _process(_delta):
-	$Path2D.position = player.position
+	$Player/Path2D.position = player.position
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	#point all enemies at the player
 	var closest_enemy_position = Vector2(0,0)
@@ -52,3 +52,7 @@ func _on_elite_spawn_timer_timeout():
 	add_child(new_enemy)
 	new_enemy.position = path.position
 	new_enemy.make_elite()
+
+
+func _on_player_ready():
+	get_tree().paused = true
