@@ -8,7 +8,7 @@ var weapon_in_slot : BaseWeapon
 var moddable = false
 var open = true
 
-func _get_drag_data(at_position):
+func _get_drag_data(_at_position):
 	set_drag_preview(self.duplicate())
 	if get_parent().name == "WeaponGridContainer":
 		queue_free()
@@ -16,7 +16,7 @@ func _get_drag_data(at_position):
 
 
 
-func _drop_data(at_position, data):
+func _drop_data(_at_position, data):
 	if data is BaseMod:
 		var mod_slot = preload("res://ConfigMenu/configure_mod_slot.tscn").instantiate()
 		mod_grid.add_child(mod_slot)
@@ -26,7 +26,7 @@ func _drop_data(at_position, data):
 	elif data is BaseWeapon:
 		set_weapon_in_slot(data)
 
-func _can_drop_data(at_position, data):
+func _can_drop_data(_at_position, data):
 	if open and data is BaseWeapon:
 		return true
 	if moddable and data is BaseMod:

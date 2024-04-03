@@ -5,7 +5,7 @@ func _ready():
 	max_value = entity.max_health
 	value = entity.max_health
 	entity.set_max_health.connect(_on_base_enemy_set_max_health)
-	entity.health_change.connect(_on_base_enemy_health_change)
+	#entity.health_change.connect(_on_base_enemy_health_change)
 
 func _on_base_enemy_health_change(cur_health):
 	value = cur_health

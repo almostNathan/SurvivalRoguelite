@@ -9,7 +9,7 @@ var moddable = false
 var open = true
 var mod_slot_scene = preload("res://UI/Inventory/InventoryModSlot/inventory_mod_slot.tscn")
 
-func _get_drag_data(at_position):
+func _get_drag_data(_at_position):
 	set_drag_preview(self.duplicate())
 	if get_parent().name == "WeaponGridContainer":
 		queue_free()
@@ -17,7 +17,7 @@ func _get_drag_data(at_position):
 
 
 
-func _drop_data(at_position, data):
+func _drop_data(_at_position, data):
 	if data is BaseMod:
 		weapon_in_slot.add_mod(data)
 		update_weapon_slot()
@@ -25,7 +25,7 @@ func _drop_data(at_position, data):
 	elif data is BaseWeapon:
 		set_weapon_in_slot(data)
 
-func _can_drop_data(at_position, data):
+func _can_drop_data(_at_position, data):
 	if open and data is BaseWeapon:
 		return true
 	if moddable and data is BaseMod:

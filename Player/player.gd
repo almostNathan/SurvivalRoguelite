@@ -137,7 +137,7 @@ func gain_life(amount):
 	health.gain_life(amount)
 	emit_signal("health_changed", health.cur_health)
 
-func trigger_loot(loot_scene_list):
+func trigger_loot(_loot_scene_list):
 	Hud.level_up()
 
 func add_to_inventory(item):

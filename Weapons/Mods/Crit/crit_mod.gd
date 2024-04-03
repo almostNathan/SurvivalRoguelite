@@ -14,10 +14,10 @@ func _ready():
 		if node is BaseMod:
 			node.mod_hitting.connect(_modify_hit)
 
-func _modify_hit(mod_hitting):
+func _modify_hit(mod):
 	if randf() <= crit_chance:
-		if mod_hitting is DamageMod:
-			_apply_damage_crit(mod_hitting)
+		if mod is DamageMod:
+			_apply_damage_crit(mod)
 	
 func _apply_damage_crit(mod):
 	mod.damage_value *= 2

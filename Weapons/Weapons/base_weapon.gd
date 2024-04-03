@@ -38,7 +38,7 @@ func _init():
 func _ready():
 	player = get_parent()
 
-func modify_bullet(bullet_proto):
+func modify_bullet(_bullet_proto):
 	pass
 
 func get_image_texture():
@@ -63,7 +63,7 @@ func _on_weapon_timer_timeout():
 		new_bullet.global_position = player.position
 		set_bullet_aiming(new_bullet, i, aiming_direction)
 
-func set_bullet_aiming(new_bullet, bullet_number, aiming_direction):
+func set_bullet_aiming(new_bullet, bullet_number, _aiming_direction):
 	new_bullet.set_movement_direction(Vector2.RIGHT.rotated(left_shooting_angle - (angle_between_bullets * (bullet_number+1))))
 
 func modify_attack_speed_add(attack_speed_change):

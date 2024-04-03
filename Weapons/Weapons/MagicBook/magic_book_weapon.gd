@@ -8,7 +8,7 @@ func _init():
 	base_attack_speed = 1.5
 
 
-func set_bullet_aiming(new_bullet, bullet_number, aiming_direction):
+func set_bullet_aiming(new_bullet, _bullet_number, _aiming_direction):
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	var random_enemy = enemies.pick_random()
 	new_bullet.target_position = random_enemy.position

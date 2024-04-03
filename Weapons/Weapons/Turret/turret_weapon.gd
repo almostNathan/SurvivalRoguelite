@@ -32,7 +32,7 @@ func _on_deploy_timer_timeout():
 	new_turret.set_primary_turret_weapon(self)
 
 
-func set_bullet_aiming(new_bullet, bullet_number, aiming_direction):
+func set_bullet_aiming(new_bullet, bullet_number, _aiming_direction):
 	new_bullet.set_weapon(primary_turret_weapon)
 	new_bullet.position = self.position
 	var enemies = get_tree().get_nodes_in_group("enemy")

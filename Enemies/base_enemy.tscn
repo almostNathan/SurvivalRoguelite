@@ -45,6 +45,5 @@ one_shot = true
 
 [node name="ExperienceMod" parent="." instance=ExtResource("3_d2dax")]
 
-[connection signal="health_change" from="." to="HealthBar" method="_on_base_enemy_health_change"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

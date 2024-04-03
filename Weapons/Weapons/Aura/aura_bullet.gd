@@ -1,12 +1,12 @@
 extends BaseBullet
 class_name AuraBullet
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	weapon_image.rotate(PI/16)
 	position = player.position
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	pass
 	
 

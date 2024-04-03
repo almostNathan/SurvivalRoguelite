@@ -13,7 +13,7 @@ func _ready():
 	parent.on_hit.connect(_on_hit)
 	refresh()
 
-func _on_hit(body, bullet):
+func _on_hit(body, _bullet):
 	body.add_to_mod_queue(self)
 
 func apply_effect(body):

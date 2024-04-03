@@ -4,7 +4,7 @@ class_name InventoryModSlot
 var mod_in_slot : BaseMod
 var is_dragged = false
 
-func _get_drag_data(at_position):
+func _get_drag_data(_at_position):
 	is_dragged = true
 	self.modulate.a = 1
 	set_drag_preview(self.duplicate())

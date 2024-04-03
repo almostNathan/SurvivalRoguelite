@@ -33,5 +33,5 @@ func update_weapon_slot():
 		margin_container.rotation_degrees = 0
 		weapon_image.texture = lock_image
 
-func added_mod(mod_added):
+func added_mod(_mod_added):
 	update_weapon_slot()

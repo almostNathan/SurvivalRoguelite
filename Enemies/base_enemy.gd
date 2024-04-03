@@ -24,6 +24,10 @@ var friction = 1200.0
 var move_distance = 1000.0
 @onready var movement_direction : float = 0.0
 
+
+var elite_scaling_hp_modifier = 5.0
+var elite_scaling_damage_modifier = 5.0
+
 var base_damage = 10
 
 
@@ -102,8 +106,6 @@ func add_debuff(debuff):
 func make_elite():
 	var loot_mod = preload("res://Enemies/Mods/DropLoot/drop_loot_mod.tscn").instantiate()
 	add_child(loot_mod)
-	var elite_scaling_hp_modifier = 3.0
-	var elite_scaling_damage_modifier = 3.0
 	scale = Vector2(2,2)
 	max_health = max_health * elite_scaling_hp_modifier
 	base_damage = base_damage * elite_scaling_damage_modifier
