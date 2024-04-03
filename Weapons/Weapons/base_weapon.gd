@@ -11,7 +11,7 @@ signal adding_mod(mod)
 @export var speed = 700.0
 @export var base_damage = 20
 var current_damage = base_damage
-var mod_list = []
+var mod_list : Array = []
 
 @onready var weapon_image = $Image
 var icon
@@ -110,6 +110,9 @@ func add_mod(mod_to_add : BaseMod):
 	mod_list.append(mod_to_add)
 	add_child(mod_to_add)
 	adding_mod.emit(mod_to_add)
+
+func remove_mod(mod_to_remove : BaseMod):
+	mod_list.remove_at(mod_list.find(mod_to_remove))
 
 func get_mod_list():
 	return mod_list

@@ -18,7 +18,6 @@ func _get_drag_data(at_position):
 
 func _drop_data(at_position, data):
 	if data is BaseMod:
-
 		var mod_slot = preload("res://ConfigMenu/configure_mod_slot.tscn").instantiate()
 		mod_grid.add_child(mod_slot)
 		mod_slot.custom_minimum_size = Vector2(self.size.x/3, self.size.y/3)
@@ -40,7 +39,7 @@ func set_weapon_in_slot(weapon):
 	texture = null
 	open = false
 	moddable = true
-
+	
 
 func _on_button_pressed():
 	add_mods_to_weapon()

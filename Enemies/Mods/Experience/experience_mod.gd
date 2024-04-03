@@ -15,6 +15,6 @@ func on_death():
 	var new_exp = experience.instantiate()
 	new_exp.exp_value = exp_value
 	new_exp.position = enemy.position
-	enemy.add_sibling(new_exp)
+	enemy.call_deferred("add_sibling", new_exp)
 	
 	

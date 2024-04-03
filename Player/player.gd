@@ -38,6 +38,9 @@ var dodge_speed = max_speed * 2
 var acceleration = 1500.0
 var friction = 1200.0
 
+var mod_inventory = []
+var weapon_inventory = []
+
 func _ready():
 	Globals.player = self
 	pass
@@ -62,6 +65,7 @@ func angle_to_mouse():
 	return position.angle_to_point(get_global_mouse_position()) + PI/2
 
 func equip_main(weapon : BaseWeapon):
+	weapon_inventory.append(weapon)
 	main_weapon = weapon
 	self.add_child(main_weapon)
 	equipping_weapon.emit(main_weapon)
@@ -69,6 +73,7 @@ func equip_main(weapon : BaseWeapon):
 	main_weapon.modify_attack_speed_mult(.15)
 
 func equip_offhand(weapon : BaseWeapon):
+	weapon_inventory.append(weapon)
 	offhand_weapon = weapon
 	equipping_weapon.emit(offhand_weapon)
 	self.add_child(offhand_weapon)
@@ -133,4 +138,11 @@ func gain_life(amount):
 	emit_signal("health_changed", health.cur_health)
 
 func trigger_loot(loot_scene_list):
-	Hud.loot_menu.load_loot_screen(loot_scene_list)
+	Hud.level_up()
+
+func add_to_inventory(item):
+	mod_inventory.append(item)
+	
+func level_up():
+	Hud.level_up()
+

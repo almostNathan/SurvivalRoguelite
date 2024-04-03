@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cls41f23ro05u"]
+[gd_scene load_steps=11 format=3 uid="uid://cls41f23ro05u"]
 
 [ext_resource type="Script" path="res://UI/HUD/HUD.gd" id="1_dy2ux"]
 [ext_resource type="Script" path="res://UI/HUD/ExperienceBar.gd" id="2_qxpjf"]
 [ext_resource type="PackedScene" uid="uid://bei0ewiiu0oln" path="res://UI/Inventory/inventory.tscn" id="3_r21vr"]
 [ext_resource type="PackedScene" uid="uid://cbbvt8rf4y1n4" path="res://UI/LootMenu/loot_menu.tscn" id="4_m76s0"]
+[ext_resource type="PackedScene" uid="uid://fi3swbm7tu0t" path="res://UI/LevelUpMenu/level_up_menu.tscn" id="5_03xwm"]
 [ext_resource type="PackedScene" uid="uid://cvd3vvp17r7qx" path="res://ConfigMenu/configure_weapons.tscn" id="5_jquo2"]
+[ext_resource type="PackedScene" uid="uid://cepn4uj7wa126" path="res://UI/PlayerMenu/player_menu.tscn" id="7_joa0v"]
 
 [sub_resource type="SystemFont" id="SystemFont_g6qcy"]
 
@@ -19,6 +21,7 @@ outline_color = Color(0, 0, 1, 1)
 bg_color = Color(0.0117647, 0.631373, 0, 1)
 
 [node name="Hud" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_dy2ux")
 
 [node name="ExperienceBar" type="ProgressBar" parent="."]
@@ -65,6 +68,17 @@ offset_bottom = 62.0
 [node name="LootMenu" parent="." instance=ExtResource("4_m76s0")]
 visible = false
 
+[node name="LevelUpMenu" parent="." instance=ExtResource("5_03xwm")]
+process_mode = 2
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="ConfigureWeapons" parent="." instance=ExtResource("5_jquo2")]
 process_mode = 2
 anchors_preset = 8
@@ -86,3 +100,6 @@ offset_bottom = 40.0
 grow_horizontal = 0
 theme_override_styles/fill = SubResource("StyleBoxFlat_liywv")
 value = 100.0
+
+[node name="PlayerMenu" parent="." instance=ExtResource("7_joa0v")]
+visible = false

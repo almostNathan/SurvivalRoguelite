@@ -17,7 +17,7 @@ func _ready():
 
 
 func _process(_delta):
-	$Player/Path2D.position = player.position
+	print(path.position)
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	#point all enemies at the player
 	var closest_enemy_position = Vector2(0,0)
@@ -27,8 +27,6 @@ func _process(_delta):
 			closest_enemy_position = enemy.position
 	player.set_aiming_direction(closest_enemy_position)
 	
-	if Input.is_action_just_pressed("menu_button"):
-		menu_button_pressed.emit()
 
 
 func _on_timer_timeout():

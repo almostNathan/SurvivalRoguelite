@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2knfn2rb8yet"]
+
+[ext_resource type="Script" path="res://UI/Inventory/InventoryModSlot/inventory_mod_slot.gd" id="1_5qerw"]
+
+[node name="InventoryModSlot" type="MarginContainer"]
+script = ExtResource("1_5qerw")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+expand_mode = 1

@@ -46,7 +46,7 @@ func check_cur_level():
 	for level in range(len(exp_map)):
 		if exp_map[level] > exp_total:
 			if level > player_level:
-
+				player.level_up()
 				increase_stats(level - player_level)
 				level_up_damage.emit(cur_damage_scaling-1)
 				player_level = level

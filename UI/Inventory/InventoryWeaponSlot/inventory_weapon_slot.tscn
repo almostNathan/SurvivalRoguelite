@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfpgyo1cjktg6"]
+
+[ext_resource type="Script" path="res://UI/Inventory/InventoryWeaponSlot/inventory_weapon_slot.gd" id="1_xrk28"]
+
+[node name="InventoryWeaponSlot" type="MarginContainer"]
+custom_minimum_size = Vector2(100, 100)
+script = ExtResource("1_xrk28")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ModGridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3

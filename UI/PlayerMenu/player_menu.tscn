@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://cepn4uj7wa126"]
+
+[ext_resource type="Script" path="res://UI/PlayerMenu/player_menu.gd" id="1_hbfhr"]
+
+[node name="PlayerMenu" type="PanelContainer"]
+process_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.5
+offset_top = -196.5
+offset_right = 287.5
+offset_bottom = 196.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hbfhr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="WeaponsMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/WeaponsMarginContainer"]
+layout_mode = 2
+color = Color(0.329412, 0.32549, 1, 1)
+
+[node name="WeaponsContainer" type="GridContainer" parent="HBoxContainer/WeaponsMarginContainer"]
+layout_mode = 2
+
+[node name="ModsMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ModContainer" type="GridContainer" parent="HBoxContainer/ModsMarginContainer"]
+layout_mode = 2
