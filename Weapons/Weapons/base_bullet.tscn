@@ -5,7 +5,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gi6ge"]
 
-[node name="BaseBullet" type="Area2D"]
+[node name="BaseBullet" type="Area2D" groups=["bullet"]]
 script = ExtResource("1_1c8gw")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -16,5 +16,10 @@ texture = ExtResource("2_5buai")
 
 [node name="OnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
 
+[node name="LifespanTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="OnScreenEnabler" to="." method="_on_on_screen_enabler_screen_exited"]
+[connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

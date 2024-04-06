@@ -20,7 +20,6 @@ func _on_hit(body, _bullet):
 func apply_effect(body):
 	damage_value = parent.current_damage
 	mod_hitting.emit(self)
-	print("damagemod: ", damage_value)
 	body.hit(parent, damage_value)
 	
 

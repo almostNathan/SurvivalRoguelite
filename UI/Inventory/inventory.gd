@@ -17,6 +17,12 @@ func add_weapon(weapon_to_add):
 	weapon_reference_array.append(weapon_to_add)
 	update_inventory()
 
+func reset_inventory():
+	weapon_reference_array = []
+	for weapon_slot in weapon_slot_array:
+		weapon_slot.remove_weapon_in_slot()
+	
+
 func update_inventory():
 	for i in range(len(weapon_reference_array)):
-		weapon_slot_array[i].put_weapon(weapon_reference_array[i])
+		weapon_slot_array[i].set_weapon_in_slot(weapon_reference_array[i])

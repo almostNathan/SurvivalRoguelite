@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d2kqdjimjnuoy" path="res://Weapons/Weapons/Turret/turret_bullet.tscn" id="2_t3c47"]
 [ext_resource type="Texture2D" uid="uid://c2tqnllfa140a" path="res://Art/Weapons/turret_weapon.png" id="2_vyp14"]
 
-[node name="TurretWeapon" type="Node2D" groups=["weapons"]]
+[node name="TurretWeapon" type="Node2D" groups=["turret", "weapons"]]
 rotation = 1.5708
 script = ExtResource("1_jkoss")
 bullet_scene = ExtResource("2_t3c47")

@@ -58,7 +58,7 @@ func increase_stats(num_of_times):
 	cur_damage_scaling = cur_damage_scaling * pow((1 + damage_scaling_per_level),num_of_times) 
 
 func create_exp_map():
-	var cur_total_exp : int = 100
+	var cur_total_exp : int = 100.0
 	exp_map.append(-1)
 	for i in range(100):
 		exp_map.append(cur_total_exp)
@@ -66,3 +66,12 @@ func create_exp_map():
 
 func connect_to_weapon(weapon : BaseWeapon):
 	level_up_damage.connect(Callable(weapon, "modify_damage_mult"))
+
+
+func reset_exp_mod_man():
+	exp_total = 0.0
+	player_level = 1
+	cur_damage_scaling = 1.0
+	cur_hp_scaling = 1.0
+	cur_regen_scaling = 1.0
+	update_exp_hud()

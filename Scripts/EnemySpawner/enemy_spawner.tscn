@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://0bru8l7ikun8"]
+
+[ext_resource type="Script" path="res://Scripts/EnemySpawner/enemy_spawner.gd" id="1_elklw"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_elklw")
+
+[node name="EliteSpawnTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="DifficultyScalingTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="EliteSpawnTimer" to="." method="_on_elite_spawn_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="DifficultyScalingTimer" to="." method="_on_difficulty_scaling_timer_timeout"]

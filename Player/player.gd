@@ -21,7 +21,7 @@ var offhand_weapon_scene : PackedScene
 @onready var i_frame_timer = $IFrameTimer
 @onready var dodge_timer = $DodgeTimer
 @onready var player_hud = $PlayerHud
-@onready var inventory = $PlayerHud/Inventory
+@onready var exp_mod_man = $ExperienceManagerMod
 
 #Modifier variables
 var weapon_spread = PI/4
@@ -43,7 +43,6 @@ var weapon_inventory = []
 
 func _ready():
 	Globals.player = self
-	pass
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("dodge"):
@@ -78,6 +77,21 @@ func equip_offhand(weapon : BaseWeapon):
 	equipping_weapon.emit(offhand_weapon)
 	self.add_child(offhand_weapon)
 	Hud.inventory.add_weapon(offhand_weapon)
+
+func reset_player():
+	self.remove_child(main_weapon)
+	self.remove_child(offhand_weapon)
+	Hud.inventory.reset_inventory()
+	for weapon in weapon_inventory:
+		weapon.queue_free()
+	weapon_inventory = []
+	for mod in mod_inventory:
+		mod_inventory.remove_at(mod_inventory.find(mod))
+		mod.queue_free()
+	
+	health.heal_to_full()
+	exp_mod_man.reset_exp_mod_man()
+
 
 func move(delta):
 	var movement_direction = Vector2.ZERO

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0lk0cpq1ot7j"]
+[gd_scene load_steps=7 format=3 uid="uid://c0lk0cpq1ot7j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nif6k"]
 [ext_resource type="PackedScene" uid="uid://ckannwtpfgiag" path="res://Player/player.tscn" id="1_u1u1k"]
 [ext_resource type="Texture2D" uid="uid://c60qs65lspu6u" path="res://Art/basicterrain/plains.png" id="2_bf4rg"]
+[ext_resource type="PackedScene" uid="uid://0bru8l7ikun8" path="res://Scripts/EnemySpawner/enemy_spawner.tscn" id="4_plog5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uv6ev"]
 texture = ExtResource("2_bf4rg")
@@ -101,13 +102,6 @@ layer_0/tile_data = PackedInt32Array(131081, 65536, 3, 131082, 131072, 3, 131083
 [node name="Player" parent="." instance=ExtResource("1_u1u1k")]
 position = Vector2(538, 360)
 
-[node name="SpawnTimer" type="Timer" parent="."]
-autostart = true
-
-[node name="EliteSpawnTimer" type="Timer" parent="."]
-wait_time = 30.0
-autostart = true
+[node name="EnemySpawner" parent="." instance=ExtResource("4_plog5")]
 
 [connection signal="ready" from="Player" to="." method="_on_player_ready"]
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="timeout" from="EliteSpawnTimer" to="." method="_on_elite_spawn_timer_timeout"]

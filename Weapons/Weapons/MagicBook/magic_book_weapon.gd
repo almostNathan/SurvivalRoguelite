@@ -11,8 +11,8 @@ func _init():
 func set_bullet_aiming(new_bullet, _bullet_number, _aiming_direction):
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	var random_enemy = enemies.pick_random()
-	new_bullet.target_position = random_enemy.position
-	
-	new_bullet.rotation = player.get_angle_to(random_enemy.position)
+	if random_enemy != null:
+		new_bullet.target_position = random_enemy.position
+		new_bullet.rotation = player.get_angle_to(random_enemy.position)
 
 

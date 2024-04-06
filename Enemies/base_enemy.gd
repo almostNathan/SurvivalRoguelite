@@ -112,6 +112,11 @@ func make_elite():
 	cur_health = max_health
 	set_max_health.emit(max_health)
 	health_change.emit(cur_health)
-	
-	
-	
+
+func modify_stats(modifiers):
+	max_health = max_health * modifiers.health_modifier
+	base_damage = base_damage * modifiers.damage_modifier
+	max_speed *= modifiers.speed_modifier
+	cur_health = max_health
+	set_max_health.emit(max_health)
+	health_change.emit(cur_health)

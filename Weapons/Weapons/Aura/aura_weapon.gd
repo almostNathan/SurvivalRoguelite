@@ -1,6 +1,7 @@
 extends BaseWeapon
 class_name AuraWeapon
 
+
 func _init():
 	icon = preload("res://Art/Weapons/aura_bullet.png")
 	base_damage = 1
@@ -11,6 +12,7 @@ func _init():
 
 func _on_weapon_timer_timeout():
 	var new_bullet = bullet_scene.instantiate()
+	new_bullet.hit_count = projectile_count
 	new_bullet.set_weapon(self)
 	get_parent().add_sibling(new_bullet)
 	new_bullet.set_player(player)

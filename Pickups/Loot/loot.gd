@@ -1,4 +1,5 @@
 extends Pickup
+class_name Loot
 
 var selection_count = 3
 var lootable = true

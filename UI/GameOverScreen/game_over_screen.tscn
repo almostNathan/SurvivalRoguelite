@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk30tumpnkoju"]
+
+[ext_resource type="Script" path="res://UI/GameOverScreen/game_over_screen.gd" id="1_hmb6c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x6533"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_ovm7g"]
+font_size = 24
+
+[node name="GameOverScreen" type="PanelContainer"]
+process_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -475.0
+offset_top = -242.5
+offset_right = 475.0
+offset_bottom = 242.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hmb6c")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_x6533")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "You're Score is: 100"
+label_settings = SubResource("LabelSettings_ovm7g")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

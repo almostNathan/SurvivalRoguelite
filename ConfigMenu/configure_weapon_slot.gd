@@ -4,6 +4,7 @@ class_name ConfigureWeaponSlot
 signal mod_placed_in_weapon()
 
 @onready var mod_grid = $WeaponModGridContainer
+@onready var weapon_icon = $Icon
 var weapon_in_slot : BaseWeapon
 var moddable = false
 var open = true
@@ -39,7 +40,13 @@ func set_weapon_in_slot(weapon):
 	texture = null
 	open = false
 	moddable = true
-	
+
+func remove_weapon_in_slot():
+	weapon_in_slot = null
+	weapon_icon.texture = null
+	texture = preload("res://Art/hud_assets/icon_background.png")
+	open = true
+	moddable = false
 
 func _on_button_pressed():
 	add_mods_to_weapon()

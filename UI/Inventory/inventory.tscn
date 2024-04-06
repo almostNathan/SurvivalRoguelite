@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bei0ewiiu0oln"]
 
 [ext_resource type="Script" path="res://UI/Inventory/inventory.gd" id="1_ly3dm"]
-[ext_resource type="PackedScene" uid="uid://jkssd8irtl6y" path="res://UI/WeaponSlot/weapon_slot.tscn" id="2_ph38w"]
+[ext_resource type="PackedScene" uid="uid://cfpgyo1cjktg6" path="res://UI/Inventory/InventoryWeaponSlot/inventory_weapon_slot.tscn" id="2_rix8c"]
 
 [node name="Inventory" type="PanelContainer"]
 z_index = 99
@@ -19,20 +19,20 @@ layout_mode = 2
 theme_override_constants/h_separation = 5
 columns = 6
 
-[node name="WeaponSlot" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+[node name="WeaponSlot" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_rix8c")]
 layout_mode = 2
 
-[node name="WeaponSlot2" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+[node name="WeaponSlot2" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_rix8c")]
 layout_mode = 2
 
-[node name="WeaponSlot3" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+[node name="WeaponSlot3" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_rix8c")]
 layout_mode = 2
 
-[node name="WeaponSlot4" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+[node name="WeaponSlot4" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_rix8c")]
 layout_mode = 2
 
-[node name="WeaponSlot5" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+[node name="WeaponSlot5" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_rix8c")]
 layout_mode = 2
 
-[node name="WeaponSlot6" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_ph38w")]
+[node name="WeaponSlot6" parent="WeaponDisplayContainer/WeaponGridContainer" instance=ExtResource("2_rix8c")]
 layout_mode = 2

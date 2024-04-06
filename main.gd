@@ -1,9 +1,9 @@
 extends Node
+class_name MainScene
 
 signal menu_button_pressed
 
 @onready var player = $Player
-@onready var health_bar = $Player/HealthBar
 
 var spawn_count = 20
 
@@ -11,10 +11,10 @@ var spawn_count = 20
 #var slime = preload("res://Enemies/Slime/slime.tscn")
 #var mushroom = preload("res://Enemies/Mushroom/mushroom.tscn")
 
-@onready var monster_pool : MonsterPool
+
 
 func _ready():
-	monster_pool = MonsterPool.new()
+	Globals.main_scene = self
 
 
 func _process(_delta):
@@ -28,36 +28,29 @@ func _process(_delta):
 			closest_enemy_position = enemy.position
 	player.set_aiming_direction(closest_enemy_position)
 
-func _on_player_health_changed(cur_health):
-	health_bar.value = cur_health
-
 func get_level_size():
 	return $Background.size
 
 func _on_player_ready():
 	get_tree().paused = true
 
-func _on_elite_spawn_timer_timeout():
-	var viewport_size = get_viewport().size
-	var spawn_distance = pow(pow(viewport_size.x, 2) + pow(viewport_size.y, 2), 1/2.0) /2
-	var spawn_direction = Vector2(0,1).rotated(randf_range(0,2*PI))
-	var spawn_location = (spawn_direction * spawn_distance) + player.position
-	
-	var new_enemy = monster_pool.get_monster_array().pick_random().instantiate()
-	add_child(new_enemy)
-	new_enemy.position = spawn_location
-	new_enemy.make_elite()
+func reset_game():
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	var pickups = get_tree().get_nodes_in_group("pickups")
+	var bullets = get_tree().get_nodes_in_group("bullet")
+	var turrets = get_tree().get_nodes_in_group("turret")
+	for enemy in enemies:
+		remove_child(enemy)
+		enemy.queue_free()
+	for pickup in pickups:
+		remove_child(pickup)
+		pickup.queue_free()
+	for bullet in bullets:
+		remove_child(bullet)
+		bullet.queue_free()
+	for turret in turrets:
+		remove_child(turret)
+		turret.queue_free()
 
-func _on_spawn_timer_timeout():
-	$SpawnTimer.wait_time = 5
-	for i in spawn_count:
-		var viewport_size = get_viewport().size
-		var spawn_distance = pow(pow(viewport_size.x, 2) + pow(viewport_size.y, 2), 1/2.0) /2
-		var spawn_direction = Vector2(0,1).rotated(randf_range(0,2*PI))
-		var spawn_location = (spawn_direction * spawn_distance) + player.position
-		print(spawn_distance)
-		print(viewport_size)
-		
-		var new_enemy = monster_pool.get_monster_array().pick_random().instantiate()
-		add_child(new_enemy)
-		new_enemy.position = spawn_location
+	player.reset_player()
+	Hud.open_weapon_config()

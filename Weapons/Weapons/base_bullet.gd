@@ -54,3 +54,7 @@ func set_player(new_player):
 
 func _on_on_screen_enabler_screen_exited():
 	queue_free()
+
+
+func _on_lifespan_timer_timeout():
+	queue_free()

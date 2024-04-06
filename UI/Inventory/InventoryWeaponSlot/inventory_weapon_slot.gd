@@ -4,6 +4,7 @@ class_name InventoryWeaponSlot
 signal mod_placed_in_weapon()
 
 @onready var mod_grid = $ModGridContainer
+@onready var weapon_icon = $Icon
 var weapon_in_slot : BaseWeapon
 var moddable = false
 var open = true
@@ -39,6 +40,11 @@ func set_weapon_in_slot(weapon):
 	open = false
 	moddable = true
 
+func remove_weapon_in_slot():
+	weapon_in_slot = null
+	weapon_icon.texture = null
+	open = true
+	moddable = false
 
 func _on_button_pressed():
 	add_mods_to_weapon()

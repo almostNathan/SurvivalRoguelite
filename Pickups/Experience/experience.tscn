@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Pickups/Experience/experience.gd" id="2_e2cg2"]
 [ext_resource type="Texture2D" uid="uid://w44u4wk7aqxp" path="res://Art/basicterrain/dust_particles_01.png" id="3_fw7wo"]
 
-[node name="Experience" instance=ExtResource("1_n2c22")]
+[node name="Experience" groups=["pickups"] instance=ExtResource("1_n2c22")]
 script = ExtResource("2_e2cg2")
 
 [node name="Sprite2D" parent="." index="1"]

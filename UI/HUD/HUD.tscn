@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cls41f23ro05u"]
+[gd_scene load_steps=12 format=3 uid="uid://cls41f23ro05u"]
 
 [ext_resource type="Script" path="res://UI/HUD/HUD.gd" id="1_dy2ux"]
 [ext_resource type="Script" path="res://UI/HUD/ExperienceBar.gd" id="2_qxpjf"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://fi3swbm7tu0t" path="res://UI/LevelUpMenu/level_up_menu.tscn" id="5_03xwm"]
 [ext_resource type="PackedScene" uid="uid://cvd3vvp17r7qx" path="res://ConfigMenu/configure_weapons.tscn" id="5_jquo2"]
 [ext_resource type="PackedScene" uid="uid://cepn4uj7wa126" path="res://UI/PlayerMenu/player_menu.tscn" id="7_joa0v"]
+[ext_resource type="PackedScene" uid="uid://dk30tumpnkoju" path="res://UI/GameOverScreen/game_over_screen.tscn" id="8_y7dkx"]
 
 [sub_resource type="SystemFont" id="SystemFont_g6qcy"]
 
@@ -102,4 +103,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_liywv")
 value = 100.0
 
 [node name="PlayerMenu" parent="." instance=ExtResource("7_joa0v")]
+visible = false
+
+[node name="GameOverScreen" parent="." instance=ExtResource("8_y7dkx")]
 visible = false

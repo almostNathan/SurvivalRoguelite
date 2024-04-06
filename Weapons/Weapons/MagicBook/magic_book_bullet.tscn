@@ -132,7 +132,7 @@ animations = [{
 "speed": 35.0
 }]
 
-[node name="MagicBookBullet" type="Area2D"]
+[node name="MagicBookBullet" type="Area2D" groups=["bullet"]]
 script = ExtResource("1_jr3aq")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]

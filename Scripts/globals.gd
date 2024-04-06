@@ -1,6 +1,6 @@
 extends Node
 var player : CharacterBody2D
-
+var main_scene : MainScene
 
 var mod_scene_list = [
 	preload("res://Weapons/Mods/AddProj/add_proj_mod.tscn"),
