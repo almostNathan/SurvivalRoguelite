@@ -7,6 +7,7 @@
 radius = 177.138
 
 [node name="AuraBullet" type="Area2D" groups=["bullet"]]
+modulate = Color(1, 1, 1, 0.729412)
 script = ExtResource("1_flhco")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -19,9 +20,9 @@ position = Vector2(-0.500009, -0.502973)
 scale = Vector2(0.1805, 0.1805)
 texture = ExtResource("2_j0htp")
 
-[node name="DamageTimer" type="Timer" parent="."]
+[node name="FadeoutTimer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="FadeoutTimer" to="." method="_on_fadeout_timer_timeout"]

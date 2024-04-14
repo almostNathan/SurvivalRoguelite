@@ -15,7 +15,6 @@ var mod_slot_scene = preload("res://UI/Inventory/InventoryModSlot/inventory_mod_
 func load_player_menu():
 	mod_inventory = Globals.player.mod_inventory
 	weapon_inventory = Globals.player.weapon_inventory
-	print(weapon_inventory)
 
 	for weapon in weapon_inventory:
 		var new_weapon_slot = weapon_slot_scene.instantiate()

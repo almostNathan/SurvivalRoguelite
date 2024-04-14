@@ -43,6 +43,10 @@ layout_mode = 2
 layout_mode = 2
 theme = SubResource("Theme_p3i17")
 
+[node name="OffhandWeaponSlot2" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
+layout_mode = 2
+theme = SubResource("Theme_p3i17")
+
 [node name="Button" type="Button" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer"]
 layout_mode = 2
 text = "START"
@@ -67,3 +71,4 @@ columns = 10
 [connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/MainWeaponSlot" method="_on_button_pressed"]
 [connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/OffhandWeaponSlot" method="_on_button_pressed"]
+[connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/OffhandWeaponSlot2" method="_on_button_pressed"]

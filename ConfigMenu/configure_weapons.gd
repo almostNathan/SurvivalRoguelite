@@ -45,9 +45,14 @@ func clear_weapons_config():
 
 func _on_button_pressed():
 	player = Globals.player
-	var weapon_slots = weapon_grid_container.get_children()
-	player.equip_main(weapon_slots[0].weapon_in_slot)
-	player.equip_offhand(weapon_slots[1].weapon_in_slot)
+	
+	for weapon_slot in weapon_grid_container.get_weapon_slots():
+		player.add_to_weapon_inventory(weapon_slot.weapon_in_slot)
+		
+	player.equip_weapons()
+	#var weapon_slots = weapon_grid_container.get_children()
+	#player.equip_main(weapon_slots[0].weapon_in_slot)
+	#player.equip_offhand(weapon_slots[1].weapon_in_slot)
 	visible = false
 	get_tree().paused = false
 

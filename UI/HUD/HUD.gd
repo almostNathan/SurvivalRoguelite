@@ -34,7 +34,6 @@ func open_menu():
 
 func game_over():
 	game_over_screen.load_game_over_screen()
-	print("youre dead")
 
 func open_weapon_config():
 	config_weapons_screen.open()

@@ -63,20 +63,27 @@ func dodge():
 func angle_to_mouse():
 	return position.angle_to_point(get_global_mouse_position()) + PI/2
 
-func equip_main(weapon : BaseWeapon):
-	weapon_inventory.append(weapon)
-	main_weapon = weapon
-	self.add_child(main_weapon)
-	equipping_weapon.emit(main_weapon)
-	Hud.inventory.add_weapon(main_weapon)
-	main_weapon.modify_attack_speed_mult(.15)
+func equip_weapons():
+	for weapon in weapon_inventory:
+		self.add_child(weapon)
+		equipping_weapon.emit(weapon)
+		Hud.inventory.add_weapon(weapon)
+		
 
-func equip_offhand(weapon : BaseWeapon):
-	weapon_inventory.append(weapon)
-	offhand_weapon = weapon
-	equipping_weapon.emit(offhand_weapon)
-	self.add_child(offhand_weapon)
-	Hud.inventory.add_weapon(offhand_weapon)
+#func equip_main(weapon : BaseWeapon):
+	#weapon_inventory.append(weapon)
+	#main_weapon = weapon
+	#self.add_child(main_weapon)
+	#equipping_weapon.emit(main_weapon)
+	#Hud.inventory.add_weapon(main_weapon)
+	#main_weapon.modify_attack_speed_mult(.15)
+#
+#func equip_offhand(weapon : BaseWeapon):
+	#weapon_inventory.append(weapon)
+	#offhand_weapon = weapon
+	#equipping_weapon.emit(offhand_weapon)
+	#self.add_child(offhand_weapon)
+	#Hud.inventory.add_weapon(offhand_weapon)
 
 func reset_player():
 	self.remove_child(main_weapon)
@@ -156,6 +163,9 @@ func trigger_loot(_loot_scene_list):
 
 func add_to_inventory(item):
 	mod_inventory.append(item)
+
+func add_to_weapon_inventory(weapon):
+	weapon_inventory.append(weapon)
 	
 func level_up():
 	Hud.level_up()
