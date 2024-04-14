@@ -33,7 +33,7 @@ theme_override_constants/margin_bottom = 20
 [node name="WeaponGridContainer" type="GridContainer" parent="HSplitContainer/VSplitContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 100
-columns = 3
+columns = 7
 script = ExtResource("2_bs2sq")
 
 [node name="MainWeaponSlot" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
@@ -44,6 +44,18 @@ layout_mode = 2
 theme = SubResource("Theme_p3i17")
 
 [node name="OffhandWeaponSlot2" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
+layout_mode = 2
+theme = SubResource("Theme_p3i17")
+
+[node name="OffhandWeaponSlot3" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
+layout_mode = 2
+theme = SubResource("Theme_p3i17")
+
+[node name="OffhandWeaponSlot4" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
+layout_mode = 2
+theme = SubResource("Theme_p3i17")
+
+[node name="OffhandWeaponSlot5" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer" instance=ExtResource("2_auv8g")]
 layout_mode = 2
 theme = SubResource("Theme_p3i17")
 
@@ -66,9 +78,9 @@ columns = 5
 
 [node name="AvailableWeaponsGridContainer" type="GridContainer" parent="HSplitContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 columns = 10
 
 [connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/MainWeaponSlot" method="_on_button_pressed"]
-[connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/OffhandWeaponSlot" method="_on_button_pressed"]
-[connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/OffhandWeaponSlot2" method="_on_button_pressed"]
+[connection signal="pressed" from="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer/Button" to="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer" method="_on_button_pressed"]

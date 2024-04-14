@@ -58,7 +58,7 @@ func increase_stats(num_of_times):
 	cur_damage_scaling = cur_damage_scaling * pow((1 + damage_scaling_per_level),num_of_times) 
 
 func create_exp_map():
-	var cur_total_exp : int = 100.0
+	var cur_total_exp : float = 100.0
 	exp_map.append(-1)
 	for i in range(100):
 		exp_map.append(cur_total_exp)

@@ -16,6 +16,7 @@ texture = ExtResource("2_ln3kb")
 region_rect = Rect2(0.604588, 17.2939, 14.8792, 14.3887)
 
 [node name="WeaponTimer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="WeaponTimer" to="." method="_on_weapon_timer_timeout"]

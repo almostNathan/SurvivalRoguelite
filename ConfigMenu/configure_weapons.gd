@@ -10,8 +10,6 @@ var mod_slot_scene = preload("res://ConfigMenu/configure_mod_slot.tscn")
 var weapon_slot_scene = preload("res://ConfigMenu/configure_weapon_slot.tscn")
 
 var player :Player
-var player_main_weapon
-var player_offhand_weapon
 var mod_list = AllModList.mod_scene_list
 var weapon_list = AllWeaponList.weapon_scene_list
 
@@ -38,16 +36,16 @@ func open():
 	get_tree().paused = true
 
 func clear_weapons_config():
-	main_weapon_slot.remove_weapon_in_slot()
-	offhand_weapon_slot.remove_weapon_in_slot()
-
+	for weapon_slot in weapon_grid_container.get_weapon_slots():
+		weapon_slot.remove_weapon_in_slot()
 
 
 func _on_button_pressed():
 	player = Globals.player
 	
 	for weapon_slot in weapon_grid_container.get_weapon_slots():
-		player.add_to_weapon_inventory(weapon_slot.weapon_in_slot)
+		if weapon_slot.weapon_in_slot != null:
+			player.add_to_weapon_inventory(weapon_slot.weapon_in_slot)
 		
 	player.equip_weapons()
 	#var weapon_slots = weapon_grid_container.get_children()

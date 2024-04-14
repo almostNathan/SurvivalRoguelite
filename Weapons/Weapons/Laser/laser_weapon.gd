@@ -11,12 +11,19 @@ func _init():
 
 func _on_weapon_timer_timeout():
 	var aiming_direction :float= Vector2.RIGHT.angle_to(player.aiming_direction)
-	var new_bullet = bullet_scene.instantiate()
-	new_bullet.set_weapon(self)
-	get_parent().add_sibling(new_bullet)
-	new_bullet.set_player(player)
-	shooting_weapon.emit(new_bullet)
-	modify_bullet(new_bullet)
-	new_bullet.global_position = get_parent().position
-	
-	new_bullet.rotate(aiming_direction)
+	left_shooting_angle = aiming_direction + (shooting_angle/2)
+	angle_between_bullets = shooting_angle / (projectile_count + 1)
+
+	for i in range(projectile_count):
+		var new_bullet = bullet_scene.instantiate()
+		new_bullet.set_weapon(self)
+		player.add_sibling(new_bullet)
+		new_bullet.set_player(player)
+		shooting_weapon.emit(new_bullet)
+		modify_bullet(new_bullet)
+		new_bullet.global_position = get_parent().position
+		set_bullet_aiming(new_bullet, i, aiming_direction)
+
+func set_bullet_aiming(new_bullet, bullet_number, aiming_direction):
+	bullet_number += 1
+	new_bullet.rotate(left_shooting_angle - (bullet_number*angle_between_bullets))
