@@ -14,6 +14,7 @@ func _input(event):
 	if event.is_action("menu_button") and not event.is_echo() and event.is_pressed():
 		Hud.open_menu()
 
+
 func update_health(cur_health):
 	health_bar.value = cur_health
 
@@ -40,3 +41,4 @@ func open_weapon_config():
 
 func update_weapons_display():
 	weapons_display.update()
+

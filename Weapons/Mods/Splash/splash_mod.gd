@@ -31,7 +31,7 @@ func damage_multiplier(mult_value):
 
 func refresh():
 	if weapon != null:
-		damage_value = weapon.base_damage * damage_coefficient * current_rank
+		damage_value = weapon.current_damage * damage_coefficient * current_rank
 
 func damage_add(add_value):
 	damage_value += add_value

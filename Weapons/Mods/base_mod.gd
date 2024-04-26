@@ -22,7 +22,8 @@ func remove_mod():
 	pass
 
 func can_upgrade(new_mod):
-	if new_mod.get_class() == self.get_class() and new_mod.current_rank == self.current_rank and new_mod != self:
+	print(new_mod.name)
+	if new_mod.name == self.name and new_mod.current_rank == self.current_rank and new_mod != self:
 		return true
 	else:
 		return false

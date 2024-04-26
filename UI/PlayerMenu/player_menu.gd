@@ -3,6 +3,7 @@ class_name PlayerMenu
 
 @onready var weapons_container = $HBoxContainer/WeaponsMarginContainer/WeaponsContainer
 @onready var mod_container = $HBoxContainer/ModsMarginContainer/VBoxContainer/ModContainer
+@onready var inventory_player = $HBoxContainer/InventoryPlayer
 
 var is_open = false
 var weapon_inventory = []
@@ -20,12 +21,14 @@ func load_player_menu():
 		weapons_container.add_child(new_weapon_slot)
 		new_weapon_slot.set_weapon_in_slot(weapon)
 
-
 	for mod in mod_inventory:
 		var new_mod_slot = mod_slot_scene.instantiate()
 		mod_container.add_child(new_mod_slot)
 		new_mod_slot.set_mod_in_slot(mod)
 		new_mod_slot.custom_minimum_size = Vector2(50, 50)
+	
+	inventory_player.update()
+	
 	get_tree().paused = true
 	visible = true
 	is_open = true
@@ -35,7 +38,9 @@ func close_player_menu():
 	Globals.player.mod_inventory = []
 	for weapon in weapon_inventory:
 		weapon.detach_all_mods()
-
+		
+	Globals.player.detach_all_mods()
+	
 	for weapon_slot in weapons_container.get_children():
 		weapon_slot.add_mods_to_weapon()
 		weapons_container.remove_child(weapon_slot)
@@ -44,6 +49,8 @@ func close_player_menu():
 		Globals.player.mod_inventory.append(mod_slot.get_mod())
 		mod_container.remove_child(mod_slot)
 		mod_slot.queue_free()
+	
+	inventory_player.equip_mods()
 	
 	Hud.update_weapons_display()
 	get_tree().paused = false

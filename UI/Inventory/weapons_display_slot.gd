@@ -8,6 +8,6 @@ var weapon_in_slot
 func set_weapon_in_slot(weapon : BaseWeapon):
 	weapon_in_slot = weapon
 	image.texture = weapon.get_icon()
-	mod_slot_label.text = str(weapon.total_mod_slots)
+	mod_slot_label.text = str(len(weapon.mod_list)) + ' / ' + str(weapon.total_mod_slots)
 
 

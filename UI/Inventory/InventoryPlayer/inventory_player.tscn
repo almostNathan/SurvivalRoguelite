@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://4tgftpxrrqt2"]
+
+[ext_resource type="Script" path="res://UI/Inventory/InventoryPlayer/inventory_player.gd" id="1_qx54h"]
+[ext_resource type="Texture2D" uid="uid://chi75m6hsfsx8" path="res://generic-female/generic-female-right/frame0.png" id="1_w8piv"]
+
+[node name="InventoryPlayer" type="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_qx54h")
+
+[node name="PlayerTexture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_w8piv")
+
+[node name="PlayerModContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3

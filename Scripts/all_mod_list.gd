@@ -13,7 +13,11 @@ var mod_scene_list = [
 	preload("res://Weapons/Mods/Splash/splash_mod.tscn"),
 	preload("res://Weapons/Mods/TimeBomb/time_bomb_mod.tscn"),
 	preload("res://Weapons/Mods/ExplodeOnDeath/explode_on_death_mod.tscn"),
-	preload("res://Weapons/Mods/PoisonCloud/poison_cloud_mod.tscn")
+	preload("res://Weapons/Mods/PoisonCloud/poison_cloud_mod.tscn"),
+	#preload("res://Player/Mods/DamagePlayerMod/damage_player_mod.tscn")
 ]
 
+var player_mod_scene_list = [
+	preload("res://Player/Mods/DamagePlayerMod/damage_player_mod.tscn")
+]
 

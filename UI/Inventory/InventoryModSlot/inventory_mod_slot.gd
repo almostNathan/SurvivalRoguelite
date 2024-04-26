@@ -3,7 +3,7 @@ class_name InventoryModSlot
 
 @onready var rank_label = $RankLabel
 
-var mod_in_slot : BaseMod
+var mod_in_slot
 var is_dragged = false
 
 

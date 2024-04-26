@@ -24,7 +24,7 @@ func apply_effect(body):
 	
 func refresh():
 	if weapon != null:
-		damage_value = weapon.base_damage * 2 * current_rank
+		damage_value = weapon.current_damage * 2 * current_rank
 
 func remove_mod():
 	super()

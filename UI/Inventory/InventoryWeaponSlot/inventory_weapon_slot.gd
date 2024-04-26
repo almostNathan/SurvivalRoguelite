@@ -25,6 +25,7 @@ func _drop_data(_at_position, data):
 		mod_grid.add_child(new_mod_slot)
 		new_mod_slot.set_mod_in_slot(data)
 		new_mod_slot.custom_minimum_size = Vector2(self.size.x/3, self.size.y/3)
+		mod_slot_label.text = str(count_mods_on_weapon()) + ' / ' + str(weapon_in_slot.total_mod_slots)
 		#weapon_in_slot.add_mod(data)
 		#update_weapon_slot()
 	elif data is BaseWeapon:
@@ -66,7 +67,7 @@ func count_mods_on_weapon():
 	return len(mod_array)
 
 func update_weapon_slot():
-	mod_slot_label.text = str(weapon_in_slot.total_mod_slots)
+	mod_slot_label.text = str(len(weapon_in_slot.mod_list)) + ' / ' + str(weapon_in_slot.total_mod_slots)
 	var mod_slot_size = $Icon.size.x/3
 	clear_mod_grid_container()
 	for mod in weapon_in_slot.mod_list:

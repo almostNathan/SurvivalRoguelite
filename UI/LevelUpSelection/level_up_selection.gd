@@ -1,7 +1,7 @@
 extends MarginContainer
 
 @onready var selection_icon = $SelectionIcon
-var mod_in_selection : BaseMod
+var mod_in_selection 
 signal selection_made()
 
 func set_selection(mod):

@@ -13,3 +13,4 @@ func get_weapon_slots():
 func _on_button_pressed():
 	for weapon_slot in get_weapon_slots():
 		weapon_slot.add_mods_to_weapon()
+	Hud.update_weapons_display()

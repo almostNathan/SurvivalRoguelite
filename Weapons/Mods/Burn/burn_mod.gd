@@ -31,7 +31,7 @@ func apply_effect(body):
 	
 func refresh():
 	if weapon != null:
-		damage_value = weapon.base_damage * .6 * current_rank
+		damage_value = weapon.current_damage * .6 * current_rank
 		burn_duration = weapon.base_attack_speed*2
 		burn_dps = damage_value / burn_duration
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cepn4uj7wa126"]
+[gd_scene load_steps=4 format=3 uid="uid://cepn4uj7wa126"]
 
 [ext_resource type="Script" path="res://UI/PlayerMenu/player_menu.gd" id="1_hbfhr"]
+[ext_resource type="PackedScene" uid="uid://4tgftpxrrqt2" path="res://UI/Inventory/InventoryPlayer/inventory_player.tscn" id="2_27fjt"]
 [ext_resource type="Script" path="res://UI/PlayerMenu/ModContainer.gd" id="2_s4iq0"]
 
 [node name="PlayerMenu" type="PanelContainer"]
@@ -10,15 +11,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -287.5
-offset_top = -196.5
-offset_right = 287.5
-offset_bottom = 196.5
+offset_left = -421.0
+offset_top = -196.0
+offset_right = 422.0
+offset_bottom = 197.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hbfhr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="InventoryPlayer" parent="HBoxContainer" instance=ExtResource("2_27fjt")]
 layout_mode = 2
 
 [node name="WeaponsMarginContainer" type="MarginContainer" parent="HBoxContainer"]

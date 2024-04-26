@@ -40,6 +40,8 @@ var friction = 1200.0
 
 var mod_inventory = []
 var weapon_inventory = []
+var player_mod_list = []
+
 
 func _ready():
 	Globals.player = self
@@ -153,3 +155,15 @@ func add_to_weapon_inventory(weapon):
 func level_up():
 	Hud.level_up()
 
+func add_mod(mod_to_add:BasePlayerMod):
+	mod_to_add.equip(self)
+	player_mod_list.append(mod_to_add)
+
+func remove_mod(mod_to_remove: BasePlayerMod):
+	mod_to_remove.remove_mod()
+	player_mod_list.remove_at(player_mod_list.find(self))
+
+func detach_all_mods():
+	for mod in player_mod_list:
+		mod.remove_mod()
+	player_mod_list = []

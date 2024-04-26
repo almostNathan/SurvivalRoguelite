@@ -1,7 +1,7 @@
 extends MarginContainer
 class_name ConfigureModSlot
 
-var mod_in_slot : BaseMod
+var mod_in_slot 
 
 func _get_drag_data(_at_position):
 	set_drag_preview(self.duplicate())

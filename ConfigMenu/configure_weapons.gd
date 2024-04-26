@@ -9,7 +9,7 @@ extends PanelContainer
 var mod_slot_scene = preload("res://ConfigMenu/configure_mod_slot.tscn")
 var weapon_slot_scene = preload("res://ConfigMenu/configure_weapon_slot.tscn")
 
-var player :Player
+var player : Player
 var mod_list = AllModList.mod_scene_list
 var weapon_list = AllWeaponList.weapon_scene_list
 
@@ -51,10 +51,7 @@ func _on_button_pressed():
 	
 	var damage_player_mod = preload("res://Player/Mods/DamagePlayerMod/damage_player_mod.tscn").instantiate()
 	#damage_player_mod.equip(player)
-	
-	#var weapon_slots = weapon_grid_container.get_children()
-	#player.equip_main(weapon_slots[0].weapon_in_slot)
-	#player.equip_offhand(weapon_slots[1].weapon_in_slot)
+
 	visible = false
 	get_tree().paused = false
 

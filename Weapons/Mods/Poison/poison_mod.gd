@@ -29,7 +29,7 @@ func apply_effect(body):
 
 func refresh():
 	if weapon != null:
-		poison_dps = weapon.base_damage * poison_dps_coefficient * current_rank
+		poison_dps = weapon.current_damage * poison_dps_coefficient * current_rank
 	
 
 func remove_mod():
