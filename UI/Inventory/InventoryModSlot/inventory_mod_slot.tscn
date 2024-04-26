@@ -1,10 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2knfn2rb8yet"]
+[gd_scene load_steps=4 format=3 uid="uid://d2knfn2rb8yet"]
 
 [ext_resource type="Script" path="res://UI/Inventory/InventoryModSlot/inventory_mod_slot.gd" id="1_5qerw"]
+[ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="2_20mtj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ko43"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [node name="InventoryModSlot" type="MarginContainer"]
+process_mode = 2
+offset_right = 85.0
+offset_bottom = 86.0
 script = ExtResource("1_5qerw")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 2
+texture = ExtResource("2_20mtj")
 expand_mode = 1
+
+[node name="RankLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "1
+"
+label_settings = SubResource("LabelSettings_0ko43")

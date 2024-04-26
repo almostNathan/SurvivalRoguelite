@@ -32,13 +32,10 @@ func _on_body_entered(body):
 	delete_bullet = true
 	if body.has_method("hit") && body.is_in_group("enemy"):
 		enemies_hit += 1
-		weapon.emit_signal("on_hit", body, self)
+		weapon.on_hit.emit(body, self)
 		if (delete_bullet):
 			queue_free()
 
-func add_mod(mod_to_add):
-	add_child(mod_to_add)
-	
 func set_movement_direction(aiming_direction: Vector2):
 	movement_direction_vector = aiming_direction
 

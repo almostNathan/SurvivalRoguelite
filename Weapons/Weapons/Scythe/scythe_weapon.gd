@@ -7,10 +7,12 @@ var lead_in_angle = PI/2
 func _init():
 	icon = preload("res://Art/Weapons/scythe.png")
 	base_damage = 2
-	base_attack_speed = 1
+	base_attack_speed = 2
 	current_damage = base_damage
 	shooting_angle = PI*2
+	pierce_value = 1
 	is_melee = true
+
 
 
 func set_bullet_aiming(new_bullet, bullet_number, aiming_direction):

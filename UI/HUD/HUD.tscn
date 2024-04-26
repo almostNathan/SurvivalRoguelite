@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/HUD/HUD.gd" id="1_dy2ux"]
 [ext_resource type="Script" path="res://UI/HUD/ExperienceBar.gd" id="2_qxpjf"]
-[ext_resource type="PackedScene" uid="uid://bei0ewiiu0oln" path="res://UI/Inventory/inventory.tscn" id="3_r21vr"]
+[ext_resource type="PackedScene" uid="uid://bei0ewiiu0oln" path="res://UI/Inventory/weapons_display.tscn" id="3_r21vr"]
 [ext_resource type="PackedScene" uid="uid://cbbvt8rf4y1n4" path="res://UI/LootMenu/loot_menu.tscn" id="4_m76s0"]
 [ext_resource type="PackedScene" uid="uid://fi3swbm7tu0t" path="res://UI/LevelUpMenu/level_up_menu.tscn" id="5_03xwm"]
 [ext_resource type="PackedScene" uid="uid://cvd3vvp17r7qx" path="res://ConfigMenu/configure_weapons.tscn" id="5_jquo2"]
@@ -61,10 +61,7 @@ text = "1"
 label_settings = SubResource("LabelSettings_gnx2e")
 horizontal_alignment = 1
 
-[node name="Inventory" parent="." instance=ExtResource("3_r21vr")]
-offset_top = 2.0
-offset_right = 385.0
-offset_bottom = 62.0
+[node name="WeaponsDisplay" parent="." instance=ExtResource("3_r21vr")]
 
 [node name="LootMenu" parent="." instance=ExtResource("4_m76s0")]
 visible = false

@@ -17,7 +17,7 @@ var mod_list : Array = []
 var icon
 @onready var weapon_timer : Timer = $WeaponTimer
 
-var available_mod_slots = 0
+var total_mod_slots = 3
 var current_mod_count = 0
 var player : CharacterBody2D
 
@@ -32,11 +32,10 @@ var bounce_value = 0
 var pierce_value = 0
 var is_melee = false
 
-func _init():
-	weapon_timer.wait_time = base_attack_speed
 
 func _ready():
 	player = get_parent()
+	weapon_timer.wait_time = base_attack_speed
 
 func modify_bullet(_bullet_proto):
 	pass
@@ -87,7 +86,7 @@ func modify_damage_mult(damage_change):
 	refresh_mods()
 
 func refresh_mods():
-	for mod in get_children():
+	for mod in mod_list:
 		if mod is BaseMod:
 			mod.refresh()
 
@@ -107,12 +106,20 @@ func get_current_damage():
 	return current_damage
 
 func add_mod(mod_to_add : BaseMod):
+
+	mod_to_add.equip(self)
 	mod_list.append(mod_to_add)
-	add_child(mod_to_add)
 	adding_mod.emit(mod_to_add)
 
 func remove_mod(mod_to_remove : BaseMod):
-	mod_list.remove_at(mod_list.find(mod_to_remove))
-
+	mod_to_remove.remove_mod()
+	mod_list.remove_at(mod_list.find(self))
+	
 func get_mod_list():
 	return mod_list
+
+func detach_all_mods():
+	for mod in mod_list:
+		mod.remove_mod()
+	mod_list = []
+	

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bei0ewiiu0oln"]
+
+[ext_resource type="Script" path="res://UI/Inventory/weapons_display.gd" id="1_ly3dm"]
+
+[node name="WeaponsDisplay" type="PanelContainer"]
+script = ExtResource("1_ly3dm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2

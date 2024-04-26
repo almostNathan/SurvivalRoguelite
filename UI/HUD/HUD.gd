@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var exp_bar = $ExperienceBar
 @onready var player_level_label = $PlayerLevelBacksplash/PlayerLevelLabel
-@onready var inventory = $Inventory
+@onready var weapons_display = $WeaponsDisplay
 @onready var loot_menu = $LootMenu
 @onready var config_weapons_screen = $ConfigureWeapons
 @onready var health_bar = $HealthBar
@@ -37,3 +37,6 @@ func game_over():
 
 func open_weapon_config():
 	config_weapons_screen.open()
+
+func update_weapons_display():
+	weapons_display.update()

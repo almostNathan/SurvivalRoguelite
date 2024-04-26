@@ -1,4 +1,4 @@
-extends BulletMod
+extends BaseMod
 class_name PierceMod
 
 var pierce_modifier = 1
@@ -9,21 +9,29 @@ func _init():
 	tooltip_text = "Pierce"
 	icon = preload("res://Art/Drops/pierce_mod.png")
 
-func _ready():
-	super()
-	parent.on_hit.connect(_on_hit)
-	parent.pierce_value += pierce_modifier
+func equip(new_weapon):
+	super(new_weapon)
+	weapon.on_hit.connect(_on_hit)
+	weapon.pierce_value += pierce_modifier
 	
 
 func _on_hit(_body, bullet):
-	if bullet is BaseBullet && bullet.enemies_pierced < parent.pierce_value && bullet.delete_bullet == true:
+	if bullet is BaseBullet && bullet.enemies_pierced < weapon.pierce_value && bullet.delete_bullet == true:
 		bullet.delete_bullet = false
 		bullet.enemies_pierced += 1
-		
-func rank_up():
-	pierce_modifier += 1
-	if parent != null:
-		parent.pierce_value += 1
+
+func refresh():
+	if weapon != null:
+		weapon.pierce_value -= pierce_modifier
+		pierce_modifier = current_rank
+		weapon.pierce_value += pierce_modifier
+	else:
+		pierce_modifier = current_rank
+
+func remove_mod():
+	super()
+	weapon.pierce_value -= pierce_modifier
+	weapon.on_hit.disconnect(_on_hit)
 
 
 

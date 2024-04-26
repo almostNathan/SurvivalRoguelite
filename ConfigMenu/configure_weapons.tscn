@@ -32,7 +32,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="WeaponGridContainer" type="GridContainer" parent="HSplitContainer/VSplitContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 100
+theme_override_constants/h_separation = 50
 columns = 7
 script = ExtResource("2_bs2sq")
 
@@ -60,6 +60,7 @@ layout_mode = 2
 theme = SubResource("Theme_p3i17")
 
 [node name="Button" type="Button" parent="HSplitContainer/VSplitContainer/MarginContainer/WeaponGridContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "START"
 

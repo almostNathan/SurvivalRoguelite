@@ -8,9 +8,9 @@ func _init():
 	tooltip_text = "Time Bomb"
 	icon = preload("res://Art/Drops/time_bomb_mod.png")
 
-func _ready():
-	super()
-	parent.on_hit.connect(_on_hit)
+func equip(new_weapon):
+	super(new_weapon)
+	weapon.on_hit.connect(_on_hit)
 	refresh()
 
 func _on_hit(body, _bullet):
@@ -19,9 +19,14 @@ func _on_hit(body, _bullet):
 func apply_effect(body):
 	var time_bomb_effect_instance = time_bomb_effect.instantiate()
 	body.add_mod(time_bomb_effect_instance)
-	time_bomb_effect_instance.weapon = parent
+	time_bomb_effect_instance.weapon = weapon
 	time_bomb_effect_instance.damage = damage_value
 	
 func refresh():
-	damage_value = parent.current_damage * 2
-	
+	if weapon != null:
+		damage_value = weapon.base_damage * 2 * current_rank
+
+func remove_mod():
+	super()
+	weapon.on_hit.disconnect(_on_hit)
+

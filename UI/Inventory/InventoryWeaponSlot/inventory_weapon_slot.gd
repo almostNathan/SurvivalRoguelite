@@ -5,6 +5,8 @@ signal mod_placed_in_weapon()
 
 @onready var mod_grid = $ModGridContainer
 @onready var weapon_icon = $Icon
+@onready var mod_slot_label = $ModSlotLabel
+
 var weapon_in_slot : BaseWeapon
 var moddable = false
 var open = true
@@ -16,20 +18,23 @@ func _get_drag_data(_at_position):
 		queue_free()
 	return weapon_in_slot
 
-
-
 func _drop_data(_at_position, data):
-	if data is BaseMod:
-		weapon_in_slot.add_mod(data)
-		update_weapon_slot()
-		remove_mod_from_inventory(data)
+	#TODO Handle adding mods that upgrade.
+	if data is BaseMod and weapon_in_slot.total_mod_slots > count_mods_on_weapon():
+		var new_mod_slot = mod_slot_scene.instantiate()
+		mod_grid.add_child(new_mod_slot)
+		new_mod_slot.set_mod_in_slot(data)
+		new_mod_slot.custom_minimum_size = Vector2(self.size.x/3, self.size.y/3)
+		#weapon_in_slot.add_mod(data)
+		#update_weapon_slot()
 	elif data is BaseWeapon:
 		set_weapon_in_slot(data)
+
 
 func _can_drop_data(_at_position, data):
 	if open and data is BaseWeapon:
 		return true
-	if moddable and data is BaseMod:
+	if moddable and data is BaseMod and weapon_in_slot.total_mod_slots > count_mods_on_weapon():
 		return true
 
 
@@ -55,10 +60,13 @@ func add_mods_to_weapon():
 	else:
 		for mod_slot in mod_grid.get_children():
 			weapon_in_slot.add_mod(mod_slot.get_mod())
-		for mod_slot in mod_grid.get_children():
-			mod_slot.queue_free()
+
+func count_mods_on_weapon():
+	var mod_array = mod_grid.get_children()
+	return len(mod_array)
 
 func update_weapon_slot():
+	mod_slot_label.text = str(weapon_in_slot.total_mod_slots)
 	var mod_slot_size = $Icon.size.x/3
 	clear_mod_grid_container()
 	for mod in weapon_in_slot.mod_list:

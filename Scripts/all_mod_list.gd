@@ -5,7 +5,6 @@ var mod_scene_list = [
 	preload("res://Weapons/Mods/AddProj/add_proj_mod.tscn"),
 	preload("res://Weapons/Mods/Bounce/bounce_mod.tscn"),
 	preload("res://Weapons/Mods/Burn/burn_mod.tscn"),
-	preload("res://Weapons/Mods/Crit/crit_mod.tscn"),
 	preload("res://Weapons/Mods/Damage/damage_mod.tscn"),
 	preload("res://Weapons/Mods/AttackSpeed/attack_speed_mod.tscn"),
 	preload("res://Weapons/Mods/Leech/leech_mod.tscn"),

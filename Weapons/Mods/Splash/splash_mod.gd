@@ -1,7 +1,8 @@
-extends BulletMod
+extends BaseMod
 class_name SplashMod
 
 var damage_value = 10
+var damage_coefficient = .8
 var splash_effect_scene = preload("res://GeneralMods/Effects/Splash/splash_effect.tscn")
 
 func _init():
@@ -9,9 +10,9 @@ func _init():
 	icon = preload("res://Art/Drops/splash_mod.png")
 	
 
-func _ready():
-	super()
-	parent.on_hit.connect(_on_hit)
+func equip(new_weapon):
+	super(new_weapon)
+	weapon.on_hit.connect(_on_hit)
 	refresh()
 
 func _on_hit(body, _bullet):
@@ -19,21 +20,23 @@ func _on_hit(body, _bullet):
 
 func apply_effect(body):
 	var splash_effect = splash_effect_scene.instantiate()
-	splash_effect.weapon = parent
+	splash_effect.weapon = weapon
 	splash_effect.damage_value = damage_value
-	parent.get_parent().add_sibling(splash_effect)
+	weapon.get_parent().add_sibling(splash_effect)
 	splash_effect.global_position = body.global_position
 	
-
-func rank_up():
-	current_rank += 1
-	damage_value = (current_rank * damage_value) + current_rank
 
 func damage_multiplier(mult_value):
 	damage_value *= mult_value
 
 func refresh():
-	damage_value = parent.base_damage *.9
+	if weapon != null:
+		damage_value = weapon.base_damage * damage_coefficient * current_rank
 
 func damage_add(add_value):
 	damage_value += add_value
+
+func remove_mod():
+	super()
+	weapon.on_hit.disconnect(_on_hit)
+

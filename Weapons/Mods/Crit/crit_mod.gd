@@ -7,9 +7,9 @@ func _init():
 	tooltip_text = "Crit"
 	icon = preload("res://Art/Drops/crit_mod.png")
 
-func _ready():
-	super()
-	var weapon_child_nodes = parent.get_children()
+func equip(new_weapon):
+	super(new_weapon)
+	var weapon_child_nodes = weapon.get_children()
 	for node in weapon_child_nodes:
 		if node is BaseMod:
 			node.mod_hitting.connect(_modify_hit)
@@ -21,3 +21,8 @@ func _modify_hit(mod):
 	
 func _apply_damage_crit(mod):
 	mod.damage_value *= 2
+
+func remove_mod():
+	super()
+	#TODO need to figure out how to hand crit before handling removal
+

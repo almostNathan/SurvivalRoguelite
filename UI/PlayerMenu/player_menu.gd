@@ -2,8 +2,7 @@ extends PanelContainer
 class_name PlayerMenu
 
 @onready var weapons_container = $HBoxContainer/WeaponsMarginContainer/WeaponsContainer
-@onready var mod_container = $HBoxContainer/ModsMarginContainer/ModContainer
-
+@onready var mod_container = $HBoxContainer/ModsMarginContainer/VBoxContainer/ModContainer
 
 var is_open = false
 var weapon_inventory = []
@@ -32,12 +31,21 @@ func load_player_menu():
 	is_open = true
 	
 func close_player_menu():
-	for weapon in weapons_container.get_children():
-		weapons_container.remove_child(weapon)
-		weapon.queue_free()
-	for mod in mod_container.get_children():
-		mod_container.remove_child(mod)
-		mod.queue_free()
+	#Apply currently attached mods and correct inventory
+	Globals.player.mod_inventory = []
+	for weapon in weapon_inventory:
+		weapon.detach_all_mods()
+
+	for weapon_slot in weapons_container.get_children():
+		weapon_slot.add_mods_to_weapon()
+		weapons_container.remove_child(weapon_slot)
+		weapon_slot.queue_free()
+	for mod_slot in mod_container.get_children():
+		Globals.player.mod_inventory.append(mod_slot.get_mod())
+		mod_container.remove_child(mod_slot)
+		mod_slot.queue_free()
+	
+	Hud.update_weapons_display()
 	get_tree().paused = false
 	visible = false
 	is_open = false

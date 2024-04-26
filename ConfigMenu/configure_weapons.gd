@@ -42,12 +42,16 @@ func clear_weapons_config():
 
 func _on_button_pressed():
 	player = Globals.player
-	
 	for weapon_slot in weapon_grid_container.get_weapon_slots():
 		if weapon_slot.weapon_in_slot != null:
 			player.add_to_weapon_inventory(weapon_slot.weapon_in_slot)
 		
 	player.equip_weapons()
+	Hud.update_weapons_display()
+	
+	var damage_player_mod = preload("res://Player/Mods/DamagePlayerMod/damage_player_mod.tscn").instantiate()
+	#damage_player_mod.equip(player)
+	
 	#var weapon_slots = weapon_grid_container.get_children()
 	#player.equip_main(weapon_slots[0].weapon_in_slot)
 	#player.equip_offhand(weapon_slots[1].weapon_in_slot)

@@ -58,7 +58,7 @@ func add_mods_to_weapon():
 		for mod_slot in mod_grid.get_children():
 			mod_slot.queue_free()
 	if weapon_in_slot != null:
-		print(weapon_in_slot.get_mod_list())
+
 		var damage_mod_needed = true
 		for mod in weapon_in_slot.get_mod_list():
 			if mod is DamageMod or mod is PoisonMod or mod is SplashMod or mod is BurnMod:

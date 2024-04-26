@@ -1,4 +1,4 @@
-extends BulletMod
+extends BaseMod
 class_name PoisonMod
 
 var poison_dps = 5.0
@@ -11,9 +11,9 @@ func _init():
 	tooltip_text = "Poison"	
 	icon = preload("res://Art/Drops/poison_mod.png")
 
-func _ready():
-	super()
-	parent.on_hit.connect(_on_hit)
+func equip(new_weapon):
+	super(new_weapon)
+	weapon.on_hit.connect(_on_hit)
 	refresh()
 
 
@@ -24,18 +24,15 @@ func apply_effect(body):
 	var new_poison_debuff = poison_debuff.instantiate()
 	new_poison_debuff.poison_dps = poison_dps
 	new_poison_debuff.poison_duration = poison_duration
-	new_poison_debuff.weapon = parent
+	new_poison_debuff.weapon = weapon
 	body.add_debuff(new_poison_debuff)
 
-
-
-func rank_up():
-	current_rank += 1
-	poison_dps = (poison_dps * current_rank) + (poison_dps / 3)
-	
 func refresh():
-	poison_dps = parent.current_damage * poison_dps_coefficient
+	if weapon != null:
+		poison_dps = weapon.base_damage * poison_dps_coefficient * current_rank
 	
 
-
+func remove_mod():
+	super()
+	weapon.on_hit.disconnect(_on_hit)
 

@@ -13,24 +13,32 @@ func _init():
 	tooltip_text = "Burn"
 	icon = preload("res://Art/Drops/burn_mod.png")
 
-func _ready():
-	super()
-	parent.on_hit.connect(_on_hit)
+func equip(new_weapon):
+	super(new_weapon)
+	weapon.on_hit.connect(_on_hit)
 	refresh()
 	
 func _on_hit(body, _weapon):
 	body.add_to_mod_queue(self)
 	
 func apply_effect(body):
-	body.hit(parent, damage_value)
+	body.hit(weapon, damage_value)
 	var new_burn_debuff = burn_debuff.instantiate()
 	body.add_mod(new_burn_debuff)
 	new_burn_debuff.set_dps(burn_dps)
 	new_burn_debuff.set_duration(burn_duration)
-	new_burn_debuff.set_weapon(parent)
+	new_burn_debuff.set_weapon(weapon)
 	
 func refresh():
-	damage_value = parent.current_damage * .6
-	burn_duration = parent.base_attack_speed*2
-	burn_dps = damage_value / burn_duration
+	if weapon != null:
+		damage_value = weapon.base_damage * .6 * current_rank
+		burn_duration = weapon.base_attack_speed*2
+		burn_dps = damage_value / burn_duration
+
+
+
+
+func remove_mod():
+	super()
+	weapon.on_hit.disconnect(_on_hit)
 

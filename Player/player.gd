@@ -67,34 +67,17 @@ func equip_weapons():
 	for weapon in weapon_inventory:
 		self.add_child(weapon)
 		equipping_weapon.emit(weapon)
-		Hud.inventory.add_weapon(weapon)
-		
-
-#func equip_main(weapon : BaseWeapon):
-	#weapon_inventory.append(weapon)
-	#main_weapon = weapon
-	#self.add_child(main_weapon)
-	#equipping_weapon.emit(main_weapon)
-	#Hud.inventory.add_weapon(main_weapon)
-	#main_weapon.modify_attack_speed_mult(.15)
-#
-#func equip_offhand(weapon : BaseWeapon):
-	#weapon_inventory.append(weapon)
-	#offhand_weapon = weapon
-	#equipping_weapon.emit(offhand_weapon)
-	#self.add_child(offhand_weapon)
-	#Hud.inventory.add_weapon(offhand_weapon)
 
 func reset_player():
 	self.remove_child(main_weapon)
 	self.remove_child(offhand_weapon)
-	Hud.inventory.reset_inventory()
+
 	for weapon in weapon_inventory:
 		weapon.queue_free()
 	weapon_inventory = []
 	for mod in mod_inventory:
-		mod_inventory.remove_at(mod_inventory.find(mod))
 		mod.queue_free()
+	mod_inventory = []
 	
 	health.heal_to_full()
 	exp_mod_man.reset_exp_mod_man()

@@ -8,7 +8,6 @@
 rotation = 1.5708
 script = ExtResource("1_vg0om")
 bullet_scene = ExtResource("2_rbw3u")
-base_damage = 50
 
 [node name="Image" type="Sprite2D" parent="."]
 visible = false

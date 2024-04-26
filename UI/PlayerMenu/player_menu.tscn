@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cepn4uj7wa126"]
+[gd_scene load_steps=3 format=3 uid="uid://cepn4uj7wa126"]
 
 [ext_resource type="Script" path="res://UI/PlayerMenu/player_menu.gd" id="1_hbfhr"]
+[ext_resource type="Script" path="res://UI/PlayerMenu/ModContainer.gd" id="2_s4iq0"]
 
 [node name="PlayerMenu" type="PanelContainer"]
 process_mode = 2
@@ -37,10 +38,27 @@ layout_mode = 2
 
 [node name="ModsMarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ModContainer" type="GridContainer" parent="HBoxContainer/ModsMarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/ModsMarginContainer"]
 layout_mode = 2
+color = Color(0.360784, 0.501961, 0.356863, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ModsMarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ModsMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "INVENTORY"
+
+[node name="ModContainer" type="GridContainer" parent="HBoxContainer/ModsMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+script = ExtResource("2_s4iq0")

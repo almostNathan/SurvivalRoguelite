@@ -5,11 +5,11 @@ var knockback_debuff = preload("res://GeneralMods/Debuffs/Knockback/knockback_de
 
 func _init():
 	tooltip_text = "Knockback"
-	icon = preload("res://Art/Drops/knockback_mod.png")
-
-func _ready():
-	super()
-	parent.on_hit.connect(_on_hit)
+	#TODO need icon
+	
+func equip(weapon):
+	super(weapon)
+	weapon.on_hit.connect(_on_hit)
 	refresh()
 
 func _on_hit(body, bullet):
@@ -17,3 +17,7 @@ func _on_hit(body, bullet):
 
 func apply_effect(body):
 	body.add_mod(knockback_debuff.instantiate())
+
+func remove_mod():
+	super()
+	weapon.on_hit.disconnect(_on_hit)

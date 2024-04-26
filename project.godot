@@ -21,6 +21,8 @@ AllModList="*res://Scripts/all_mod_list.gd"
 AllWeaponList="*res://Scripts/all_weapon_list.gd"
 Globals="*res://Scripts/globals.gd"
 Hud="*res://UI/HUD/HUD.tscn"
+EnemyPool="*res://Scripts/enemy_pool.gd"
+Levels="*res://Scripts/levels.gd"
 
 [display]
 

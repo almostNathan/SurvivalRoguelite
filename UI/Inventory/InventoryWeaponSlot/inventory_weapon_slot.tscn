@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfpgyo1cjktg6"]
+[gd_scene load_steps=3 format=3 uid="uid://cfpgyo1cjktg6"]
 
 [ext_resource type="Script" path="res://UI/Inventory/InventoryWeaponSlot/inventory_weapon_slot.gd" id="1_xrk28"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_eulv4"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
 [node name="InventoryWeaponSlot" type="MarginContainer"]
+process_mode = 2
 custom_minimum_size = Vector2(100, 100)
 script = ExtResource("1_xrk28")
 
@@ -15,3 +20,10 @@ stretch_mode = 5
 [node name="ModGridContainer" type="GridContainer" parent="."]
 layout_mode = 2
 columns = 3
+
+[node name="ModSlotLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "1"
+label_settings = SubResource("LabelSettings_eulv4")

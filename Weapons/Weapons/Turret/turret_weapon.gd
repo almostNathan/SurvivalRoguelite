@@ -22,7 +22,6 @@ func _init():
 
 func _on_deploy_timer_timeout():
 	var new_turret : TurretWeapon = self._clone()
-	player.add_sibling(new_turret)
 	new_turret.player = player
 	new_turret.position = player.position
 	new_turret.show_weapon_image()
@@ -49,6 +48,7 @@ func set_bullet_aiming(new_bullet, bullet_number, _aiming_direction):
 
 func _clone():
 	var new_turret = preload("res://Weapons/Weapons/Turret/turret_weapon.tscn").instantiate()
+	player.add_sibling(new_turret)	
 	for mod in mod_list:
 		new_turret.add_mod(mod.duplicate())
 	return new_turret

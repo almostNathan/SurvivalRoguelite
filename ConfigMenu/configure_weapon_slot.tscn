@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://ConfigMenu/configure_weapon_slot.gd" id="1_07ral"]
 
 [node name="ConfigureWeaponSlot" type="TextureRect"]
+self_modulate = Color(0.0196078, 0.0196078, 0.0196078, 1)
 custom_minimum_size = Vector2(100, 100)
 offset_right = 100.0
 offset_bottom = 100.0

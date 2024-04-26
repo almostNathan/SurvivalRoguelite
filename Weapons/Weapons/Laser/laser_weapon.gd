@@ -24,6 +24,6 @@ func _on_weapon_timer_timeout():
 		new_bullet.global_position = get_parent().position
 		set_bullet_aiming(new_bullet, i, aiming_direction)
 
-func set_bullet_aiming(new_bullet, bullet_number, aiming_direction):
+func set_bullet_aiming(new_bullet, bullet_number, _aiming_direction):
 	bullet_number += 1
 	new_bullet.rotate(left_shooting_angle - (bullet_number*angle_between_bullets))
