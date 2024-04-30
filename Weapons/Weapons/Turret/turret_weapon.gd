@@ -15,6 +15,7 @@ func _ready():
 
 func _init():
 	icon = preload("res://Art/Weapons/turret_weapon.png")
+	tooltip_text = 'Turret'
 	base_damage = 4
 	base_attack_speed = 1
 	current_damage = base_damage

@@ -31,11 +31,15 @@ var angle_between_bullets
 var bounce_value = 0
 var pierce_value = 0
 var is_melee = false
+var is_equipped = false
 
+var tooltip_text = 'No Tooltip'
 
 func _ready():
 	player = get_parent()
 	weapon_timer.wait_time = base_attack_speed
+	is_equipped = true
+
 
 func modify_bullet(_bullet_proto):
 	pass

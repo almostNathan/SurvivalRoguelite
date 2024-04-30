@@ -1,19 +1,16 @@
 extends Pickup
 class_name Loot
 
-var selection_count = 3
 var lootable = true
+var loot_scene_list = AllModList.mod_scene_list.duplicate()
 
 func _on_body_entered(body):
-	if lootable && body.has_method("trigger_loot"):
+	if lootable && body is Player:
 		lootable = false
 		$AnimatedSprite2D.play("open_chest")
-		var all_mod_scene_list = AllModList.mod_scene_list
-		var loot_scene_list = []
-		for i in range(selection_count):
-			loot_scene_list.append(all_mod_scene_list.pick_random())
+		var loot_to_pick_from = []
 		
-		body.trigger_loot(loot_scene_list)
+		Hud.load_loot_menu(loot_scene_list)
 
 
 

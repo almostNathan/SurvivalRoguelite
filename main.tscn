@@ -90,7 +90,7 @@ anchor_right = 1.17037
 anchor_bottom = 1.14306
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.31, 0.6, 0.4, 1)
+color = Color(0.041933, 0.580975, 0.0340979, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="TileMap" type="TileMap" parent="."]

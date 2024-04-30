@@ -67,8 +67,9 @@ func angle_to_mouse():
 
 func equip_weapons():
 	for weapon in weapon_inventory:
-		self.add_child(weapon)
-		equipping_weapon.emit(weapon)
+		if !weapon.is_equipped:
+			self.add_child(weapon)
+			equipping_weapon.emit(weapon)
 
 func reset_player():
 	self.remove_child(main_weapon)
@@ -143,14 +144,13 @@ func gain_life(amount):
 	health.gain_life(amount)
 	emit_signal("health_changed", health.cur_health)
 
-func trigger_loot(_loot_scene_list):
-	Hud.level_up()
-
 func add_to_inventory(item):
 	mod_inventory.append(item)
 
 func add_to_weapon_inventory(weapon):
 	weapon_inventory.append(weapon)
+	Hud.update_weapons_display()
+	equip_weapons()
 	
 func level_up():
 	Hud.level_up()

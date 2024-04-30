@@ -6,6 +6,7 @@ var lead_in_angle = PI/2
 
 func _init():
 	icon = preload("res://Art/Weapons/scythe.png")
+	tooltip_text = 'Scythe'
 	base_damage = 2
 	base_attack_speed = 2
 	current_damage = base_damage

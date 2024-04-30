@@ -3,10 +3,21 @@
 [ext_resource type="Script" path="res://UI/LevelUpMenu/level_up_menu.gd" id="1_geua0"]
 
 [node name="LevelUpMenu" type="PanelContainer"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(540, 360)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_geua0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="ModSelectionArea" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2

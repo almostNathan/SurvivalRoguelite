@@ -6,6 +6,7 @@ class_name BoomerangWeapon
 
 func _init():
 	icon = preload("res://Art/Weapons/boomerang_bullet.png")
+	tooltip_text = 'Boomerang'
 	base_damage = 4
 	base_attack_speed = 1
 	current_damage = base_damage

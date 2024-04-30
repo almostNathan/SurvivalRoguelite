@@ -12,6 +12,9 @@ func set_selection(mod):
 
 func _on_selection_icon_gui_input(event):
 	if event is InputEventMouseButton:
-		Globals.player.add_to_inventory(mod_in_selection)
-		selection_made.emit()
-		
+		if mod_in_selection is BaseMod:
+			Globals.player.add_to_inventory(mod_in_selection)
+			selection_made.emit()
+		if mod_in_selection is BaseWeapon:
+			Globals.player.add_to_weapon_inventory(mod_in_selection)
+			selection_made.emit()

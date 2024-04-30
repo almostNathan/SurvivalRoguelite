@@ -1,0 +1,159 @@
+[gd_scene load_steps=19 format=3 uid="uid://cnkhpgm5a7obn"]
+
+[ext_resource type="Script" path="res://Enemies/Bosses/SlimeBoss/slime_boss.gd" id="1_8hiom"]
+[ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="2_3c1xi"]
+[ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="3_sbkx2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ll0o"]
+radius = 48.0104
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2f2qs"]
+load_path = "res://.godot/imported/slime_spritesheet.png-2d90b07f24a6538a174c3a8b1d2c8122.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40l4o"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(0, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c77w7"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(108, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ip44"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(0, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7086n"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(108, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bhfe"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(144, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw2du"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(252, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhl3y"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(288, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6m5i"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(324, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7gln"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(36, 32, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dujmw"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(72, 32, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfvaa"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(108, 32, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tfrh"]
+atlas = SubResource("CompressedTexture2D_2f2qs")
+region = Rect2(252, 32, 36, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ye7iq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40l4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c77w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c77w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40l4o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ip44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7086n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bhfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw2du")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhl3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6m5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7gln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dujmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfvaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tfrh")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 10.0
+}]
+
+[node name="SlimeBoss" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_8hiom")
+max_health = 200.0
+max_speed = 100.0
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ll0o")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -25)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ye7iq")
+animation = &"idle"
+frame = 2
+frame_progress = 0.509896
+
+[node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HealthBar" parent="." instance=ExtResource("2_3c1xi")]
+offset_left = -14.0
+offset_top = -25.0
+offset_right = 134.0
+offset_bottom = 2.0
+scale = Vector2(0.2, 0.2)
+
+[node name="WaitTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ExperienceMod" parent="." instance=ExtResource("3_sbkx2")]
+exp_value = 100
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="TelegraphTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="TelegraphTimer" to="." method="_on_telegraph_timer_timeout"]

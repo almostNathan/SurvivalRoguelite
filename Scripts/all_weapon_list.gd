@@ -10,5 +10,4 @@ var weapon_scene_list = [
 	preload("res://Weapons/Weapons/Boomerang/boomerang_weapon.tscn"),
 	preload("res://Weapons/Weapons/Turret/turret_weapon.tscn"),
 	preload("res://Weapons/Weapons/Laser/laser_weapon.tscn")
-
 ]

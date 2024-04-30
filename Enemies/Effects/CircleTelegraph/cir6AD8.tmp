@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b80yitu3w20ye"]
+
+[ext_resource type="Texture2D" uid="uid://c7shvx63r0408" path="res://Art/effect_assets/target_zone.png" id="1_16b6t"]
+[ext_resource type="Script" path="res://Enemies/Effects/CircleTelegraph/circle_telegraph.gd" id="2_q0qy1"]
+
+[node name="CircleTelegraph" type="TextureRect"]
+modulate = Color(1, 1, 1, 0.31)
+texture = ExtResource("1_16b6t")
+script = ExtResource("2_q0qy1")
+
+[node name="AlphaTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="AlphaTimer" to="." method="_on_alpha_timer_timeout"]

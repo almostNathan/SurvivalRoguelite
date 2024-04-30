@@ -4,15 +4,18 @@ class_name LevelUpMenu
 @onready var mod_selection_area = $MarginContainer/ModSelectionArea
 
 var player
-var mod_scene_list = AllModList.mod_scene_list
 var selection_count = 3
 var level_up_selection = preload("res://UI/LevelUpSelection/level_up_selection.tscn")
 
 func load_level_up_window():
 	player = Globals.player
+	var mod_scene_list = AllModList.mod_scene_list.duplicate()
 	var mod_selection_options = []
 	for mod in range(selection_count):
-		mod_selection_options.append(mod_scene_list.pick_random().instantiate())
+		var selected_mod = mod_scene_list.pick_random()
+		mod_selection_options.append(selected_mod.instantiate())
+		mod_scene_list.remove_at(mod_scene_list.find(selected_mod))
+		
 	
 	for mod in mod_selection_options:
 		var new_selection = level_up_selection.instantiate()

@@ -10,7 +10,7 @@ signal moving(velocity, delta)
 @export var max_health : float
 @export var max_speed : float
 var cur_health : float
-var exp_value = 10
+@export var exp_value = 10
 
 @onready var health_bar = $HealthBar
 @onready var move_timer = $MoveTimer
@@ -28,7 +28,7 @@ var move_distance = 1000.0
 var elite_scaling_hp_modifier = 5.0
 var elite_scaling_damage_modifier = 5.0
 
-var base_damage = 10
+@export var base_damage = 10
 
 
 # Called when the node enters the scene tree for the first time.

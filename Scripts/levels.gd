@@ -25,4 +25,19 @@ var level_2_data = {
 	enemy_speed_modifier = 2.0
 }
 
-var level_data_list = [level_0_data, level_1_data, level_2_data]
+var level_3_data = {
+	background_color = Color(.847, 0, .859, 1),
+	enemy_pool = EnemyPool.level_2_enemy_pool,
+	enemy_health_modifier = 6.0,
+	enemy_damage_modifier = 6.0,
+	enemy_speed_modifier = 2.0	
+}
+
+var level_4_data = {
+	background_color = Color(1, 1, 0, 1),
+	enemy_pool = EnemyPool.level_2_enemy_pool,
+	enemy_health_modifier = 6.0,
+	enemy_damage_modifier = 6.0,
+	enemy_speed_modifier = 2.0	
+}
+var level_data_list = [level_0_data, level_1_data, level_2_data, level_3_data, level_4_data]

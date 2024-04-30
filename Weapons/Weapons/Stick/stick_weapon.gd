@@ -5,6 +5,7 @@ var lead_in_angle = PI/4
 
 func _init():
 	icon = preload("res://Art/basicterrain/board.png")
+	tooltip_text = 'Sword'
 	base_damage = 20
 	base_attack_speed = 2
 	current_damage = base_damage

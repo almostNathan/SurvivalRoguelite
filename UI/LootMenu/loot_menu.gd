@@ -1,47 +1,33 @@
 extends PanelContainer
 class_name LootMenu
 
-@onready var weapon_grid_container = $HSplitContainer/MarginContainer/WeaponGridContainer
-@onready var mod_grid_container = $HSplitContainer/MarginContainer2/ModGridContainer
-@onready var player
+@onready var loot_selection_area = $MarginContainer/LootSelectionArea
 
-var weapon_slot_scene = preload("res://ConfigMenu/configure_weapon_slot.tscn")
-var mod_slot_scene = preload("res://ConfigMenu/configure_mod_slot.tscn")
-var main_weapon_slot
-var offhand_weapon_slot
+var player
+var selection_count = 3
+var level_up_selection = preload("res://UI/LevelUpSelection/level_up_selection.tscn")
 
-
-func load_loot_screen(loot_scene_list):
+func load_loot_menu(loot_scene_list):
 	player = Globals.player
-	for loot_scene in loot_scene_list:
-		var new_loot = loot_scene.instantiate()
-		var mod_slot = mod_slot_scene.instantiate()
-		mod_slot.custom_minimum_size = Vector2(50, 50)
-		mod_grid_container.add_child(mod_slot)
-		mod_slot.set_mod_in_slot(new_loot)
-	
-	main_weapon_slot = weapon_slot_scene.instantiate()
-	offhand_weapon_slot = weapon_slot_scene.instantiate()
-	
-	weapon_grid_container.add_child(main_weapon_slot)
-	weapon_grid_container.add_child(offhand_weapon_slot)
-	main_weapon_slot.set_weapon_in_slot(player.main_weapon)
-	offhand_weapon_slot.set_weapon_in_slot(player.offhand_weapon)
-	main_weapon_slot.mod_placed_in_weapon.connect(_loot_selected)
-	offhand_weapon_slot.mod_placed_in_weapon.connect(_loot_selected)
-	
+	var loot_selection_options = []
+	for mod in range(selection_count):
+		var selected_loot_scene = loot_scene_list.pick_random()
+		loot_selection_options.append(selected_loot_scene.instantiate())
+		loot_scene_list.remove_at(loot_scene_list.find(selected_loot_scene))
+		
+	for loot in loot_selection_options:
+		var new_selection = level_up_selection.instantiate()
+		loot_selection_area.add_child(new_selection)
+		new_selection.set_selection(loot)
+		new_selection.selection_made.connect(selection_made)
+
 	get_tree().paused = true
 	visible = true
 
-
-func _loot_selected():
-	#TODO: empty out weapon/mod grid containers so next loot screen can rebuild
-	main_weapon_slot.add_mods_to_weapon()
-	offhand_weapon_slot.add_mods_to_weapon()
-	main_weapon_slot.queue_free()
-	offhand_weapon_slot.queue_free()
-	for mod_slot in mod_grid_container.get_children():
-		mod_slot.queue_free()
-	
+func selection_made():
+	for selection in loot_selection_area.get_children():
+		loot_selection_area.remove_child(selection)
+		selection.queue_free()
+		
 	get_tree().paused = false
 	visible = false

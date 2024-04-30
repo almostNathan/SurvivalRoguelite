@@ -20,7 +20,10 @@ func _ready():
 
 func _process(_delta):
 	$Background.position = player.position - Vector2((get_viewport().size/2))
+	
+	#TODO Create node to handle enemy movement
 	var enemies = get_tree().get_nodes_in_group("enemy")
+
 	#point all enemies at the player
 	var closest_enemy_position = Vector2(0,0)
 	for enemy in enemies:
@@ -70,6 +73,7 @@ func clear_level():
 			if turret == child:
 				remove_child(turret)
 				turret.queue_free()
+	level_timer.start()
 
 func _on_level_timer_timeout():
 	enemy_spawner.spawn_boss()
@@ -84,7 +88,18 @@ func spawn_portal():
 
 func go_to_next_level():
 	clear_level()
-	current_level_number += 1
+	current_level_number += 2
+	
+	var available_loot_scene_list = AllWeaponList.weapon_scene_list
+	
+	for weapon_scene in AllWeaponList.weapon_scene_list.duplicate:
+		for weapon in Globals.player.weapon_inventory:
+			if weapon_scene.instantiate().name == weapon.name:
+				available_loot_scene_list.remove_at(available_loot_scene_list.find(weapon_scene))
+	
+	Hud.load_loot_menu(available_loot_scene_list)
+	
+	
 	background.color = Levels.level_data_list[current_level_number].background_color
 	enemy_spawner.change_level(current_level_number)
 	level_timer.start()

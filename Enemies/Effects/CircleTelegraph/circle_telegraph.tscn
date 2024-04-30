@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b80yitu3w20ye"]
+
+[ext_resource type="Texture2D" uid="uid://c7shvx63r0408" path="res://Art/effect_assets/target_zone.png" id="1_16b6t"]
+[ext_resource type="Script" path="res://Enemies/Effects/CircleTelegraph/circle_telegraph.gd" id="2_q0qy1"]
+
+[node name="CircleTelegraph" type="Area2D"]
+modulate = Color(1, 1, 1, 0.1)
+self_modulate = Color(0, 0, 0, 1)
+script = ExtResource("2_q0qy1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AlphaTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="LifespanTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="TelegraphSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_16b6t")
+
+[connection signal="timeout" from="AlphaTimer" to="." method="_on_alpha_timer_timeout"]
+[connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

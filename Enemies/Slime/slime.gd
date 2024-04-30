@@ -13,5 +13,5 @@ func move(delta):
 		var direction = Vector2.UP.rotated(movement_direction)
 		velocity += direction * acceleration * delta
 		sprite.animation = "moving"
-		
+
 
