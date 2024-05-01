@@ -88,11 +88,11 @@ func spawn_portal():
 
 func go_to_next_level():
 	clear_level()
-	current_level_number += 2
+	current_level_number += 1
 	
-	var available_loot_scene_list = AllWeaponList.weapon_scene_list
+	var available_loot_scene_list = AllWeaponList.weapon_scene_list.duplicate()
 	
-	for weapon_scene in AllWeaponList.weapon_scene_list.duplicate:
+	for weapon_scene in available_loot_scene_list:
 		for weapon in Globals.player.weapon_inventory:
 			if weapon_scene.instantiate().name == weapon.name:
 				available_loot_scene_list.remove_at(available_loot_scene_list.find(weapon_scene))

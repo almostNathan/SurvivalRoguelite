@@ -79,7 +79,7 @@ func spawn_boss():
 	var player = Globals.player
 	var viewport_size = get_viewport().size
 	
-	var spawn_distance = pow(pow(viewport_size.x, 2) + pow(viewport_size.y, 2), 1/2.0) /2
+	var spawn_distance = pow(pow(viewport_size.x, 2) + pow(viewport_size.y, 2), 1/2.0) /4
 	var spawn_direction = Vector2(0,1).rotated(randf_range(0,2*PI))
 	var spawn_location = (spawn_direction * spawn_distance) + player.position
 	

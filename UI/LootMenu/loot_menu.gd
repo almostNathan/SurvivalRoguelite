@@ -8,6 +8,7 @@ var selection_count = 3
 var level_up_selection = preload("res://UI/LevelUpSelection/level_up_selection.tscn")
 
 func load_loot_menu(loot_scene_list):
+	
 	player = Globals.player
 	var loot_selection_options = []
 	for mod in range(selection_count):
