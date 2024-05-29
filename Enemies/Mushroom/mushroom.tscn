@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cx3tw42kxmld4"]
+[gd_scene load_steps=19 format=3 uid="uid://cx3tw42kxmld4"]
 
 [ext_resource type="Script" path="res://Enemies/Mushroom/mushroom.gd" id="2_3mgon"]
 [ext_resource type="Texture2D" uid="uid://b5j55ajhxun7e" path="res://Art/Monster_Creatures_Fantasy_itchio/Mushroom/Attack3.png" id="2_nuth3"]
+[ext_resource type="PackedScene" uid="uid://cs2ic6efhup2t" path="res://UI/DebuffBar/debuff_bar.tscn" id="3_ohdlc"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="4_yrnhd"]
 [ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="5_rwxwh"]
 
@@ -101,7 +102,7 @@ animations = [{
 [node name="Mushroom" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_3mgon")
 max_health = 50.0
-max_speed = 50.0
+max_speed = 100.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_lchly")
@@ -113,6 +114,12 @@ animation = &"attacking"
 
 [node name="MoveTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="DebuffBar" parent="." instance=ExtResource("3_ohdlc")]
+offset_left = -19.0
+offset_top = -33.0
+offset_right = -10.0
+offset_bottom = -25.0
 
 [node name="HealthBar" parent="." instance=ExtResource("4_yrnhd")]
 offset_left = -14.0

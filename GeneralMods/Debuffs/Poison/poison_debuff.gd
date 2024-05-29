@@ -6,15 +6,15 @@ class_name PoisonDebuff
 var poison_dps = 5.0
 var poison_duration = 5.0
 
+func _init():
+	debuff_icon = preload("res://Art/Drops/poison_mod.png")
+
 func _ready():
 	super()
 	parent.on_physics_process.connect(_deal_damage_over_time)
 	
 func _deal_damage_over_time(delta):
 	parent.lose_life(weapon, poison_dps * delta)
-
-func _on_duration_timer_timeout():
-	queue_free()
 
 func set_duration(new_duration):
 	duration_timer.wait_time = new_duration

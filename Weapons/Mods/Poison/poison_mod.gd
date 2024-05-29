@@ -4,6 +4,7 @@ class_name PoisonMod
 var poison_dps = 5.0
 var poison_duration = 5
 var poison_dps_coefficient = .8
+var proc_chance = .1
 
 var poison_debuff = preload("res://GeneralMods/Debuffs/Poison/poison_debuff.tscn")
 
@@ -18,14 +19,15 @@ func equip(new_weapon):
 
 
 func _on_hit(body, _bullet):
-	body.add_to_mod_queue(self)
+	if randf() < proc_chance:
+		body.add_to_mod_queue(self)
 
 func apply_effect(body):
 	var new_poison_debuff = poison_debuff.instantiate()
+	body.add_debuff(new_poison_debuff)
 	new_poison_debuff.poison_dps = poison_dps
 	new_poison_debuff.poison_duration = poison_duration
 	new_poison_debuff.weapon = weapon
-	body.add_debuff(new_poison_debuff)
 
 func refresh():
 	if weapon != null:

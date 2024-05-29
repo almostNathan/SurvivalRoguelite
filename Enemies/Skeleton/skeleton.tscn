@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bauxgcbx2mcvd"]
+[gd_scene load_steps=16 format=3 uid="uid://bauxgcbx2mcvd"]
 
 [ext_resource type="Script" path="res://Enemies/Skeleton/skeleton.gd" id="2_423ah"]
 [ext_resource type="Texture2D" uid="uid://v73p2rg1bg8w" path="res://Art/Monster_Creatures_Fantasy_itchio/Skeleton/Attack3.png" id="2_ej8mw"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="2_o7hpo"]
 [ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="3_4gypr"]
+[ext_resource type="PackedScene" uid="uid://cs2ic6efhup2t" path="res://UI/DebuffBar/debuff_bar.tscn" id="3_i0xbd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5e85y"]
 radius = 23.0
@@ -84,7 +85,7 @@ animations = [{
 [node name="Skeleton" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_423ah")
 max_health = 35.0
-max_speed = 75.0
+max_speed = 150.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5e85y")
@@ -98,6 +99,12 @@ frame_progress = 0.883244
 
 [node name="MoveTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="DebuffBar" parent="." instance=ExtResource("3_i0xbd")]
+offset_left = -19.0
+offset_top = -33.0
+offset_right = -10.0
+offset_bottom = -25.0
 
 [node name="HealthBar" parent="." instance=ExtResource("2_o7hpo")]
 offset_left = -14.0

@@ -57,11 +57,13 @@ func add_mods_to_weapon():
 			weapon_in_slot.add_mod(mod_slot.get_mod())
 		for mod_slot in mod_grid.get_children():
 			mod_slot.queue_free()
-	if weapon_in_slot != null:
-
-		var damage_mod_needed = true
-		for mod in weapon_in_slot.get_mod_list():
-			if mod is DamageMod or mod is PoisonMod or mod is SplashMod or mod is BurnMod:
-				damage_mod_needed = false
-		if damage_mod_needed == true:
-			weapon_in_slot.add_mod(preload("res://Weapons/Mods/Damage/damage_mod.tscn").instantiate())
+	
+	###Depricated - section that adds damage mod if non present.
+	###Moving away from damage as a mod.
+	#if weapon_in_slot != null:
+		#var damage_mod_needed = true
+		#for mod in weapon_in_slot.get_mod_list():
+			#if mod is DamageMod or mod is PoisonMod or mod is SplashMod or mod is BurnMod:
+				#damage_mod_needed = false
+		#if damage_mod_needed == true:
+			#weapon_in_slot.add_mod(preload("res://Weapons/Mods/Damage/damage_mod.tscn").instantiate())

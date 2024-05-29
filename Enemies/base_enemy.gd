@@ -7,6 +7,8 @@ signal on_physics_process(delta)
 signal health_change(cur_health)
 signal moving(velocity, delta)
 
+
+
 @export var max_health : float
 @export var max_speed : float
 var cur_health : float
@@ -16,8 +18,10 @@ var cur_health : float
 @onready var move_timer = $MoveTimer
 @onready var wait_timer = $WaitTimer
 @onready var sprite = $AnimatedSprite
+@onready var debuff_bar = $DebuffBar
 
-var effect_queue = []
+var effect_queue : Array = []
+var debuff_array : Array = []
 var acceleration = 1500
 var speed = max_speed
 var friction = 1200.0
@@ -31,10 +35,12 @@ var elite_scaling_damage_modifier = 5.0
 @export var base_damage = 10
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimatedSprite.play("idle")
+	sprite.play("idle")
 	cur_health = max_health
+	sprite.scale = Vector2(2,2)
 
 
 
@@ -47,26 +53,25 @@ func _physics_process(delta):
 	
 	on_physics_process.emit(delta)
 	
-	if !$AnimatedSprite.is_playing():
-		$AnimatedSprite.play("idle")
+	if !sprite.is_playing():
+		sprite.play("idle")
 	move(delta)
 	velocity = velocity.limit_length(max_speed)
 	moving.emit(velocity, delta)
 	move_and_slide()
 	
-func hit(weapon, damage_amount):
-	#damage(weapon, damage_amount)
+
+func hit(weapon_stats : Dictionary):
 	if cur_health > 0:
-		cur_health -= damage_amount
+		cur_health -= weapon_stats['damage']
 		if cur_health <= 0:
-			weapon.on_kill.emit(self)
+			weapon_stats['weapon'].on_kill.emit(self)
 			on_death.emit()
 			queue_free()
 		else:
 			health_change.emit(cur_health)
 
 func lose_life(weapon, damage_amount):
-	#damage(weapon, damage_amount)
 	if cur_health > 0:
 		cur_health -= damage_amount
 		if cur_health <= 0:
@@ -100,8 +105,17 @@ func _on_wait_timer_timeout():
 func add_mod(mod_to_add):
 	self.add_child(mod_to_add)
 
-func add_debuff(debuff):
-	add_mod(debuff)
+func add_debuff(debuff : BaseDebuff):
+	debuff_array.append(debuff)
+	debuff_bar.update_debuff_bar(debuff_array)
+	add_child(debuff)
+	debuff.duration_timeout.connect(remove_debuff)
+
+func remove_debuff(debuff):
+	debuff_array.remove_at(debuff_array.find(debuff))
+	debuff_bar.update_debuff_bar(debuff_array)
+	debuff.queue_free()
+
 
 func make_elite():
 	var loot_mod = preload("res://Enemies/Mods/DropLoot/drop_loot_mod.tscn").instantiate()

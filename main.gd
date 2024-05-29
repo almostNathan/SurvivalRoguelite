@@ -91,7 +91,6 @@ func go_to_next_level():
 	current_level_number += 1
 	
 	var available_loot_scene_list = AllWeaponList.weapon_scene_list.duplicate()
-	
 	for weapon_scene in available_loot_scene_list:
 		for weapon in Globals.player.weapon_inventory:
 			if weapon_scene.instantiate().name == weapon.name:

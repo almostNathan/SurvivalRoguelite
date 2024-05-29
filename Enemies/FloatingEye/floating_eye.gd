@@ -21,8 +21,8 @@ func set_movement_direction(direction):
 	if move_timer.is_stopped():
 		movement_direction = direction
 
-func hit(weapon, damage_amount):
-	super(weapon, damage_amount)
+func hit(weapon_stats):
+	super(weapon_stats)
 	$AnimatedSprite.play('hit')
 	$AnimatedSprite.self_modulate = Color(1,0,0,1)
 	await get_tree().create_timer(.5).timeout

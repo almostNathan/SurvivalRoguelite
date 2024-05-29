@@ -48,7 +48,7 @@ func check_cur_level():
 			if level > player_level:
 				player.level_up()
 				increase_stats(level - player_level)
-				level_up_damage.emit(cur_damage_scaling-1)
+				level_up_damage.emit(cur_damage_scaling)
 				player_level = level
 				return
 			else:
@@ -65,7 +65,8 @@ func create_exp_map():
 		cur_total_exp = cur_total_exp + cur_total_exp * exp_scaling
 
 func connect_to_weapon(weapon : BaseWeapon):
-	level_up_damage.connect(Callable(weapon, "modify_damage_mult"))
+	level_up_damage.connect(Callable(weapon, "modify_damage_level"))
+	weapon.modify_damage_mult(cur_damage_scaling-1)
 
 
 func reset_exp_mod_man():

@@ -1,15 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bywidb6qsen3v"]
+[gd_scene load_steps=8 format=3 uid="uid://bywidb6qsen3v"]
 
 [ext_resource type="Script" path="res://Enemies/base_enemy.gd" id="1_vvtex"]
+[ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="2_qvdo8"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="3_3bqpo"]
 [ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="3_d2dax"]
+[ext_resource type="PackedScene" uid="uid://cs2ic6efhup2t" path="res://UI/DebuffBar/debuff_bar.tscn" id="3_xnkt0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ll0o"]
 radius = 11.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3cllm"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qvdo8")
+}],
 "loop": true,
 "name": &"attacking",
 "speed": 5.0
@@ -24,19 +29,31 @@ animations = [{
 script = ExtResource("1_vvtex")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_0ll0o")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-0.249999, 0.25)
+scale = Vector2(0.300781, 0.285156)
 sprite_frames = SubResource("SpriteFrames_3cllm")
 animation = &"attacking"
 
 [node name="MoveTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DebuffBar" parent="." instance=ExtResource("3_xnkt0")]
+offset_left = -20.0
+offset_top = -34.0
+offset_right = -11.0
+offset_bottom = -26.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
 [node name="HealthBar" parent="." instance=ExtResource("3_3bqpo")]
-offset_left = -14.0
+offset_left = -20.0
 offset_top = -25.0
-offset_right = 134.0
+offset_right = 180.0
 offset_bottom = 2.0
 scale = Vector2(0.2, 0.2)
 

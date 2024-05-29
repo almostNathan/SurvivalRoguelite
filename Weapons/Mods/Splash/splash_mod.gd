@@ -2,7 +2,7 @@ extends BaseMod
 class_name SplashMod
 
 var damage_value = 10
-var damage_coefficient = .8
+var damage_coefficient = .5
 var splash_effect_scene = preload("res://GeneralMods/Effects/Splash/splash_effect.tscn")
 
 func _init():
@@ -20,6 +20,7 @@ func _on_hit(body, _bullet):
 
 func apply_effect(body):
 	var splash_effect = splash_effect_scene.instantiate()
+	splash_effect.origin_enemy = body
 	splash_effect.weapon = weapon
 	splash_effect.damage_value = damage_value
 	weapon.get_parent().add_sibling(splash_effect)

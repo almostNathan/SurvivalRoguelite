@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://de2qeb5jmq5nf"]
+
+[ext_resource type="Script" path="res://Weapons/Mods/IncreasedDamage/increased_damage_mod.gd" id="1_aaluu"]
+[ext_resource type="Texture2D" uid="uid://cs6nc67r6m376" path="res://Art/Drops/damage_mod.png" id="2_5j0ex"]
+
+[node name="IncreasedDamageMod" type="Node2D"]
+script = ExtResource("1_aaluu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_5j0ex")
+expand_mode = 3

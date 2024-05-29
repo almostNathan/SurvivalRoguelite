@@ -9,3 +9,7 @@ func _physics_process(delta):
 func set_movement_direction(aiming_direction: Vector2):
 	movement_direction_vector = aiming_direction
 	self.rotate(aiming_direction.angle())
+
+func _on_body_entered(body):
+	super(body)
+

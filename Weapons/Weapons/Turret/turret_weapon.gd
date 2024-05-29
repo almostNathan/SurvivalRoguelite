@@ -11,6 +11,8 @@ func _ready():
 	deploy_timer.wait_time = base_deploy_time
 	if get_parent() is Player:
 		player = get_parent()
+	damage_mod = damage_mod_scene.instantiate()
+	damage_mod.equip(self)
 
 
 func _init():

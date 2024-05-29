@@ -6,7 +6,7 @@ class_name EnemySpawner
 
 
 var enemy_pool
-var spawn_count = 10
+var spawn_count = 1
 var spawn_speed = 10.0
 var enemy_health_modifier = 1.0
 var enemy_damage_modifier = 1.0

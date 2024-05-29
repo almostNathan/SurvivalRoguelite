@@ -8,8 +8,8 @@ signal on_kill(body)
 signal adding_mod(mod)
 
 @export var bullet_scene : PackedScene
-@export var speed = 700.0
-@export var base_damage = 20
+var speed = 700.0
+var base_damage = 20
 var current_damage = base_damage
 var mod_list : Array = []
 
@@ -22,6 +22,9 @@ var current_mod_count = 0
 var player : CharacterBody2D
 
 var base_attack_speed = 1
+var damage_modifier_add = 0
+var damage_modifier_mult = 1
+var damage_modifier_level = 1
 var attack_speed_modifier_add = 0
 var attack_speed_modifier_mult = 1
 var projectile_count = 1
@@ -33,12 +36,18 @@ var pierce_value = 0
 var is_melee = false
 var is_equipped = false
 
+var damage_mod_scene = preload("res://Weapons/Mods/Damage/damage_mod.tscn")
+var damage_mod
+
 var tooltip_text = 'No Tooltip'
 
 func _ready():
-	player = get_parent()
+	if get_parent() is Player:
+		player = get_parent()
 	weapon_timer.wait_time = base_attack_speed
 	is_equipped = true
+	damage_mod = damage_mod_scene.instantiate()
+	damage_mod.equip(self)
 
 
 func modify_bullet(_bullet_proto):
@@ -81,15 +90,27 @@ func calc_attack_speed():
 	weapon_timer.wait_time = (base_attack_speed + attack_speed_modifier_add) / attack_speed_modifier_mult
 
 
-func modify_damage_add(damage_change):
-	current_damage += damage_change
+func modify_damage_add(modifier_change):
+	damage_modifier_add += modifier_change
+	calc_damage()
 	refresh_mods()
 
-func modify_damage_mult(damage_change):
-	current_damage += base_damage * damage_change
+func modify_damage_mult(modifier_change):
+	damage_modifier_mult += modifier_change
+	calc_damage()
 	refresh_mods()
+
+func modify_damage_level(new_modifier):
+	damage_modifier_level = new_modifier
+	calc_damage()
+	refresh_mods()
+
+func calc_damage():
+	current_damage = (base_damage + damage_modifier_add) * damage_modifier_mult * damage_modifier_level
+	print('weapon calcdamage ', current_damage)
 
 func refresh_mods():
+	damage_mod.refresh()
 	for mod in mod_list:
 		if mod is BaseMod:
 			mod.refresh()

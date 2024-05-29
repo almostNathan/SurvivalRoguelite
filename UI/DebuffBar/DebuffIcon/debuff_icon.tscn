@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6b61itb8ppns"]
+
+[ext_resource type="Texture2D" uid="uid://bxjhby44iqw6a" path="res://Art/Drops/poison_mod.png" id="1_bia32"]
+[ext_resource type="Script" path="res://UI/DebuffBar/DebuffIcon/debuff_icon.gd" id="1_ps2df"]
+[ext_resource type="FontFile" uid="uid://b21f2adhuvcr6" path="res://Art/Fonts/Cute Dino.otf" id="3_ncu48"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gh4us"]
+font = ExtResource("3_ncu48")
+font_size = 30
+font_color = Color(0.847059, 0, 0, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="DebuffIcon" type="TextureRect"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("1_bia32")
+expand_mode = 1
+script = ExtResource("1_ps2df")
+
+[node name="DebuffCount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+text = "23"
+label_settings = SubResource("LabelSettings_gh4us")
+horizontal_alignment = 2
+vertical_alignment = 2

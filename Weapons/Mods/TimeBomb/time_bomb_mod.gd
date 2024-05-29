@@ -20,7 +20,7 @@ func apply_effect(body):
 	var time_bomb_effect_instance = time_bomb_effect.instantiate()
 	body.add_mod(time_bomb_effect_instance)
 	time_bomb_effect_instance.weapon = weapon
-	time_bomb_effect_instance.damage = damage_value
+	time_bomb_effect_instance.damage_value = damage_value
 	
 func refresh():
 	if weapon != null:

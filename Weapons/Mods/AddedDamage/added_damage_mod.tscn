@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy8o6ge3s83g0"]
+
+[ext_resource type="Script" path="res://Weapons/Mods/AddedDamage/added_damage_mod.gd" id="1_ovm62"]
+[ext_resource type="Texture2D" uid="uid://cs6nc67r6m376" path="res://Art/Drops/damage_mod.png" id="2_krsxk"]
+
+[node name="AddedDamageMod" type="Node2D"]
+script = ExtResource("1_ovm62")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_krsxk")
+expand_mode = 3

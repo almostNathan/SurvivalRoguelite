@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://b3ebee2w6psxn" path="res://Art/Weapons/laser_bullet.png" id="2_uom3h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btspj"]
-size = Vector2(824, 8)
+size = Vector2(823, 10)
 
 [node name="LaserBullet" type="Area2D" groups=["bullet"]]
 script = ExtResource("1_5274t")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(411, -1)
+position = Vector2(411.5, 0)
 shape = SubResource("RectangleShape2D_btspj")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(399, 1)
-rotation = 0.00523599
+position = Vector2(416, 4.76837e-07)
+scale = Vector2(0.817269, 0.108696)
 texture = ExtResource("2_uom3h")
 
 [node name="FadeoutTimer" type="Timer" parent="."]

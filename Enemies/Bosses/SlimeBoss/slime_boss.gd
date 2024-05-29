@@ -11,7 +11,7 @@ var telegraph_zones = []
 
 var attack_rate = 2
 var number_of_attacks = 3
-var telegraph_window = 1
+var telegraph_window = .75
 var attack_zone_size = 100
 var attack_damage = 20
 
@@ -40,6 +40,8 @@ func _on_attack_timer_timeout():
 		
 		var new_telegraph_zone : CircleTelegraph = telegraph_zone_scene.instantiate()
 		add_sibling(new_telegraph_zone)
+		var size_scaling_ratio = attack_zone_size/new_telegraph_zone.width
+		new_telegraph_zone.scale = Vector2(size_scaling_ratio,size_scaling_ratio)
 		new_telegraph_zone.set_lifespan(telegraph_window)
 		new_telegraph_zone.position = player_position + Vector2(randf_range(attack_zone_size * -1, attack_zone_size), randf_range(attack_zone_size * -1, attack_zone_size))
 		telegraph_zones.append(new_telegraph_zone)

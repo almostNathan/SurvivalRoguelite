@@ -3,8 +3,10 @@ class_name BurnMod
 
 
 var damage_value : float
+var damage_coefficient = .6
 var burn_duration : float
 var burn_dps : float
+var proc_chance = .1
 
 var burn_debuff = preload("res://GeneralMods/Debuffs/Burn/burn_debuff.tscn")
 
@@ -19,26 +21,34 @@ func equip(new_weapon):
 	refresh()
 	
 func _on_hit(body, _weapon):
-	body.add_to_mod_queue(self)
+	if randf() < proc_chance:
+		body.add_to_mod_queue(self)
 	
 func apply_effect(body):
-	body.hit(weapon, damage_value)
+	body.hit({'weapon' : weapon, 'damage' : snapped(damage_value, 1)})
+	_apply_damage_numbers(body)
 	var new_burn_debuff = burn_debuff.instantiate()
-	body.add_mod(new_burn_debuff)
+	body.add_debuff(new_burn_debuff)
 	new_burn_debuff.set_dps(burn_dps)
 	new_burn_debuff.set_duration(burn_duration)
-	new_burn_debuff.set_weapon(weapon)
+	new_burn_debuff.set_weapon(weapon)	
 	
 func refresh():
 	if weapon != null:
-		damage_value = weapon.current_damage * .6 * current_rank
+		damage_value = weapon.current_damage * damage_coefficient * current_rank
 		burn_duration = weapon.base_attack_speed*2
 		burn_dps = damage_value / burn_duration
-
-
-
 
 func remove_mod():
 	super()
 	weapon.on_hit.disconnect(_on_hit)
 
+func _apply_damage_numbers(body):
+	var new_damage_numbers = damage_numbers_scene.instantiate()
+	body.add_sibling(new_damage_numbers)
+	var style_settings = {
+		'color' : Color(1,0,0,1)
+	}
+	new_damage_numbers.set_style(style_settings)
+
+	new_damage_numbers.set_values_and_animate(snapped(damage_value, 1), body.position, 100, 100)

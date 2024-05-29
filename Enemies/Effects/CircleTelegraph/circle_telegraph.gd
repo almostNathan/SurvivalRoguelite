@@ -9,6 +9,7 @@ signal lifespan_timeout(this)
 var alpha_min = .3
 var alpha_max = .7
 var alpha_direction = 1
+var width = 32
 
 func _ready():
 	lifespan_timer.start()

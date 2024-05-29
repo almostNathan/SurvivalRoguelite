@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxse6gotymek6"]
+[gd_scene load_steps=22 format=3 uid="uid://bxse6gotymek6"]
 
 [ext_resource type="Script" path="res://Enemies/Slime/slime.gd" id="2_fb5sk"]
+[ext_resource type="PackedScene" uid="uid://cs2ic6efhup2t" path="res://UI/DebuffBar/debuff_bar.tscn" id="2_vj541"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="3_s8kbq"]
 [ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="5_qsehc"]
 
@@ -124,7 +125,7 @@ animations = [{
 [node name="Slime" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_fb5sk")
 max_health = 20.0
-max_speed = 100.0
+max_speed = 150.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0ll0o")
@@ -137,6 +138,12 @@ animation = &"idle"
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 0.75
 one_shot = true
+
+[node name="DebuffBar" parent="." instance=ExtResource("2_vj541")]
+offset_left = -19.0
+offset_top = -33.0
+offset_right = -10.0
+offset_bottom = -25.0
 
 [node name="HealthBar" parent="." instance=ExtResource("3_s8kbq")]
 offset_left = -14.0
