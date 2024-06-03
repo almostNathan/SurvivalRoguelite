@@ -99,8 +99,6 @@ animations = [{
 
 [node name="FloatingEye" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_uyo8c")
-max_health = 10.0
-max_speed = 200.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0ll0o")

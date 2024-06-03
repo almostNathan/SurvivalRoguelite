@@ -23,6 +23,7 @@ Globals="*res://Scripts/globals.gd"
 Hud="*res://UI/HUD/HUD.tscn"
 EnemyPool="*res://Scripts/enemy_pool.gd"
 Levels="*res://Scripts/levels.gd"
+EnemyStats="*res://Scripts/enemy_stats.gd"
 
 [display]
 

@@ -7,12 +7,14 @@ signal on_physics_process(delta)
 signal health_change(cur_health)
 signal moving(velocity, delta)
 
-
-
-@export var max_health : float
-@export var max_speed : float
-var cur_health : float
-@export var exp_value = 10
+###Enemy stat block
+var stats = EnemyStats.get_stats(self)
+var max_health : float = stats["max_health"]
+var cur_health = max_health
+var max_speed : float = stats["max_speed"]
+var spawn_value = stats["spawn_value"]
+var base_damage = stats["base_damage"]
+var exp_value = stats["exp_value"]
 
 @onready var health_bar = $HealthBar
 @onready var move_timer = $MoveTimer
@@ -23,7 +25,6 @@ var cur_health : float
 var effect_queue : Array = []
 var debuff_array : Array = []
 var acceleration = 1500
-var speed = max_speed
 var friction = 1200.0
 var move_distance = 1000.0
 @onready var movement_direction : float = 0.0
@@ -32,17 +33,15 @@ var move_distance = 1000.0
 var elite_scaling_hp_modifier = 5.0
 var elite_scaling_damage_modifier = 5.0
 
-@export var base_damage = 10
 
-
-
+func _init():
+	set_max_hp(max_health)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite.play("idle")
 	cur_health = max_health
 	sprite.scale = Vector2(2,2)
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -61,11 +60,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 
-func hit(weapon_stats : Dictionary):
+func hit(weapon_info : Dictionary):
 	if cur_health > 0:
-		cur_health -= weapon_stats['damage']
+		cur_health -= weapon_info['damage']
 		if cur_health <= 0:
-			weapon_stats['weapon'].on_kill.emit(self)
+			weapon_info['weapon'].on_kill.emit(self)
 			on_death.emit()
 			queue_free()
 		else:
@@ -134,3 +133,11 @@ func modify_stats(modifiers):
 	cur_health = max_health
 	set_max_health.emit(max_health)
 	health_change.emit(cur_health)
+
+func set_max_hp(new_max_health):
+	cur_health += new_max_health - max_health
+	if cur_health > new_max_health:
+		cur_health = new_max_health
+	max_health = new_max_health
+	set_max_health.emit(max_health)
+	health_change.emit(max_health)

@@ -95,8 +95,6 @@ animations = [{
 
 [node name="Goblin" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_o7qjt")
-max_health = 30.0
-max_speed = 150.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_b1q3x")

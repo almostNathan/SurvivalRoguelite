@@ -124,8 +124,6 @@ animations = [{
 
 [node name="Slime" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_fb5sk")
-max_health = 20.0
-max_speed = 150.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0ll0o")
@@ -157,7 +155,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="ExperienceMod" parent="." instance=ExtResource("5_qsehc")]
-exp_value = 100
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

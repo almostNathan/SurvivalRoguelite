@@ -101,8 +101,6 @@ animations = [{
 
 [node name="Mushroom" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("2_3mgon")
-max_health = 50.0
-max_speed = 100.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_lchly")
@@ -132,7 +130,6 @@ scale = Vector2(0.2, 0.2)
 one_shot = true
 
 [node name="ExperienceMod" parent="." instance=ExtResource("5_rwxwh")]
-exp_value = 100
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

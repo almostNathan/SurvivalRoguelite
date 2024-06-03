@@ -2,7 +2,7 @@ extends PanelContainer
 class_name WeaponsDisplay
 
 
-@onready var weapons_display_container = $HBoxContainer
+@onready var weapons_display_container = $VBoxContainer
 
 var weapons_display_slot = preload("res://UI/Inventory/weapons_display_slot.tscn")
 

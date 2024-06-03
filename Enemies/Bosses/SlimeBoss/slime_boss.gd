@@ -23,6 +23,7 @@ func _ready():
 	telegraph_timer.wait_time = telegraph_window
 	attack_timer.wait_time = attack_rate
 	var loot_mod = preload("res://Enemies/Mods/DropLoot/drop_loot_mod.tscn").instantiate()
+	loot_mod.set_loot_scene_list(AllModList.player_mod_scene_list)
 	add_child(loot_mod)
 
 func move(delta):

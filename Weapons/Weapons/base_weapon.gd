@@ -107,7 +107,7 @@ func modify_damage_level(new_modifier):
 
 func calc_damage():
 	current_damage = (base_damage + damage_modifier_add) * damage_modifier_mult * damage_modifier_level
-	print('weapon calcdamage ', current_damage)
+
 
 func refresh_mods():
 	damage_mod.refresh()

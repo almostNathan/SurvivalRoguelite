@@ -8,6 +8,8 @@ class_name EnemySpawner
 var enemy_pool
 var spawn_count = 1
 var spawn_speed = 10.0
+var spawn_power = 100
+
 var enemy_health_modifier = 1.0
 var enemy_damage_modifier = 1.0
 var enemy_speed_modifier = 1.0
@@ -38,9 +40,10 @@ func _on_elite_spawn_timer_timeout():
 
 func _on_spawn_timer_timeout():
 	var player = Globals.player
+	var total_value_spawned = 0
 	spawn_count += 5
 	spawn_timer.wait_time = spawn_speed
-	for i in spawn_count:
+	while total_value_spawned < spawn_power:
 		var viewport_size = get_viewport().size
 		var spawn_distance = pow(pow(viewport_size.x, 2) + pow(viewport_size.y, 2), 1/2.0) /2
 		var spawn_direction = Vector2(0,1).rotated(randf_range(0,2*PI))
@@ -49,6 +52,9 @@ func _on_spawn_timer_timeout():
 		var new_enemy = enemy_pool.pick_random().instantiate()
 		add_sibling(new_enemy)
 		_modify_enemy(new_enemy)
+		
+		total_value_spawned += new_enemy.spawn_value
+		
 		new_enemy.position = spawn_location
 
 
@@ -56,6 +62,8 @@ func _on_difficulty_scaling_timer_timeout():
 	enemy_health_modifier *= enemy_health_scaling_value
 	enemy_damage_modifier *= enemy_damage_scaling_value
 	enemy_speed_modifier *= enemy_speed_scaling_value
+
+
 
 func _modify_enemy(enemy):
 	var modifier_dict = {

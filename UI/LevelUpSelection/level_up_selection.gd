@@ -18,3 +18,6 @@ func _on_selection_icon_gui_input(event):
 		if mod_in_selection is BaseWeapon:
 			Globals.player.add_to_weapon_inventory(mod_in_selection)
 			selection_made.emit()
+		if mod_in_selection is BasePlayerMod:
+			Globals.player.add_mod(mod_in_selection)
+			selection_made.emit()
