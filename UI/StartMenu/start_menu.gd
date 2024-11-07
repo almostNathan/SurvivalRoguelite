@@ -2,7 +2,7 @@ extends Control
 
 # Path constants for scene transitions
 const GAME_SCENE = "res://main.tscn"
-const OPTIONS_SCENE = "res://scenes/options.tscn"
+const OPTIONS_SCENE = "res://UI/SettingsMenu/settings_menu.tscn"
 const COLLECTION_SCENE = "res://scenes/collection.tscn"
 
 # Button colors
@@ -11,8 +11,13 @@ const COLOR_OPTIONS = Color("3498db")  # Blue
 const COLOR_COLLECTION = Color("e74c3c")  # Red
 const HOVER_BRIGHTNESS = 1.2
 
+@onready var start_button = $HBoxContainer/StartButton
+@onready var options_button = $HBoxContainer/OptionsButton
+@onready var collection_button = $HBoxContainer/CollectionButton
+
 # Called when the node enters the scene tree
 func _ready():
+	get_tree().paused = false
 	# Set up animations and initial state
 	Hud.hide()
 	_setup_buttons()
@@ -29,9 +34,9 @@ func _setup_buttons():
 		$HBoxContainer/OptionsButton: COLOR_OPTIONS,
 		$HBoxContainer/CollectionButton: COLOR_COLLECTION
 	}
-	$HBoxContainer/StartButton.pressed.connect(_on_start_pressed)
-	#$HBoxContainer/OptionsButton.pressed.connect(_on_options_pressed)
 	#$HBoxContainer/CollectionButton.pressed.connect(_on_collection_pressed)
+	start_button.pressed.connect(_on_start_pressed)
+	options_button.pressed.connect(_on_options_pressed)
 	
 	# Add hover animations
 	for button : Button in $HBoxContainer.get_children():
@@ -95,10 +100,12 @@ func _on_start_pressed():
 func _on_options_pressed():
 	#_play_button_press_sound()
 	_transition_to_scene(OPTIONS_SCENE)
+	Hud.show()
 
 func _on_collection_pressed():
 	#_play_button_press_sound()
 	_transition_to_scene(COLLECTION_SCENE)
+	Hud.show()
 
 #func _play_button_press_sound():
 	#if $ButtonSound:

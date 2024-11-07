@@ -52,6 +52,7 @@ func reset_game():
 	enemy_spawner.reset_scaling() 
 	current_level_number = 0
 	background.color = Levels.level_data_list[0].background_color
+	get_tree().change_scene_to_file("res://UI/StartMenu/start_menu.tscn")
 
 func clear_level():
 	is_boss_spawned = false
