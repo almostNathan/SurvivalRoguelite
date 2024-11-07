@@ -23,7 +23,7 @@ func apply_effect(body):
 	splash_effect.origin_enemy = body
 	splash_effect.weapon = weapon
 	splash_effect.damage_value = damage_value
-	weapon.get_parent().add_sibling(splash_effect)
+	body.add_sibling(splash_effect)
 	splash_effect.global_position = body.global_position
 	
 

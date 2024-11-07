@@ -141,3 +141,20 @@ func set_max_hp(new_max_health):
 	max_health = new_max_health
 	set_max_health.emit(max_health)
 	health_change.emit(max_health)
+	
+func get_nearest_enemies(num_of_enemies, range):
+	var nearest_enemies = []
+	var distances = []
+	var return_array = []
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		if enemy != self:
+			var distance_to_enemy = self.position.distance_to(enemy.position)
+			if distance_to_enemy < range:
+				nearest_enemies.push_front(enemy)
+				distances.push_front(distance_to_enemy)
+	
+	for i in range(num_of_enemies):
+		var next_closest_array_position = distances.find(distances.min())
+		return_array.push_front(nearest_enemies.pop_at(next_closest_array_position))
+		distances.pop_at(next_closest_array_position)
