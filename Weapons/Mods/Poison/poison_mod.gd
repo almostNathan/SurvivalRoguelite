@@ -15,11 +15,16 @@ func _init():
 func equip(new_weapon):
 	super(new_weapon)
 	weapon.on_hit.connect(_on_hit)
+	weapon.on_proc_hit.connect(_on_proc_hit)
 	refresh()
 
 
 func _on_hit(body, _bullet):
 	if randf() < proc_chance:
+		body.add_to_mod_queue(self)
+
+func _on_proc_hit(body, _bullet, proc_multiplier):
+	if randf() < (proc_chance * proc_multiplier):
 		body.add_to_mod_queue(self)
 
 func apply_effect(body):
