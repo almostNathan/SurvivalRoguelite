@@ -17,6 +17,8 @@ var current_level_portal
 
 func _ready():
 	Globals.main_scene = self
+	background.color = Levels.level_data_list[current_level_number].background_color
+	
 
 func _process(_delta):
 	$Background.position = player.position - Vector2((get_viewport().size/2))

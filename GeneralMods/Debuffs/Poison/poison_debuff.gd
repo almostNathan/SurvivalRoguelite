@@ -14,7 +14,8 @@ func _ready():
 	parent.on_physics_process.connect(_deal_damage_over_time)
 	
 func _deal_damage_over_time(delta):
-	parent.lose_life(weapon, poison_dps * delta)
+	var weapon_info = {"weapon": weapon, "damage": poison_dps*delta}
+	parent.lose_life(weapon_info)
 
 func set_duration(new_duration):
 	duration_timer.wait_time = new_duration

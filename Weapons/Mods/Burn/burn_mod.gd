@@ -14,19 +14,26 @@ var burn_debuff = preload("res://GeneralMods/Debuffs/Burn/burn_debuff.tscn")
 func _init():
 	tooltip_text = "Burn"
 	icon = preload("res://Art/Drops/burn_mod.png")
+	damage_number_color = Color(0, 0, 0, 1)
 
 func equip(new_weapon):
 	super(new_weapon)
 	weapon.on_hit.connect(_on_hit)
+	weapon.on_proc_hit.connect(_on_proc_hit)
 	refresh()
 	
-func _on_hit(body, _weapon):
+func _on_hit(body, _bullet):
+	if randf() < proc_chance:
+		body.add_to_mod_queue(self)
+
+func _on_proc_hit(body, _bullet, proc_multiplier):
+	var modified_proc_chance = proc_chance * proc_multiplier
 	if randf() < proc_chance:
 		body.add_to_mod_queue(self)
 	
 func apply_effect(body):
 	body.hit({'weapon' : weapon, 'damage' : snapped(damage_value, 1)})
-	_apply_damage_numbers(body)
+	_apply_damage_numbers(body, snapped(damage_value, 1))
 	var new_burn_debuff = burn_debuff.instantiate()
 	body.add_debuff(new_burn_debuff)
 	new_burn_debuff.set_dps(burn_dps)
@@ -43,12 +50,4 @@ func remove_mod():
 	super()
 	weapon.on_hit.disconnect(_on_hit)
 
-func _apply_damage_numbers(body):
-	var new_damage_numbers = damage_numbers_scene.instantiate()
-	body.add_sibling(new_damage_numbers)
-	var style_settings = {
-		'color' : Color(1,0,0,1)
-	}
-	new_damage_numbers.set_style(style_settings)
 
-	new_damage_numbers.set_values_and_animate(snapped(damage_value, 1), body.position, 100, 100)

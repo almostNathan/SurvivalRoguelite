@@ -11,7 +11,7 @@ var icon : CompressedTexture2D
 var need_refresh = false
 var weapon
 var current_rank = 1
-
+var damage_number_color : Color = Color(0, 0, 0, 1)
 
 func equip(new_weapon):
 	self.weapon = new_weapon
@@ -44,3 +44,13 @@ func _get_weapon_stats():
 		'weapon' : weapon,
 		'damage' : 0
 	}
+
+func _apply_damage_numbers(body, damage_value):
+	var new_damage_numbers = damage_numbers_scene.instantiate()
+	body.add_sibling(new_damage_numbers)
+	var style_settings = {
+		'color' : damage_number_color
+	}
+	new_damage_numbers.set_style(style_settings)
+
+	new_damage_numbers.set_values_and_animate(snapped(damage_value, 1), body.position, 100, 100)

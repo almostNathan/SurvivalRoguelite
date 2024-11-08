@@ -32,7 +32,7 @@ func _on_body_entered(body):
 	delete_bullet = true
 	if body.has_method("hit") && body.is_in_group("enemy"):
 		enemies_hit += 1
-		weapon.on_hit.emit(body, self)
+		weapon.hit(body, self)
 		if (delete_bullet):
 			queue_free()
 
@@ -41,17 +41,16 @@ func set_movement_direction(aiming_direction: Vector2):
 
 func modify_movement_direction(change_in_radians):
 	movement_direction_vector = movement_direction_vector.rotated(change_in_radians)
-	
+
 func set_weapon(new_weapon):
 	self.weapon = new_weapon
-	
+
 func set_player(new_player):
 	player = new_player
-
 
 func _on_on_screen_enabler_screen_exited():
 	queue_free()
 
-
 func _on_lifespan_timer_timeout():
 	queue_free()
+

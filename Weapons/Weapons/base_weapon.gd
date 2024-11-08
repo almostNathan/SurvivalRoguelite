@@ -3,7 +3,8 @@ class_name BaseWeapon
 
 signal shooting_weapon()
 signal off_cooldown(body)
-signal on_hit(body)
+signal on_hit(body, bullet)
+signal on_proc_hit(body, bullet, proc_multiplier)
 signal on_kill(body)
 signal adding_mod(mod)
 
@@ -61,7 +62,7 @@ func get_cooldown():
 
 func _on_weapon_timer_timeout():
 	var aiming_direction :float= Vector2.RIGHT.angle_to(player.aiming_direction)
-	
+
 	left_shooting_angle = aiming_direction + (shooting_angle/2)
 	angle_between_bullets = shooting_angle / (projectile_count + 1)
 
@@ -74,6 +75,13 @@ func _on_weapon_timer_timeout():
 		modify_bullet(new_bullet)
 		new_bullet.global_position = player.position
 		set_bullet_aiming(new_bullet, i, aiming_direction)
+
+func hit(body, bullet):
+	on_hit.emit(body, bullet)
+
+func proc_hit(body, bullet, proc_multiplier):
+	on_proc_hit.emit(body, bullet, proc_multiplier)
+
 
 func set_bullet_aiming(new_bullet, bullet_number, _aiming_direction):
 	new_bullet.set_movement_direction(Vector2.RIGHT.rotated(left_shooting_angle - (angle_between_bullets * (bullet_number+1))))
