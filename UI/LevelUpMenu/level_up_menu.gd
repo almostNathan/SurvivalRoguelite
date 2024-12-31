@@ -3,20 +3,35 @@ class_name LevelUpMenu
 
 @onready var mod_selection_area = $MarginContainer/ModSelectionArea
 
+var weapon_ratio = .2
+
 var player
 var selection_count = 3
-var level_up_selection = preload("res://UI/LevelUpSelection/level_up_selection.tscn")
+var level_up_selection = preload("res://UI/LootSelection/loot_selection.tscn")
 
 func load_level_up_window():
 	player = Globals.player
 	var mod_scene_list = AllModList.mod_scene_list.duplicate()
+	var weapon_scene_list = AllWeaponList.available_weapon_scene_list.duplicate()
+	var player_mod_scene_list = AllPlayerModList.player_mod_scene_list.duplicate()
+	
+	mod_scene_list = mod_scene_list + player_mod_scene_list
+	#Add weapons to the possible selections
+	for i in range(floor(mod_scene_list.size() * weapon_ratio)):
+		print(i)
+		var selected_weapon = weapon_scene_list.pick_random()
+		mod_scene_list.append(selected_weapon)
+		weapon_scene_list.remove_at(weapon_scene_list.find(selected_weapon))
+	
+	
+	#Make Select mods/weapons
 	var mod_selection_options = []
 	for mod in range(selection_count):
 		var selected_mod = mod_scene_list.pick_random()
 		mod_selection_options.append(selected_mod.instantiate())
 		mod_scene_list.remove_at(mod_scene_list.find(selected_mod))
-		
-	
+
+	#Create selection Nodes
 	for mod in mod_selection_options:
 		var new_selection = level_up_selection.instantiate()
 		mod_selection_area.add_child(new_selection)

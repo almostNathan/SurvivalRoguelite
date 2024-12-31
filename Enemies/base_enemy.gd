@@ -43,6 +43,7 @@ func _ready():
 	cur_health = max_health
 	sprite.scale = Vector2(2,2)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	#apply effect of all mods recently applied to enemy

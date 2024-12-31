@@ -4,11 +4,13 @@ class_name EnemySpawner
 @onready var spawn_timer : Timer = $SpawnTimer
 @onready var elite_spawn_timer : Timer = $EliteSpawnTimer
 
+var spawner_on = false
 
 var enemy_pool
 var spawn_count = 1
 var spawn_speed = 10.0
-var spawn_power = 100
+var total_value_spawned = 0
+var spawn_power = 200
 
 var enemy_health_modifier = 1.0
 var enemy_damage_modifier = 1.0
@@ -20,9 +22,29 @@ var enemy_speed_scaling_value = 1.03
 
 var current_level_number = 0
 
+###Spawning Variables
+var viewport_size : Vector2
+var spawn_distance
 
 func _ready():
+	viewport_size = get_viewport().size
+	spawn_distance = pow(pow(viewport_size.x, 2) + pow(viewport_size.y, 2), 1/2.0) /2
 	enemy_pool = Levels.level_data_list[current_level_number].enemy_pool
+
+func _process(delta):
+	var player = Globals.player
+
+	if total_value_spawned < spawn_power  && spawner_on:
+		var spawn_direction = Vector2(0,1).rotated(randf_range(0,2*PI))
+		var spawn_location = (spawn_direction * spawn_distance) + player.position
+		
+		var new_enemy = enemy_pool.pick_random().instantiate()
+		new_enemy.position = spawn_location
+		add_sibling(new_enemy)
+		_modify_enemy(new_enemy)
+		
+		total_value_spawned += new_enemy.spawn_value
+		
 
 
 func _on_elite_spawn_timer_timeout():

@@ -45,6 +45,8 @@ func _on_button_pressed():
 	for weapon_slot in weapon_grid_container.get_weapon_slots():
 		if weapon_slot.weapon_in_slot != null:
 			player.add_to_weapon_inventory(weapon_slot.weapon_in_slot)
+			AllWeaponList.remove_weapon_from_pool(weapon_slot.weapon_in_slot)
+			
 		
 	player.equip_weapons()
 	Hud.update_weapons_display()

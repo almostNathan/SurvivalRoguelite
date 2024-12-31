@@ -8,8 +8,6 @@ signal shooting_weapon(bullet)
 signal set_max_health(new_max_hp)
 signal health_change(cur_health)
 
-var main_weapon_scene : PackedScene
-var offhand_weapon_scene : PackedScene
 @export var max_speed = 250.0
 
 @onready var main_weapon : BaseWeapon

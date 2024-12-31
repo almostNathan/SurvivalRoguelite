@@ -9,6 +9,8 @@ func get_stats(enemy):
 		return goblin
 	elif enemy is Mushroom:
 		return mushroom
+	elif enemy is Skeleton:
+		return skeleton
 	elif enemy is SlimeBoss:
 		return slime_boss
 		
@@ -42,6 +44,14 @@ var mushroom = {
 	"max_health" : 50,
 	"max_speed" : 100,
 	"spawn_value" : 10,
+	"base_damage" : 20,
+	"exp_value" : 14
+}
+
+var skeleton = {
+	"max_health" : 50,
+	"max_speed" : 150,
+	"spawn_value" : 15,
 	"base_damage" : 20,
 	"exp_value" : 14
 }

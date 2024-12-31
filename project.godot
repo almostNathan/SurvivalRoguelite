@@ -24,6 +24,7 @@ Hud="*res://UI/HUD/HUD.tscn"
 EnemyPool="*res://Scripts/enemy_pool.gd"
 Levels="*res://Scripts/levels.gd"
 EnemyStats="*res://Scripts/enemy_stats.gd"
+AllPlayerModList="*res://Scripts/all_player_mod_list.gd"
 
 [display]
 

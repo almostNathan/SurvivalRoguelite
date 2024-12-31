@@ -42,5 +42,5 @@ func open_weapon_config():
 func update_weapons_display():
 	weapons_display.update()
 
-func load_loot_menu(loot_list):
-	loot_menu.load_loot_menu(loot_list)
+func load_loot_menu():
+	loot_menu.load_loot_menu()

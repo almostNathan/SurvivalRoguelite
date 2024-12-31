@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://mgwpwqnwcv6b"]
+
+[ext_resource type="Script" path="res://UI/LevelUpSelection/level_up_selection.gd" id="1_42gr0"]
+
+[node name="LevelUpSelection" type="ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+color = Color(0.701961, 0, 0.701961, 1)
+script = ExtResource("1_42gr0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SelectionIcon" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+
+[connection signal="gui_input" from="MarginContainer/SelectionIcon" to="." method="_on_selection_icon_gui_input"]

@@ -3,10 +3,12 @@ class_name MainScene
 
 signal menu_button_pressed
 
+
 @onready var player = $Player
 @onready var enemy_spawner : EnemySpawner = $EnemySpawner
 @onready var background : ColorRect = $Background
 @onready var level_timer : Timer = $LevelTimer
+@onready var tile_manager  = $TileManager
 
 var spawn_count = 20
 var is_boss_spawned = false
@@ -19,8 +21,10 @@ func _ready():
 	Globals.main_scene = self
 	background.color = Levels.level_data_list[current_level_number].background_color
 	
+	
 
 func _process(_delta):
+	#$TileManager.update_chunks(player.global_position)
 	$Background.position = player.position - Vector2((get_viewport().size/2))
 	
 	#TODO Create node to handle enemy movement
@@ -80,8 +84,9 @@ func clear_level():
 	level_timer.start()
 
 func _on_level_timer_timeout():
-	enemy_spawner.spawn_boss()
-	is_boss_spawned = true
+	pass
+	#enemy_spawner.spawn_boss()
+	#is_boss_spawned = true
 
 func spawn_portal():
 	is_portal_spawned = true
@@ -100,9 +105,13 @@ func go_to_next_level():
 			if weapon_scene.instantiate().name == weapon.name:
 				available_loot_scene_list.remove_at(available_loot_scene_list.find(weapon_scene))
 	
-	Hud.load_loot_menu(available_loot_scene_list)
+	Hud.load_loot_menu()
 	
 	
 	background.color = Levels.level_data_list[current_level_number].background_color
 	enemy_spawner.change_level(current_level_number)
 	level_timer.start()
+
+
+
+

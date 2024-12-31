@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://UI/PlayerHud/PlayerHud.gd" id="1_jt5eq"]
 
 [node name="PlayerHud" type="Camera2D"]
+zoom = Vector2(2.695, 2.695)
 script = ExtResource("1_jt5eq")

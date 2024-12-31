@@ -21,3 +21,4 @@ size_flags_vertical = 4
 
 [node name="LootSelectionArea" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+alignment = 1
