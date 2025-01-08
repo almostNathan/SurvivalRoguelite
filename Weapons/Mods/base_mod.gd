@@ -20,7 +20,8 @@ func equip(new_weapon):
 func refresh():
 	pass
 
-	
+#Must disconnect any signals
+#Create signal array this function could handle any mod
 func remove_mod():
 	pass
 
@@ -44,6 +45,7 @@ func _get_weapon_stats():
 		'weapon' : weapon,
 		'damage' : 0
 	}
+
 
 func _apply_damage_numbers(body, damage_value):
 	var new_damage_numbers = damage_numbers_scene.instantiate()

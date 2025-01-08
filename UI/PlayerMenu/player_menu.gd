@@ -39,7 +39,7 @@ func close_player_menu():
 	for weapon in weapon_inventory:
 		weapon.detach_all_mods()
 		
-	Globals.player.detach_all_mods()
+	Globals.player.refresh_player_mods()
 	
 	for weapon_slot in weapons_container.get_children():
 		weapon_slot.add_mods_to_weapon()
@@ -50,7 +50,7 @@ func close_player_menu():
 		mod_container.remove_child(mod_slot)
 		mod_slot.queue_free()
 	
-	inventory_player.equip_mods()
+	#inventory_player.equip_mods()
 	
 	Hud.update_weapons_display()
 	get_tree().paused = false

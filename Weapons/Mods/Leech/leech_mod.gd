@@ -13,7 +13,8 @@ func equip(new_weapon):
 	refresh()
 
 func _on_hit(_body, _bullet):
-	weapon.player.gain_life(leech_per_hit)
+	if weapon != null:
+		weapon.player.gain_life(leech_per_hit)
 
 func refresh():
 	leech_per_hit = current_rank

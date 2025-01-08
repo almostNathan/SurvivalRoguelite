@@ -14,14 +14,15 @@ func equip(new_weapon):
 	
 
 func _on_hit(_body, bullet):
-	if weapon.is_melee == true:
-		bullet.delete_bullet = false
-		bullet.enemies_bounced += 1
-		bullet.rotation_speed *= -1
-	if  bullet is BaseBullet && bullet.enemies_bounced < weapon.bounce_value && bullet.delete_bullet == true:
-		bullet.delete_bullet = false
-		bullet.enemies_bounced += 1
-		bullet.modify_movement_direction(PI)
+	if weapon != null:
+		if weapon.is_melee == true:
+			bullet.delete_bullet = false
+			bullet.enemies_bounced += 1
+			bullet.rotation_speed *= -1
+		if  bullet is BaseBullet && bullet.enemies_bounced < weapon.bounce_value && bullet.delete_bullet == true:
+			bullet.delete_bullet = false
+			bullet.enemies_bounced += 1
+			bullet.modify_movement_direction(PI)
 
 
 func refresh():

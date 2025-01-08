@@ -16,7 +16,8 @@ func equip(new_weapon):
 	refresh()
 
 func _on_hit(body, _bullet):
-	body.add_to_mod_queue(self)
+	if weapon != null:
+		body.add_to_mod_queue(self)
 
 func apply_effect(body):
 	var splash_effect = splash_effect_scene.instantiate()

@@ -9,7 +9,6 @@ size = Vector2(119, 7)
 [node name="MachineGunBullet" type="Area2D" groups=["bullet"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_563dg")
-speed = 2500.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)

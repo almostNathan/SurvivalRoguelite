@@ -16,7 +16,7 @@ func _on_weapon_timer_timeout():
 	angle_between_bullets = shooting_angle / (projectile_count + 1)
 
 	for i in range(projectile_count):
-		var new_bullet = bullet_scene.instantiate()
+		var new_bullet = create_new_bullet()
 		new_bullet.set_weapon(self)
 		player.add_sibling(new_bullet)
 		new_bullet.set_player(player)

@@ -8,7 +8,7 @@ signal shooting_weapon(bullet)
 signal set_max_health(new_max_hp)
 signal health_change(cur_health)
 
-@export var max_speed = 250.0
+@export var base_speed = 250.0
 
 @onready var main_weapon : BaseWeapon
 @onready var offhand_weapon : BaseWeapon
@@ -20,6 +20,8 @@ signal health_change(cur_health)
 @onready var dodge_timer = $DodgeTimer
 @onready var player_hud = $PlayerHud
 @onready var exp_mod_man = $ExperienceManagerMod
+@onready var magnet_area = $MagnetArea/MagnetHitbox
+
 
 #Modifier variables
 var weapon_spread = PI/4
@@ -31,15 +33,22 @@ var max_health = 100
 var cur_health = 100
 
 #Character movement variables
-var speed = max_speed
-var dodge_speed = max_speed * 2
+var speed = base_speed
+var dodge_speed = base_speed * 2
 var acceleration = 1500.0
 var friction = 1200.0
+var base_magnet_radius = 200
 
 var mod_inventory = []
 var weapon_inventory = []
 var player_mod_list = []
 
+#Modifier Variables
+var speed_multiplier = 1
+var dodge_speed_multiplier = 1
+var magnet_raidus_multiplier = 1
+var experience_multiplier = 1
+var duration_multiplier = 1
 
 func _ready():
 	Globals.player = self
@@ -55,7 +64,7 @@ func _physics_process(delta):
 	move(delta)
 
 func dodge():
-	speed = dodge_speed
+	speed = dodge_speed * speed_multiplier * dodge_speed_multiplier
 	player_collision.disabled = true
 	i_frame_timer.start()
 	dodge_timer.start()
@@ -103,7 +112,7 @@ func move(delta):
 		apply_friction(friction*delta)
 	
 	velocity += movement_direction * acceleration * delta
-	velocity = velocity.limit_length(speed)
+	velocity = velocity.limit_length(speed * speed_multiplier)
 	move_and_slide()
 	position.clamp(Vector2.ZERO, get_parent().get_level_size())
 
@@ -114,7 +123,11 @@ func apply_friction(current_friction):
 		velocity = Vector2.ZERO
 		$PlayerAnimation.stop()
 
+func get_current_speed():
+	return base_speed * speed_multiplier
+
 func take_experience(new_exp : float):
+	new_exp*= experience_multiplier
 	gain_experience.emit(new_exp)
 
 func _on_hitbox_body_entered(body):
@@ -124,7 +137,7 @@ func _on_hitbox_body_entered(body):
 
 func _on_i_frame_timer_timeout():
 	player_collision.disabled = false
-	speed = max_speed
+	speed = base_speed
 
 func set_aiming_direction(closest_enemy_position):
 	var angle_to_closest_enemy = position.angle_to_point(closest_enemy_position)
@@ -149,6 +162,7 @@ func add_to_weapon_inventory(weapon):
 	weapon_inventory.append(weapon)
 	Hud.update_weapons_display()
 	equip_weapons()
+	refresh_player_mods()
 	
 func level_up():
 	Hud.level_up()
@@ -162,6 +176,31 @@ func remove_mod(mod_to_remove: BasePlayerMod):
 	player_mod_list.remove_at(player_mod_list.find(self))
 
 func detach_all_mods():
+	print(player_mod_list)
 	for mod in player_mod_list:
 		mod.remove_mod()
 	player_mod_list = []
+
+func refresh_player_mods():
+	for mod in player_mod_list:
+		mod.refresh()
+
+func modify_speed_multiplier(change):
+	speed_multiplier += change
+
+func apply_player_mods_to_weapon(new_turret):
+	for player_mod in player_mod_list:
+		player_mod.apply_effect_to_weapon(new_turret)
+
+func modify_magnet_radius_multiplier(modifier_change):
+	magnet_raidus_multiplier += modifier_change
+	magnet_area.shape.radius = base_magnet_radius * magnet_raidus_multiplier
+
+func modify_dodge_speed_multiplier(modifier_change):
+	dodge_speed_multiplier += modifier_change
+
+func modify_experience_multiplier(modifier_change):
+	experience_multiplier += modifier_change
+
+func modify_duration_multiplier(modifier_change):
+	duration_multiplier += modifier_change

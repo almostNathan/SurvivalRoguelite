@@ -2,9 +2,8 @@ extends BaseBullet
 class_name ScytheBullet
 
 
-var rotation_speed = 2*PI
-
 func _physics_process(delta):
+	var rotation_speed = current_speed/100
 	rotate(rotation_speed * delta)
 	position = player.position
 

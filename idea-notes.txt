@@ -1,3 +1,9 @@
+Player Mod Ideas:
+	duration
+
+
+	
+
 TODO:
 	Make exp travel more consistant.
 		either lock in at a certain radius or just travel faster

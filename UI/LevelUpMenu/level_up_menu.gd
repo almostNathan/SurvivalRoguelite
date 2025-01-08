@@ -18,7 +18,6 @@ func load_level_up_window():
 	mod_scene_list = mod_scene_list + player_mod_scene_list
 	#Add weapons to the possible selections
 	for i in range(floor(mod_scene_list.size() * weapon_ratio)):
-		print(i)
 		var selected_weapon = weapon_scene_list.pick_random()
 		mod_scene_list.append(selected_weapon)
 		weapon_scene_list.remove_at(weapon_scene_list.find(selected_weapon))
@@ -43,8 +42,17 @@ func load_level_up_window():
 
 func selection_made():
 	for selection in mod_selection_area.get_children():
-		mod_selection_area.remove_child(selection)
-		selection.queue_free()
+		if selection is LootSelection:
+			mod_selection_area.remove_child(selection)
+			selection.queue_free()
 		
 	get_tree().paused = false
 	visible = false
+
+
+func _on_reroll_pressed():
+	for selection in mod_selection_area.get_children():
+		if selection is LootSelection:
+			mod_selection_area.remove_child(selection)
+			selection.queue_free()
+	load_level_up_window()

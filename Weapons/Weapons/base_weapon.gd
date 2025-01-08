@@ -28,6 +28,9 @@ var damage_modifier_mult = 1
 var damage_modifier_level = 1
 var attack_speed_modifier_add = 0
 var attack_speed_modifier_mult = 1
+var duration_modifier_mult = 1
+var area_modifier_mult = 1
+var projectile_speed_modifier_mult = 1
 var projectile_count = 1
 var shooting_angle = PI
 var left_shooting_angle
@@ -51,8 +54,8 @@ func _ready():
 	damage_mod.equip(self)
 
 
-func modify_bullet(_bullet_proto):
-	pass
+func modify_bullet(new_bullet):
+	new_bullet.set_duration_modifier(duration_modifier_mult)
 
 func get_image_texture():
 	return weapon_image.texture
@@ -67,7 +70,7 @@ func _on_weapon_timer_timeout():
 	angle_between_bullets = shooting_angle / (projectile_count + 1)
 
 	for i in range(projectile_count):
-		var new_bullet = bullet_scene.instantiate()
+		var new_bullet = create_new_bullet()
 		new_bullet.set_weapon(self)
 		player.add_sibling(new_bullet)
 		new_bullet.set_player(player)
@@ -108,6 +111,7 @@ func modify_damage_mult(modifier_change):
 	calc_damage()
 	refresh_mods()
 
+#Damage scaling from Leveling
 func modify_damage_level(new_modifier):
 	damage_modifier_level = new_modifier
 	calc_damage()
@@ -116,6 +120,14 @@ func modify_damage_level(new_modifier):
 func calc_damage():
 	current_damage = (base_damage + damage_modifier_add) * damage_modifier_mult * damage_modifier_level
 
+func modify_area_mult(modifier_change):
+	area_modifier_mult += modifier_change
+
+func modify_projectile_speed_mult(modifier_change):
+	projectile_speed_modifier_mult += modifier_change
+
+func modify_duration_mult(modifier_change):
+	duration_modifier_mult += modifier_change
 
 func refresh_mods():
 	damage_mod.refresh()
@@ -139,7 +151,6 @@ func get_current_damage():
 	return current_damage
 
 func add_mod(mod_to_add : BaseMod):
-
 	mod_to_add.equip(self)
 	mod_list.append(mod_to_add)
 	adding_mod.emit(mod_to_add)
@@ -156,3 +167,12 @@ func detach_all_mods():
 		mod.remove_mod()
 	mod_list = []
 	
+func create_new_bullet():
+	var new_bullet = bullet_scene.instantiate()
+	new_bullet.set_area_modifier(area_modifier_mult)
+	new_bullet.set_projectile_speed_modifier(projectile_speed_modifier_mult)
+	return new_bullet
+
+func apply_player_mods_to_weapon(weapon : BaseWeapon):
+	player.apply_player_mods_to_weapon(weapon)
+

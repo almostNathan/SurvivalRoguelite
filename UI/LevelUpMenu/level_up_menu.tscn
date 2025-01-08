@@ -21,3 +21,9 @@ size_flags_vertical = 4
 
 [node name="ModSelectionArea" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/ModSelectionArea"]
+layout_mode = 2
+text = "Reroll"
+
+[connection signal="pressed" from="MarginContainer/ModSelectionArea/Button" to="." method="_on_reroll_pressed"]

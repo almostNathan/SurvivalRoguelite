@@ -5,11 +5,12 @@ signal on_hit(body)
 signal shooting_weapon()
 signal setting_movement_direction(body)
 
-@export var speed = 700.0
-
+var speed = 700.0
+var current_speed = speed
 
 @onready var hitbox = $Hitbox
-@onready var weapon_image = $Sprite
+@onready var weapon_image : Sprite2D = $Sprite
+@onready var lifespan_timer : Timer = $LifespanTimer
 
 
 var delete_bullet = false
@@ -21,10 +22,14 @@ var enemies_pierced = 0
 var enemies_bounced = 0
 
 
+#Bullet Modifier Variables
+var area_modifier = 1
+var projectile_speed_modifier = 1
+
+
 func _physics_process(delta):
 	setting_movement_direction.emit(self)
-	position += movement_direction_vector * speed * delta
-	
+	position += movement_direction_vector * current_speed * delta
 	#apply spin to bullet image
 	weapon_image.rotate(PI/16)
 
@@ -53,4 +58,18 @@ func _on_on_screen_enabler_screen_exited():
 
 func _on_lifespan_timer_timeout():
 	queue_free()
+
+func set_area_modifier(new_modifier):
+	scale *= new_modifier
+	
+func set_projectile_speed_modifier(new_modifier):
+	projectile_speed_modifier = new_modifier
+	calculate_current_speed()
+	
+func calculate_current_speed():
+	current_speed = speed * projectile_speed_modifier
+
+func set_duration_modifier(new_modifier):
+	lifespan_timer.wait_time *= new_modifier
+
 

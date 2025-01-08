@@ -1,4 +1,5 @@
 extends MarginContainer
+class_name LootSelection
 
 @onready var selection_icon = $MarginContainer/SelectionIcon
 @onready var border = $SelectionBorder

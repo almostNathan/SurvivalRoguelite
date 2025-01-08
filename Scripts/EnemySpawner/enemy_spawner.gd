@@ -17,7 +17,7 @@ var enemy_damage_modifier = 1.0
 var enemy_speed_modifier = 1.0
 
 var enemy_health_scaling_value = 1.1
-var enemy_damage_scaling_value = 1.1
+var enemy_damage_scaling_value = 1.01
 var enemy_speed_scaling_value = 1.03
 
 var current_level_number = 0
@@ -55,8 +55,8 @@ func _on_elite_spawn_timer_timeout():
 	var spawn_location = (spawn_direction * spawn_distance) + player.position
 
 	var new_enemy = enemy_pool.pick_random().instantiate()
-	add_sibling(new_enemy)
 	new_enemy.position = spawn_location
+	add_sibling(new_enemy)
 	new_enemy.make_elite()
 	_modify_enemy(new_enemy)
 

@@ -20,7 +20,7 @@ func equip(new_weapon):
 
 
 func _on_hit(body, _bullet):
-	if randf() < proc_chance:
+	if randf() < proc_chance and weapon != null:
 		body.add_to_mod_queue(self)
 
 func _on_proc_hit(body, _bullet, proc_multiplier):

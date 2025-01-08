@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://yiynsl4g7ddh"]
+
+[ext_resource type="Script" path="res://Weapons/Weapons/MachineGun/machine_gun_weapon.gd" id="1_10jfu"]
+[ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="1_il7hf"]
+[ext_resource type="PackedScene" uid="uid://but6ynov34jwg" path="res://Weapons/Weapons/MachineGun/machine_gun_bullet.tscn" id="2_gdmui"]
+
+[node name="MachineGunWeapon" type="Node2D" groups=["weapons"]]
+rotation = 1.5708
+script = ExtResource("1_10jfu")
+bullet_scene = ExtResource("2_gdmui")
+
+[node name="Image" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_il7hf")
+region_rect = Rect2(0.604588, 17.2939, 14.8792, 14.3887)
+
+[node name="WeaponTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="WeaponTimer" to="." method="_on_weapon_timer_timeout"]

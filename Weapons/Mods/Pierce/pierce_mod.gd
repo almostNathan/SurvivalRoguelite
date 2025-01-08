@@ -16,9 +16,10 @@ func equip(new_weapon):
 	
 
 func _on_hit(_body, bullet):
-	if bullet is BaseBullet && bullet.enemies_pierced < weapon.pierce_value && bullet.delete_bullet == true:
-		bullet.delete_bullet = false
-		bullet.enemies_pierced += 1
+	if weapon != null:
+		if bullet is BaseBullet && bullet.enemies_pierced < weapon.pierce_value && bullet.delete_bullet == true:
+			bullet.delete_bullet = false
+			bullet.enemies_pierced += 1
 
 func refresh():
 	if weapon != null:

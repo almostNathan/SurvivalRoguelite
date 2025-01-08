@@ -21,14 +21,20 @@ func equip(new_weapon):
 	
 func remove_mod():
 	super()
+	weapon.on_hit.disconnect(_on_hit)
 
 func refresh():
 	if weapon != null:
 		damage_value = weapon.current_damage * damage_coefficient * current_rank
 	
 func _on_hit(body, bullet):
-	var chain_enemies = find_chained_enemies(body)
-	
+	if weapon != null:
+		var chain_enemies = find_chained_enemies(body)
+		for enemy in chain_enemies:
+			_apply_damage_numbers(enemy, snapped(damage_value, 1))
+			enemy.lose_life({"weapon" : weapon, "damage" : damage_value})
+			weapon.proc_hit(enemy, bullet, .5)
+		
 	#var chain_enemies = []
 	#
 	#var current_target = body
@@ -51,12 +57,7 @@ func _on_hit(body, bullet):
 				#current_target = enemy
 				#chain_enemies.append(current_target)
 				#break
-#
-	for enemy in chain_enemies:
-		_apply_damage_numbers(enemy, snapped(damage_value, 1))
-		enemy.lose_life({"weapon" : weapon, "damage" : damage_value})
-		weapon.proc_hit(enemy, bullet, .5)
-		
+
 		
 
 

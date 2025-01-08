@@ -5,6 +5,8 @@ class_name TurretWeapon
 @onready var deploy_timer = $DeployTimer
 var primary_turret_weapon : TurretWeapon
 var base_deploy_time = 5
+var deploy_speed_modifier_add = 0
+var deploy_speed_modifier_mult = 1
 
 
 func _ready():
@@ -51,9 +53,11 @@ func set_bullet_aiming(new_bullet, bullet_number, _aiming_direction):
 
 func _clone():
 	var new_turret = preload("res://Weapons/Weapons/Turret/turret_weapon.tscn").instantiate()
-	player.add_sibling(new_turret)	
-	for mod in mod_list:
-		new_turret.add_mod(mod.duplicate())
+	player.add_sibling(new_turret)
+	var new_mod_list = mod_list.duplicate(true)
+	for mod in new_mod_list:
+		new_turret.add_mod(mod)
+	apply_player_mods_to_weapon(new_turret)
 	return new_turret
 
 
@@ -63,9 +67,15 @@ func _on_lifespan_timer_timeout():
 func set_primary_turret_weapon(turret_weapon:TurretWeapon):
 	self.primary_turret_weapon = turret_weapon
 
-func calc_attack_speed():
-	super()
-	deploy_timer.wait_time = (base_deploy_time + attack_speed_modifier_add) / attack_speed_modifier_mult
+func modify_deploy_speed_add(deloy_speed_change):
+	deploy_speed_modifier_add += deloy_speed_change
+	calc_deploy_speed()
 
+func modify_deploy_speed_mult(deploy_speed_change):
+	deploy_speed_modifier_mult += deploy_speed_change
+	calc_deploy_speed()
+
+func calc_deploy_speed():
+	deploy_timer.wait_time = (base_deploy_time + deploy_speed_modifier_add) / deploy_speed_modifier_mult
 
 

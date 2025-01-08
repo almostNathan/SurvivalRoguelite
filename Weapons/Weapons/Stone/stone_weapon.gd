@@ -9,10 +9,12 @@ func _init():
 	current_damage = base_damage
 	shooting_angle = PI/2
 	projectile_count = 3
+	speed = 500
 
 func set_bullet_aiming(new_bullet, _bullet_number, aiming_direction):
 	new_bullet.set_movement_direction(Vector2.RIGHT.rotated(randf_range(aiming_direction-(shooting_angle/2), aiming_direction + (shooting_angle/2))))
 
 
 func modify_bullet(bullet_proto):
-	bullet_proto.speed = randf_range(400, 600)
+	var total_speed = speed * projectile_speed_modifier_mult
+	bullet_proto.speed = randf_range(total_speed-100, total_speed+100)

@@ -10,9 +10,12 @@ func _init():
 	current_damage = base_damage
 	shooting_angle = PI/2
 
+func modify_area_mult(modifier_change):
+	super(modifier_change)
+	self.scale *= area_modifier_mult
 
 func _on_weapon_timer_timeout():
-	var new_bullet = bullet_scene.instantiate()
+	var new_bullet = create_new_bullet()
 	new_bullet.hit_count = projectile_count
 	new_bullet.set_weapon(self)
 	get_parent().add_sibling(new_bullet)

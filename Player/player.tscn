@@ -96,7 +96,6 @@ radius = 200.0
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -2)
 script = ExtResource("1_du36b")
-max_speed = 200.0
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
