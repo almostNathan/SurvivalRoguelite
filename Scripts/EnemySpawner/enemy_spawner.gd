@@ -72,12 +72,12 @@ func _on_spawn_timer_timeout():
 		var spawn_location = (spawn_direction * spawn_distance) + player.position
 		
 		var new_enemy = enemy_pool.pick_random().instantiate()
+		new_enemy.position = spawn_location
 		add_sibling(new_enemy)
 		_modify_enemy(new_enemy)
 		
 		total_value_spawned += new_enemy.spawn_value
 		
-		new_enemy.position = spawn_location
 
 
 func _on_difficulty_scaling_timer_timeout():

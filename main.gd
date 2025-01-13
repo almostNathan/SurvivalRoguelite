@@ -24,7 +24,7 @@ func _ready():
 	
 
 func _process(_delta):
-	#$TileManager.update_chunks(player.global_position)
+	$TileManager.update_chunks(player.global_position)
 	$Background.position = player.position - Vector2((get_viewport().size/2))
 	
 	#TODO Create node to handle enemy movement

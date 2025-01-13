@@ -3,8 +3,6 @@ class_name BoomerangBullet
 
 var rotation_in_radians = .05
 
-func _ready():
-	print(lifespan_timer.wait_time)
 
 func _physics_process(delta):
 	super(delta)

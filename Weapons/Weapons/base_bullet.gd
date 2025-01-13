@@ -70,6 +70,7 @@ func calculate_current_speed():
 	current_speed = speed * projectile_speed_modifier
 
 func set_duration_modifier(new_modifier):
-	lifespan_timer.wait_time *= new_modifier
+	if lifespan_timer != null:
+		lifespan_timer.wait_time *= new_modifier
 
 

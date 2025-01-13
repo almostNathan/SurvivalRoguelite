@@ -65,7 +65,8 @@ func hit(weapon_info : Dictionary):
 	if cur_health > 0:
 		cur_health -= weapon_info['damage']
 		if cur_health <= 0:
-			weapon_info['weapon'].on_kill.emit(self)
+			if weapon_info['weapon'] != null:
+				weapon_info['weapon'].on_kill.emit(self)
 			on_death.emit()
 			queue_free()
 		else:
@@ -75,7 +76,8 @@ func lose_life(weapon_info : Dictionary):
 	if cur_health > 0:
 		cur_health -= weapon_info['damage']
 		if cur_health <= 0:
-			weapon_info['weapon'].on_kill.emit(self)
+			if weapon_info['weapon'] != null:
+				weapon_info['weapon'].on_kill.emit(self)
 			on_death.emit()
 			queue_free()
 		else:

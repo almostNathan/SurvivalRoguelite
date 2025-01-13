@@ -13,10 +13,6 @@ func _init():
 	shooting_angle = PI/2
 	bounce_value = 2
 
-func _ready():
-	super()
-	#add_mod(preload("res://Weapons/Mods/Bounce/bounce_mod.tscn").instantiate())
-	#add_mod(preload("res://Weapons/Mods/Bounce/bounce_mod.tscn").instantiate())
 
 
 
