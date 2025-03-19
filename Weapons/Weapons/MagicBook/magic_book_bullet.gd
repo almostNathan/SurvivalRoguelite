@@ -9,6 +9,7 @@ var damage_zone = preload("res://GeneralMods/Effects/MagicBookZone/magic_book_zo
 
 func _physics_process(delta):
 	position = position.move_toward(target_position, current_speed * delta)
+
 	if position == target_position:
 		var new_damage_zone = damage_zone.instantiate()
 		new_damage_zone.global_position = position

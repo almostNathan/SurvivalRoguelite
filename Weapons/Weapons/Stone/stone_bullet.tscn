@@ -19,5 +19,4 @@ texture = ExtResource("2_ici5d")
 [node name="LifespanTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="screen_exited" from="OnScreenEnabler" to="." method="_on_on_screen_enabler_screen_exited"]
 [connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

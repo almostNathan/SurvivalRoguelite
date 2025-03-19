@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3smtml07rfwr"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyEventSpawner/enemy_event_spawner.gd" id="1_05bmr"]
+
+[node name="EnemyEventSpawner" type="Node2D"]
+script = ExtResource("1_05bmr")
+
+[node name="NextEventTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="NextEventTimer" to="." method="_on_next_event_timer_timeout"]

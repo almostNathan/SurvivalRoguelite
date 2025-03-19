@@ -70,7 +70,7 @@ func update_weapon_slot():
 	mod_slot_label.text = str(len(weapon_in_slot.mod_list)) + ' / ' + str(weapon_in_slot.total_mod_slots)
 	var mod_slot_size = $Icon.size.x/3
 	clear_mod_grid_container()
-	for mod in weapon_in_slot.mod_list:
+	for mod in weapon_in_slot.get_mod_list():
 		var new_mod_slot = mod_slot_scene.instantiate()
 		mod_grid.add_child(new_mod_slot)
 		new_mod_slot.set_mod_in_slot(mod)

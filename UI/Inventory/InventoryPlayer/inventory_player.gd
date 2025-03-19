@@ -31,6 +31,7 @@ func update():
 		mod_slot.queue_free()
 	
 	for mod in Globals.player.player_mod_list:
+		print('inventory_player', mod)
 		var new_mod_slot = mod_slot_scene.instantiate()
 		player_mod_container.add_child(new_mod_slot)
 		new_mod_slot.set_mod_in_slot(mod)

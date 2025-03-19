@@ -58,7 +58,8 @@ func _physics_process(delta):
 	move(delta)
 	velocity = velocity.limit_length(max_speed)
 	moving.emit(velocity, delta)
-	move_and_slide()
+	var collision = move_and_slide()
+
 	
 
 func hit(weapon_info : Dictionary):

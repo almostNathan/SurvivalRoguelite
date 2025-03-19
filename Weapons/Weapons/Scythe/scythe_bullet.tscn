@@ -30,5 +30,4 @@ wait_time = 2.0
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="screen_exited" from="OnScreenEnabler" to="." method="_on_on_screen_enabler_screen_exited"]
 [connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

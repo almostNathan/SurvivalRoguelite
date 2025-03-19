@@ -12,7 +12,7 @@ signal adding_mod(mod)
 var speed = 700.0
 var base_damage = 20
 var current_damage = base_damage
-var mod_list : Array = []
+var mod_list : Array[BaseMod] = []
 
 @onready var weapon_image = $Image
 var icon

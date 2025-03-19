@@ -16,5 +16,6 @@ func set_bullet_aiming(new_bullet, _bullet_number, aiming_direction):
 
 
 func modify_bullet(bullet_proto):
+	super(bullet_proto)
 	var total_speed = speed * projectile_speed_modifier_mult
 	bullet_proto.speed = randf_range(total_speed-100, total_speed+100)

@@ -25,6 +25,7 @@ func _drop_data(_at_position, data):
 		
 
 func set_mod_in_slot(mod):
+
 	mod_in_slot = mod
 	$Icon.texture = mod_in_slot.icon
 	tooltip_text = mod_in_slot.get_tooltip_text()

@@ -83,9 +83,8 @@ animations = [{
 }]
 
 [node name="Skeleton" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("2_423ah")
-max_health = 35.0
-max_speed = 150.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5e85y")

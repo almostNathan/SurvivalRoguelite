@@ -145,3 +145,5 @@ sprite_frames = SubResource("SpriteFrames_ye3sl")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 visible = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

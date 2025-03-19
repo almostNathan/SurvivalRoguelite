@@ -10,7 +10,8 @@ var weapon_scene_list : Array = [
 	preload("res://Weapons/Weapons/Boomerang/boomerang_weapon.tscn"),
 	preload("res://Weapons/Weapons/Turret/turret_weapon.tscn"),
 	preload("res://Weapons/Weapons/Laser/laser_weapon.tscn"),
-	preload("res://Weapons/Weapons/MachineGun/machine_gun_weapon.tscn")
+	preload("res://Weapons/Weapons/MachineGun/machine_gun_weapon.tscn"),
+	preload("res://Weapons/Weapons/Orb/orb_weapon.tscn")
 ]
 
 var available_weapon_scene_list : Array = weapon_scene_list.duplicate()

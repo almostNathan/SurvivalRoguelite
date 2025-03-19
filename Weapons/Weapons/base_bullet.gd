@@ -29,13 +29,20 @@ var projectile_speed_modifier = 1
 
 func _physics_process(delta):
 	setting_movement_direction.emit(self)
-	position += movement_direction_vector * current_speed * delta
+	var velocity_vector = movement_direction_vector * current_speed * delta
+	position += velocity_vector
+	#var collision = move_and_collide(velocity_vector)
+	#if collision:
+		#if collision.get_collider() is TileMap:
+			#queue_free()
 	#apply spin to bullet image
 	weapon_image.rotate(PI/16)
 
 func _on_body_entered(body):
 	delete_bullet = true
-	if body.has_method("hit") && body.is_in_group("enemy"):
+	if body is TileMap:
+		queue_free()
+	elif body.has_method("hit") && body.is_in_group("enemy"):
 		enemies_hit += 1
 		weapon.hit(body, self)
 		if (delete_bullet):

@@ -2,11 +2,12 @@ Player Mod Ideas:
 	duration
 
 
+
 	
 
 TODO:
-	Make exp travel more consistant.
-		either lock in at a certain radius or just travel faster
+	Work on Laser to stop on terrain
+		maybe convert to raycast
 
 Level Scaling
 	Increase Max HP, HP regen, and Damage
