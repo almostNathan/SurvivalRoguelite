@@ -10,7 +10,8 @@ var enemy_pool
 var spawn_count = 1
 var spawn_speed = 10.0
 var total_value_spawned = 0
-var spawn_power = 200
+var current_spawn_power = 500
+var spawn_power_scaling_value = 1.05
 
 var enemy_health_modifier = 1.0
 var enemy_damage_modifier = 1.0
@@ -33,17 +34,20 @@ func _ready():
 
 func _process(delta):
 	var player = Globals.player
-
-	if total_value_spawned < spawn_power  && spawner_on:
+	total_value_spawned = 0
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		total_value_spawned += enemy.spawn_value
+	if total_value_spawned < current_spawn_power  && spawner_on:
 		var spawn_direction = Vector2(0,1).rotated(randf_range(0,2*PI))
 		var spawn_location = (spawn_direction * spawn_distance) + player.position
 		
 		var new_enemy = enemy_pool.pick_random().instantiate()
 		new_enemy.position = spawn_location
-		add_sibling(new_enemy)
-		_modify_enemy(new_enemy)
-		
-		total_value_spawned += new_enemy.spawn_value
+		var spawn_data = {'enemy':new_enemy, "position":spawn_location}
+		spawn_enemy(spawn_data)
+		#add_sibling(new_enemy)
+		#_modify_enemy(new_enemy)
+		#total_value_spawned += new_enemy.spawn_value
 		
 
 func spawn_enemy(spawn_data:Dictionary):
@@ -76,28 +80,28 @@ func _on_elite_spawn_timer_timeout():
 	_modify_enemy(new_enemy)
 
 func _on_spawn_timer_timeout():
-	var test_enemy = enemy_pool.pick_random().instantiate()
-	test_enemy.position = Vector2(150,50)
-	add_sibling(test_enemy)
+	spawner_on = true
+	current_spawn_power *= spawn_power_scaling_value
 	
-	var player = Globals.player
-	var total_value_spawned = 0
-	spawn_count += 5
-	spawn_timer.wait_time = spawn_speed
-	while total_value_spawned < spawn_power:
-		var new_enemy = enemy_pool.pick_random().instantiate()
-		new_enemy.position = get_new_spawn_location(player.position)
-		var not_colliding = true
-		while not_colliding:
-			var collision = new_enemy.move_and_collide(Vector2(0,0))
-			if collision != null and collision.get_collider() is TileMap:
-				new_enemy.position = get_new_spawn_location(player.position)
-			else:
-				not_colliding = false
-		
-		add_sibling(new_enemy)
-		_modify_enemy(new_enemy)
-		total_value_spawned += new_enemy.spawn_value
+	#var player = Globals.player
+	#var total_value_spawned = 0
+	#spawn_count += 5
+	#spawn_timer.wait_time = spawn_speed
+	#while total_value_spawned < current_spawn_power:
+		#var new_enemy = enemy_pool.pick_random().instantiate()
+		#var spawn_location = get_new_spawn_location(player.position)
+		#var not_colliding = true
+		#while not_colliding:
+			#var collision = new_enemy.move_and_collide(Vector2(0,0))
+			#if collision != null and collision.get_collider() is TileMap:
+				#spawn_location = get_new_spawn_location(player.position)
+			#else:
+				#not_colliding = false
+		#var spawn_data = {'enemy':new_enemy, "position":spawn_location}
+		#spawn_enemy(spawn_data)
+		#add_sibling(new_enemy)
+		#_modify_enemy(new_enemy)
+		#total_value_spawned += new_enemy.spawn_value
 
 func get_new_spawn_location(player_position):
 	var viewport_size = get_viewport().size
@@ -132,6 +136,7 @@ func reset_scaling():
 
 
 func spawn_boss():
+	spawner_on = false
 	spawn_timer.stop()
 	elite_spawn_timer.stop()
 	var player = Globals.player
