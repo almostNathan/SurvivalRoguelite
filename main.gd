@@ -2,6 +2,7 @@ extends Node
 class_name MainScene
 
 signal menu_button_pressed
+signal changing_level(new_level_number)
 
 
 @onready var player = $Player
@@ -19,8 +20,8 @@ var current_level_portal
 
 func _ready():
 	Globals.main_scene = self
-	background.color = Levels.level_data_list[current_level_number].background_color
-	
+	#background.color = Levels.level_data_list[current_level_number].background_color
+	Hud.load_loadout_selection_screen()
 	
 
 func _process(_delta):
@@ -46,6 +47,11 @@ func get_level_size():
 	return $Background.size
 
 func _on_player_ready():
+	$Player.mod_inventory.append_array(Globals.player_data["mod_inventory"])
+	$Player.add_mod(preload("res://Player/Mods/TimeCapsulePlayerMod/time_capsule_player_mod.tscn").instantiate())
+	
+	#if Globals.player_data["rollover_mods"]:
+		#$Player.mod_inventory.append_array(Globals.player_data["rollover_mods"])
 	get_tree().paused = true
 
 func reset_game():
@@ -84,9 +90,9 @@ func clear_level():
 	level_timer.start()
 
 func _on_level_timer_timeout():
-	pass
-	#enemy_spawner.spawn_boss()
-	#is_boss_spawned = true
+	#pass
+	enemy_spawner.spawn_boss()
+	is_boss_spawned = true
 
 func spawn_portal():
 	is_portal_spawned = true
@@ -98,6 +104,8 @@ func spawn_portal():
 func go_to_next_level():
 	clear_level()
 	current_level_number += 1
+	changing_level.emit(current_level_number)
+	
 	
 	var available_loot_scene_list = AllWeaponList.weapon_scene_list.duplicate()
 	for weapon_scene in available_loot_scene_list:

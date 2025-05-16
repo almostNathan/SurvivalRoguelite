@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://oqwes4qpqom"]
+
+[ext_resource type="Script" path="res://Player/Mods/TimeCapsulePlayerMod/time_capsule_player_mod.gd" id="1_5r73i"]
+
+[node name="TimeCapsulePlayerMod" type="Node2D"]
+script = ExtResource("1_5r73i")

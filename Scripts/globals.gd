@@ -2,6 +2,38 @@ extends Node
 var player : CharacterBody2D
 var main_scene : MainScene
 
+var player_data : Dictionary = {
+	"rollover_mods" : []
+}
+
+func save_game():
+	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_data = {}
+	for node in get_tree().get_nodes_in_group("persist"):
+		if node.has_method("create_save_data"):
+			var node_data = node.create_save_data()
+			save_data[node.save_name] = node_data
+	var json_string = JSON.stringify(save_data)
+	save_file.store_line(json_string)
+
+func load_game():
+	if not FileAccess.file_exists("user://savegame.save"):
+		print("main load_game file does not exist.")
+		return
+	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+	while save_file.get_position() < save_file.get_length():
+		var json_string = save_file.get_line()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+		var save_data = json.data
+		for node in get_tree().get_nodes_in_group("persist"):
+			if node.has_method("load_save_data"):
+				node.load_save_data(save_data)
+		
+
 
 
 var mod_scene_list = [

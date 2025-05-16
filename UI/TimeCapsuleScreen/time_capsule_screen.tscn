@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://da82h0w7it1of"]
+
+[ext_resource type="Script" path="res://UI/TimeCapsuleScreen/time_capsule_screen.gd" id="1_4h66s"]
+[ext_resource type="PackedScene" uid="uid://cepn4uj7wa126" path="res://UI/PlayerMenu/player_menu.tscn" id="2_7aciy"]
+
+[node name="TimeCapsuleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4h66s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.5
+offset_top = -100.0
+offset_right = 191.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="PlayerMenu" parent="HBoxContainer" instance=ExtResource("2_7aciy")]
+layout_mode = 2

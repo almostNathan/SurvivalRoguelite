@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cls41f23ro05u"]
+[gd_scene load_steps=14 format=3 uid="uid://cls41f23ro05u"]
 
 [ext_resource type="Script" path="res://UI/HUD/HUD.gd" id="1_dy2ux"]
 [ext_resource type="Script" path="res://UI/HUD/ExperienceBar.gd" id="2_qxpjf"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cvd3vvp17r7qx" path="res://ConfigMenu/configure_weapons.tscn" id="5_jquo2"]
 [ext_resource type="PackedScene" uid="uid://cepn4uj7wa126" path="res://UI/PlayerMenu/player_menu.tscn" id="7_joa0v"]
 [ext_resource type="PackedScene" uid="uid://dk30tumpnkoju" path="res://UI/GameOverScreen/game_over_screen.tscn" id="8_y7dkx"]
+[ext_resource type="PackedScene" uid="uid://da82h0w7it1of" path="res://UI/TimeCapsuleScreen/time_capsule_screen.tscn" id="9_pv3ks"]
+[ext_resource type="PackedScene" uid="uid://ceb57clgswdna" path="res://UI/LoadoutSelectionScreen/loadout_selection_screen.tscn" id="10_0i83u"]
 
 [sub_resource type="SystemFont" id="SystemFont_g6qcy"]
 
@@ -76,9 +78,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -354.0
+offset_left = -626.0
 offset_top = -76.0
-offset_right = 354.0
+offset_right = 626.0
 offset_bottom = 76.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -96,3 +98,22 @@ visible = false
 
 [node name="GameOverScreen" parent="." instance=ExtResource("8_y7dkx")]
 visible = false
+
+[node name="TimeCapsuleScreen" parent="." instance=ExtResource("9_pv3ks")]
+process_mode = 2
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="LoadoutSelectionScreen" parent="." instance=ExtResource("10_0i83u")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckannwtpfgiag"]
+[gd_scene load_steps=26 format=3 uid="uid://ckannwtpfgiag"]
 
 [ext_resource type="Texture2D" uid="uid://c3v8eghbd0yua" path="res://generic-female/generic-female-left/frame0.png" id="1_02q1w"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_du36b"]
@@ -93,7 +93,10 @@ height = 18.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_oewk6"]
 radius = 200.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_2fuqr"]
+radius = 21.13
+
+[node name="Player" type="CharacterBody2D" groups=["persist"]]
 position = Vector2(0, -2)
 script = ExtResource("1_du36b")
 
@@ -133,5 +136,12 @@ shape = SubResource("CircleShape2D_oewk6")
 
 [node name="ExperienceManagerMod" parent="." instance=ExtResource("22_ak4tj")]
 
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_2fuqr")
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]
+[connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
+[connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]

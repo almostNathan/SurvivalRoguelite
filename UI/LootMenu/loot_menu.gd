@@ -1,7 +1,7 @@
 extends PanelContainer
 class_name LootMenu
 
-@onready var loot_selection_area = $MarginContainer/LootSelectionArea
+@onready var loot_selection_area = $MarginContainer/VBoxContainer/LootSelectionArea
 
 var player
 var selection_count = 3
@@ -26,9 +26,15 @@ func load_loot_menu():
 	visible = true
 
 func selection_made():
+	clear_selections()
+	get_tree().paused = false
+	visible = false
+
+func clear_selections():
 	for selection in loot_selection_area.get_children():
 		loot_selection_area.remove_child(selection)
 		selection.queue_free()
-		
-	get_tree().paused = false
-	visible = false
+
+func _on_reroll_button_pressed():
+	clear_selections()
+	load_loot_menu()

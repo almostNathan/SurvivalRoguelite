@@ -54,7 +54,7 @@ func spawn_enemy(spawn_data:Dictionary):
 	while not_colliding:
 		var collision = new_enemy.move_and_collide(Vector2(0,0))
 		if collision != null and collision.get_collider() is TileMap:
-			new_enemy.position += Vector2(10,0).rotated(retry_vector)
+			new_enemy.position += Vector2(50,0).rotated(retry_vector)
 		else:
 			not_colliding = false
 	

@@ -9,10 +9,18 @@ extends CanvasLayer
 @onready var level_up_menu = $LevelUpMenu
 @onready var player_menu = $PlayerMenu
 @onready var game_over_screen = $GameOverScreen
+@onready var time_capsule_screen = $TimeCapsuleScreen
+@onready var loadout_selection_screen = $LoadoutSelectionScreen
+
+var menu_list = [player_menu, time_capsule_screen]
+
 
 func _input(event):
 	if event.is_action("menu_button") and not event.is_echo() and event.is_pressed():
-		Hud.open_menu()
+		if time_capsule_screen.is_open:
+			time_capsule_screen.close()
+		else:
+			Hud.open_menu()
 
 
 func update_health(cur_health):
@@ -44,3 +52,12 @@ func update_weapons_display():
 
 func load_loot_menu():
 	loot_menu.load_loot_menu()
+
+func hide_for_hub():
+	config_weapons_screen.hide()
+
+func open_time_capsule():
+	time_capsule_screen.open()
+
+func load_loadout_selection_screen():
+	loadout_selection_screen.load_select_loadout_screen()

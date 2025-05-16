@@ -2,6 +2,7 @@ extends Control
 
 # Path constants for scene transitions
 const GAME_SCENE = "res://main.tscn"
+const HUB_SCENE = "res://Levels/Hub/hub.tscn"
 const OPTIONS_SCENE = "res://UI/SettingsMenu/settings_menu.tscn"
 const COLLECTION_SCENE = "res://scenes/collection.tscn"
 
@@ -94,7 +95,7 @@ func _setup_background():
 func _on_start_pressed():
 	# Add transition animation
 	#_play_button_press_sound()
-	_transition_to_scene(GAME_SCENE)
+	_transition_to_scene(HUB_SCENE)
 	Hud.show()
 
 func _on_options_pressed():

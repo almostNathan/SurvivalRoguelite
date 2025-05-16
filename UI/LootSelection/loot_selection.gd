@@ -1,8 +1,9 @@
 extends MarginContainer
 class_name LootSelection
 
-@onready var selection_icon = $MarginContainer/SelectionIcon
-@onready var border = $SelectionBorder
+@onready var selection_icon = $SelectionContainer/MarginContainer/SelectionIcon
+@onready var selection_label = $ColorRect/SelectionLabel
+@onready var border = $SelectionContainer/SelectionBorder
 
 var mod_in_selection 
 signal selection_made()
@@ -17,6 +18,7 @@ func set_selection(mod):
 	mod_in_selection = mod
 	selection_icon.texture = mod.icon
 	tooltip_text = mod.tooltip_text
+	selection_label.text = mod.tooltip_text
 
 
 func _on_selection_icon_gui_input(event):

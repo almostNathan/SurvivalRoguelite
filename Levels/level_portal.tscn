@@ -194,6 +194,7 @@ radius = 6.0
 height = 34.0
 
 [node name="LevelPortal" type="Area2D"]
+modulate = Color(0.431373, 0.0509804, 1, 1)
 script = ExtResource("1_doitb")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -201,6 +202,7 @@ sprite_frames = SubResource("SpriteFrames_oayen")
 animation = &"despawn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_sf7la")
 

@@ -19,6 +19,15 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="LootSelectionArea" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LootSelectionArea" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
+
+[node name="RerollButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reroll"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RerollButton" to="." method="_on_reroll_button_pressed"]

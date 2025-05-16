@@ -15,22 +15,34 @@ func _init():
 
 
 func _on_weapon_timer_timeout():
-	for i in range(projectile_count):
-		var new_bullet = create_new_bullet()
-		new_bullet.set_weapon(self)
-		player.add_sibling(new_bullet)
-		new_bullet.set_player(player)
-		new_bullet.rotate(2 * PI * (float(i+1)/projectile_count))
-		shooting_weapon.emit(new_bullet)
-		modify_bullet(new_bullet)
-		new_bullet.global_position = player.position
+	if len(bullet_array) == 0:
+		for i in range(projectile_count):
+			var new_bullet = create_new_bullet()
+			new_bullet.set_weapon(self)
+			player.add_sibling(new_bullet)
+			new_bullet.set_player(player)
+			new_bullet.rotate(2 * PI * (float(i+1)/projectile_count))
+			shooting_weapon.emit(new_bullet)
+			modify_bullet(new_bullet)
+			new_bullet.global_position = player.position
+			bullet_array.append(new_bullet)
 
-		bullet_array.append(new_bullet)
+func detach_all_mods():
+	super()
+	for i in range(len(bullet_array)-1, -1, -1):
+		if bullet_array[i] == null:
+			bullet_array.remove_at(1)
+		else:
+			bullet_array[i].queue_free()
+	bullet_array=[]
 
 func refresh_mods():
 	damage_mod.refresh()
-	for bullet in bullet_array:
-		bullet.queue_free()
+	for i in range(len(bullet_array)-1, -1, -1):
+		if bullet_array[i] == null:
+			bullet_array.remove_at(1)
+		else:
+			bullet_array[i].queue_free()
 	
 	bullet_array=[]
 	for mod in mod_list:

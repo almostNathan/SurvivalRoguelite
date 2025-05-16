@@ -7,6 +7,7 @@ signal gain_experience(exp_amount)
 signal shooting_weapon(bullet)
 signal set_max_health(new_max_hp)
 signal health_change(cur_health)
+signal reset_game
 
 @export var base_speed = 250.0
 
@@ -22,6 +23,7 @@ signal health_change(cur_health)
 @onready var exp_mod_man = $ExperienceManagerMod
 @onready var magnet_area = $MagnetArea/MagnetHitbox
 
+var save_name = "player"
 
 #Modifier variables
 var weapon_spread = PI/4
@@ -42,6 +44,8 @@ var base_magnet_radius = 200
 var mod_inventory = []
 var weapon_inventory = []
 var player_mod_list = []
+var interactable_list = []
+var interactable_index = 0
 
 #Modifier Variables
 var speed_multiplier = 1
@@ -79,6 +83,8 @@ func equip_weapons():
 			equipping_weapon.emit(weapon)
 
 func reset_player():
+	reset_game.emit()
+	Globals.save_game()
 	self.remove_child(main_weapon)
 	self.remove_child(offhand_weapon)
 
@@ -99,6 +105,11 @@ func move(delta):
 	#Define the movement vector
 	movement_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	movement_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
+	
+	
+	if Input.is_action_just_pressed("interact"):
+		if !interactable_list.is_empty():
+			interactable_list[interactable_index].interact()
 
 	#Change animation based on movement vector
 	if movement_direction.x > 0:
@@ -114,7 +125,7 @@ func move(delta):
 	velocity += movement_direction * acceleration * delta
 	velocity = velocity.limit_length(speed * speed_multiplier)
 	move_and_slide()
-	position.clamp(Vector2.ZERO, get_parent().get_level_size())
+	#position.clamp(Vector2.ZERO, get_parent().get_level_size())
 
 func apply_friction(current_friction):
 	if velocity.length() > current_friction:
@@ -176,7 +187,7 @@ func remove_mod(mod_to_remove: BasePlayerMod):
 	player_mod_list.remove_at(player_mod_list.find(self))
 
 func detach_all_mods():
-	print(player_mod_list)
+
 	for mod in player_mod_list:
 		mod.remove_mod()
 	player_mod_list = []
@@ -204,3 +215,44 @@ func modify_experience_multiplier(modifier_change):
 
 func modify_duration_multiplier(modifier_change):
 	duration_multiplier += modifier_change
+
+func _on_interact_area_area_entered(area):
+	if area.has_method("interact"):
+		interactable_list.append(area)
+	
+func _on_interact_area_area_exited(area):
+	if area.has_method("interact"):
+		interactable_list.erase(area)
+
+func get_all_weapon_mods_list():
+	var return_mod_list = mod_inventory.duplicate()
+	for weapon in weapon_inventory:
+		return_mod_list.append_array(weapon.get_mod_list())
+	
+	return return_mod_list
+
+func create_save_data():
+	var mod_inventory_data = []
+	for mod in mod_inventory:
+		mod_inventory_data.append({
+			"filename": mod.get_scene_file_path()
+		})
+	var rollover_mod_data = []
+	for rollover_mod in Globals.player_data["rollover_mods"]:
+		rollover_mod_data.append({
+			"filename": rollover_mod.get_scene_file_path()
+		})
+	var save_data = {
+		"mod_inventory": mod_inventory_data,
+		"rollover_mods": rollover_mod_data
+	}
+	
+	return save_data
+
+func load_save_data(save_data):
+	var player_save_data = save_data["player"]
+	#for mod_data in player_save_data["mod_inventory"]:
+		#add_to_inventory(load(mod_data["filename"]).instantiate())
+	Globals.player_data["rollover_mods"] = []
+	for rollover_mod_data in player_save_data["rollover_mods"]:
+		Globals.player_data["rollover_mods"].append(load(rollover_mod_data["filename"]).instantiate())

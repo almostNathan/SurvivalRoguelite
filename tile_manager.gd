@@ -12,11 +12,13 @@ const VISIBLE_CHUNK_RADIUS = 6
 @onready var detail_tilemap: TileMap = get_node("../DetailTileMap")
 #@onready var detail_tilemap: TileMap = $DetailTileMap
 
-
 # Storage
 var active_chunks = {}  # Format: "x,y": ChunkData
 var detail_positions = {}  # Format: "x,y": DetailData
 var rng = RandomNumberGenerator.new()
+var current_level = 0
+
+
 
 class ChunkDetails:
 	var positions: Array[Vector2i] = []
@@ -40,6 +42,12 @@ func _ready():
 	rng.randomize()
 	initialize_visible_chunks(Vector2i.ZERO)
 
+func _on_main_changing_level(new_level_number):
+	current_level = new_level_number
+	for chunk_key in active_chunks.keys():
+		remove_chunk(chunk_key)
+
+
 #Set up tiles at start of game
 func initialize_visible_chunks(center_pos: Vector2i):
 	var chunk_coords = world_to_chunk(center_pos)
@@ -59,17 +67,39 @@ func generate_chunk(chunk_coords: Vector2i):
 	# Store details in chunk object
 	generate_and_store_details(chunk)
 	active_chunks[chunk_key(chunk_coords)] = chunk
-	apply_chunk_details(chunk)
+	#apply_chunk_details(chunk)
 
 
 func generate_base_tiles(chunk: ChunkData):
 	var chunk_start = chunk.position * CHUNK_SIZE
 	for x in range(CHUNK_SIZE):
 		for y in range(CHUNK_SIZE):
-			var x_coord = (x%2)+7
-			var y_coord = y%2
+			var x_coord
+			var y_coord
+			if current_level == 0:
+				if x%2 == 0:
+					x_coord = 3
+				else:
+					x_coord = x%2
+				if y%2 == 1:
+					y_coord = 2
+				else:
+					y_coord = y%2
+				#x_coord = (x%2)+4
+				#y_coord = y%2+4
+			else:
+				x_coord = (x%2)+4
+				y_coord = y%2
 			var pos = chunk_start + Vector2i(x, y)
-			base_tilemap.set_cell(0, pos, 3, Vector2i(x_coord, y_coord))
+				
+			base_tilemap.set_cell(0, pos, current_level, Vector2i(x_coord, y_coord))
+
+func erase_base_tiles(chunk: ChunkData):
+	var chunk_start = chunk.position * CHUNK_SIZE
+	for x in range(CHUNK_SIZE):
+		for y in range(CHUNK_SIZE):
+			var pos = chunk_start + Vector2i(x, y)
+			base_tilemap.erase_cell(0, pos)
 
 
 
@@ -116,17 +146,23 @@ func apply_chunk_details(chunk: ChunkData):
 
 # Add this function to clear details when removing chunks
 func remove_chunk(chunk_coords):
-	var chunk = active_chunks[chunk_coords]
-	if chunk:
-		# Clear the details for this chunk
-		for pos in chunk.details.positions:
-			detail_tilemap.erase_cell(0, pos)
-		active_chunks.erase(chunk_coords)
+	if active_chunks.has(chunk_coords):
+		var chunk = active_chunks[chunk_coords]
+		if chunk:
+			# Clear the details for this chunk
+			for pos in chunk.details.positions:
+				detail_tilemap.erase_cell(0, pos)
+			erase_base_tiles(chunk)
+			active_chunks.erase(chunk_coords)
 
+
+#Generates and stores details for each chunk.
 func generate_and_store_details(chunk: ChunkData):
 	var chunk_start = chunk.position * CHUNK_SIZE	
 	var tileset_id = 1
-	if chunk.position % 2 == Vector2i(0, 0):
+	#put an obstacle on every other chunk
+	#if chunk.position % 2 == Vector2i(0, 0):
+	if (randf() * 10) < 1:
 		var pattern_num = detail_tilemap.tile_set.get_patterns_count()
 		var pattern_selection_index = randi_range(0,pattern_num-1)
 		chunk.details.tile_indices.append(pattern_selection_index)
@@ -179,3 +215,6 @@ func generate_and_store_details(chunk: ChunkData):
 						#position -= pattern_size
 					#chunk.details.tile_indices.append(selected_pattern_index)  # Adjust range based on your tileset
 					#chunk.details.positions.append(position)
+
+
+
