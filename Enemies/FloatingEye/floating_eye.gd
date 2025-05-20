@@ -3,6 +3,10 @@ class_name FloatingEye
 
 #Attacks in a straigt line, quickly
 
+func _init():
+	super()
+	enemy_name = "floating_eye"
+
 func _ready():
 	super()
 	wait_timer.start()

@@ -7,14 +7,22 @@ signal on_physics_process(delta)
 signal health_change(cur_health)
 signal moving(velocity, delta)
 
-###Enemy stat block
-var stats = EnemyStats.get_stats(self)
-var max_health : float = stats["max_health"]
-var cur_health = max_health
-var max_speed : float = stats["max_speed"]
-var spawn_value = stats["spawn_value"]
-var base_damage = stats["base_damage"]
-var exp_value = stats["exp_value"]
+
+	#"max_health" : 20,
+	#"max_speed" : 150,
+	#"spawn_value" : 10,
+	#"base_damage" : 10,
+	#"exp_value" : 11
+
+##Must Define 
+var enemy_name = "base_enemy"
+
+var max_health : float 
+var cur_health 
+var max_speed : float 
+var spawn_value 
+var base_damage
+var exp_value 
 
 @onready var health_bar = $HealthBar
 @onready var move_timer = $MoveTimer
@@ -33,15 +41,23 @@ var move_distance = 1000.0
 var elite_scaling_hp_modifier = 5.0
 var elite_scaling_damage_modifier = 5.0
 
-
 func _init():
-	set_max_hp(max_health)
-	
+	pass
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	###Enemy stat block
+	var stats = EnemyStats.get_stats(enemy_name)
+	max_health = stats["max_health"]
+	cur_health = max_health
+	max_speed = stats["max_speed"]
+	spawn_value = stats["spawn_value"]
+	base_damage = stats["base_damage"]
+	exp_value = stats["exp_value"]
 	sprite.play("idle")
 	cur_health = max_health
 	sprite.scale = Vector2(2,2)
+	set_max_hp(max_health)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

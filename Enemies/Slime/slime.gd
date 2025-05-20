@@ -1,6 +1,10 @@
 extends BaseEnemy
 class_name Slime
 
+func _init():
+	super()
+	enemy_name = "slime"
+
 func _ready():
 	super()
 	wait_timer.start()

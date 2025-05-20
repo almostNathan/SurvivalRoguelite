@@ -1,5 +1,6 @@
 extends Node
 
+
 var level_0_data = {
 	background_color = Color(.31,.6,.4,1),
 	enemy_pool = EnemyPool.level_0_enemy_pool,

@@ -35,8 +35,11 @@ func _ready():
 func _process(delta):
 	var player = Globals.player
 	total_value_spawned = 0
+	
+	#get total value currently spawned
 	for enemy in get_tree().get_nodes_in_group("enemy"):
 		total_value_spawned += enemy.spawn_value
+	#spawn up to max value
 	if total_value_spawned < current_spawn_power  && spawner_on:
 		var spawn_direction = Vector2(0,1).rotated(randf_range(0,2*PI))
 		var spawn_location = (spawn_direction * spawn_distance) + player.position

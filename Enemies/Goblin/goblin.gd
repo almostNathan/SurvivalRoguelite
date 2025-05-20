@@ -5,7 +5,9 @@ func _ready():
 	super()
 	$AnimatedSprite.play("moving")
 
-
+func _init():
+	super()
+	enemy_name = "goblin"
 
 func move(delta):
 	var direction = Vector2.UP.rotated(movement_direction)

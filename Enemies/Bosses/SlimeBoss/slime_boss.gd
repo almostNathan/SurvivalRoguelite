@@ -17,6 +17,10 @@ var attack_damage = 20
 
 var slime_boss_attack_scene = preload("res://Enemies/Bosses/SlimeBoss/slime_boss_attack.tscn")
 
+func _init():
+	super()
+	enemy_name = "slime_boss"
+
 func _ready():
 	super()
 	wait_timer.start()

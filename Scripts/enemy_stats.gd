@@ -1,20 +1,19 @@
 extends Node
 
-func get_stats(enemy):
-	if enemy is Slime:
-		return slime
-	elif enemy is FloatingEye:
-		return floating_eye
-	elif enemy is Goblin:
-		return goblin
-	elif enemy is Mushroom:
-		return mushroom
-	elif enemy is Skeleton:
-		return skeleton
-	elif enemy is SlimeBoss:
-		return slime_boss
-		
-		
+func get_stats(enemy_name: String):
+	return enemy_dict[enemy_name]
+	#if enemy is Slime:
+		#return slime
+	#elif enemy is FloatingEye:
+		#return floating_eye
+	#elif enemy is Goblin:
+		#return goblin
+	#elif enemy is Mushroom:
+		#return mushroom
+	#elif enemy is Skeleton:
+		#return skeleton
+	#elif enemy is SlimeBoss:
+		#return slime_boss
 
 var slime = {
 	"max_health" : 20,
@@ -49,7 +48,7 @@ var mushroom = {
 }
 
 var skeleton = {
-	"max_health" : 50,
+	"max_health" : 30,
 	"max_speed" : 150,
 	"spawn_value" : 15,
 	"base_damage" : 20,
@@ -62,4 +61,13 @@ var slime_boss = {
 	"spawn_value" : 100,
 	"base_damage" : 50,
 	"exp_value" : 110
+}
+
+var enemy_dict :Dictionary = {
+	"slime": slime,
+	"floating_eye": floating_eye,
+	"goblin": goblin,
+	"mushroom": mushroom,
+	"skeleton": skeleton,
+	"slime_boss": slime_boss
 }
