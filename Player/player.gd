@@ -9,7 +9,7 @@ signal set_max_health(new_max_hp)
 signal health_change(cur_health)
 signal reset_game
 
-@export var base_speed = 250.0
+
 
 @onready var main_weapon : BaseWeapon
 @onready var offhand_weapon : BaseWeapon
@@ -35,6 +35,7 @@ var max_health = 100
 var cur_health = 100
 
 #Character movement variables
+var base_speed = 250.0
 var speed = base_speed
 var dodge_speed = base_speed * 2
 var acceleration = 1500.0
@@ -61,10 +62,14 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dodge"):
 		if dodge_timer.is_stopped():
 			dodge()
+	
+	##Check for magnet objects
 	var nearby_areas = $MagnetArea.get_overlapping_areas()
 	for area in nearby_areas:
 		if area.has_method("magnet_to_player"):
-			area.magnet_to_player(self)
+			area.magnet_to_player(self, delta)
+	
+	
 	move(delta)
 
 func dodge():

@@ -21,10 +21,6 @@ position = Vector2(-1.90735e-06, 0)
 scale = Vector2(120, 8)
 texture = SubResource("PlaceholderTexture2D_er3kh")
 
-[node name="OnScreenEnabler" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(-1.90735e-06, 2.38419e-07)
-scale = Vector2(6, 0.4)
-
 [node name="LifespanTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
