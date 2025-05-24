@@ -48,7 +48,6 @@ func get_level_size():
 
 func _on_player_ready():
 	$Player.mod_inventory.append_array(Globals.player_data["mod_inventory"])
-	$Player.add_mod(preload("res://Player/Mods/TimeCapsulePlayerMod/time_capsule_player_mod.tscn").instantiate())
 	
 	#if Globals.player_data["rollover_mods"]:
 		#$Player.mod_inventory.append_array(Globals.player_data["rollover_mods"])

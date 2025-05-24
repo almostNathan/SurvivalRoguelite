@@ -138,7 +138,7 @@ shape = SubResource("CircleShape2D_oewk6")
 
 [node name="InteractArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+[node name="InteractHitbox" type="CollisionShape2D" parent="InteractArea"]
 shape = SubResource("CircleShape2D_2fuqr")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

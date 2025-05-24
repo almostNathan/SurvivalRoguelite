@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxm51aus5xlnf"]
+
+[ext_resource type="Texture2D" uid="uid://djjlbpjgfr2hf" path="res://Art/hud_assets/right-arrow.png" id="1_5deqr"]
+[ext_resource type="Script" path="res://Player/UI/LootArrow/loot_arrow.gd" id="2_wammk"]
+
+[node name="LootArrow" type="TextureRect"]
+offset_left = 20.0
+offset_top = -5.0
+offset_right = 30.0
+offset_bottom = 5.0
+pivot_offset = Vector2(-20, 5)
+texture = ExtResource("1_5deqr")
+expand_mode = 1
+script = ExtResource("2_wammk")

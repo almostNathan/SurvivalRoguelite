@@ -42,7 +42,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Loot" type="Area2D" groups=["pickups"]]
+[node name="Loot" type="Area2D" groups=["loot", "pickups"]]
 script = ExtResource("1_xk6u6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,5 +1,5 @@
 extends Node
-var player : CharacterBody2D
+var player : Player
 var main_scene : MainScene
 
 var player_data : Dictionary = {

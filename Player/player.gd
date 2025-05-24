@@ -21,7 +21,9 @@ signal reset_game
 @onready var dodge_timer = $DodgeTimer
 @onready var player_hud = $PlayerHud
 @onready var exp_mod_man = $ExperienceManagerMod
-@onready var magnet_area = $MagnetArea/MagnetHitbox
+@onready var magnet_area = $MagnetArea
+@onready var magnet_hitbox = $MagnetArea/MagnetHitbox
+@onready var interact_area = $InteractArea
 
 var save_name = "player"
 
@@ -47,6 +49,7 @@ var weapon_inventory = []
 var player_mod_list = []
 var interactable_list = []
 var interactable_index = 0
+var loot_arrow_list : Array = []
 
 #Modifier Variables
 var speed_multiplier = 1
@@ -54,17 +57,38 @@ var dodge_speed_multiplier = 1
 var magnet_raidus_multiplier = 1
 var experience_multiplier = 1
 var duration_multiplier = 1
+var area_multiplier = 1
+
 
 func _ready():
 	Globals.player = self
+	print("player Adding TimeCapsuleMod")
+	add_mod(preload("res://Player/Mods/TimeCapsulePlayerMod/time_capsule_player_mod.tscn").instantiate())
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("dodge"):
 		if dodge_timer.is_stopped():
 			dodge()
 	
+	##Check for loot and handle Loot Arrows
+	var all_loot = get_tree().get_nodes_in_group("loot")
+	for loot in all_loot:
+		if loot not in interact_area.get_overlapping_areas():
+			if !loot.is_targeted:
+				var new_loot_arrow = preload("res://Player/UI/LootArrow/loot_arrow.tscn").instantiate()
+				new_loot_arrow.set_target(loot)
+				self.add_child(new_loot_arrow)
+				loot_arrow_list.append(new_loot_arrow)
+				loot.is_targeted = true
+		else:
+			if loot.is_targeted:
+				for arrow in loot_arrow_list:
+					if arrow.target == loot:
+						loot_arrow_list.erase(arrow)
+						arrow.queue_free()
+
 	##Check for magnet objects
-	var nearby_areas = $MagnetArea.get_overlapping_areas()
+	var nearby_areas = magnet_area.get_overlapping_areas()
 	for area in nearby_areas:
 		if area.has_method("magnet_to_player"):
 			area.magnet_to_player(self, delta)
@@ -210,7 +234,7 @@ func apply_player_mods_to_weapon(new_turret):
 
 func modify_magnet_radius_multiplier(modifier_change):
 	magnet_raidus_multiplier += modifier_change
-	magnet_area.shape.radius = base_magnet_radius * magnet_raidus_multiplier
+	magnet_hitbox.shape.radius = base_magnet_radius * magnet_raidus_multiplier
 
 func modify_dodge_speed_multiplier(modifier_change):
 	dodge_speed_multiplier += modifier_change

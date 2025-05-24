@@ -51,7 +51,7 @@ func _on_button_pressed():
 	player.equip_weapons()
 	Hud.update_weapons_display()
 	
-	var damage_player_mod = preload("res://Player/Mods/DamagePlayerMod/damage_player_mod.tscn").instantiate()
+	#var damage_player_mod = preload("res://Player/Mods/DamagePlayerMod/damage_player_mod.tscn").instantiate()
 	#damage_player_mod.equip(player)
 
 	visible = false

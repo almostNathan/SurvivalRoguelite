@@ -35,7 +35,7 @@ func load_select_loadout_screen():
 	visible = true
 
 func _selection_made(loadout_data):
-	var player = Globals.player
+	var player : Player = Globals.player
 	var loadout_weapon = loadout_data["loadout_weapon_scene"].instantiate()
 	for mod_scene in loadout_data["loadout_mod_scene_list"]:
 		loadout_weapon.add_mod(mod_scene.instantiate())

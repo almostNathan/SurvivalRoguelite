@@ -2,7 +2,7 @@ extends Pickup
 class_name Loot
 
 var lootable = true
-
+var is_targeted = false
 
 func _on_body_entered(body):
 	if lootable && body is Player:

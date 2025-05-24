@@ -7,6 +7,8 @@ var primary_turret_weapon : TurretWeapon
 var base_deploy_time = 5
 var deploy_speed_modifier_add = 0
 var deploy_speed_modifier_mult = 1
+var base_lifespan_time = 10
+var current_lifespan_time = base_lifespan_time
 
 
 func _ready():
@@ -30,6 +32,7 @@ func _on_deploy_timer_timeout():
 	new_turret.player = player
 	new_turret.position = player.position
 	new_turret.show_weapon_image()
+	new_turret
 	new_turret.lifespan_timer.start()
 	new_turret.weapon_timer.start()
 	new_turret.deploy_timer.stop()
@@ -78,4 +81,7 @@ func modify_deploy_speed_mult(deploy_speed_change):
 func calc_deploy_speed():
 	deploy_timer.wait_time = (base_deploy_time + deploy_speed_modifier_add) / deploy_speed_modifier_mult
 
-
+func modify_duration_mult(modifier_change):
+	super(modifier_change)
+	current_lifespan_time = base_lifespan_time * duration_modifier_mult
+	lifespan_timer.wait_time = current_lifespan_time

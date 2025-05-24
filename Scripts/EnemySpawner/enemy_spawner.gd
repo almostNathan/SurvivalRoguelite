@@ -106,6 +106,9 @@ func _on_spawn_timer_timeout():
 		#_modify_enemy(new_enemy)
 		#total_value_spawned += new_enemy.spawn_value
 
+func spawn_group(enemy_list: Array, direction_to_spawn):
+	pass
+
 func get_new_spawn_location(player_position):
 	var viewport_size = get_viewport().size
 	var spawn_distance = pow(pow(viewport_size.x, 2) + pow(viewport_size.y, 2), 1/2.0) /2
