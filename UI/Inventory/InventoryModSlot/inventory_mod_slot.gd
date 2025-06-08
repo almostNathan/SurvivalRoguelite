@@ -14,7 +14,7 @@ func _get_drag_data(_at_position):
 	return mod_in_slot
 
 func _can_drop_data(_at_position, data):
-	if data is BaseMod and mod_in_slot.can_upgrade(data):
+	if data is BaseMod and mod_in_slot.has_method('can_upgrade') and  mod_in_slot.can_upgrade(data):
 		return true
 
 func _drop_data(_at_position, data):

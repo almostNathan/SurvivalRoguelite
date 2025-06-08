@@ -11,9 +11,11 @@ signal loadout_button_pressed(loadout_data : Dictionary)
 var loadout_weapon : BaseWeapon
 var loadout_weapon_scene : PackedScene
 var loadout_mod_scene_list : Array = []
+var loadout_option_data
 
 
 func set_loadout_selection(loadout_options : Dictionary):
+	loadout_option_data = loadout_options
 	loadout_weapon = loadout_options["weapon"]
 	loadout_weapon_scene = loadout_options["weapon_scene"]
 	for mod_scene in loadout_options["mod_list"]:
@@ -35,6 +37,7 @@ func set_loadout_selection(loadout_options : Dictionary):
 func _on_loadout_button_pressed():
 	var loadout_data = {
 		"loadout_weapon_scene": loadout_weapon_scene,
-		"loadout_mod_scene_list": loadout_mod_scene_list
+		"loadout_mod_scene_list": loadout_mod_scene_list,
+		'loadout_option_data' : loadout_option_data
 	}
 	loadout_button_pressed.emit(loadout_data)

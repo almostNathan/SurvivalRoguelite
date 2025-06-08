@@ -6,7 +6,6 @@ var mod_slot_scene = preload("res://UI/Inventory/InventoryModSlot/inventory_mod_
 
 
 func _can_drop_data(_at_position, data):
-
 	if data is BasePlayerMod :
 		return true
 

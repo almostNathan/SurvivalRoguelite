@@ -12,22 +12,30 @@ var current_lifespan_time = base_lifespan_time
 
 
 func _ready():
+	super()
 	deploy_timer.wait_time = base_deploy_time
-	if get_parent() is Player:
-		player = get_parent()
-	damage_mod = damage_mod_scene.instantiate()
-	damage_mod.equip(self)
+
+
+#func _ready():
+	#if get_parent() is Player:
+		#player = get_parent()
+	#weapon_timer.wait_time = base_attack_speed
+	#is_equipped = true
+	#damage_mod = damage_mod_scene.instantiate()
+	#damage_mod.equip(self)
 
 
 func _init():
 	icon = preload("res://Art/Weapons/turret_weapon.png")
 	tooltip_text = 'Turret'
+	weapon_name = "Turret"
 	base_damage = 4
 	base_attack_speed = 1
 	current_damage = base_damage
 	shooting_angle = PI/2
 
 func _on_deploy_timer_timeout():
+	print("turret_weapon projectile_count: ", projectile_count)
 	var new_turret : TurretWeapon = self._clone()
 	new_turret.player = player
 	new_turret.position = player.position

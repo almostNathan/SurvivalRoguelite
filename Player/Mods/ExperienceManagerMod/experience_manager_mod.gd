@@ -15,9 +15,9 @@ var cur_damage_scaling = 1.0
 var cur_hp_scaling = 1.0
 var cur_regen_scaling = 1.0
 
-var damage_scaling_per_level = .01
-var hp_scaling_per_level = .01
-var hp_regen_scaling_per_level = .01
+var damage_scaling_per_level = .05
+var hp_scaling_per_level = .1
+var hp_regen_scaling_per_level = .05
 
 var exp_map = []
 

@@ -17,8 +17,8 @@ func refresh():
 		apply_effect_to_weapon(weapon)
 
 
-func equip(player : Player):
-	super(player)
+func equip(new_player : Player):
+	super(new_player)
 	for weapon : BaseWeapon in player.weapon_inventory:
 		modified_weapons.append(weapon)
 		apply_effect_to_weapon(weapon)

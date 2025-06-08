@@ -4,6 +4,7 @@ class_name LaserWeapon
 func _init():
 	icon = preload("res://Art/Weapons/laser_bullet.png")
 	tooltip_text = 'Laser'
+	weapon_name = "Laser"
 	base_damage = 2
 	base_attack_speed = 1.0
 	current_damage = base_damage

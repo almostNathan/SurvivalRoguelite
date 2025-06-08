@@ -66,12 +66,14 @@ func reset_game():
 	get_tree().change_scene_to_file("res://UI/StartMenu/start_menu.tscn")
 
 func clear_level():
+	player.changing_level()
 	is_boss_spawned = false
 	is_portal_spawned = false
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	var pickups = get_tree().get_nodes_in_group("pickups")
 	var bullets = get_tree().get_nodes_in_group("bullet")
 	var turrets = get_tree().get_nodes_in_group("turret")
+	
 	for enemy in enemies:
 		remove_child(enemy)
 		enemy.queue_free()

@@ -11,6 +11,7 @@ var active = false
 func _ready():
 	sprite.animation='spawn'
 	sprite.play()
+	Globals.player.create_portal_arrow(self)
 
 func _on_sprite_animation_finished():
 	if sprite.animation == 'spawn':
@@ -20,5 +21,6 @@ func _on_sprite_animation_finished():
 
 func _on_body_entered(body):
 	if body == Globals.player:
+		body.delete_portal_arrow(self)
 		emit_signal('next_level')
 	call_deferred('queue_free')

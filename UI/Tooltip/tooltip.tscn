@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhbf22tlfp6g1"]
+
+[ext_resource type="Script" path="res://UI/Tooltip/tooltip.gd" id="1_lofbd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hkbi"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.6, 0.6, 0.6, 0.74902)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Tooltip" type="PanelContainer"]
+visible = false
+top_level = true
+custom_minimum_size = Vector2(200, 0)
+offset_right = 200.0
+offset_bottom = 47.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0hkbi")
+script = ExtResource("1_lofbd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][b]Machine Gun[/b][/center]
+
+"
+fit_content = true

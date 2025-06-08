@@ -5,6 +5,7 @@ class_name AuraWeapon
 func _init():
 	icon = preload("res://Art/Weapons/aura_bullet.png")
 	tooltip_text = 'Aura'
+	weapon_name = "Aura"
 	base_damage = 2
 	base_attack_speed = .25
 	current_damage = base_damage

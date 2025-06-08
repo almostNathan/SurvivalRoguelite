@@ -8,8 +8,8 @@ func _init():
 	icon = preload("res://Art/Drops/movespeed_player_mod.png")
 
 
-func equip(player : Player):
-	super(player)
+func equip(new_player : Player):
+	super(new_player)
 	player.modify_speed_multiplier(movespeed_multiplier)
 
 

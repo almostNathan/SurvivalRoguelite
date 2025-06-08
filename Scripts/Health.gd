@@ -11,6 +11,7 @@ func take_damage(value):
 		cur_health = max_health
 	
 	check_for_death()
+	Hud.show_damage()
 	update_hud()
 
 func lose_life(value):

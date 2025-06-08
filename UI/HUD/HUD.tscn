@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cls41f23ro05u"]
+[gd_scene load_steps=17 format=3 uid="uid://cls41f23ro05u"]
 
 [ext_resource type="Script" path="res://UI/HUD/HUD.gd" id="1_dy2ux"]
+[ext_resource type="Script" path="res://UI/HUD/DamageAura.gd" id="2_a1mbl"]
 [ext_resource type="Script" path="res://UI/HUD/ExperienceBar.gd" id="2_qxpjf"]
 [ext_resource type="PackedScene" uid="uid://bei0ewiiu0oln" path="res://UI/Inventory/weapons_display.tscn" id="3_r21vr"]
 [ext_resource type="PackedScene" uid="uid://cbbvt8rf4y1n4" path="res://UI/LootMenu/loot_menu.tscn" id="4_m76s0"]
@@ -10,6 +11,17 @@
 [ext_resource type="PackedScene" uid="uid://dk30tumpnkoju" path="res://UI/GameOverScreen/game_over_screen.tscn" id="8_y7dkx"]
 [ext_resource type="PackedScene" uid="uid://da82h0w7it1of" path="res://UI/TimeCapsuleScreen/time_capsule_screen.tscn" id="9_pv3ks"]
 [ext_resource type="PackedScene" uid="uid://ceb57clgswdna" path="res://UI/LoadoutSelectionScreen/loadout_selection_screen.tscn" id="10_0i83u"]
+
+[sub_resource type="Gradient" id="Gradient_7itbd"]
+colors = PackedColorArray(1, 1, 1, 0, 0.811765, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 17
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5cci3"]
+gradient = SubResource("Gradient_7itbd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="SystemFont" id="SystemFont_g6qcy"]
 
@@ -26,6 +38,16 @@ bg_color = Color(0.0117647, 0.631373, 0, 1)
 [node name="Hud" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_dy2ux")
+
+[node name="DamageAura" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5cci3")
+script = ExtResource("2_a1mbl")
 
 [node name="ExperienceBar" type="ProgressBar" parent="."]
 anchors_preset = 12
@@ -73,6 +95,7 @@ visible = false
 
 [node name="ConfigureWeapons" parent="." instance=ExtResource("5_jquo2")]
 process_mode = 2
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

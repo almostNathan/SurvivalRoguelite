@@ -6,6 +6,7 @@ var bullet_array : Array[OrbBullet] = []
 func _init():
 	icon = preload("res://Art/basicterrain/stone.png")
 	tooltip_text = 'Orb'
+	weapon_name = "Orb"
 	base_damage = 10
 	base_attack_speed = 2
 	current_damage = base_damage

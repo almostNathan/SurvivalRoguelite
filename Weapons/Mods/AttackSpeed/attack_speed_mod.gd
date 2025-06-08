@@ -8,7 +8,7 @@ func _init():
 	tooltip_text = "Attack Speed"
 	icon = preload("res://Art/Drops/attack_speed_mod.png")
 
-func equip(new_weapon):
+func equip(new_weapon : BaseWeapon):
 	super(new_weapon)
 	weapon.modify_attack_speed_mult(attack_speed_mult)
 

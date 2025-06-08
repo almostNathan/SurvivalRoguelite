@@ -16,5 +16,5 @@ func update():
 
 func clear():
 	for weapons_display_slot in weapons_display_container.get_children():
-		remove_child(weapons_display_slot)
+		weapons_display_container.remove_child(weapons_display_slot)
 		weapons_display_slot.queue_free()

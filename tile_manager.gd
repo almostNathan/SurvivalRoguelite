@@ -77,16 +77,8 @@ func generate_base_tiles(chunk: ChunkData):
 			var x_coord
 			var y_coord
 			if current_level == 0:
-				if x%2 == 0:
-					x_coord = 3
-				else:
-					x_coord = x%2
-				if y%2 == 1:
-					y_coord = 2
-				else:
-					y_coord = y%2
-				#x_coord = (x%2)+4
-				#y_coord = y%2+4
+				x_coord = 2
+				y_coord = 1
 			else:
 				x_coord = (x%2)+4
 				y_coord = y%2

@@ -6,11 +6,14 @@ signal mod_placed_in_weapon()
 @onready var mod_grid = $ModGridContainer
 @onready var weapon_icon = $Icon
 @onready var mod_slot_label = $ModSlotLabel
+@onready var tooltip = $Tooltip
+@onready var tooltip_label = $Tooltip/RichTextLabel
 
 var weapon_in_slot : BaseWeapon
 var moddable = false
 var open = true
 var mod_slot_scene = preload("res://UI/Inventory/InventoryModSlot/inventory_mod_slot.tscn")
+
 
 func _get_drag_data(_at_position):
 	set_drag_preview(self.duplicate())
@@ -45,6 +48,10 @@ func set_weapon_in_slot(weapon):
 	update_weapon_slot()
 	open = false
 	moddable = true
+	tooltip_label.set_text("[center][b]{name}[/b][/center]\n".format({"name": weapon.weapon_name}) \
+		+ "Damage: {damage}\n".format({"damage": weapon.current_damage}) \
+		+ "Attack Speed: {attack_speed}\n".format({"attack_speed": weapon.current_attack_speed}) \
+		+ "Projectiles: {projectiles}".format({"projectiles": weapon.projectile_count}))
 
 func remove_weapon_in_slot():
 	weapon_in_slot = null
@@ -84,3 +91,11 @@ func clear_mod_grid_container():
 func remove_mod_from_inventory(mod):
 	var mod_inventory = Globals.player.mod_inventory
 	mod_inventory.remove_at(mod_inventory.find(mod))
+
+
+func _on_mouse_entered():
+	tooltip.toggle(true)
+
+
+func _on_mouse_exited():
+	tooltip.toggle(false)

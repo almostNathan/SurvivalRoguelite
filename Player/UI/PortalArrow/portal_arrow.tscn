@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwja6e7ilp87b"]
+
+[ext_resource type="Texture2D" uid="uid://djjlbpjgfr2hf" path="res://Art/hud_assets/right-arrow.png" id="1_655op"]
+[ext_resource type="Script" path="res://Player/UI/PortalArrow/portal_arrow.gd" id="1_mw05t"]
+
+[node name="PortalArrow" type="TextureRect" groups=["arrows"]]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 20.0
+offset_top = -5.0
+offset_right = 30.0
+offset_bottom = 5.0
+pivot_offset = Vector2(-20, 5)
+size_flags_horizontal = 0
+texture = ExtResource("1_655op")
+expand_mode = 1
+script = ExtResource("1_mw05t")

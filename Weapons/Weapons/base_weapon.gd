@@ -9,6 +9,7 @@ signal on_kill(body)
 signal adding_mod(mod)
 
 @export var bullet_scene : PackedScene
+var weapon_name = 'Weapon Name'
 var speed = 700.0
 var base_damage = 20
 var current_damage = base_damage
@@ -23,6 +24,7 @@ var current_mod_count = 0
 var player : CharacterBody2D
 
 var base_attack_speed = 1
+var current_attack_speed = base_attack_speed
 var damage_modifier_add = 0
 var damage_modifier_mult = 1
 var damage_modifier_level = 1
@@ -98,8 +100,9 @@ func modify_attack_speed_mult(attack_speed_change):
 	calc_attack_speed()
 
 func calc_attack_speed():
-	weapon_timer.wait_time = (base_attack_speed + attack_speed_modifier_add) / attack_speed_modifier_mult
-
+	current_attack_speed = (base_attack_speed + attack_speed_modifier_add) / attack_speed_modifier_mult
+	if weapon_timer:
+		weapon_timer.wait_time = current_attack_speed
 
 func modify_damage_add(modifier_change):
 	damage_modifier_add += modifier_change
@@ -130,7 +133,8 @@ func modify_duration_mult(modifier_change):
 	duration_modifier_mult += modifier_change
 
 func refresh_mods():
-	damage_mod.refresh()
+	if damage_mod:
+		damage_mod.refresh()
 	for mod in mod_list:
 		if mod is BaseMod:
 			mod.refresh()
@@ -176,3 +180,10 @@ func create_new_bullet():
 func apply_player_mods_to_weapon(weapon : BaseWeapon):
 	player.apply_player_mods_to_weapon(weapon)
 
+func toggle(on : bool):
+	if on:
+		if weapon_timer.is_stopped():
+			weapon_timer.start()
+	elif !on:
+		if !weapon_timer.is_stopped():
+			weapon_timer.stop()

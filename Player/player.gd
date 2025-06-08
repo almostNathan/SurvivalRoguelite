@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal equipping_weapon(weapon)
+signal moving(movement_direction, velocity)
 signal health_changed
 signal gain_experience(exp_amount)
 signal shooting_weapon(bullet)
@@ -50,6 +51,7 @@ var player_mod_list = []
 var interactable_list = []
 var interactable_index = 0
 var loot_arrow_list : Array = []
+var portal_arrow : PortalArrow
 
 #Modifier Variables
 var speed_multiplier = 1
@@ -62,31 +64,14 @@ var area_multiplier = 1
 
 func _ready():
 	Globals.player = self
-	print("player Adding TimeCapsuleMod")
-	add_mod(preload("res://Player/Mods/TimeCapsulePlayerMod/time_capsule_player_mod.tscn").instantiate())
+	if len(player_mod_list) == 0:
+		add_mod(preload("res://Player/Mods/TimeCapsulePlayerMod/time_capsule_player_mod.tscn").instantiate())
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("dodge"):
 		if dodge_timer.is_stopped():
 			dodge()
-	
-	##Check for loot and handle Loot Arrows
-	var all_loot = get_tree().get_nodes_in_group("loot")
-	for loot in all_loot:
-		if loot not in interact_area.get_overlapping_areas():
-			if !loot.is_targeted:
-				var new_loot_arrow = preload("res://Player/UI/LootArrow/loot_arrow.tscn").instantiate()
-				new_loot_arrow.set_target(loot)
-				self.add_child(new_loot_arrow)
-				loot_arrow_list.append(new_loot_arrow)
-				loot.is_targeted = true
-		else:
-			if loot.is_targeted:
-				for arrow in loot_arrow_list:
-					if arrow.target == loot:
-						loot_arrow_list.erase(arrow)
-						arrow.queue_free()
-
+			
 	##Check for magnet objects
 	var nearby_areas = magnet_area.get_overlapping_areas()
 	for area in nearby_areas:
@@ -153,6 +138,8 @@ func move(delta):
 	
 	velocity += movement_direction * acceleration * delta
 	velocity = velocity.limit_length(speed * speed_multiplier)
+	
+	moving.emit(movement_direction, velocity)
 	move_and_slide()
 	#position.clamp(Vector2.ZERO, get_parent().get_level_size())
 
@@ -260,6 +247,14 @@ func get_all_weapon_mods_list():
 	
 	return return_mod_list
 
+func changing_level():
+	for arrow in loot_arrow_list:
+		remove_child(arrow)
+		arrow.queue_free()
+	if portal_arrow:
+		remove_child(portal_arrow)
+		portal_arrow.queue_free()
+
 func create_save_data():
 	var mod_inventory_data = []
 	for mod in mod_inventory:
@@ -285,3 +280,25 @@ func load_save_data(save_data):
 	Globals.player_data["rollover_mods"] = []
 	for rollover_mod_data in player_save_data["rollover_mods"]:
 		Globals.player_data["rollover_mods"].append(load(rollover_mod_data["filename"]).instantiate())
+
+func create_loot_arrow(loot):
+	var new_loot_arrow = preload("res://Player/UI/LootArrow/loot_arrow.tscn").instantiate()
+	new_loot_arrow.set_target(self, loot)
+	self.add_child(new_loot_arrow)
+	loot_arrow_list.append(new_loot_arrow)
+
+func delete_loot_arrow(loot):
+	for loot_arrow in loot_arrow_list:
+		if loot_arrow and loot_arrow.target == loot:
+			loot_arrow_list.erase(loot_arrow)
+			loot_arrow.queue_free()
+
+func create_portal_arrow(portal):
+	var new_portal_arrow = preload("res://Player/UI/PortalArrow/portal_arrow.tscn").instantiate()
+	new_portal_arrow.set_target(self, portal)
+	self.add_child(new_portal_arrow)
+	portal_arrow = new_portal_arrow
+
+func delete_portal_arrow(portal):
+	if portal_arrow == portal:
+		portal_arrow.queue_free()

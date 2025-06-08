@@ -41,8 +41,19 @@ func _selection_made(loadout_data):
 		loadout_weapon.add_mod(mod_scene.instantiate())
 		
 	player.add_to_weapon_inventory(loadout_weapon)
+	
+	if loadout_data["loadout_option_data"].has("additional_weapons"):
+		for weapon in loadout_data["loadout_option_data"]["additional_weapons"]:
+			player.add_to_weapon_inventory(weapon.instantiate())
+			
+	if loadout_data["loadout_option_data"].has("player_mod_list"):
+		for mod_scene in loadout_data["loadout_option_data"]["player_mod_list"]:
+			player.add_mod(mod_scene.instantiate())
+	
 	AllWeaponList.remove_weapon_from_pool(loadout_weapon)
 
+
+	#Clear screen
 	for selection_option in loadout_hbox.get_children():
 		loadout_hbox.remove_child(selection_option)
 		selection_option.queue_free()

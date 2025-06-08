@@ -11,6 +11,7 @@ extends CanvasLayer
 @onready var game_over_screen = $GameOverScreen
 @onready var time_capsule_screen = $TimeCapsuleScreen
 @onready var loadout_selection_screen = $LoadoutSelectionScreen
+@onready var damage_aura = $DamageAura
 
 var menu_list = [player_menu, time_capsule_screen]
 
@@ -61,3 +62,15 @@ func open_time_capsule():
 
 func load_loadout_selection_screen():
 	loadout_selection_screen.load_select_loadout_screen()
+
+func show_damage():
+	damage_aura.show_damage()
+	var opacity_tween = create_tween()
+	damage_aura.visible = true
+	opacity_tween.tween_property(damage_aura,"modulate:a", 1, .3)
+	await opacity_tween.finished
+	opacity_tween.tween_property(damage_aura,"modulate:a", 0, .3)
+	await opacity_tween.finished
+	damage_aura.visible = false
+	opacity_tween.kill()
+
