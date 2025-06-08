@@ -6,6 +6,32 @@ var player_data : Dictionary = {
 	"rollover_mods" : []
 }
 
+var base_rarity_distribution = {
+	"common" : .6,
+	"uncommon" : .3,
+	"rare" : .099,
+	"legendary" : .001
+}
+
+var rarity_colors = {
+	"common" : Color(.314, .314, .314, 1),
+	"uncommon" : Color(0, .60, 0, 1),
+	"rare" : Color(.596, .157, .596, 1),
+	"legendary" : Color(.706, .353, 0, 1)
+}
+
+func get_current_rarity_distribuion(rarity_modifier = 0):
+	if player != null:
+		var current_rarity_distribuion = base_rarity_distribution.duplicate()
+		for rarity in current_rarity_distribuion:
+			current_rarity_distribuion[rarity] = pow(current_rarity_distribuion[rarity], (1 - player.rarity_multiplier - rarity_modifier))
+		var rarity_sum = current_rarity_distribuion.values().reduce(func(accum, number): return accum + number, 0.0)
+		for rarity in current_rarity_distribuion:
+			current_rarity_distribuion[rarity] = current_rarity_distribuion[rarity] / rarity_sum
+		return current_rarity_distribuion
+	else:
+		return base_rarity_distribution.duplicate()
+
 func save_game():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_data = {}
@@ -40,7 +66,6 @@ var mod_scene_list = [
 	preload("res://Weapons/Mods/AddProj/add_proj_mod.tscn"),
 	preload("res://Weapons/Mods/Bounce/bounce_mod.tscn"),
 	preload("res://Weapons/Mods/Burn/burn_mod.tscn"),
-	preload("res://Weapons/Mods/Damage/damage_mod.tscn"),
 	preload("res://Weapons/Mods/AttackSpeed/attack_speed_mod.tscn"),
 	preload("res://Weapons/Mods/Leech/leech_mod.tscn"),
 	preload("res://Weapons/Mods/Pierce/pierce_mod.tscn"),
@@ -48,7 +73,10 @@ var mod_scene_list = [
 	preload("res://Weapons/Mods/Splash/splash_mod.tscn"),
 	preload("res://Weapons/Mods/TimeBomb/time_bomb_mod.tscn"),
 	preload("res://Weapons/Mods/ExplodeOnDeath/explode_on_death_mod.tscn"),
-	preload("res://Weapons/Mods/PoisonCloud/poison_cloud_mod.tscn")
+	preload("res://Weapons/Mods/PoisonCloud/poison_cloud_mod.tscn"),
+	preload("res://Weapons/Mods/IncreasedDamage/increased_damage_mod.tscn"),
+	preload("res://Weapons/Mods/AddedDamage/added_damage_mod.tscn"),
+	preload("res://Weapons/Mods/Chain/chain_mod.tscn")
 ]
 
 var weapon_scene_list = [

@@ -60,6 +60,7 @@ var magnet_raidus_multiplier = 1
 var experience_multiplier = 1
 var duration_multiplier = 1
 var area_multiplier = 1
+var rarity_multiplier = 0.0
 
 
 func _ready():

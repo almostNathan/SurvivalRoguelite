@@ -18,6 +18,9 @@ var mod_scene_list = [
 	preload("res://Weapons/Mods/Chain/chain_mod.tscn")
 ]
 
+
+
+
 var player_mod_scene_list = [
 	preload("res://Player/Mods/DamagePlayerMod/damage_player_mod.tscn"),
 	preload("res://Weapons/Mods/IncreasedDamage/increased_damage_mod.tscn"),

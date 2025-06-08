@@ -12,6 +12,7 @@ var need_refresh = false
 var weapon
 var current_rank = 1
 var damage_number_color : Color = Color(0, 0, 0, 1)
+var rarity = 'common'
 
 func equip(new_weapon):
 	self.weapon = new_weapon

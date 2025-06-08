@@ -29,7 +29,7 @@ theme_override_constants/margin_bottom = 40
 
 [node name="SelectionBorder" type="ColorRect" parent="SelectionContainer"]
 layout_mode = 2
-color = Color(0, 0.564706, 0, 1)
+color = Color(0, 1.92523e-06, 0.881758, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="SelectionContainer"]
 layout_mode = 2
@@ -38,11 +38,22 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ColorRect" type="ColorRect" parent="SelectionContainer/MarginContainer"]
+[node name="RarityBorder" type="ColorRect" parent="SelectionContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="SelectionContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="SelectionContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="SelectionIcon" type="TextureRect" parent="SelectionContainer/MarginContainer"]
+[node name="SelectionIcon" type="TextureRect" parent="SelectionContainer/MarginContainer/MarginContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 expand_mode = 1
@@ -72,4 +83,4 @@ label_settings = SubResource("LabelSettings_8hrcw")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[connection signal="gui_input" from="SelectionContainer/MarginContainer/SelectionIcon" to="." method="_on_selection_icon_gui_input"]
+[connection signal="gui_input" from="SelectionContainer/MarginContainer/MarginContainer/SelectionIcon" to="." method="_on_selection_icon_gui_input"]
