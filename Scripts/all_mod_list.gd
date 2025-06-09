@@ -18,6 +18,32 @@ var mod_scene_list = [
 	preload("res://Weapons/Mods/Chain/chain_mod.tscn")
 ]
 
+var mod_data = [
+	{
+		"name" : "Split",
+		"scene" : preload("res://Weapons/Mods/AddProj/add_proj_mod.tscn"),
+		"rarity" : "rare",
+		"icon" : preload("res://Art/Drops/add_proj_mod.png"),
+		"tooltip_data" : {
+			"tooltip_description" : "Adds an additional projectile."
+		},
+		"tags" : [
+			"projectile"
+		]
+	},
+	{
+		"name" : "Bounce",
+		"scene" : preload("res://Weapons/Mods/Bounce/bounce_mod.tscn"),
+		"rarity" : "uncommon",
+		"icon" : preload("res://Art/Drops/bounce_mod.png"),
+		"tooltip_data" : {
+			"tooltip_description" : "Projectile bounce off targets hit."
+		},
+		"tags" : [
+			"projectile"
+		]
+	},
+]
 
 
 
