@@ -5,8 +5,9 @@ var damage_value = 10
 var damage_coefficient = .5
 var splash_effect_scene = preload("res://GeneralMods/Effects/Splash/splash_effect.tscn")
 
-func _init():
+func set_base_data():
 	tooltip_text = "Splash"
+	mod_name = "Splash"
 	icon = preload("res://Art/Drops/splash_mod.png")
 	
 

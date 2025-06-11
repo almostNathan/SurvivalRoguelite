@@ -8,8 +8,9 @@ var damage_value : float
 
 var chain_scene_packed = preload("res://Weapons/Effects/ChainEffect/chain_effect.tscn")
 
-func _init():
+func set_base_data():
 	tooltip_text = "Chain Mod"
+	mod_name = "Chain"
 	icon = preload("res://Art/Drops/chain-lightning.png")
 	damage_number_color = Color(3, 236, 252, 1)
 

@@ -4,8 +4,9 @@ class_name TimeBombMod
 var time_bomb_effect = preload("res://GeneralMods/Effects/TimeBomb/time_bomb_effect.tscn")
 var damage_value : float
 
-func _init():
+func set_base_data():
 	tooltip_text = "Time Bomb"
+	mod_name = "Time Bomb"
 	icon = preload("res://Art/Drops/time_bomb_mod.png")
 
 func equip(new_weapon):

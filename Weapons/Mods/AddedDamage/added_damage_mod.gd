@@ -4,12 +4,11 @@ class_name AddedDamageMod
 var base_damage_add = 1
 var current_damage_add = 1
 
-
-
-
-func _init():
-	tooltip_text = "Increased Damage"
+func set_base_data():
+	tooltip_text = "Added Damage"
+	mod_name = "Added Damage"
 	icon = preload("res://Art/Drops/added_damage_mod.png")
+
 
 func equip(new_weapon):
 	super(new_weapon)

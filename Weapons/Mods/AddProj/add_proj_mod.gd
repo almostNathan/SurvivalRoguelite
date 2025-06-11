@@ -3,8 +3,9 @@ class_name AddProjMod
 
 var projectile_modifier = 1
 
-func _init():
+func set_base_data():
 	tooltip_text = "Split Mod"
+	mod_name = "Split"
 	icon = preload("res://Art/Drops/add_proj_mod.png")
 
 func equip(new_weapon):

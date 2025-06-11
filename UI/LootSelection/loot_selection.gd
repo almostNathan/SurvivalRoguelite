@@ -12,7 +12,6 @@ signal selection_made()
 func set_selection(mod):
 	if mod is BaseMod:
 		border.color = Color(0, 0, .9, 1)
-		print("loot_selection, mod rarity ", mod.rarity)
 		rarity_border.color = Globals.rarity_colors[mod.rarity]
 	if mod is BaseWeapon:
 		border.color = Color(180,0,0,255)

@@ -4,8 +4,9 @@ class_name AttackSpeedMod
 var attack_speed_mult = .15
 var base_attack_mult = .15
 
-func _init():
+func set_base_data():
 	tooltip_text = "Attack Speed"
+	mod_name = "Attack Speed"
 	icon = preload("res://Art/Drops/attack_speed_mod.png")
 
 func equip(new_weapon : BaseWeapon):

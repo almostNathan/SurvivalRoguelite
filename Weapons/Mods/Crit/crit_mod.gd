@@ -3,8 +3,9 @@ class_name CritMod
 
 var crit_chance = .5
 
-func _init():
+func set_base_data():
 	tooltip_text = "Crit"
+	mod_name = "Crit"
 	icon = preload("res://Art/Drops/crit_mod.png")
 
 func equip(new_weapon):

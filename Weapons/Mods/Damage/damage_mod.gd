@@ -5,8 +5,9 @@ var damage_value : float = 10
 
 
 
-func _init():
+func set_base_data():
 	tooltip_text = "Damage"
+	mod_name = "Damage"
 	icon = preload("res://Art/Drops/damage_mod.png")
 
 func equip(new_weapon):

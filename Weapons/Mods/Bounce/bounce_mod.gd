@@ -3,7 +3,8 @@ class_name BounceMod
 
 var bounce_modifier = 1
 
-func _init():
+func set_base_data():
+	mod_name = "Bounce"
 	tooltip_text = "Bounce"
 	icon = preload("res://Art/Drops/bounce_mod.png")
 

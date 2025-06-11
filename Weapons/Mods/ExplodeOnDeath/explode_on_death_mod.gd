@@ -5,8 +5,9 @@ var damage_value : float = 10
 var damage_coefficient = .5
 var splash_effect_scene = preload("res://GeneralMods/Effects/Splash/splash_effect.tscn")
 
-func _init():
+func set_base_data():
 	tooltip_text = "Explode On Death"
+	mod_name = "Explode on Death"
 	icon = preload("res://Art/Drops/explode_on_death_mod.png")
 
 func equip(new_weapon):

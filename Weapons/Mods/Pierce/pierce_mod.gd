@@ -5,8 +5,9 @@ var pierce_modifier = 1
 var pierces_used = 0
 
 
-func _init():
+func set_base_data():
 	tooltip_text = "Pierce"
+	mod_name = "Pierce"
 	icon = preload("res://Art/Drops/pierce_mod.png")
 
 func equip(new_weapon):

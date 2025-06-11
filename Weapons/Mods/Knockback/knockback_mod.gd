@@ -3,8 +3,9 @@ class_name KnockbackMod
 
 var knockback_debuff = preload("res://GeneralMods/Debuffs/Knockback/knockback_debuff.tscn")
 
-func _init():
+func set_base_data():
 	tooltip_text = "Knockback"
+	mod_name = "Knockback"
 	#TODO need icon
 	
 func equip(weapon):

@@ -7,8 +7,9 @@ var poison_duration : float = 5
 var proc_chance = 50
 var poison_cloud_effect_scene = preload("res://GeneralMods/Effects/PoisonCloud/poison_cloud_effect.tscn")
 
-func _init():
+func set_base_data():
 	tooltip_text = "Poison Cloud on Death"
+	mod_name = "Poison Cloud on Death"
 	icon = preload("res://Art/Drops/poison_cloud_mod.png")
 
 func equip(new_weapon):

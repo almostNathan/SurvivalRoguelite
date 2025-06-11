@@ -8,8 +8,9 @@ var proc_chance = .1
 
 var poison_debuff = preload("res://GeneralMods/Debuffs/Poison/poison_debuff.tscn")
 
-func _init():
-	tooltip_text = "Poison"	
+func set_base_data():
+	tooltip_text = "Poison"
+	mod_name = "Poison"
 	icon = preload("res://Art/Drops/poison_mod.png")
 
 func equip(new_weapon):

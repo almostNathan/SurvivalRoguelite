@@ -8,11 +8,22 @@ var damage_numbers_scene = preload("res://UI/DamageNumbers/damage_numbers.tscn")
 var tooltip_text : String
 var icon : CompressedTexture2D
 
+var mod_name = "Split"
 var need_refresh = false
 var weapon
 var current_rank = 1
 var damage_number_color : Color = Color(0, 0, 0, 1)
-var rarity = 'common'
+var rarity = "common"
+
+func _init():
+	set_base_data()
+	var mod_data = AllModList.mod_data.filter(func(data_dict): return data_dict["name"] == mod_name)
+	print("base_mod mod_data ", mod_data, ' ', mod_name)
+	rarity = mod_data[0]["rarity"]
+
+func set_base_data():
+	pass
+
 
 func equip(new_weapon):
 	self.weapon = new_weapon

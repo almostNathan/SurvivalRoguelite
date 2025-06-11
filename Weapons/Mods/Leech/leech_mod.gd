@@ -3,8 +3,9 @@ class_name LeechMod
 
 var leech_per_hit = 1
 
-func _init():
+func set_base_data():
 	tooltip_text = "Leech"
+	mod_name = "Leech"
 	icon = preload("res://Art/Drops/leech_mod.png")
 
 func equip(new_weapon):

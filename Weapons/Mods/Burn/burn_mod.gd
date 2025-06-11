@@ -11,8 +11,9 @@ var proc_chance = .1
 var burn_debuff = preload("res://GeneralMods/Debuffs/Burn/burn_debuff.tscn")
 
 
-func _init():
+func set_base_data():
 	tooltip_text = "Burn"
+	mod_name = "Burn"
 	icon = preload("res://Art/Drops/burn_mod.png")
 	damage_number_color = Color(0, 0, 0, 1)
 

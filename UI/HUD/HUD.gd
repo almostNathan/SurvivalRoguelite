@@ -51,8 +51,8 @@ func open_weapon_config():
 func update_weapons_display():
 	weapons_display.update()
 
-func load_loot_menu():
-	loot_menu.load_loot_menu()
+func load_loot_menu(filter_criteria = []):
+	loot_menu.load_loot_menu(filter_criteria)
 
 func hide_for_hub():
 	config_weapons_screen.hide()
