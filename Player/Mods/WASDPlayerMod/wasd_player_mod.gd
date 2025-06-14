@@ -6,6 +6,9 @@ var damage_modifier = 0.0
 var damage_modifier_per_weapon_value = .5
 var weapons_equipped = 0
 
+func set_base_data():
+	mod_name = "WASD"
+
 func equip(player : Player):
 	super(player)
 	player_weapons = player.weapon_inventory

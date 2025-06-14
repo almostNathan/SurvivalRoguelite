@@ -30,7 +30,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0hkbi")
 script = ExtResource("1_lofbd")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="TooltipLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center][b]Machine Gun[/b][/center]

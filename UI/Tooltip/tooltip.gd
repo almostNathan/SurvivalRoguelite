@@ -1,15 +1,28 @@
 extends PanelContainer
 class_name Tooltip
 
+@onready var tooltip_label = $TooltipLabel
+
 const OFFSET: Vector2 = Vector2.ONE * 20
 var opacity_tween: Tween = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _input(event: InputEvent):
 	if visible and event is InputEventMouseMotion:
 		global_position = get_global_mouse_position() + OFFSET
 
+func set_text(tooltip_text: String):
+	print("tooltip; ", tooltip_text, ' - ', self.get_parent())
+	tooltip_label.text = tooltip_text
+	
+
+
+
 func toggle(on : bool):
+	if on:
+		print("tooltip of: ", self.get_parent())
+	
 	if on:
 		self.visible = true
 		modulate.a = 0.0

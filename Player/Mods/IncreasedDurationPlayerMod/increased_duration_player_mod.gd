@@ -4,7 +4,8 @@ class_name IncreasedDurationPlayerMod
 var modified_weapons : Array = []
 var duration_modifier = .5
 
-func _init():
+func set_base_data():
+	mod_name = "Increased Duration"
 	tooltip_text = "Increased Duration Player Mod"
 	icon = preload("res://Art/Drops/increased_duration_player_mod.png")
 

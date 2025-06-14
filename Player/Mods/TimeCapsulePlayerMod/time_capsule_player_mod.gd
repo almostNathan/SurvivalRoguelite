@@ -1,7 +1,8 @@
 extends BasePlayerMod
 class_name TimeCapsulePlayerMod
 
-func _init():
+func set_base_data():
+	mod_name = "Time Capsule"
 	tooltip_text = "Time Capsule Player Mod"
 	icon = preload("res://Art/Drops/deploy_speed_player_mod.png")
 

@@ -18,8 +18,123 @@ var mod_scene_list = [
 	preload("res://Weapons/Mods/Chain/chain_mod.tscn")
 ]
 
-#TODO change scene to scene_path and change from preload to string that is loaded at runtime
+var player_mod_data = [
+	{
+		"name" : "Base",
+		"scene_path" : "none",
+		"rarity" : "none",
+		"tags" : [
+			"none"
+		]
+	},
+	{
+		"name" : "Increased Area of Effect",
+		"scene_path" : "res://Player/Mods/AreaPlayerMod/area_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"area"
+		]
+	},
+	{
+		"name" : "Increased Attack Speed",
+		"scene_path" : "res://Player/Mods/AttackSpeedPlayerMod/attack_speed_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"attack speed", "speed"
+		]
+	},
+	{
+		"name" : "Increased Damage",
+		"scene_path" : "res://Player/Mods/DamagePlayerMod/damage_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"damage"
+		]
+	},
+	{
+		"name" : "Increased Deploy Speed",
+		"scene_path" : "res://Player/Mods/DeploySpeedPlayerMod/deploy_speed_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"area"
+		]
+	},
+	{
+		"name" : "Increased Dodge Speed",
+		"scene_path" : "res://Player/Mods/DodgeSpeedPlayerMod/dodge_speed_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"area"
+		]
+	},
+	{
+		"name" : "Increased Duration",
+		"scene_path" : "res://Player/Mods/IncreasedDurationPlayerMod/increased_duration_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"area"
+		]
+	},
+	{
+		"name" : "Incresed Experience",
+		"scene_path" : "res://Player/Mods/IncreasedExperiencePlayerMod/increased_experience_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"area"
+		]
+	},
+	{
+		"name" : "Incresed Magnet Radius",
+		"scene_path" : "res://Player/Mods/MagnetRadiusPlayerMod/magnet_radius_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"area"
+		]
+	},
+	{
+		"name" : "Increased Move Speed",
+		"scene_path" : "res://Player/Mods/MoveSpeedPlayerMod/movespeed_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"area"
+		]
+	},
+	{
+		"name" : "Incresed Projectile Speed",
+		"scene_path" : "res://Player/Mods/ProjectileSpeedPlayerMod/projectile_speed_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"area"
+		]
+	},
+	{
+		"name" : "Time Capsule",
+		"scene_path" : "res://Player/Mods/TimeCapsulePlayerMod/time_capsule_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"area"
+		]
+	},
+	{
+		"name" : "WASD",
+		"scene_path" : "res://Player/Mods/WASDPlayerMod/wasd_player_mod.tscn",
+		"rarity" : "common",
+		"tags" : [
+			"area"
+		]
+	}
+]
+
+
 var mod_data = [
+	{
+		"name" : "Base",
+		"scene_path" : "none",
+		"rarity" : "none",
+		"tags" : [
+			"none"
+		]
+	},
 	{
 		"name" : "Added Damage",
 		"scene_path" : "res://Weapons/Mods/AddedDamage/added_damage_mod.tscn",
@@ -41,7 +156,7 @@ var mod_data = [
 		"scene_path" : "res://Weapons/Mods/AttackSpeed/attack_speed_mod.tscn",
 		"rarity" : "uncommon",
 		"tags" : [
-			"speed"
+			"speed", "attack speed"
 		]
 	},
 	{

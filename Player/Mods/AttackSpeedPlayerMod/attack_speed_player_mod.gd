@@ -4,7 +4,8 @@ class_name AttackSpeedPlayerMod
 var modified_weapons : Array = []
 var attack_speed_modifier = .1
 
-func _init():
+func set_base_data():
+	mod_name = "Increased Attack Speed"
 	tooltip_text = "Attack Speed Player Mod"
 	icon = preload("res://Art/Drops/attackspeed_player_mod.png")
 

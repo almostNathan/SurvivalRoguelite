@@ -3,7 +3,8 @@ class_name MagnetRadiusPlayerMod
 
 var magnet_radius_multiplier = .5
 
-func _init():
+func set_base_data():
+	mod_name = "Increased Magnet Radius"
 	tooltip_text = "Increased Pickup Radius Mod"
 	icon = preload("res://Art/Drops/magnet_radius_player_mod.png")
 

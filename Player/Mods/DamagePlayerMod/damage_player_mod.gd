@@ -4,7 +4,8 @@ class_name DamagePlayerMod
 var modified_weapons : Array = []
 var damage_modifier = .5
 
-func _init():
+func set_base_data():
+	mod_name = "Increase Damage"
 	tooltip_text = "Increased Damage Player Mod"
 	icon = preload("res://Art/Drops/crit_mod.png")
 

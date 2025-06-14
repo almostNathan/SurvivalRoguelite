@@ -4,7 +4,8 @@ class_name AreaPlayerMod
 var modified_weapons : Array = []
 var area_modifier = .5
 
-func _init():
+func set_base_data():
+	mod_name = "Increased Area of Effect"
 	tooltip_text = "Increase AoE Player Mod"
 	icon = preload("res://Art/Drops/area_player_mod.png")
 

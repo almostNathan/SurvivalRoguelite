@@ -3,7 +3,8 @@ class_name DodgeSpeedPlayerMod
 
 var dodge_speed_multiplier = .5
 
-func _init():
+func set_base_data():
+	mod_name = "Increased Dodge Speed"
 	tooltip_text = "Dodge Speed Mod"
 	icon = preload("res://Art/Drops/dodge_speed_player_mod.png")
 

@@ -3,7 +3,8 @@ class_name IncreasedExperiencePlayerMod
 
 var experience_multiplier = .5
 
-func _init():
+func set_base_data():
+	mod_name = "Increased Experience"
 	tooltip_text = "Increased Experience Mod"
 	icon = preload("res://Art/Drops/increased_experience_player_mod.png")
 

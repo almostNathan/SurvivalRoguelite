@@ -2,10 +2,17 @@ extends Node2D
 class_name BasePlayerMod
 
 
+var mod_name = "Base"
 var tooltip_text : String
 var icon : CompressedTexture2D
 var current_rank = 1
 var player : Player
+
+func _init():
+	set_base_data()
+
+func set_base_data():
+	pass
 
 func get_tooltip_text():
 	return tooltip_text

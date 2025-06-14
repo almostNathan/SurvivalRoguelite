@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2knfn2rb8yet"]
+[gd_scene load_steps=5 format=3 uid="uid://d2knfn2rb8yet"]
 
 [ext_resource type="Script" path="res://UI/Inventory/InventoryModSlot/inventory_mod_slot.gd" id="1_5qerw"]
 [ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="2_20mtj"]
+[ext_resource type="Script" path="res://UI/Tooltip/tooltip.gd" id="3_iswbi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ko43"]
 outline_size = 3
@@ -25,3 +26,10 @@ size_flags_vertical = 8
 text = "1
 "
 label_settings = SubResource("LabelSettings_0ko43")
+
+[node name="Tooltip" type="PanelContainer" parent="."]
+layout_mode = 2
+script = ExtResource("3_iswbi")
+
+[connection signal="mouse_entered" from="Tooltip" to="." method="_on_tooltip_mouse_entered"]
+[connection signal="mouse_exited" from="Tooltip" to="." method="_on_tooltip_mouse_exited"]

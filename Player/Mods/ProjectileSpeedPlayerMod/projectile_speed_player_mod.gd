@@ -4,7 +4,8 @@ class_name ProjectileSpeedPlayerMod
 var modified_weapons : Array = []
 var projectile_speed_modifier = .5
 
-func _init():
+func set_base_data():
+	mod_name = "Increased Projectile Speed"
 	tooltip_text = "Projectile Speed Player Mod"
 	icon = preload("res://Art/Drops/projectile_speed_player_mod.png")
 

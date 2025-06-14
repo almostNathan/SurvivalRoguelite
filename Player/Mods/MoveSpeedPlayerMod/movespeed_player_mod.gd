@@ -3,7 +3,8 @@ class_name MoveSpeedPlayerMod
 
 var movespeed_multiplier = .2
 
-func _init():
+func set_base_data():
+	mod_name = "Increased Move Speed"
 	tooltip_text = "Move Speed Mod"
 	icon = preload("res://Art/Drops/movespeed_player_mod.png")
 

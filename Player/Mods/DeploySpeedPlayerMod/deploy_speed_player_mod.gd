@@ -4,7 +4,8 @@ class_name DeploySpeedPlayerMod
 var modified_weapons : Array = []
 var deploy_speed_modifier = .2
 
-func _init():
+func set_base_data():
+	mod_name = "Incresed Deploy Speed"
 	tooltip_text = "Deploy Speed Player Mod"
 	icon = preload("res://Art/Drops/deploy_speed_player_mod.png")
 

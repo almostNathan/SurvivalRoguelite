@@ -7,7 +7,7 @@ signal mod_placed_in_weapon()
 @onready var weapon_icon = $Icon
 @onready var mod_slot_label = $ModSlotLabel
 @onready var tooltip = $Tooltip
-@onready var tooltip_label = $Tooltip/RichTextLabel
+
 
 var weapon_in_slot : BaseWeapon
 var moddable = false
@@ -45,13 +45,13 @@ func _can_drop_data(_at_position, data):
 func set_weapon_in_slot(weapon):
 	weapon_in_slot = weapon
 	$Icon.texture = weapon.get_icon()
-	update_weapon_slot()
 	open = false
 	moddable = true
-	tooltip_label.set_text("[center][b]{name}[/b][/center]\n".format({"name": weapon.weapon_name}) \
+	tooltip.set_text("[center][b]{name}[/b][/center]\n".format({"name": weapon.weapon_name}) \
 		+ "Damage: {damage}\n".format({"damage": weapon.current_damage}) \
 		+ "Attack Speed: {attack_speed}\n".format({"attack_speed": weapon.current_attack_speed}) \
 		+ "Projectiles: {projectiles}".format({"projectiles": weapon.projectile_count}))
+	update_weapon_slot()
 
 func remove_weapon_in_slot():
 	weapon_in_slot = null
