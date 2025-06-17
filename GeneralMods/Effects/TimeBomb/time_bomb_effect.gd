@@ -3,13 +3,19 @@ extends Node2D
 var parent : CharacterBody2D
 var weapon : BaseWeapon
 var damage_value : float
+var damage_delay = 2
 @onready var animation_sprite : AnimatedSprite2D = $Animation 
+@onready var timer : Timer = $Timer
 
 var damage_numbers_scene = preload("res://UI/DamageNumbers/damage_numbers.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	parent = get_parent()
+	timer.wait_time = damage_delay
+
+func set_delay(new_delay):
+	damage_delay = new_delay
 
 
 

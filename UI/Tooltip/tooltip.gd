@@ -20,11 +20,7 @@ func set_text(tooltip_text: String):
 
 
 func toggle(on : bool):
-
-
-	
 	if on:
-		print("tooltip: ", tooltip_string)
 		self.visible = true
 		modulate.a = 0.0
 		tween_opacity(1.0)
@@ -41,7 +37,6 @@ func tween_opacity(to: float):
 	if opacity_tween != null:
 		opacity_tween.tween_property(self, 'modulate:a', to, .1)
 		return opacity_tween
-
 
 func _on_tooltip_label_ready():
 	$TooltipLabel.text = tooltip_string

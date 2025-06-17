@@ -6,7 +6,6 @@ var damage_coefficient = .5
 var splash_effect_scene = preload("res://GeneralMods/Effects/Splash/splash_effect.tscn")
 
 func set_base_data():
-	tooltip_text = "Explode On Death"
 	mod_name = "Explode on Death"
 	icon = preload("res://Art/Drops/explode_on_death_mod.png")
 
@@ -14,6 +13,16 @@ func equip(new_weapon):
 	super(new_weapon)
 	weapon.on_kill.connect(_on_kill)
 	refresh()
+
+func get_tooltip_description():
+	if is_equipped:
+		tooltip_description =  "[center][b]" + mod_name + "[/b][/center]\n" \
+			+ "[center]Kills with this weapon cause enemy to explode for "+ str(damage_value) +" damage[/center]"
+	else:
+		var formatted_damage_coefficient = '%.1f%%' % (damage_coefficient * 100)
+		tooltip_description =  "[center][b]" + mod_name + "[/b][/center]\n" \
+			+ "[center]Kills with this weapon cause enemy to explode for "+ formatted_damage_coefficient +" of weapon damage[/center]"
+	return tooltip_description
 
 func _on_kill(body):
 	var splash_effect = splash_effect_scene.instantiate()

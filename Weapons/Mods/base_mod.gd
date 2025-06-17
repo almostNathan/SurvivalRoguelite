@@ -5,7 +5,6 @@ signal mod_hitting(mod)
 
 var damage_numbers_scene = preload("res://UI/DamageNumbers/damage_numbers.tscn")
 
-var tooltip_text : String
 var icon : CompressedTexture2D
 
 var mod_name = "Base"
@@ -14,18 +13,22 @@ var weapon
 var current_rank = 1
 var damage_number_color : Color = Color(0, 0, 0, 1)
 var rarity = "common"
+var tags = []
+var is_equipped = false
+var tooltip_description : String = ""
 
 func _init():
 	set_base_data()
 	var mod_data = AllModList.mod_data.filter(func(data_dict): return data_dict["name"] == mod_name)
 	rarity = mod_data[0]["rarity"]
+	tags = mod_data[0]["tags"]
 
 func set_base_data():
 	pass
 
-
 func equip(new_weapon):
 	self.weapon = new_weapon
+	is_equipped = true
 	refresh()
 
 func refresh():
@@ -34,6 +37,7 @@ func refresh():
 #Must disconnect any signals
 #Create signal array this function could handle any mod
 func remove_mod():
+	is_equipped = false
 	pass
 
 func can_upgrade(new_mod):
@@ -48,8 +52,8 @@ func upgrade_mod(new_mod):
 		need_refresh = true
 		refresh()
 
-func get_tooltip_text():
-	return tooltip_text
+func get_tooltip_description():
+	return tooltip_description
 
 func _get_weapon_stats():
 	var weapon_stats = {
@@ -57,6 +61,8 @@ func _get_weapon_stats():
 		'damage' : 0
 	}
 
+func get_object_name():
+	return mod_name
 
 func _apply_damage_numbers(body, damage_value):
 	var new_damage_numbers = damage_numbers_scene.instantiate()

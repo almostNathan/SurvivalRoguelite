@@ -21,21 +21,20 @@ corner_radius_bottom_left = 12
 [node name="Tooltip" type="PanelContainer"]
 visible = false
 top_level = true
-custom_minimum_size = Vector2(200, 0)
-offset_right = 200.0
-offset_bottom = 47.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
+custom_minimum_size = Vector2(300, 0)
+offset_right = 300.0
+offset_bottom = 24.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0hkbi")
 script = ExtResource("1_lofbd")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
 [node name="TooltipLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 bbcode_enabled = true
-text = "[center][b]Machine Gun[/b][/center]
-
-"
 fit_content = true
 
 [connection signal="ready" from="TooltipLabel" to="." method="_on_tooltip_label_ready"]

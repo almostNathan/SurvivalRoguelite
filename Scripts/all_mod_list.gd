@@ -162,7 +162,6 @@ var mod_data = [
 	{
 		"name" : "Bounce",
 		"scene_path" : "res://Weapons/Mods/Bounce/bounce_mod.tscn",
-		"tooltip_text" : "Adds +%d damage to modified weapon.",
 		"rarity" : "uncommon",
 		"tags" : [
 			"projectile"

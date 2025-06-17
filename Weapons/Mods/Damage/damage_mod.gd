@@ -6,7 +6,6 @@ var damage_value : float = 10
 
 
 func set_base_data():
-	tooltip_text = "Damage"
 	mod_name = "Damage"
 	icon = preload("res://Art/Drops/damage_mod.png")
 

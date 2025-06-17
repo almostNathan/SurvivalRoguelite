@@ -290,9 +290,10 @@ func create_loot_arrow(loot):
 
 func delete_loot_arrow(loot):
 	for loot_arrow in loot_arrow_list:
-		if loot_arrow and loot_arrow.target == loot:
-			loot_arrow_list.erase(loot_arrow)
-			loot_arrow.queue_free()
+		if loot_arrow:
+			if loot_arrow.target == loot:
+				loot_arrow_list.erase(loot_arrow)
+				loot_arrow.queue_free()
 
 func create_portal_arrow(portal):
 	var new_portal_arrow = preload("res://Player/UI/PortalArrow/portal_arrow.tscn").instantiate()

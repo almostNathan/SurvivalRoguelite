@@ -6,7 +6,6 @@ var damage_coefficient = .5
 var splash_effect_scene = preload("res://GeneralMods/Effects/Splash/splash_effect.tscn")
 
 func set_base_data():
-	tooltip_text = "Splash"
 	mod_name = "Splash"
 	icon = preload("res://Art/Drops/splash_mod.png")
 	
@@ -15,6 +14,15 @@ func equip(new_weapon):
 	super(new_weapon)
 	weapon.on_hit.connect(_on_hit)
 	refresh()
+
+func get_tooltip_description():
+	if is_equipped:
+		tooltip_description =  "[center][b]" + mod_name + "[/b][/center]\n" \
+			+ "[center]Weapon hits explode dealing %.1f damage to nearby enemies[/center]" % damage_value
+	else:
+		tooltip_description =  "[center][b]" + mod_name + "[/b][/center]\n" \
+			+  "[center]Weapon hits explode dealing %.1f%% damage to nearby enemies[/center]" % (damage_coefficient*100)
+	return tooltip_description
 
 func _on_hit(body, _bullet):
 	if weapon != null:

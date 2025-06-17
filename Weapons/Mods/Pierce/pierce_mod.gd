@@ -6,7 +6,6 @@ var pierces_used = 0
 
 
 func set_base_data():
-	tooltip_text = "Pierce"
 	mod_name = "Pierce"
 	icon = preload("res://Art/Drops/pierce_mod.png")
 
@@ -14,7 +13,11 @@ func equip(new_weapon):
 	super(new_weapon)
 	weapon.on_hit.connect(_on_hit)
 	weapon.pierce_value += pierce_modifier
-	
+
+func get_tooltip_description():
+	tooltip_description = "[center][b]+" + mod_name + "[/b][/center]\n" \
+	 + "[center]Projectiles pierce " + str(pierce_modifier) + " enemies[/center]\n"
+	return tooltip_description
 
 func _on_hit(_body, bullet):
 	if weapon != null:

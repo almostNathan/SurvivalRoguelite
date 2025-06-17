@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://mgwpwqnwcv6b"]
+[gd_scene load_steps=4 format=3 uid="uid://mgwpwqnwcv6b"]
 
 [ext_resource type="Script" path="res://UI/LootSelection/loot_selection.gd" id="1_i5snk"]
+[ext_resource type="PackedScene" uid="uid://bhbf22tlfp6g1" path="res://UI/Tooltip/tooltip.tscn" id="2_iwui4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8hrcw"]
 font_size = 13
@@ -83,4 +84,9 @@ label_settings = SubResource("LabelSettings_8hrcw")
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="Tooltip" parent="." instance=ExtResource("2_iwui4")]
+layout_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="gui_input" from="SelectionContainer/MarginContainer/MarginContainer/SelectionIcon" to="." method="_on_selection_icon_gui_input"]

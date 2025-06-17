@@ -55,6 +55,8 @@ func _ready():
 	damage_mod = damage_mod_scene.instantiate()
 	damage_mod.equip(self)
 
+func get_object_name():
+	return weapon_name
 
 func modify_bullet(new_bullet):
 	new_bullet.set_duration_modifier(duration_modifier_mult)

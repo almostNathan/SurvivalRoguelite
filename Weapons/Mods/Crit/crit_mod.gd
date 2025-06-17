@@ -4,7 +4,6 @@ class_name CritMod
 var crit_chance = .5
 
 func set_base_data():
-	tooltip_text = "Crit"
 	mod_name = "Crit"
 	icon = preload("res://Art/Drops/crit_mod.png")
 
@@ -14,6 +13,11 @@ func equip(new_weapon):
 	for node in weapon_child_nodes:
 		if node is BaseMod:
 			node.mod_hitting.connect(_modify_hit)
+
+func get_tooltip_description():
+	var crit_chance_formatted = "%.1f%%" % (crit_chance * 100)
+	tooltip_description = "[center][b]+" + mod_name + "[/b][/center]\n[center]Damage from weapon has a " + crit_chance_formatted + " chance to deal double damage.[/center]\n"
+	return tooltip_description
 
 func _modify_hit(mod):
 	if randf() <= crit_chance:

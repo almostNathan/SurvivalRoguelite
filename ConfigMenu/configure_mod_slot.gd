@@ -12,7 +12,7 @@ func _get_drag_data(_at_position):
 func set_mod_in_slot(mod):
 	mod_in_slot = mod
 	$Texture.texture = mod_in_slot.icon
-	tooltip_text = mod_in_slot.get_tooltip_text()
+
 
 func get_mod():
 	return mod_in_slot

@@ -9,7 +9,6 @@ var proc_chance = .1
 var poison_debuff = preload("res://GeneralMods/Debuffs/Poison/poison_debuff.tscn")
 
 func set_base_data():
-	tooltip_text = "Poison"
 	mod_name = "Poison"
 	icon = preload("res://Art/Drops/poison_mod.png")
 
@@ -19,6 +18,14 @@ func equip(new_weapon):
 	weapon.on_proc_hit.connect(_on_proc_hit)
 	refresh()
 
+func get_tooltip_description():
+	if is_equipped:
+		tooltip_description =  "[center][b]" + mod_name + "[/b][/center]\n" \
+			+ "[center]Weapon has a %.1f%% chance poison enemies\ndealing %.1f damage every second for %.1f seconds[/center]" % [proc_chance*100, poison_dps, poison_duration]
+	else:
+		tooltip_description =  "[center][b]" + mod_name + "[/b][/center]\n" \
+			+  "[center]Weapon has a %.1f%% chance poison enemies\ndealing %.1f%% of weapon damage every second for %.1f seconds[/center]" % [proc_chance*100, poison_dps_coefficient*100, poison_duration]
+	return tooltip_description
 
 func _on_hit(body, _bullet):
 	if randf() < proc_chance and weapon != null:

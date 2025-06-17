@@ -29,3 +29,6 @@ label_settings = SubResource("LabelSettings_0ko43")
 
 [node name="Tooltip" parent="." instance=ExtResource("3_66alu")]
 layout_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -9,7 +9,6 @@ var damage_value : float
 var chain_scene_packed = preload("res://Weapons/Effects/ChainEffect/chain_effect.tscn")
 
 func set_base_data():
-	tooltip_text = "Chain Mod"
 	mod_name = "Chain"
 	icon = preload("res://Art/Drops/chain-lightning.png")
 	damage_number_color = Color(3, 236, 252, 1)
@@ -17,8 +16,18 @@ func set_base_data():
 func equip(new_weapon):
 	super(new_weapon)
 	weapon.on_hit.connect(_on_hit)
-	
 	refresh()
+
+func get_tooltip_description():
+	
+	if is_equipped:
+		tooltip_description =  "[center][b]" + mod_name + "[/b][/center]\n" \
+			+ "[center]Shocks up to "+ str(chain_count) +" nearby enemies for "+ str(damage_value) +" damage[/center]"
+	else:
+		var formatted_damage_coefficient = '%.1f%%' % (damage_coefficient * 100)
+		tooltip_description =  "[center][b]" + mod_name + "[/b][/center]\n" \
+			+ "[center]Shocks up to "+ str(chain_count) +" nearby enemies for "+ formatted_damage_coefficient +" of weapon damage[/center]"
+	return tooltip_description
 	
 func remove_mod():
 	super()

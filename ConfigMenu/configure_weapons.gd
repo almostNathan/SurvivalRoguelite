@@ -10,14 +10,14 @@ var mod_slot_scene = preload("res://ConfigMenu/configure_mod_slot.tscn")
 var weapon_slot_scene = preload("res://ConfigMenu/configure_weapon_slot.tscn")
 
 var player : Player
-var mod_list = AllModList.mod_scene_list
+var mod_list = AllModList.mod_data.filter(func(data_dict): return data_dict["name"] != "Base").map(func(data_dict): return data_dict["scene_path"])
 var weapon_list = AllWeaponList.weapon_scene_list
 
 
 func _ready():
-	for mod_scene in mod_list:
+	for mod_scene_path in mod_list:
 		var new_mod_slot = mod_slot_scene.instantiate()
-		var mod_instance = mod_scene.instantiate()
+		var mod_instance = load(mod_scene_path).instantiate()
 		new_mod_slot.set_mod_in_slot(mod_instance)
 		new_mod_slot.custom_minimum_size = Vector2(50,50)
 		mod_grid_container.add_child(new_mod_slot)

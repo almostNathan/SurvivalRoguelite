@@ -10,6 +10,7 @@ signal mod_placed_in_weapon()
 
 
 var weapon_in_slot : BaseWeapon
+var tooltip_enabled = true
 var moddable = false
 var open = true
 var mod_slot_scene = preload("res://UI/Inventory/InventoryModSlot/inventory_mod_slot.tscn")
@@ -80,6 +81,7 @@ func update_weapon_slot():
 	for mod in weapon_in_slot.get_mod_list():
 		var new_mod_slot = mod_slot_scene.instantiate()
 		mod_grid.add_child(new_mod_slot)
+		new_mod_slot.displaying_tooltip.connect(_displaying_equipped_mod_tooltip)
 		new_mod_slot.set_mod_in_slot(mod)
 		new_mod_slot.custom_minimum_size = Vector2(mod_slot_size, mod_slot_size)
 
@@ -92,10 +94,25 @@ func remove_mod_from_inventory(mod):
 	var mod_inventory = Globals.player.mod_inventory
 	mod_inventory.remove_at(mod_inventory.find(mod))
 
+func _displaying_equipped_mod_tooltip(displaying: bool):
+	#if equipped mod tooltip is displaying, disable tooltip for this weapon.
+	if displaying: enable_tooltip(false)
+	else: enable_tooltip(true)
+
+func enable_tooltip(enabled : bool):
+	tooltip_enabled = enabled
+	tooltip.toggle(enabled)
+
 
 func _on_mouse_entered():
-	tooltip.toggle(true)
+	if tooltip_enabled:
+		tooltip.toggle(true)
 
 
 func _on_mouse_exited():
-	tooltip.toggle(false)
+	if tooltip_enabled: 
+		tooltip.toggle(false)
+
+##Override standard tooltip
+func _get_tooltip(at_position):
+	pass
