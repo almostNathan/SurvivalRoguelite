@@ -37,3 +37,5 @@ text = "[center][b]Machine Gun[/b][/center]
 
 "
 fit_content = true
+
+[connection signal="ready" from="TooltipLabel" to="." method="_on_tooltip_label_ready"]

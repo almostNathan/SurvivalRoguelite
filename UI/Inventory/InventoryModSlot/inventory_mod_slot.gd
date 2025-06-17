@@ -30,7 +30,7 @@ func set_mod_in_slot(mod):
 	$Icon.texture = mod_in_slot.icon
 	tooltip_text = mod_in_slot.get_tooltip_text()
 	rank_label.text = str(mod_in_slot.current_rank)
-	await tooltip.ready
+	
 	tooltip.set_text("[center][b]{name}[/b][/center]\n".format({"name": mod.mod_name}) \
 		+ "[center][b]{tooltip}[/b][/center]\n".format({"tooltip": mod.tooltip_text}))
 
