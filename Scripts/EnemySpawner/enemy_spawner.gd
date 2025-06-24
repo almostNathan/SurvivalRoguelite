@@ -3,6 +3,7 @@ class_name EnemySpawner
 
 @onready var spawn_timer : Timer = $SpawnTimer
 @onready var elite_spawn_timer : Timer = $EliteSpawnTimer
+@onready var difficulty_scaling_timer : Timer = $DifficultyScalingTimer
 
 var spawner_on = false
 
@@ -57,6 +58,8 @@ func spawn_enemy(spawn_data:Dictionary):
 	var player = Globals.player
 	var new_enemy = spawn_data['enemy']
 	var retry_vector = player.position.angle_to(new_enemy.position)
+	add_sibling(new_enemy)
+	_modify_enemy(new_enemy)
 	var not_colliding = true
 	while not_colliding:
 		var collision = new_enemy.move_and_collide(Vector2(0,0))
@@ -65,8 +68,7 @@ func spawn_enemy(spawn_data:Dictionary):
 		else:
 			not_colliding = false
 	
-	add_sibling(new_enemy)
-	_modify_enemy(new_enemy)
+
 	total_value_spawned += new_enemy.spawn_value
 
 func _on_elite_spawn_timer_timeout():
@@ -145,6 +147,7 @@ func spawn_boss():
 	spawner_on = false
 	spawn_timer.stop()
 	elite_spawn_timer.stop()
+	difficulty_scaling_timer.stop()
 	var player = Globals.player
 	var viewport_size = get_viewport().size
 	
@@ -183,4 +186,5 @@ func change_level(new_level_number):
 	enemy_pool = Levels.level_data_list[current_level_number].enemy_pool
 	spawn_timer.start()
 	elite_spawn_timer.start()
+	difficulty_scaling_timer.start()
 	

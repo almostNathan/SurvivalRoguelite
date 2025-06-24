@@ -18,9 +18,9 @@ position = Vector2(416, 4.76837e-07)
 scale = Vector2(0.817269, 0.108696)
 texture = ExtResource("2_uom3h")
 
-[node name="FadeoutTimer" type="Timer" parent="."]
+[node name="LifespanTimer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="FadeoutTimer" to="." method="_on_fadeout_timer_timeout"]
+[connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

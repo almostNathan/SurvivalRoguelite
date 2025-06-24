@@ -1,13 +1,13 @@
 extends BaseBullet
 class_name AuraBullet
 
-@onready var fadeout_timer = $FadeoutTimer
+
 var hit_count = 1
 
 func _physics_process(_delta):
 	weapon_image.rotate(PI/16)
 	position = player.position
-	var modulation = fadeout_timer.time_left / fadeout_timer.wait_time
+	var modulation = lifespan_timer.time_left / lifespan_timer.wait_time
 	self.modulate = Color(1,1,1,modulation)
 
 
@@ -28,6 +28,3 @@ func _on_body_entered(body):
 		weapon.emit_signal("on_hit", body, self)
 		if (delete_bullet):
 			queue_free()
-
-func _on_fadeout_timer_timeout():
-	queue_free()

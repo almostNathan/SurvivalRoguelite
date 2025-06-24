@@ -16,6 +16,7 @@ var rarity = "common"
 var tags = []
 var is_equipped = false
 var tooltip_description : String = ""
+var signal_array = []
 
 func _init():
 	set_base_data()
@@ -23,11 +24,19 @@ func _init():
 	rarity = mod_data[0]["rarity"]
 	tags = mod_data[0]["tags"]
 
+func remove_mod():
+	is_equipped = false
+
 func set_base_data():
 	pass
 
+func unequip():
+	if weapon:
+		weapon.remove_mod(self)
+
+
 func equip(new_weapon):
-	self.weapon = new_weapon
+	weapon = new_weapon
 	is_equipped = true
 	refresh()
 
@@ -36,9 +45,6 @@ func refresh():
 
 #Must disconnect any signals
 #Create signal array this function could handle any mod
-func remove_mod():
-	is_equipped = false
-	pass
 
 func can_upgrade(new_mod):
 	if new_mod.name == self.name and new_mod.current_rank == self.current_rank and new_mod != self:

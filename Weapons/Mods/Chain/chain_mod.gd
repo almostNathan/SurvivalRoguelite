@@ -22,7 +22,7 @@ func get_tooltip_description():
 	
 	if is_equipped:
 		tooltip_description =  "[center][b]" + mod_name + "[/b][/center]\n" \
-			+ "[center]Shocks up to "+ str(chain_count) +" nearby enemies for "+ str(damage_value) +" damage[/center]"
+			+ "[center]Shocks up to "+ str(chain_count) +" nearby enemies for %.1f damage[/center]" % damage_value
 	else:
 		var formatted_damage_coefficient = '%.1f%%' % (damage_coefficient * 100)
 		tooltip_description =  "[center][b]" + mod_name + "[/b][/center]\n" \
@@ -30,8 +30,8 @@ func get_tooltip_description():
 	return tooltip_description
 	
 func remove_mod():
-	super()
 	weapon.on_hit.disconnect(_on_hit)
+	super()
 
 func refresh():
 	if weapon != null:

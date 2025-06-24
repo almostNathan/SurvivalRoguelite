@@ -11,6 +11,9 @@ var mod_inventory = []
 
 var weapon_slot_scene = preload("res://UI/Inventory/InventoryWeaponSlot/inventory_weapon_slot.tscn")
 var mod_slot_scene = preload("res://UI/Inventory/InventoryModSlot/inventory_mod_slot.tscn")
+#
+#func _notification(what):
+	#print("player_menu, notification ", what)
 
 func load_player_menu():
 	mod_inventory = Globals.player.mod_inventory

@@ -23,15 +23,18 @@ func _get_drag_data(_at_position):
 	return weapon_in_slot
 
 func _drop_data(_at_position, data):
+	update_weapon_slot()
 	#TODO Handle adding mods that upgrade.
 	if data is BaseMod and weapon_in_slot.total_mod_slots > count_mods_on_weapon():
-		var new_mod_slot = mod_slot_scene.instantiate()
-		mod_grid.add_child(new_mod_slot)
-		new_mod_slot.set_mod_in_slot(data)
-		new_mod_slot.custom_minimum_size = Vector2(self.size.x/3, self.size.y/3)
+		weapon_in_slot.add_mod(data)
+		#var new_mod_slot = mod_slot_scene.instantiate()
+		#mod_grid.add_child(new_mod_slot)
+		#new_mod_slot.displaying_tooltip.connect(_displaying_equipped_mod_tooltip)
+		#new_mod_slot.set_mod_in_slot(data)
+		#new_mod_slot.custom_minimum_size = Vector2(self.size.x/3, self.size.y/3)
 		mod_slot_label.text = str(count_mods_on_weapon()) + ' / ' + str(weapon_in_slot.total_mod_slots)
 		#weapon_in_slot.add_mod(data)
-		#update_weapon_slot()
+		update_weapon_slot()
 	elif data is BaseWeapon:
 		set_weapon_in_slot(data)
 
@@ -103,11 +106,9 @@ func enable_tooltip(enabled : bool):
 	tooltip_enabled = enabled
 	tooltip.toggle(enabled)
 
-
 func _on_mouse_entered():
 	if tooltip_enabled:
 		tooltip.toggle(true)
-
 
 func _on_mouse_exited():
 	if tooltip_enabled: 

@@ -23,6 +23,7 @@ func get_tooltip_description():
 func remove_mod():
 	super()
 	weapon.modify_damage_add(-current_damage_add)
+	weapon = null
 	
 
 func refresh():

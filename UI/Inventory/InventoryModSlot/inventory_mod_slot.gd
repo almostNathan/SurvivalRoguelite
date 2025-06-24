@@ -13,8 +13,8 @@ var tooltip_enabled = true
 
 func _get_drag_data(_at_position):
 	is_dragged = true
-	self.modulate.a = 1
-	set_drag_preview(self.duplicate())
+	modulate.a = 1
+	set_drag_preview(duplicate())
 	return mod_in_slot
 
 func _can_drop_data(_at_position, data):
@@ -22,7 +22,6 @@ func _can_drop_data(_at_position, data):
 		return true
 
 func _drop_data(_at_position, data):
-	#TODO Handle adding mods that upgrade.
 	if data is BaseMod and mod_in_slot.can_upgrade(data):
 		mod_in_slot.upgrade_mod(data)
 		rank_label.text = str(mod_in_slot.current_rank)
@@ -39,12 +38,16 @@ func get_mod():
 func _notification(what):
 	match what:
 		NOTIFICATION_DRAG_END:
-			if (self.is_drag_successful() && is_dragged):
+			if (is_drag_successful() && is_dragged):
+				#if mod_in_slot.is_equipped:
+					#mod_in_slot.weapon.remove_mod(mod_in_slot)
+					#print("inventorymodslot ", mod_in_slot, mod_in_slot.weapon)
 				#remove_mod_from_inventory(mod_in_slot)
+				mod_in_slot.unequip()
 				get_parent().remove_child(self)
 				is_dragged = false
 			elif is_dragged:
-				self.modulate.a = 1
+				modulate.a = 1
 				is_dragged = false
 
 func enable_tooltip(enabled : bool):

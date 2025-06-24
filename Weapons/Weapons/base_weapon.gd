@@ -162,6 +162,7 @@ func add_mod(mod_to_add : BaseMod):
 	adding_mod.emit(mod_to_add)
 
 func remove_mod(mod_to_remove : BaseMod):
+	print("baseweapon, removing mod ", mod_to_remove)
 	mod_to_remove.remove_mod()
 	mod_list.remove_at(mod_list.find(self))
 	
