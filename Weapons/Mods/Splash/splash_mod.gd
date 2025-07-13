@@ -50,4 +50,3 @@ func damage_add(add_value):
 func remove_mod():
 	super()
 	weapon.on_hit.disconnect(_on_hit)
-

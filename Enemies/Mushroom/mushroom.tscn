@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://cx3tw42kxmld4"]
 
-[ext_resource type="Script" path="res://Enemies/Mushroom/mushroom.gd" id="2_3mgon"]
+[ext_resource type="Script" uid="uid://ddwtjl7u3gmka" path="res://Enemies/Mushroom/mushroom.gd" id="2_3mgon"]
 [ext_resource type="Texture2D" uid="uid://b5j55ajhxun7e" path="res://Art/Monster_Creatures_Fantasy_itchio/Mushroom/Attack3.png" id="2_nuth3"]
 [ext_resource type="PackedScene" uid="uid://cs2ic6efhup2t" path="res://UI/DebuffBar/debuff_bar.tscn" id="3_ohdlc"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="4_yrnhd"]

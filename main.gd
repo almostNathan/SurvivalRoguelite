@@ -120,7 +120,3 @@ func go_to_next_level():
 	background.color = Levels.level_data_list[current_level_number].background_color
 	enemy_spawner.change_level(current_level_number)
 	level_timer.start()
-
-
-
-

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://da82h0w7it1of"]
 
-[ext_resource type="Script" path="res://UI/TimeCapsuleScreen/time_capsule_screen.gd" id="1_4h66s"]
+[ext_resource type="Script" uid="uid://0w08xd6gcil0" path="res://UI/TimeCapsuleScreen/time_capsule_screen.gd" id="1_4h66s"]
 [ext_resource type="PackedScene" uid="uid://cepn4uj7wa126" path="res://UI/PlayerMenu/player_menu.tscn" id="2_7aciy"]
 
 [node name="TimeCapsuleScreen" type="Control"]

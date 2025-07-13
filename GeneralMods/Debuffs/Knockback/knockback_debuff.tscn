@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dkeb4sy0abeuq"]
 
-[ext_resource type="Script" path="res://GeneralMods/Debuffs/Knockback/knockback_debuff.gd" id="1_khu5v"]
+[ext_resource type="Script" uid="uid://h2j7tmrblif8" path="res://GeneralMods/Debuffs/Knockback/knockback_debuff.gd" id="1_khu5v"]
 
 [node name="KnockbackDebuff" type="Node2D"]
 script = ExtResource("1_khu5v")

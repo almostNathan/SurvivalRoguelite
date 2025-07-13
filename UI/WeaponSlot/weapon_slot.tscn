@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://jkssd8irtl6y"]
 
-[ext_resource type="Script" path="res://UI/WeaponSlot/weapon_slot.gd" id="1_i0g8x"]
+[ext_resource type="Script" uid="uid://bjcqegdnkux7x" path="res://UI/WeaponSlot/weapon_slot.gd" id="1_i0g8x"]
 [ext_resource type="Texture2D" uid="uid://cpt1awjvjqto3" path="res://Art/hud_assets/icon_background.png" id="1_tkg3t"]
 [ext_resource type="Texture2D" uid="uid://cfyh84ukpdrnj" path="res://Art/hud_assets/lock_icon.png" id="2_ey5x7"]
 

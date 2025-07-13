@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://o70m5bhp5fbu"]
 
 [ext_resource type="Texture2D" uid="uid://cpt1awjvjqto3" path="res://Art/hud_assets/icon_background.png" id="1_4qvsi"]
-[ext_resource type="Script" path="res://ConfigMenu/configure_weapon_slot.gd" id="1_07ral"]
+[ext_resource type="Script" uid="uid://yo36piod2ag8" path="res://ConfigMenu/configure_weapon_slot.gd" id="1_07ral"]
 
 [node name="ConfigureWeaponSlot" type="TextureRect"]
 self_modulate = Color(0.0196078, 0.0196078, 0.0196078, 1)

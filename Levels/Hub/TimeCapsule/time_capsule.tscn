@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsw6husgat40g"]
 
-[ext_resource type="Script" path="res://Levels/Hub/TimeCapsule/time_capsule.gd" id="1_7j6e7"]
+[ext_resource type="Script" uid="uid://cwi1yh08ido70" path="res://Levels/Hub/TimeCapsule/time_capsule.gd" id="1_7j6e7"]
 [ext_resource type="Texture2D" uid="uid://ch2gvmfsl5u6d" path="res://Art/basicterrain/chest_01.png" id="2_v6i1v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3me0"]

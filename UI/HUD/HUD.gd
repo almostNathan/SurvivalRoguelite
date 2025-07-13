@@ -73,4 +73,3 @@ func show_damage():
 	await opacity_tween.finished
 	damage_aura.visible = false
 	opacity_tween.kill()
-

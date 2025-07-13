@@ -27,4 +27,3 @@ func refresh():
 func remove_mod():
 	super()
 	weapon.on_hit.disconnect(_on_hit)
-

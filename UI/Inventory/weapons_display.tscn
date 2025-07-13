@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bei0ewiiu0oln"]
 
-[ext_resource type="Script" path="res://UI/Inventory/weapons_display.gd" id="1_ly3dm"]
+[ext_resource type="Script" uid="uid://cgfqivm1hkg2d" path="res://UI/Inventory/weapons_display.gd" id="1_ly3dm"]
 
 [node name="WeaponsDisplay" type="PanelContainer"]
 script = ExtResource("1_ly3dm")

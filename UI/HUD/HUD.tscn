@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://cls41f23ro05u"]
 
-[ext_resource type="Script" path="res://UI/HUD/HUD.gd" id="1_dy2ux"]
-[ext_resource type="Script" path="res://UI/HUD/DamageAura.gd" id="2_a1mbl"]
-[ext_resource type="Script" path="res://UI/HUD/ExperienceBar.gd" id="2_qxpjf"]
+[ext_resource type="Script" uid="uid://dra3e2mtrq2xt" path="res://UI/HUD/HUD.gd" id="1_dy2ux"]
+[ext_resource type="Script" uid="uid://cucqc7m0v5mpf" path="res://UI/HUD/DamageAura.gd" id="2_a1mbl"]
+[ext_resource type="Script" uid="uid://c5iowrqka2m5n" path="res://UI/HUD/ExperienceBar.gd" id="2_qxpjf"]
 [ext_resource type="PackedScene" uid="uid://bei0ewiiu0oln" path="res://UI/Inventory/weapons_display.tscn" id="3_r21vr"]
 [ext_resource type="PackedScene" uid="uid://cbbvt8rf4y1n4" path="res://UI/LootMenu/loot_menu.tscn" id="4_m76s0"]
 [ext_resource type="PackedScene" uid="uid://fi3swbm7tu0t" path="res://UI/LevelUpMenu/level_up_menu.tscn" id="5_03xwm"]

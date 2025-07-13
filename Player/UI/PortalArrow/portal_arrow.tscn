@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwja6e7ilp87b"]
 
 [ext_resource type="Texture2D" uid="uid://djjlbpjgfr2hf" path="res://Art/hud_assets/right-arrow.png" id="1_655op"]
-[ext_resource type="Script" path="res://Player/UI/PortalArrow/portal_arrow.gd" id="1_mw05t"]
+[ext_resource type="Script" uid="uid://ct3tm13amng5d" path="res://Player/UI/PortalArrow/portal_arrow.gd" id="1_mw05t"]
 
 [node name="PortalArrow" type="TextureRect" groups=["arrows"]]
 self_modulate = Color(0, 0, 0, 1)

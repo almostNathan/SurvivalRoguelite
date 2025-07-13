@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://de2qeb5jmq5nf"]
 
-[ext_resource type="Script" path="res://Weapons/Mods/IncreasedDamage/increased_damage_mod.gd" id="1_aaluu"]
+[ext_resource type="Script" uid="uid://dr4gx767sidpr" path="res://Weapons/Mods/IncreasedDamage/increased_damage_mod.gd" id="1_aaluu"]
 [ext_resource type="Texture2D" uid="uid://cs6nc67r6m376" path="res://Art/Drops/damage_mod.png" id="2_5j0ex"]
 
 [node name="IncreasedDamageMod" type="Node2D"]

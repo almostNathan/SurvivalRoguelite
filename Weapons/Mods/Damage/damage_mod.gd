@@ -45,5 +45,3 @@ func _get_weapon_stats():
 	}
 	
 	return weapon_stats
-
-

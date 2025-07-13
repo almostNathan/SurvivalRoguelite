@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cutggvbvqi0j0"]
 
-[ext_resource type="Script" path="res://Weapons/Mods/Chain/chain_mod.gd" id="1_nslop"]
+[ext_resource type="Script" uid="uid://m74spu4p84lx" path="res://Weapons/Mods/Chain/chain_mod.gd" id="1_nslop"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lph7"]
 

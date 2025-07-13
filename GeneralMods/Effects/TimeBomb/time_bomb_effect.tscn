@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://y52e5jpt4r2j"]
 
-[ext_resource type="Script" path="res://GeneralMods/Effects/TimeBomb/time_bomb_effect.gd" id="1_emt0b"]
+[ext_resource type="Script" uid="uid://cnk3tkw8r3d5t" path="res://GeneralMods/Effects/TimeBomb/time_bomb_effect.gd" id="1_emt0b"]
 [ext_resource type="Texture2D" uid="uid://bdjw02ty5osff" path="res://Art/effect_assets/explosion1.png" id="2_bxh6y"]
-[ext_resource type="Script" path="res://GeneralMods/Effects/TimeBomb/time_bomb_animation.gd" id="3_wopkq"]
+[ext_resource type="Script" uid="uid://dj2iyqnyqdts4" path="res://GeneralMods/Effects/TimeBomb/time_bomb_animation.gd" id="3_wopkq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fqhl"]
 atlas = ExtResource("2_bxh6y")

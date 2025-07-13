@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cutgmx7go4okh"]
 
-[ext_resource type="Script" path="res://Weapons/Weapons/Scythe/scythe_bullet.gd" id="1_nuro6"]
+[ext_resource type="Script" uid="uid://7050dqlwmhcj" path="res://Weapons/Weapons/Scythe/scythe_bullet.gd" id="1_nuro6"]
 [ext_resource type="Texture2D" uid="uid://rd0fne8xtffg" path="res://Art/Weapons/scythe.png" id="2_5cfuv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72bf2"]

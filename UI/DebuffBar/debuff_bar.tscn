@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cs2ic6efhup2t"]
 
-[ext_resource type="Script" path="res://UI/DebuffBar/debuff_bar.gd" id="1_h8ek0"]
+[ext_resource type="Script" uid="uid://ci2q2q3ixrmad" path="res://UI/DebuffBar/debuff_bar.gd" id="1_h8ek0"]
 
 [node name="DebuffBar" type="GridContainer"]
 custom_minimum_size = Vector2(5, 5)

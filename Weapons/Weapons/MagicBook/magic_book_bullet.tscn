@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://bvx6jjmpnbhcn"]
 
-[ext_resource type="Script" path="res://Weapons/Weapons/MagicBook/magic_book_bullet.gd" id="1_jr3aq"]
+[ext_resource type="Script" uid="uid://c5sko6acdtvli" path="res://Weapons/Weapons/MagicBook/magic_book_bullet.gd" id="1_jr3aq"]
 [ext_resource type="Texture2D" uid="uid://b1faqa1olf6bb" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_0.png" id="2_2s452"]
 [ext_resource type="Texture2D" uid="uid://oct3rwr46e8q" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_1.png" id="3_7skru"]
 [ext_resource type="Texture2D" uid="uid://b4tlv2wv671a2" path="res://Art/Weapons/fireballs/fire_ball_side_small/imgs/img_2.png" id="4_udt0h"]

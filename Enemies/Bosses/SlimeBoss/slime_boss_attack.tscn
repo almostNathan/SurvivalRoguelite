@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bra3p8wcr4x65"]
 
 [ext_resource type="Texture2D" uid="uid://dsnudxjjdivr1" path="res://Art/Monster_Creatures_Fantasy_itchio/Slime/slime_spritesheet.png" id="1_6jd5e"]
-[ext_resource type="Script" path="res://Enemies/Bosses/SlimeBoss/slime_boss_attack.gd" id="1_i6fdo"]
+[ext_resource type="Script" uid="uid://cgof7h7py1ghj" path="res://Enemies/Bosses/SlimeBoss/slime_boss_attack.gd" id="1_i6fdo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77efs"]
 radius = 23.0

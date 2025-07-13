@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c55y6o6xhy7a6"]
 
-[ext_resource type="Script" path="res://UI/SettingsMenu/settings_menu.gd" id="1_lgian"]
+[ext_resource type="Script" uid="uid://bu4iq3763i3xv" path="res://UI/SettingsMenu/settings_menu.gd" id="1_lgian"]
 
 [node name="SettingsMenu" type="CenterContainer"]
 anchors_preset = 15

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://px7xo0iysscw"]
 
 [ext_resource type="PackedScene" uid="uid://drxb3ka63ucaw" path="res://Weapons/Mods/base_mod.tscn" id="1_6bfsj"]
-[ext_resource type="Script" path="res://Weapons/Mods/Burn/burn_mod.gd" id="2_chsdu"]
+[ext_resource type="Script" uid="uid://bsa0lnh8u38os" path="res://Weapons/Mods/Burn/burn_mod.gd" id="2_chsdu"]
 
 [node name="BurnMod" instance=ExtResource("1_6bfsj")]
 script = ExtResource("2_chsdu")

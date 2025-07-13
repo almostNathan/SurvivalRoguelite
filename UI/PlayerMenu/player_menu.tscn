@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://cepn4uj7wa126"]
 
-[ext_resource type="Script" path="res://UI/PlayerMenu/player_menu.gd" id="1_hbfhr"]
+[ext_resource type="Script" uid="uid://dopgyp413gpg4" path="res://UI/PlayerMenu/player_menu.gd" id="1_hbfhr"]
 [ext_resource type="PackedScene" uid="uid://4tgftpxrrqt2" path="res://UI/Inventory/InventoryPlayer/inventory_player.tscn" id="2_27fjt"]
-[ext_resource type="Script" path="res://UI/PlayerMenu/ModContainer.gd" id="2_s4iq0"]
+[ext_resource type="Script" uid="uid://oab7e08lgsw0" path="res://UI/PlayerMenu/ModContainer.gd" id="2_s4iq0"]
 [ext_resource type="Texture2D" uid="uid://b2j6bj6m2pkct" path="res://Art/Basic_GUI_Bundle/BoxesBanners/Box_Blue_Rounded.png" id="4_b1rus"]
 [ext_resource type="Texture2D" uid="uid://yrk2jrsouyg4" path="res://Art/Basic_GUI_Bundle/BoxesBanners/Box_Rounded.png" id="4_v82s2"]
 

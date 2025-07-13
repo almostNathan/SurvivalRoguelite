@@ -35,6 +35,3 @@ func refresh():
 		current_damage_multiplier = base_damage_multiplier * current_rank
 	
 	
-
-
-

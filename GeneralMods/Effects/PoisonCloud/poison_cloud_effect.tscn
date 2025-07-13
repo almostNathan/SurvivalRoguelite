@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://deahqbvdao51k"]
 
-[ext_resource type="Script" path="res://GeneralMods/Effects/PoisonCloud/poison_cloud_effect.gd" id="1_cuu3l"]
+[ext_resource type="Script" uid="uid://fhg4xglm7y76" path="res://GeneralMods/Effects/PoisonCloud/poison_cloud_effect.gd" id="1_cuu3l"]
 [ext_resource type="Texture2D" uid="uid://bdjw02ty5osff" path="res://Art/effect_assets/explosion1.png" id="2_5a2d7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t40q4"]

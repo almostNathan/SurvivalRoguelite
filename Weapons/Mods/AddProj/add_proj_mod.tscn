@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7ltrtrrkjc72"]
 
-[ext_resource type="Script" path="res://Weapons/Mods/AddProj/add_proj_mod.gd" id="1_jt2jd"]
+[ext_resource type="Script" uid="uid://7hdl54kar5fb" path="res://Weapons/Mods/AddProj/add_proj_mod.gd" id="1_jt2jd"]
 
 [node name="AddProjMod" type="Node2D"]
 script = ExtResource("1_jt2jd")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://bhwqkpijeqtq8"]
 
 [ext_resource type="Texture2D" uid="uid://bpet2084m37ft" path="res://Art/portal_assets/level_portal_spritesheet.png" id="1_4og48"]
-[ext_resource type="Script" path="res://Levels/level_portal.gd" id="1_doitb"]
+[ext_resource type="Script" uid="uid://cpfgdwqtba78l" path="res://Levels/level_portal.gd" id="1_doitb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cprf8"]
 atlas = ExtResource("1_4og48")

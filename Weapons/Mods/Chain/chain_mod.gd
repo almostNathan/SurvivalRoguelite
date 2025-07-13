@@ -100,4 +100,3 @@ func find_chained_enemies(origin: CharacterBody2D):
 			chain_scene.update_chain_effect(searched_entities[i].position, searched_entities[i+1].position)
 
 	return chain_enemies
-

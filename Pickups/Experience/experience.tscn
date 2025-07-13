@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkj8elmvj3u71"]
 
 [ext_resource type="PackedScene" uid="uid://8vbl7fayf31w" path="res://Pickups/Upgrades/magnet_pickup.tscn" id="1_n2c22"]
-[ext_resource type="Script" path="res://Pickups/Experience/experience.gd" id="2_e2cg2"]
+[ext_resource type="Script" uid="uid://8oq0o8o57qim" path="res://Pickups/Experience/experience.gd" id="2_e2cg2"]
 [ext_resource type="Texture2D" uid="uid://w44u4wk7aqxp" path="res://Art/basicterrain/dust_particles_01.png" id="3_fw7wo"]
 
 [node name="Experience" groups=["pickups"] instance=ExtResource("1_n2c22")]

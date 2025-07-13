@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://mgwpwqnwcv6b"]
 
-[ext_resource type="Script" path="res://UI/LootSelection/loot_selection.gd" id="1_i5snk"]
+[ext_resource type="Script" uid="uid://bio0o7ixlt1nw" path="res://UI/LootSelection/loot_selection.gd" id="1_i5snk"]
 [ext_resource type="PackedScene" uid="uid://bhbf22tlfp6g1" path="res://UI/Tooltip/tooltip.tscn" id="2_iwui4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8hrcw"]

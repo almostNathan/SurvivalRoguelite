@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b082ttjbulmjw"]
 
-[ext_resource type="Script" path="res://UI/LoadoutSelectionScreen/LoadoutSelection/loadout_selection.gd" id="1_clmff"]
+[ext_resource type="Script" uid="uid://cpur8qdhe6i4j" path="res://UI/LoadoutSelectionScreen/LoadoutSelection/loadout_selection.gd" id="1_clmff"]
 [ext_resource type="Texture2D" uid="uid://dl04ctaiyxdpc" path="res://Art/Weapons/aura_bullet.png" id="2_nytwv"]
 
 [node name="LoadoutSelection" type="PanelContainer"]

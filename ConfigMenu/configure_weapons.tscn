@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvd3vvp17r7qx"]
 
-[ext_resource type="Script" path="res://ConfigMenu/configure_weapons.gd" id="1_gbopp"]
+[ext_resource type="Script" uid="uid://twdq8i8jrc6a" path="res://ConfigMenu/configure_weapons.gd" id="1_gbopp"]
 [ext_resource type="PackedScene" uid="uid://o70m5bhp5fbu" path="res://ConfigMenu/configure_weapon_slot.tscn" id="2_auv8g"]
-[ext_resource type="Script" path="res://ConfigMenu/WeaponGridContainer.gd" id="2_bs2sq"]
+[ext_resource type="Script" uid="uid://xh332mrs0vxd" path="res://ConfigMenu/WeaponGridContainer.gd" id="2_bs2sq"]
 
 [sub_resource type="Theme" id="Theme_p3i17"]
 Button/colors/icon_normal_color = Color(0.231373, 0.160784, 0.184314, 1)

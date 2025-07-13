@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://8w0l24r7ascm"]
 
-[ext_resource type="Script" path="res://Player/Mods/MoveSpeedPlayerMod/movespeed_player_mod.gd" id="1_0n74i"]
+[ext_resource type="Script" uid="uid://cc07fcvd80aa4" path="res://Player/Mods/MoveSpeedPlayerMod/movespeed_player_mod.gd" id="1_0n74i"]
 
 [node name="MovespeedPlayerMod" type="Node2D"]
 script = ExtResource("1_0n74i")

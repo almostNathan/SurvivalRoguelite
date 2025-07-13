@@ -47,4 +47,3 @@ func damage_add(add_value):
 func remove_mod():
 	super()
 	weapon.on_kill.disconnect(_on_kill)
-

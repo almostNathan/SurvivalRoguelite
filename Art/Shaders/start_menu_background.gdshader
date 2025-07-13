@@ -20,15 +20,15 @@ float random(vec2 uv) {
 float noise(vec2 p) {
     vec2 i = floor(p);
     vec2 f = fract(p);
-    
+
     // Sharper interpolation for less connection
     vec2 u = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
-    
+
     float a = random(i);
     float b = random(i + vec2(1.0, 0.0));
     float c = random(i + vec2(0.0, 1.0));
     float d = random(i + vec2(1.0, 1.0));
-    
+
     return mix(mix(a, b, u.x),
               mix(c, d, u.x), u.y);
 }
@@ -38,14 +38,14 @@ float fbm(vec2 uv) {
     float value = 0.0;
     float amplitude = 0.6;  // Increased initial amplitude
     float frequency = 1.0;
-    
+
     // Reduced layers for less connection
     for(int i = 0; i < 10; i++) {
         value += amplitude * noise(frequency * uv);
         frequency *= 2.5;   // Increased frequency jump
         amplitude *= 0.4;   // Steeper amplitude drop
     }
-    
+
     return value;
 }
 
@@ -58,18 +58,18 @@ vec2 wave_distortion(vec2 uv, float time) {
 void fragment() {
     // Apply wave distortion to UV with faster movement
     vec2 distorted_uv = wave_distortion(UV, TIME * .1);
-    
+
     // Generate noise pattern with faster movement
     float noise_value = fbm(distorted_uv * noise_scale * 1.5 + TIME * 1.0);  // Increased time factor
-    
+
     // Add variation with faster secondary movement
     noise_value *= fbm(distorted_uv * noise_scale * .5 - TIME * 0.4);
-    
+
     // Sharper contrast for more distinct patterns
     //noise_value = smoothstep(0.35, 0.45, noise_value);  // Narrowed smoothstep range
-    
+
     // Mix colors with high contrast
     vec4 final_color = mix(base_color, static_color, noise_value * 0.9);
-    
+
     COLOR = final_color;
 }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtrlhspqi8era"]
 
-[ext_resource type="Script" path="res://Weapons/Weapons/Laser/laser_bullet.gd" id="1_5274t"]
+[ext_resource type="Script" uid="uid://bl7yti0y7jrjl" path="res://Weapons/Weapons/Laser/laser_bullet.gd" id="1_5274t"]
 [ext_resource type="Texture2D" uid="uid://b3ebee2w6psxn" path="res://Art/Weapons/laser_bullet.png" id="2_uom3h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btspj"]

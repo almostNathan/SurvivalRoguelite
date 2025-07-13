@@ -30,4 +30,3 @@ func _apply_damage_crit(mod):
 func remove_mod():
 	super()
 	#TODO need to figure out how to hand crit before handling removal
-

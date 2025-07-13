@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqiqp6adfcdtn"]
 
-[ext_resource type="Script" path="res://Weapons/Mods/CurveClockwise/curve_clockwise_mod.gd" id="1_morq3"]
+[ext_resource type="Script" uid="uid://ceiebbfbxpvwp" path="res://Weapons/Mods/CurveClockwise/curve_clockwise_mod.gd" id="1_morq3"]
 
 [node name="CurveClockwiseMod" type="Node2D"]
 script = ExtResource("1_morq3")

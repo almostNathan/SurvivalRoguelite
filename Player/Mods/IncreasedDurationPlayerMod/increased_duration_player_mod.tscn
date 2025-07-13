@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cc6ilhnnjb3ty"]
 
-[ext_resource type="Script" path="res://Player/Mods/IncreasedDurationPlayerMod/increased_duration_player_mod.gd" id="1_u0qoh"]
+[ext_resource type="Script" uid="uid://ddpyntodko82h" path="res://Player/Mods/IncreasedDurationPlayerMod/increased_duration_player_mod.gd" id="1_u0qoh"]
 
 [node name="IncreasedDurationPlayerMod" type="Node2D"]
 script = ExtResource("1_u0qoh")

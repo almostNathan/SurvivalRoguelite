@@ -37,6 +37,3 @@ func refresh():
 		current_damage_add = base_damage_add * current_rank
 	
 	
-
-
-

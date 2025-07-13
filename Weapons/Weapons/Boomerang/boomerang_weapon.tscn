@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dp68m5g1qney"]
 
-[ext_resource type="Script" path="res://Weapons/Weapons/Boomerang/boomerang_weapon.gd" id="1_7ks85"]
+[ext_resource type="Script" uid="uid://cbi6mbtsrvo67" path="res://Weapons/Weapons/Boomerang/boomerang_weapon.gd" id="1_7ks85"]
 [ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="2_stjct"]
 [ext_resource type="PackedScene" uid="uid://b3saykm2sxdrb" path="res://Weapons/Weapons/Boomerang/boomerang_bullet.tscn" id="2_ulbxf"]
 

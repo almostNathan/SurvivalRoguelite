@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6b61itb8ppns"]
 
 [ext_resource type="Texture2D" uid="uid://bxjhby44iqw6a" path="res://Art/Drops/poison_mod.png" id="1_bia32"]
-[ext_resource type="Script" path="res://UI/DebuffBar/DebuffIcon/debuff_icon.gd" id="1_ps2df"]
+[ext_resource type="Script" uid="uid://bsgum1fewq0d7" path="res://UI/DebuffBar/DebuffIcon/debuff_icon.gd" id="1_ps2df"]
 [ext_resource type="FontFile" uid="uid://b21f2adhuvcr6" path="res://Art/Fonts/Cute Dino.otf" id="3_ncu48"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gh4us"]

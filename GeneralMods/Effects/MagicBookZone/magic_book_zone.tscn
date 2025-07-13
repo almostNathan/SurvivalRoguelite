@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cd2j2rw1wgnxj"]
 
 [ext_resource type="Texture2D" uid="uid://bdjw02ty5osff" path="res://Art/effect_assets/explosion1.png" id="2_0v332"]
-[ext_resource type="Script" path="res://GeneralMods/Effects/MagicBookZone/magic_book_zone.gd" id="2_j14vr"]
+[ext_resource type="Script" uid="uid://dk70gl51ovnp4" path="res://GeneralMods/Effects/MagicBookZone/magic_book_zone.gd" id="2_j14vr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bt5ob"]
 atlas = ExtResource("2_0v332")

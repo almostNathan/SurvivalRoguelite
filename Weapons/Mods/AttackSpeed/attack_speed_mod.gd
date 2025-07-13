@@ -28,4 +28,3 @@ func refresh():
 func remove_mod():
 	super()
 	weapon.modify_attack_speed_mult(attack_speed_mult * -1)
-

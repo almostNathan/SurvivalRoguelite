@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8vr8qtrotrc"]
 
 [ext_resource type="PackedScene" uid="uid://immewsood0nw" path="res://Weapons/Weapons/base_bullet.tscn" id="1_k5dqv"]
-[ext_resource type="Script" path="res://Weapons/Weapons/Stick/stick_bullet.gd" id="2_ffgda"]
+[ext_resource type="Script" uid="uid://ds3rjd2kvlt2p" path="res://Weapons/Weapons/Stick/stick_bullet.gd" id="2_ffgda"]
 [ext_resource type="Texture2D" uid="uid://ce8q78re1y4cn" path="res://Art/basicterrain/board.png" id="3_lk7k0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxnok"]

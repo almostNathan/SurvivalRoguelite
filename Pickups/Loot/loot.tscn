@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://kwjimcmdxm2j"]
 
-[ext_resource type="Script" path="res://Pickups/Loot/loot.gd" id="1_xk6u6"]
+[ext_resource type="Script" uid="uid://lu3rlcqvhvo5" path="res://Pickups/Loot/loot.gd" id="1_xk6u6"]
 [ext_resource type="Texture2D" uid="uid://ch2gvmfsl5u6d" path="res://Art/basicterrain/chest_01.png" id="2_l30xc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bpmu"]

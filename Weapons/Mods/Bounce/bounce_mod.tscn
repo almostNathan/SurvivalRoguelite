@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://qovyqvv8b5rn"]
 
-[ext_resource type="Script" path="res://Weapons/Mods/Bounce/bounce_mod.gd" id="1_23y4r"]
+[ext_resource type="Script" uid="uid://cdkx6wei42psy" path="res://Weapons/Mods/Bounce/bounce_mod.gd" id="1_23y4r"]
 
 [node name="BounceMod" type="Node2D"]
 script = ExtResource("1_23y4r")

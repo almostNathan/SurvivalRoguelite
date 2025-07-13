@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bywidb6qsen3v"]
 
-[ext_resource type="Script" path="res://Enemies/base_enemy.gd" id="1_vvtex"]
+[ext_resource type="Script" uid="uid://c6y2dpbwo7jv3" path="res://Enemies/base_enemy.gd" id="1_vvtex"]
 [ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="2_qvdo8"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="3_3bqpo"]
 [ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="3_d2dax"]

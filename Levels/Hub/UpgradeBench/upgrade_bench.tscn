@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cebkurbx6aj32"]
 
 [ext_resource type="Texture2D" uid="uid://cepj1lwgcuq21" path="res://Art/basicterrain/objects.png" id="1_2fg5w"]
-[ext_resource type="Script" path="res://Levels/Hub/UpgradeBench/upgrade_bench.gd" id="1_8yjtk"]
+[ext_resource type="Script" uid="uid://0gx6onjgqgvy" path="res://Levels/Hub/UpgradeBench/upgrade_bench.gd" id="1_8yjtk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nglij"]
 size = Vector2(16, 32)

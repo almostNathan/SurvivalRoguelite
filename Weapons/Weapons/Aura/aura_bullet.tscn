@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2bydhu6cwalo"]
 
-[ext_resource type="Script" path="res://Weapons/Weapons/Aura/aura_bullet.gd" id="1_flhco"]
+[ext_resource type="Script" uid="uid://ctidhvpw5gk6e" path="res://Weapons/Weapons/Aura/aura_bullet.gd" id="1_flhco"]
 [ext_resource type="Texture2D" uid="uid://dl04ctaiyxdpc" path="res://Art/Weapons/aura_bullet.png" id="2_j0htp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gi6ge"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ta7e5pmesw0a"]
 
-[ext_resource type="Script" path="res://UI/Inventory/weapons_display_slot.gd" id="1_ffyxi"]
+[ext_resource type="Script" uid="uid://iyukmpahbl7p" path="res://UI/Inventory/weapons_display_slot.gd" id="1_ffyxi"]
 [ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="2_ctrg6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lfsoh"]

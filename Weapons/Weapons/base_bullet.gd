@@ -77,5 +77,3 @@ func calculate_current_speed():
 func set_duration_modifier(new_modifier):
 	if lifespan_timer != null:
 		lifespan_timer.wait_time *= new_modifier
-
-

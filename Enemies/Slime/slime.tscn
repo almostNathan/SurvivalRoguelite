@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://bxse6gotymek6"]
 
-[ext_resource type="Script" path="res://Enemies/Slime/slime.gd" id="2_fb5sk"]
+[ext_resource type="Script" uid="uid://cibsbyi3fgd8q" path="res://Enemies/Slime/slime.gd" id="2_fb5sk"]
 [ext_resource type="PackedScene" uid="uid://cs2ic6efhup2t" path="res://UI/DebuffBar/debuff_bar.tscn" id="2_vj541"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="3_s8kbq"]
 [ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="5_qsehc"]

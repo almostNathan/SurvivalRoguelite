@@ -37,6 +37,3 @@ func remove_mod():
 	super()
 	weapon.pierce_value -= pierce_modifier
 	weapon.on_hit.disconnect(_on_hit)
-
-
-

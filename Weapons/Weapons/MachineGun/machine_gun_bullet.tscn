@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://but6ynov34jwg"]
 
-[ext_resource type="Script" path="res://Weapons/Weapons/MachineGun/machine_gun_bullet.gd" id="1_563dg"]
+[ext_resource type="Script" uid="uid://cyllu40x1pq2n" path="res://Weapons/Weapons/MachineGun/machine_gun_bullet.gd" id="1_563dg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vl4aa"]
 size = Vector2(119, 7)

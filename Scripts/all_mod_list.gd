@@ -264,4 +264,3 @@ var player_mod_scene_list = [
 	preload("res://Weapons/Mods/IncreasedDamage/increased_damage_mod.tscn"),
 	preload("res://Weapons/Mods/AddedDamage/added_damage_mod.tscn")
 ]
-

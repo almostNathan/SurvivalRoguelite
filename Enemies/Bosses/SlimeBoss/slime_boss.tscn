@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cnkhpgm5a7obn"]
 
-[ext_resource type="Script" path="res://Enemies/Bosses/SlimeBoss/slime_boss.gd" id="1_8hiom"]
+[ext_resource type="Script" uid="uid://b73efi4sxldgi" path="res://Enemies/Bosses/SlimeBoss/slime_boss.gd" id="1_8hiom"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="2_3c1xi"]
 [ext_resource type="PackedScene" uid="uid://cs2ic6efhup2t" path="res://UI/DebuffBar/debuff_bar.tscn" id="2_gf21j"]
 [ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="3_sbkx2"]

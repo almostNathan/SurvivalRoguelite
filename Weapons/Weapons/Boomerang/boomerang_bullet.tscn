@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3saykm2sxdrb"]
 
-[ext_resource type="Script" path="res://Weapons/Weapons/Boomerang/boomerang_bullet.gd" id="2_a4qpc"]
+[ext_resource type="Script" uid="uid://bqh7edqlgi5xe" path="res://Weapons/Weapons/Boomerang/boomerang_bullet.gd" id="2_a4qpc"]
 [ext_resource type="Texture2D" uid="uid://bv3feovq33ol4" path="res://Art/Weapons/boomerang_bullet.png" id="2_d1pe4"]
 
 [node name="BoomerangBullet" type="Area2D" groups=["bullet"]]

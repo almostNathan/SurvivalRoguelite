@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8tnk3dip2q3x"]
 
-[ext_resource type="Script" path="res://Weapons/Weapons/Stone/stone_bullet.gd" id="1_wou8q"]
+[ext_resource type="Script" uid="uid://djjto0kna7tp0" path="res://Weapons/Weapons/Stone/stone_bullet.gd" id="1_wou8q"]
 [ext_resource type="Texture2D" uid="uid://bk4asg02u45tp" path="res://Art/basicterrain/stone.png" id="2_ici5d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gi6ge"]

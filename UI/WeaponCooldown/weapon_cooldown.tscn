@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ores5e35s23t"]
 
-[ext_resource type="Script" path="res://UI/WeaponCooldown/WeaponCooldown.gd" id="1_8y2ph"]
+[ext_resource type="Script" uid="uid://diqudvlv3sw5t" path="res://UI/WeaponCooldown/WeaponCooldown.gd" id="1_8y2ph"]
 [ext_resource type="Texture2D" uid="uid://ce8q78re1y4cn" path="res://Art/basicterrain/board.png" id="2_0pmn5"]
 
 [node name="WeaponCooldown" type="Panel"]

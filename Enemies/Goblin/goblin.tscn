@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://c7kos2vpbvsyt"]
 
-[ext_resource type="Script" path="res://Enemies/Goblin/goblin.gd" id="1_o7qjt"]
+[ext_resource type="Script" uid="uid://cedi58eh3rr4i" path="res://Enemies/Goblin/goblin.gd" id="1_o7qjt"]
 [ext_resource type="PackedScene" uid="uid://ckiym5di7gv1" path="res://UI/HealthBar/health_bar.tscn" id="2_5wpd4"]
 [ext_resource type="Texture2D" uid="uid://b3turyrdg63mx" path="res://Art/Monster_Creatures_Fantasy_itchio/Goblin/goblin.png" id="2_bwxin"]
 [ext_resource type="PackedScene" uid="uid://b53ftbliw7slx" path="res://Enemies/Mods/Experience/experience_mod.tscn" id="3_cuufe"]

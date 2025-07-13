@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bx66nfnbnmlb3"]
 
-[ext_resource type="Script" path="res://GeneralMods/Effects/Splash/splash_effect.gd" id="1_opkos"]
+[ext_resource type="Script" uid="uid://b6x5yyikeq4mt" path="res://GeneralMods/Effects/Splash/splash_effect.gd" id="1_opkos"]
 [ext_resource type="Texture2D" uid="uid://bdjw02ty5osff" path="res://Art/effect_assets/explosion1.png" id="2_r3hyv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bt5ob"]

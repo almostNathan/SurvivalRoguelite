@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxm51aus5xlnf"]
 
 [ext_resource type="Texture2D" uid="uid://djjlbpjgfr2hf" path="res://Art/hud_assets/right-arrow.png" id="1_5deqr"]
-[ext_resource type="Script" path="res://Player/UI/LootArrow/loot_arrow.gd" id="2_wammk"]
+[ext_resource type="Script" uid="uid://dpjll53lhe60v" path="res://Player/UI/LootArrow/loot_arrow.gd" id="2_wammk"]
 
 [node name="LootArrow" type="TextureRect" groups=["arrows"]]
 texture = ExtResource("1_5deqr")

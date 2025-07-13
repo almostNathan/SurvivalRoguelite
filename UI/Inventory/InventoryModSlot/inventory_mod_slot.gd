@@ -64,4 +64,3 @@ func _on_mouse_exited():
 	if tooltip_enabled: 
 		displaying_tooltip.emit(false)
 		tooltip.toggle(false)
-

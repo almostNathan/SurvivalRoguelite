@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bml2hvgx8p3pc"]
 
-[ext_resource type="Script" path="res://Pickups/pickup.gd" id="1_yt3ig"]
+[ext_resource type="Script" uid="uid://ct1qbsxup3o4l" path="res://Pickups/pickup.gd" id="1_yt3ig"]
 [ext_resource type="Texture2D" uid="uid://ch2gvmfsl5u6d" path="res://Art/basicterrain/chest_01.png" id="2_1awoa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bpmu"]

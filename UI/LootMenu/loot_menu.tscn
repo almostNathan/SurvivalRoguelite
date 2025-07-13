@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbbvt8rf4y1n4"]
 
-[ext_resource type="Script" path="res://UI/LootMenu/loot_menu.gd" id="1_b16og"]
+[ext_resource type="Script" uid="uid://c74eqpkaq3001" path="res://UI/LootMenu/loot_menu.gd" id="1_b16og"]
 
 [node name="LootMenu" type="PanelContainer"]
 process_mode = 2

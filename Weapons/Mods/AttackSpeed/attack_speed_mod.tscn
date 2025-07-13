@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cu78x2snt10qu"]
 
-[ext_resource type="Script" path="res://Weapons/Mods/AttackSpeed/attack_speed_mod.gd" id="1_q18wx"]
+[ext_resource type="Script" uid="uid://fceq55as30qi" path="res://Weapons/Mods/AttackSpeed/attack_speed_mod.gd" id="1_q18wx"]
 
 [node name="AttackSpeedMod" type="Node2D"]
 script = ExtResource("1_q18wx")

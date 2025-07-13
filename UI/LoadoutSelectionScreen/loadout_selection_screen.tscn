@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ceb57clgswdna"]
 
-[ext_resource type="Script" path="res://UI/LoadoutSelectionScreen/loadout_selection_screen.gd" id="1_e05ru"]
+[ext_resource type="Script" uid="uid://c457rojdbkr51" path="res://UI/LoadoutSelectionScreen/loadout_selection_screen.gd" id="1_e05ru"]
 
 [node name="LoadoutSelectionScreen" type="PanelContainer"]
 process_mode = 2

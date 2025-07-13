@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tbqfj1yaqrpy"]
 
-[ext_resource type="Script" path="res://Weapons/Mods/Crit/crit_mod.gd" id="1_r3rqx"]
+[ext_resource type="Script" uid="uid://dvwywr7f0u78g" path="res://Weapons/Mods/Crit/crit_mod.gd" id="1_r3rqx"]
 
 [node name="CritMod" type="Node2D"]
 script = ExtResource("1_r3rqx")

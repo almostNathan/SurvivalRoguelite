@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnircdg5ldy0m"]
 
 [ext_resource type="PackedScene" uid="uid://3uxyudbonx32" path="res://Weapons/Weapons/Orb/orb_bullet.tscn" id="2_46yyp"]
-[ext_resource type="Script" path="res://Weapons/Weapons/Orb/orb_weapon.gd" id="2_irh63"]
+[ext_resource type="Script" uid="uid://dt0trlwq2he7p" path="res://Weapons/Weapons/Orb/orb_weapon.gd" id="2_irh63"]
 [ext_resource type="Texture2D" uid="uid://bk4asg02u45tp" path="res://Art/basicterrain/stone.png" id="3_i5efq"]
 
 [node name="OrbWeapon" type="Node2D" groups=["weapons"]]

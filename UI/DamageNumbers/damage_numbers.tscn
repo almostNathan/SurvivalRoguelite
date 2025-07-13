@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://4it43alvjt1r"]
 
-[ext_resource type="Script" path="res://UI/DamageNumbers/damage_numbers.gd" id="1_7wu5u"]
+[ext_resource type="Script" uid="uid://c3xsnnvg2ypvi" path="res://UI/DamageNumbers/damage_numbers.gd" id="1_7wu5u"]
 
 [sub_resource type="Animation" id="Animation_2ttt3"]
 length = 0.001
@@ -46,8 +46,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4lx77"]
 _data = {
-"RESET": SubResource("Animation_2ttt3"),
-"damage_number_animation": SubResource("Animation_32lrd")
+&"RESET": SubResource("Animation_2ttt3"),
+&"damage_number_animation": SubResource("Animation_32lrd")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ndxl"]

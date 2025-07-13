@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cyhvndh31yu7n"]
 
 [ext_resource type="PackedScene" uid="uid://dtrlhspqi8era" path="res://Weapons/Weapons/Laser/laser_bullet.tscn" id="2_04lwx"]
-[ext_resource type="Script" path="res://Weapons/Weapons/Laser/laser_weapon.gd" id="2_fcbea"]
+[ext_resource type="Script" uid="uid://dwdgvxmhtyl3t" path="res://Weapons/Weapons/Laser/laser_weapon.gd" id="2_fcbea"]
 [ext_resource type="Texture2D" uid="uid://b28liu0vidi1r" path="res://icon.svg" id="2_xlls4"]
 
 [node name="LaserWeapon" type="Node2D" groups=["weapons"]]
