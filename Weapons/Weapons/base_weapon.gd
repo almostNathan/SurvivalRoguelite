@@ -170,7 +170,7 @@ func get_mod_list():
 	return mod_list
 
 func detach_all_mods():
-	for mod in mod_list:
+	for mod : BaseMod in mod_list:
 		mod.remove_mod()
 	mod_list = []
 	

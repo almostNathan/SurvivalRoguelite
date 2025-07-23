@@ -1,5 +1,9 @@
 extends MarginContainer
 class_name InventoryWeaponSlot
+###
+### Holds data for a windeeeapon and mods equipped to that weapon.
+###
+
 
 signal mod_placed_in_weapon()
 
@@ -23,17 +27,17 @@ func _get_drag_data(_at_position):
 	return weapon_in_slot
 
 func _drop_data(_at_position, data):
-	update_weapon_slot()
+	#update_weapon_slot()
 	#TODO Handle adding mods that upgrade.
 	if data is BaseMod and weapon_in_slot.total_mod_slots > count_mods_on_weapon():
 		weapon_in_slot.add_mod(data)
-		#var new_mod_slot = mod_slot_scene.instantiate()
-		#mod_grid.add_child(new_mod_slot)
-		#new_mod_slot.displaying_tooltip.connect(_displaying_equipped_mod_tooltip)
-		#new_mod_slot.set_mod_in_slot(data)
-		#new_mod_slot.custom_minimum_size = Vector2(self.size.x/3, self.size.y/3)
+		print("inventory_weapon_slot weapon mod list ", weapon_in_slot, ' ', weapon_in_slot.get_mod_list())
+		var new_mod_slot = mod_slot_scene.instantiate()
+		mod_grid.add_child(new_mod_slot)
+		new_mod_slot.displaying_tooltip.connect(_displaying_equipped_mod_tooltip)
+		new_mod_slot.set_mod_in_slot(data)
+		new_mod_slot.custom_minimum_size = Vector2(self.size.x/3, self.size.y/3)
 		mod_slot_label.text = str(count_mods_on_weapon()) + ' / ' + str(weapon_in_slot.total_mod_slots)
-		#weapon_in_slot.add_mod(data)
 		update_weapon_slot()
 	elif data is BaseWeapon:
 		set_weapon_in_slot(data)
@@ -55,7 +59,7 @@ func set_weapon_in_slot(weapon):
 		+ "Damage: {damage}\n".format({"damage": weapon.current_damage}) \
 		+ "Attack Speed: {attack_speed}\n".format({"attack_speed": weapon.current_attack_speed}) \
 		+ "Projectiles: {projectiles}".format({"projectiles": weapon.projectile_count}))
-	update_weapon_slot()
+	add_mods_to_mod_grid()
 
 func remove_weapon_in_slot():
 	weapon_in_slot = null
@@ -73,20 +77,33 @@ func add_mods_to_weapon():
 		for mod_slot in mod_grid.get_children():
 			weapon_in_slot.add_mod(mod_slot.get_mod())
 
-func count_mods_on_weapon():
-	var mod_array = mod_grid.get_children()
-	return len(mod_array)
-
-func update_weapon_slot():
-	mod_slot_label.text = str(len(weapon_in_slot.mod_list)) + ' / ' + str(weapon_in_slot.total_mod_slots)
+func add_mods_to_mod_grid():
 	var mod_slot_size = $Icon.size.x/3
-	clear_mod_grid_container()
 	for mod in weapon_in_slot.get_mod_list():
 		var new_mod_slot = mod_slot_scene.instantiate()
 		mod_grid.add_child(new_mod_slot)
 		new_mod_slot.displaying_tooltip.connect(_displaying_equipped_mod_tooltip)
 		new_mod_slot.set_mod_in_slot(mod)
 		new_mod_slot.custom_minimum_size = Vector2(mod_slot_size, mod_slot_size)
+
+func count_mods_on_weapon():
+	var mod_array = mod_grid.get_children()
+	return len(mod_array)
+
+func update_weapon_slot():
+	mod_slot_label.text = str(len(weapon_in_slot.mod_list)) + ' / ' + str(weapon_in_slot.total_mod_slots)
+	weapon_in_slot.detach_all_mods()
+	for mod_slot in mod_grid.get_children():
+		weapon_in_slot.add_mod(mod_slot.get_mod())
+	
+	clear_mod_grid_container()
+	add_mods_to_mod_grid()
+	#for mod in weapon_in_slot.get_mod_list():
+		#var new_mod_slot = mod_slot_scene.instantiate()
+		#mod_grid.add_child(new_mod_slot)
+		#new_mod_slot.displaying_tooltip.connect(_displaying_equipped_mod_tooltip)
+		#new_mod_slot.set_mod_in_slot(mod)
+		#new_mod_slot.custom_minimum_size = Vector2(mod_slot_size, mod_slot_size)
 
 func clear_mod_grid_container():
 	for mod in mod_grid.get_children():

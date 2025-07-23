@@ -1,5 +1,10 @@
 extends MarginContainer
 class_name InventoryModSlot
+###
+### Holds data for a mod.
+###
+
+
 
 signal displaying_tooltip(showing)
 
@@ -43,7 +48,7 @@ func _notification(what):
 					#mod_in_slot.weapon.remove_mod(mod_in_slot)
 					#print("inventorymodslot ", mod_in_slot, mod_in_slot.weapon)
 				#remove_mod_from_inventory(mod_in_slot)
-				mod_in_slot.unequip()
+				#mod_in_slot.unequip()
 				get_parent().remove_child(self)
 				is_dragged = false
 			elif is_dragged:

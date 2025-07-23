@@ -21,7 +21,6 @@ func equip(new_weapon):
 func remove_mod():
 	super()
 	weapon.projectile_count -= projectile_modifier
-	weapon = null
 	
 func refresh():
 	if weapon != null:
